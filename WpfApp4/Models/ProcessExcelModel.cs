@@ -14,14 +14,11 @@ namespace WpfApp4.Models
         [ObservableProperty]
         private string fileId = string.Empty;
 
-        [ObservableProperty]
-        private string processName = string.Empty;
-
         // 时间参数
         [ObservableProperty]
-        private int time;
+        private int time;  // 工艺步骤时间
 
-        // 温度参数 T1-T9
+        // 温度设定值 T1-T9
         [ObservableProperty]
         private int t1;
 
@@ -49,7 +46,7 @@ namespace WpfApp4.Models
         [ObservableProperty]
         private int t9;
 
-        // 气体参数
+        // 气体流量设定值
         [ObservableProperty]
         private int n2;
 
@@ -65,11 +62,11 @@ namespace WpfApp4.Models
         [ObservableProperty]
         private int ph3;
 
-        // 压力参数
+        // 压力设定值
         [ObservableProperty]
         private int pressure;
 
-        // 功率参数
+        // 功率设定值
         [ObservableProperty]
         private int power1;
 
@@ -95,18 +92,18 @@ namespace WpfApp4.Models
 
         // 脉冲参数
         [ObservableProperty]
-        private int pulseOn1;
+        private int pulseOn1;  // 脉冲开启时间1
 
         [ObservableProperty]
-        private int pulseOff1;
+        private int pulseOff1;  // 脉冲关闭时间1
 
         [ObservableProperty]
-        private int pulseOn2;
+        private int pulseOn2;  // 脉冲开启时间2
 
         [ObservableProperty]
-        private int pulseOff2;
+        private int pulseOff2;  // 脉冲关闭时间2
 
-        // 电流电压参数
+        // 电流电压参考值和限制值
         [ObservableProperty]
         private int currentReference;  // 电流参考值(A)
 

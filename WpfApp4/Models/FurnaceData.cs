@@ -1,100 +1,79 @@
 using CommunityToolkit.Mvvm.ComponentModel;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace WpfApp4.Models
 {
     public partial class FurnaceData : ObservableObject
     {
-        [ObservableProperty]
-        private int _time;  // 时间
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? Id { get; set; }
 
         [ObservableProperty]
-        private float _t1;  // T1
+        private string fileId = string.Empty;
 
         [ObservableProperty]
-        private float _t2;  // T2
+        private float measuredT1;
 
         [ObservableProperty]
-        private float _t3;  // T3
+        private float measuredT2;
 
         [ObservableProperty]
-        private float _t4;  // T4
+        private float measuredT3;
 
         [ObservableProperty]
-        private float _t5;  // T5
+        private float measuredT4;
 
         [ObservableProperty]
-        private float _t6;  // T6
+        private float measuredT5;
 
         [ObservableProperty]
-        private float _t7;  // T7
+        private float measuredT6;
 
         [ObservableProperty]
-        private float _t8;  // T8
+        private float measuredT7;
 
         [ObservableProperty]
-        private float _t9;  // T9
+        private float measuredT8;
 
         [ObservableProperty]
-        private float _sih4;  // SiH4
+        private float measuredT9;
 
         [ObservableProperty]
-        private float _n2;  // N2
+        private float measuredSiH4;
 
         [ObservableProperty]
-        private float _n2o;  // N2O
+        private float measuredN2;
 
         [ObservableProperty]
-        private float _h2;   // H2
+        private float measuredN2O;
 
         [ObservableProperty]
-        private float _ph3;  // PH3
+        private float measuredH2;
 
         [ObservableProperty]
-        private float _pressure;  // 压力
+        private float measuredPh3;
 
         [ObservableProperty]
-        private float _powerOutput1;  // 功率1
+        private float measuredPressure;
 
         [ObservableProperty]
-        private float _powerOutput2;  // 功率2
+        private float measuredPower1;
 
         [ObservableProperty]
-        private float _importExportSpeed;  // 进/出舟移动速度
+        private float measuredPower2;
 
         [ObservableProperty]
-        private float _platformSpeed;  // 平移速度
+        private float measuredCurrent;
 
         [ObservableProperty]
-        private float _upDownSpeed;  // 上下速度
+        private float measuredVoltage;
 
         [ObservableProperty]
-        private float _auxiliaryHeatingTime;  // 辅热时间
+        private float pulseFrequency;
 
         [ObservableProperty]
-        private float _auxiliaryHeatingTemp;  // 辅热温度
-
-        [ObservableProperty]
-        private float _pulseOn1;  // 脉冲开1
-
-        [ObservableProperty]
-        private float _pulseOff1;  // 脉冲关1
-
-        [ObservableProperty]
-        private float _pulseOn2;  // 脉冲开2
-
-        [ObservableProperty]
-        private float _pulseOff2;  // 脉冲关2
-
-        [ObservableProperty]
-        private float _current;  // 电流
-
-        [ObservableProperty]
-        private float _voltage;  // 电压
-
-        [ObservableProperty]
-        private float _pulseFrequency;  // 射频电流
-
-        [ObservableProperty]
-        private float _pulseVoltage;  // 射频电压
+        private float pulseVoltage;
     }
-} 
+}
