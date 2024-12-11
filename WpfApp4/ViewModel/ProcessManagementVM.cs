@@ -104,23 +104,45 @@ namespace WpfApp4.ViewModel
                     {
                         var model = new ProcessExcelModel
                         {
-                            ProcessName = GetCellValue(worksheet, row, 1),
-                            N2O = GetCellValue(worksheet, row, 2),
-                            H2 = GetCellValue(worksheet, row, 3),
-                            Ph3 = GetCellValue(worksheet, row, 4),
-                            Pressure = GetCellValue(worksheet, row, 5),
-                            Power1 = GetCellValue(worksheet, row, 6),
-                            Power2 = GetCellValue(worksheet, row, 7),
-                            BoatInOut = GetCellValue(worksheet, row, 8),
-                            MoveSpeed = GetCellValue(worksheet, row, 9),
-                            UpDownSpeed = GetCellValue(worksheet, row, 10),
-                            HeatTime = GetCellValue(worksheet, row, 11),
-                            HeatTemp = GetCellValue(worksheet, row, 12),
-                            PulseOn1 = GetCellValue(worksheet, row, 13),
-                            PulseOff1 = GetCellValue(worksheet, row, 14),
-                            PulseOn2 = GetCellValue(worksheet, row, 15),
-                            PulseOff2 = GetCellValue(worksheet, row, 16),
-                            CurrentVoltage = GetCellValue(worksheet, row, 17)
+                            Time = GetCellIntValue(worksheet, row, 1),
+                            // 温度参数 T1-T9
+                            T1 = GetCellIntValue(worksheet, row, 2),
+                            T2 = GetCellIntValue(worksheet, row, 3),
+                            T3 = GetCellIntValue(worksheet, row, 4),
+                            T4 = GetCellIntValue(worksheet, row, 5),
+                            T5 = GetCellIntValue(worksheet, row, 6),
+                            T6 = GetCellIntValue(worksheet, row, 7),
+                            T7 = GetCellIntValue(worksheet, row, 8),
+                            T8 = GetCellIntValue(worksheet, row, 9),
+                            T9 = GetCellIntValue(worksheet, row, 10),
+                            // 气体参数
+                            N2 = GetCellIntValue(worksheet, row, 11),
+                            SiH4 = GetCellIntValue(worksheet, row, 12),
+                            N2O = GetCellIntValue(worksheet, row, 13),
+                            H2 = GetCellIntValue(worksheet, row, 14),
+                            Ph3 = GetCellIntValue(worksheet, row, 15),
+                            // 压力参数
+                            Pressure = GetCellIntValue(worksheet, row, 16),
+                            // 功率参数
+                            Power1 = GetCellIntValue(worksheet, row, 17),
+                            Power2 = GetCellIntValue(worksheet, row, 18),
+                            // 运动参数
+                            BoatDirection = GetCellIntValue(worksheet, row, 19),
+                            MoveSpeed = GetCellIntValue(worksheet, row, 20),
+                            UpDownSpeed = GetCellIntValue(worksheet, row, 21),
+                            // 加热参数
+                            HeatTime = GetCellIntValue(worksheet, row, 22),
+                            HeatTemp = GetCellIntValue(worksheet, row, 23),
+                            // 脉冲参数
+                            PulseOn1 = GetCellIntValue(worksheet, row, 24),
+                            PulseOff1 = GetCellIntValue(worksheet, row, 25),
+                            PulseOn2 = GetCellIntValue(worksheet, row, 26),
+                            PulseOff2 = GetCellIntValue(worksheet, row, 27),
+                            // 电流电压参数
+                            CurrentReference = GetCellIntValue(worksheet, row, 28),
+                            CurrentLimit = GetCellIntValue(worksheet, row, 29),
+                            VoltageReference = GetCellIntValue(worksheet, row, 30),
+                            VoltageLimit = GetCellIntValue(worksheet, row, 31)
                         };
 
                         models.Add(model);
@@ -157,6 +179,18 @@ namespace WpfApp4.ViewModel
         {
             var cell = worksheet.Cells[row, col].Value;
             return cell?.ToString() ?? string.Empty;
+        }
+
+        private int GetCellIntValue(ExcelWorksheet worksheet, int row, int col)
+        {
+            var cellValue = GetCellValue(worksheet, row, col);
+            if (string.IsNullOrWhiteSpace(cellValue))
+                return 0;
+            
+            if (int.TryParse(cellValue, out int result))
+                return result;
+                
+            return 0;
         }
 
         [RelayCommand]

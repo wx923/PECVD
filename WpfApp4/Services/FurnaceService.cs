@@ -18,10 +18,8 @@ namespace WpfApp4.Services
         private ModbusTcpNet _modbusClient;
         private Dispatcher _dispatcher;
 
-        // 使用ObservableCollection来存储炉管数据
         public ObservableCollection<FurnaceData> Furnaces { get; private set; }
 
-        // 当前选中的炉管索引
         private int _selectedFurnaceIndex = 0;
         public int SelectedFurnaceIndex
         {
@@ -35,7 +33,6 @@ namespace WpfApp4.Services
             }
         }
 
-        // 获取当前选中的炉管数据
         public FurnaceData CurrentFurnace => Furnaces[SelectedFurnaceIndex];
 
         private FurnaceService()
@@ -43,14 +40,12 @@ namespace WpfApp4.Services
             _modbusClient = GlobalVM.plcCommunicationService._modbusTcp;
             _dispatcher = Dispatcher.CurrentDispatcher;
             
-            // 初始化6个炉管
             Furnaces = new ObservableCollection<FurnaceData>();
             for (int i = 0; i < 6; i++)
             {
                 Furnaces.Add(new FurnaceData());
             }
 
-            // 订阅连接成功事件
             GlobalVM.SingleObject.OnConnected += StartDataUpdate;
         }
 
@@ -66,7 +61,7 @@ namespace WpfApp4.Services
                     try
                     {
                         await UpdateFurnaceDataAsync();
-                        await Task.Delay(100, _cancellationTokenSource.Token); // 100ms 更新间隔
+                        await Task.Delay(100, _cancellationTokenSource.Token);
                     }
                     catch (OperationCanceledException)
                     {
@@ -87,27 +82,80 @@ namespace WpfApp4.Services
         {
             try
             {
-                // 为每个炉管读取数据
                 for (int furnaceIndex = 0; furnaceIndex < Furnaces.Count; furnaceIndex++)
                 {
                     var data = new FurnaceData();
-                    int offset = furnaceIndex * 100; // 假设每个炉管的数据地址间隔为100
+                    int offset = furnaceIndex * 100; // 每个炉管数据地址间隔为100
 
-                    // 读取数据
-                    data.Time = _modbusClient.ReadInt32($"{offset + 1}").Content;
-                    data.T1 = _modbusClient.ReadInt32($"{offset + 2}").Content;
-                    data.T2 = _modbusClient.ReadInt32($"{offset + 3}").Content;
-                    // ... 读取其他数据 ...
+                    // 读取所有数据
+                    data.Time = _modbusClient.ReadInt32($"{offset + 0}").Content;
+                    data.T1 = _modbusClient.ReadFloat($"{offset + 1}").Content;
+                    data.T2 = _modbusClient.ReadFloat($"{offset + 2}").Content;
+                    data.T3 = _modbusClient.ReadFloat($"{offset + 3}").Content;
+                    data.T4 = _modbusClient.ReadFloat($"{offset + 4}").Content;
+                    data.T5 = _modbusClient.ReadFloat($"{offset + 5}").Content;
+                    data.T6 = _modbusClient.ReadFloat($"{offset + 6}").Content;
+                    data.T7 = _modbusClient.ReadFloat($"{offset + 7}").Content;
+                    data.T8 = _modbusClient.ReadFloat($"{offset + 8}").Content;
+                    data.T9 = _modbusClient.ReadFloat($"{offset + 9}").Content;
+                    data.Sih4 = _modbusClient.ReadFloat($"{offset + 10}").Content;
+                    data.N2 = _modbusClient.ReadFloat($"{offset + 11}").Content;
+                    data.N2o = _modbusClient.ReadFloat($"{offset + 12}").Content;
+                    data.H2 = _modbusClient.ReadFloat($"{offset + 13}").Content;
+                    data.Ph3 = _modbusClient.ReadFloat($"{offset + 14}").Content;
+                    data.Pressure = _modbusClient.ReadFloat($"{offset + 15}").Content;
+                    data.PowerOutput1 = _modbusClient.ReadFloat($"{offset + 16}").Content;
+                    data.PowerOutput2 = _modbusClient.ReadFloat($"{offset + 17}").Content;
+                    data.ImportExportSpeed = _modbusClient.ReadFloat($"{offset + 18}").Content;
+                    data.PlatformSpeed = _modbusClient.ReadFloat($"{offset + 19}").Content;
+                    data.UpDownSpeed = _modbusClient.ReadFloat($"{offset + 20}").Content;
+                    data.AuxiliaryHeatingTime = _modbusClient.ReadFloat($"{offset + 21}").Content;
+                    data.AuxiliaryHeatingTemp = _modbusClient.ReadFloat($"{offset + 22}").Content;
+                    data.PulseOn1 = _modbusClient.ReadFloat($"{offset + 23}").Content;
+                    data.PulseOff1 = _modbusClient.ReadFloat($"{offset + 24}").Content;
+                    data.PulseOn2 = _modbusClient.ReadFloat($"{offset + 25}").Content;
+                    data.PulseOff2 = _modbusClient.ReadFloat($"{offset + 26}").Content;
+                    data.Current = _modbusClient.ReadFloat($"{offset + 27}").Content;
+                    data.Voltage = _modbusClient.ReadFloat($"{offset + 28}").Content;
+                    data.PulseFrequency = _modbusClient.ReadFloat($"{offset + 29}").Content;
+                    data.PulseVoltage = _modbusClient.ReadFloat($"{offset + 30}").Content;
 
                     // 在UI线程更新数据
-                    int index = furnaceIndex; // 捕获循环变量
+                    int index = furnaceIndex;
                     await _dispatcher.InvokeAsync(() =>
                     {
                         var furnace = Furnaces[index];
                         furnace.Time = data.Time;
                         furnace.T1 = data.T1;
                         furnace.T2 = data.T2;
-                        // ... 更新其他属性 ...
+                        furnace.T3 = data.T3;
+                        furnace.T4 = data.T4;
+                        furnace.T5 = data.T5;
+                        furnace.T6 = data.T6;
+                        furnace.T7 = data.T7;
+                        furnace.T8 = data.T8;
+                        furnace.T9 = data.T9;
+                        furnace.Sih4 = data.Sih4;
+                        furnace.N2 = data.N2;
+                        furnace.N2o = data.N2o;
+                        furnace.H2 = data.H2;
+                        furnace.Ph3 = data.Ph3;
+                        furnace.Pressure = data.Pressure;
+                        furnace.PowerOutput1 = data.PowerOutput1;
+                        furnace.PowerOutput2 = data.PowerOutput2;
+                        furnace.ImportExportSpeed = data.ImportExportSpeed;
+                        furnace.PlatformSpeed = data.PlatformSpeed;
+                        furnace.UpDownSpeed = data.UpDownSpeed;
+                        furnace.AuxiliaryHeatingTime = data.AuxiliaryHeatingTime;
+                        furnace.AuxiliaryHeatingTemp = data.AuxiliaryHeatingTemp;
+                        furnace.PulseOn1 = data.PulseOn1;
+                        furnace.PulseOff1 = data.PulseOff1;
+                        furnace.PulseOn2 = data.PulseOn2;
+                        furnace.PulseOff2 = data.PulseOff2;
+                        furnace.Current = data.Current;
+                        furnace.Voltage = data.Voltage;
+                        furnace.PulseFrequency = data.PulseFrequency;
+                        furnace.PulseVoltage = data.PulseVoltage;
                     });
                 }
             }

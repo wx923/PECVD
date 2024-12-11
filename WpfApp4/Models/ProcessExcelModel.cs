@@ -17,53 +17,107 @@ namespace WpfApp4.Models
         [ObservableProperty]
         private string processName = string.Empty;
 
+        // 时间参数
         [ObservableProperty]
-        private string n2O = string.Empty;
+        private int time;
+
+        // 温度参数 T1-T9
+        [ObservableProperty]
+        private int t1;
 
         [ObservableProperty]
-        private string h2 = string.Empty;
+        private int t2;
 
         [ObservableProperty]
-        private string ph3 = string.Empty;
+        private int t3;
 
         [ObservableProperty]
-        private string pressure = string.Empty;
+        private int t4;
 
         [ObservableProperty]
-        private string power1 = string.Empty;
+        private int t5;
 
         [ObservableProperty]
-        private string power2 = string.Empty;
+        private int t6;
 
         [ObservableProperty]
-        private string boatInOut = string.Empty;
+        private int t7;
 
         [ObservableProperty]
-        private string moveSpeed = string.Empty;
+        private int t8;
 
         [ObservableProperty]
-        private string upDownSpeed = string.Empty;
+        private int t9;
+
+        // 气体参数
+        [ObservableProperty]
+        private int n2;
 
         [ObservableProperty]
-        private string heatTime = string.Empty;
+        private int siH4;
 
         [ObservableProperty]
-        private string heatTemp = string.Empty;
+        private int n2O;
 
         [ObservableProperty]
-        private string pulseOn1 = string.Empty;
+        private int h2;
 
         [ObservableProperty]
-        private string pulseOff1 = string.Empty;
+        private int ph3;
+
+        // 压力参数
+        [ObservableProperty]
+        private int pressure;
+
+        // 功率参数
+        [ObservableProperty]
+        private int power1;
 
         [ObservableProperty]
-        private string pulseOn2 = string.Empty;
+        private int power2;
+
+        // 运动参数
+        [ObservableProperty]
+        private int boatDirection;  // 进出舟方向（0不动，1:出舟, 2:进舟）
 
         [ObservableProperty]
-        private string pulseOff2 = string.Empty;
+        private int moveSpeed;  // 平移速度
 
         [ObservableProperty]
-        private string currentVoltage = string.Empty;
+        private int upDownSpeed;  // 上下速度
+
+        // 加热参数
+        [ObservableProperty]
+        private int heatTime;  // 预热时间
+
+        [ObservableProperty]
+        private int heatTemp;  // 预热温度
+
+        // 脉冲参数
+        [ObservableProperty]
+        private int pulseOn1;
+
+        [ObservableProperty]
+        private int pulseOff1;
+
+        [ObservableProperty]
+        private int pulseOn2;
+
+        [ObservableProperty]
+        private int pulseOff2;
+
+        // 电流电压参数
+        [ObservableProperty]
+        private int currentReference;  // 电流参考值(A)
+
+        [ObservableProperty]
+        private int currentLimit;  // 电流卡控值(A)
+
+        [ObservableProperty]
+        private int voltageReference;  // 电压参考值(V)
+
+        [ObservableProperty]
+        private int voltageLimit;  // 电压卡控值(V)
     }
 
     public partial class ProcessFileInfo : ObservableObject

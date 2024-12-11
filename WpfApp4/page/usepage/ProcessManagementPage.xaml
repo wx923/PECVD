@@ -103,25 +103,48 @@
                               materialDesign:DataGridAssist.CellPadding="13 8 8 8"
                               materialDesign:DataGridAssist.ColumnHeaderPadding="8">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="工艺名称" 
-                                                Binding="{Binding ProcessName, UpdateSourceTrigger=PropertyChanged}"
-                                                Width="120"/>
-                            <DataGridTextColumn Header="N2O" Binding="{Binding N2O}" Width="100"/>
-                            <DataGridTextColumn Header="H2" Binding="{Binding H2}" Width="100"/>
-                            <DataGridTextColumn Header="PH3" Binding="{Binding Ph3}" Width="100"/>
-                            <DataGridTextColumn Header="压力" Binding="{Binding Pressure}" Width="100"/>
-                            <DataGridTextColumn Header="功率1" Binding="{Binding Power1}" Width="100"/>
-                            <DataGridTextColumn Header="功率2" Binding="{Binding Power2}" Width="100"/>
-                            <DataGridTextColumn Header="进/出舟" Binding="{Binding BoatInOut}" Width="100"/>
-                            <DataGridTextColumn Header="平移速度" Binding="{Binding MoveSpeed}" Width="100"/>
-                            <DataGridTextColumn Header="上下速度" Binding="{Binding UpDownSpeed}" Width="100"/>
-                            <DataGridTextColumn Header="辅热时间" Binding="{Binding HeatTime}" Width="100"/>
-                            <DataGridTextColumn Header="辅热温度" Binding="{Binding HeatTemp}" Width="100"/>
-                            <DataGridTextColumn Header="脉冲开1" Binding="{Binding PulseOn1}" Width="100"/>
-                            <DataGridTextColumn Header="脉冲关1" Binding="{Binding PulseOff1}" Width="100"/>
-                            <DataGridTextColumn Header="脉冲开2" Binding="{Binding PulseOn2}" Width="100"/>
-                            <DataGridTextColumn Header="脉冲关2" Binding="{Binding PulseOff2}" Width="100"/>
-                            <DataGridTextColumn Header="电流电压" Binding="{Binding CurrentVoltage}" Width="100"/>
+                            <!-- 时间参数 -->
+                            <DataGridTextColumn Header="时间" 
+                                              Binding="{Binding Time}"
+                                              Width="80"/>
+                            <!-- 温度参数 T1-T9 -->
+                            <DataGridTextColumn Header="T1" Binding="{Binding T1}" Width="80"/>
+                            <DataGridTextColumn Header="T2" Binding="{Binding T2}" Width="80"/>
+                            <DataGridTextColumn Header="T3" Binding="{Binding T3}" Width="80"/>
+                            <DataGridTextColumn Header="T4" Binding="{Binding T4}" Width="80"/>
+                            <DataGridTextColumn Header="T5" Binding="{Binding T5}" Width="80"/>
+                            <DataGridTextColumn Header="T6" Binding="{Binding T6}" Width="80"/>
+                            <DataGridTextColumn Header="T7" Binding="{Binding T7}" Width="80"/>
+                            <DataGridTextColumn Header="T8" Binding="{Binding T8}" Width="80"/>
+                            <DataGridTextColumn Header="T9" Binding="{Binding T9}" Width="80"/>
+                            <!-- 气体参数 -->
+                            <DataGridTextColumn Header="N2" Binding="{Binding N2}" Width="80"/>
+                            <DataGridTextColumn Header="SiH4" Binding="{Binding SiH4}" Width="80"/>
+                            <DataGridTextColumn Header="N2O" Binding="{Binding N2O}" Width="80"/>
+                            <DataGridTextColumn Header="H2" Binding="{Binding H2}" Width="80"/>
+                            <DataGridTextColumn Header="PH3" Binding="{Binding Ph3}" Width="80"/>
+                            <!-- 压力参数 -->
+                            <DataGridTextColumn Header="压力" Binding="{Binding Pressure}" Width="80"/>
+                            <!-- 功率参数 -->
+                            <DataGridTextColumn Header="功率1" Binding="{Binding Power1}" Width="80"/>
+                            <DataGridTextColumn Header="功率2" Binding="{Binding Power2}" Width="80"/>
+                            <!-- 运动参数 -->
+                            <DataGridTextColumn Header="进出舟" Binding="{Binding BoatDirection}" Width="80"/>
+                            <DataGridTextColumn Header="平移速度" Binding="{Binding MoveSpeed}" Width="80"/>
+                            <DataGridTextColumn Header="上下速度" Binding="{Binding UpDownSpeed}" Width="80"/>
+                            <!-- 加热参数 -->
+                            <DataGridTextColumn Header="预热时间" Binding="{Binding HeatTime}" Width="80"/>
+                            <DataGridTextColumn Header="预热温度" Binding="{Binding HeatTemp}" Width="80"/>
+                            <!-- 脉冲参数 -->
+                            <DataGridTextColumn Header="脉冲1开" Binding="{Binding PulseOn1}" Width="80"/>
+                            <DataGridTextColumn Header="脉冲1关" Binding="{Binding PulseOff1}" Width="80"/>
+                            <DataGridTextColumn Header="脉冲2开" Binding="{Binding PulseOn2}" Width="80"/>
+                            <DataGridTextColumn Header="脉冲2关" Binding="{Binding PulseOff2}" Width="80"/>
+                            <!-- 电流电压参数 -->
+                            <DataGridTextColumn Header="电流参考值" Binding="{Binding CurrentReference}" Width="80"/>
+                            <DataGridTextColumn Header="电流卡控值" Binding="{Binding CurrentLimit}" Width="80"/>
+                            <DataGridTextColumn Header="电压参考值" Binding="{Binding VoltageReference}" Width="80"/>
+                            <DataGridTextColumn Header="电压卡控值" Binding="{Binding VoltageLimit}" Width="80"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </ScrollViewer>
