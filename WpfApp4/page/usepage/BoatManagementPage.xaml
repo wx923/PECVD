@@ -1,0 +1,331 @@
+<Page x:Class="WpfApp4.page.usepage.BoatManagementPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp4.page.usepage"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:converters="clr-namespace:WpfApp4.Converters"
+      mc:Ignorable="d" 
+      d:DesignHeight="850" d:DesignWidth="1200"
+      Title="舟管理">
+
+    <Page.Resources>
+        <converters:BoolToColorConverter x:Key="BoolToColorConverter"/>
+        <converters:BoolToSubmitStatusConverter x:Key="BoolToSubmitStatusConverter"/>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- 状态栏 -->
+        <Grid Grid.Row="0" Background="{DynamicResource MaterialDesignPaper}" Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- 数据库连接状态 -->
+            <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="10,5">
+                <TextBlock Text="数据库状态: " Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
+                <Ellipse Width="12" Height="12" Margin="5,0" 
+                         Fill="{Binding IsDatabaseConnected, Converter={StaticResource BoolToColorConverter}}"/>
+                <TextBlock Text="{Binding DatabaseStatus}" Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"/>
+            </StackPanel>
+
+            <!-- 最近操作状态 -->
+            <TextBlock Grid.Column="1" Margin="10,5"
+                     Text="{Binding LastOperationStatus}"
+                     Style="{StaticResource MaterialDesignBody1TextBlock}"
+                     VerticalAlignment="Center"/>
+
+            <!-- 刷新按钮 -->
+            <Button Grid.Column="2" Margin="10,5"
+                    Command="{Binding RefreshDataCommand}"
+                    Style="{StaticResource MaterialDesignIconButton}">
+                <materialDesign:PackIcon Kind="Refresh"/>
+            </Button>
+        </Grid>
+
+        <!-- 主要内容区域 -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- 左侧：舟管理区域 -->
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- 舟对象展示部分 -->
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <TextBlock Text="舟对象列表" 
+                             Style="{StaticResource MaterialDesignHeadline6TextBlock}" 
+                             Margin="10"/>
+                             
+                    <Button Grid.Column="1" 
+                            Content="新增舟对象" 
+                            Command="{Binding AddNewBoatCommand}"
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            Margin="5"/>
+
+                    <Button Grid.Column="2" 
+                            Content="确认修改" 
+                            Command="{Binding SaveBoatChangesCommand}"
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            Margin="5"/>
+                </Grid>
+
+                <DataGrid Grid.Row="1" 
+                          ItemsSource="{Binding Boats}" 
+                          SelectedItem="{Binding SelectedBoat}"
+                          AutoGenerateColumns="False" 
+                          IsReadOnly="False"
+                          Style="{StaticResource MaterialDesignDataGrid}"
+                          materialDesign:DataGridAssist.CellPadding="13 8 8 8"
+                          materialDesign:DataGridAssist.ColumnHeaderPadding="8"
+                          Margin="10"
+                          CanUserAddRows="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="当前位置" 
+                                          Binding="{Binding CurrentPosition}"
+                                          IsReadOnly="True"/>
+
+                        <!-- 舟监控对象选择列 -->
+                        <DataGridTemplateColumn Header="监控对象">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ComboBox ItemsSource="{Binding DataContext.BoatMonitors, 
+                                              RelativeSource={RelativeSource AncestorType=Page}}"
+                                            SelectedValue="{Binding MonitorBoatNumber, UpdateSourceTrigger=PropertyChanged}"
+                                            DisplayMemberPath="BoatNumber"
+                                            SelectedValuePath="BoatNumber">
+                                    </ComboBox>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <!-- 舟监控对象展示部分 -->
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="舟监控对象列表" 
+                             Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                             Margin="10"/>
+
+                    <Button Grid.Column="1" 
+                            Content="添加空行" 
+                            Command="{Binding AddEmptyRowCommand}"
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            Margin="5"/>
+
+                    <Button Grid.Column="2" 
+                            Content="提交新行" 
+                            Command="{Binding SubmitNewRowsCommand}"
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            Margin="5"/>
+                            
+                    <Button Grid.Column="3" 
+                            Content="删除选中项" 
+                            Command="{Binding DeleteSelectedMonitorsCommand}"
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            Margin="5"/>
+                </Grid>
+
+                <DataGrid Grid.Row="3" 
+                          ItemsSource="{Binding BoatMonitors}"
+                          SelectedItem="{Binding SelectedMonitor}"
+                          AutoGenerateColumns="False"
+                          CanUserAddRows="False"
+                          SelectionMode="Extended"
+                          SelectionUnit="FullRow"
+                          Style="{StaticResource MaterialDesignDataGrid}"
+                          materialDesign:DataGridAssist.CellPadding="13 8 8 8"
+                          materialDesign:DataGridAssist.ColumnHeaderPadding="8"
+                          Margin="10">
+                    <DataGrid.Columns>
+                        <DataGridCheckBoxColumn Header="选择"
+                                              Binding="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}"
+                                              ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"
+                                              EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}"
+                                              Width="80"/>
+                        
+                        <DataGridTextColumn Header="舟号" 
+                                          Binding="{Binding BoatNumber, UpdateSourceTrigger=PropertyChanged}"
+                                          Width="100"/>
+                        
+                        <DataGridTextColumn Header="工艺次数" 
+                                          Binding="{Binding ProcessCount}"
+                                          IsReadOnly="True"
+                                          Width="100"/>
+                        
+                        <DataGridTemplateColumn Header="当前工艺" Width="150">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ComboBox ItemsSource="{Binding DataContext.Processes, 
+                                              RelativeSource={RelativeSource AncestorType=Page}}"
+                                            Text="{Binding CurrentProcess, UpdateSourceTrigger=PropertyChanged}"
+                                            SelectedValue="{Binding CurrentProcess, UpdateSourceTrigger=PropertyChanged}"
+                                            DisplayMemberPath="ProcessName"
+                                            SelectedValuePath="ProcessName"
+                                            IsEditable="True">
+                                    </ComboBox>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        
+                        <DataGridTextColumn Header="开始时间" 
+                                          Binding="{Binding ProcessStartTime}"
+                                          IsReadOnly="True"
+                                          Width="150"/>
+                        
+                        <DataGridTextColumn Header="结束时间" 
+                                          Binding="{Binding ProcessEndTime}"
+                                          IsReadOnly="True"
+                                          Width="150"/>
+
+                        <DataGridTemplateColumn Header="状态" Width="100">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding IsSubmitted, Converter={StaticResource BoolToSubmitStatusConverter}}"
+                                             Foreground="{Binding IsSubmitted, Converter={StaticResource BoolToColorConverter}}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+
+            <!-- 右侧：工艺管理和预约区域 -->
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- 工艺列表区域 -->
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="工艺列表" 
+                                 Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                                 Margin="10"/>
+                        <Button Grid.Column="1" 
+                                Content="添加工艺" 
+                                Style="{StaticResource MaterialDesignRaisedButton}"
+                                Margin="10"/>
+                    </Grid>
+
+                    <DataGrid Grid.Row="1"
+                             ItemsSource="{Binding Processes}"
+                             SelectedItem="{Binding SelectedProcess}"
+                             AutoGenerateColumns="False"
+                             IsReadOnly="True"
+                             Style="{StaticResource MaterialDesignDataGrid}"
+                             materialDesign:DataGridAssist.CellPadding="13 8 8 8"
+                             materialDesign:DataGridAssist.ColumnHeaderPadding="8"
+                             Margin="10">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="工艺名称" 
+                                              Binding="{Binding ProcessName}"/>
+                            <DataGridTextColumn Header="工艺描述" 
+                                              Binding="{Binding Description}"/>
+                            <DataGridTextColumn Header="标准时长" 
+                                              Binding="{Binding StandardDuration}"/>
+                            <DataGridTextColumn Header="温度" 
+                                              Binding="{Binding Temperature}"/>
+                            <DataGridTextColumn Header="压力" 
+                                              Binding="{Binding Pressure}"/>
+                            <DataGridTemplateColumn Header="操作">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button Content="编辑"
+                                                    Command="{Binding DataContext.EditProcessCommand, 
+                                                              RelativeSource={RelativeSource AncestorType=Page}}"
+                                                    CommandParameter="{Binding}"
+                                                    Style="{StaticResource MaterialDesignFlatButton}"/>
+                                            <Button Content="删除"
+                                                    Command="{Binding DataContext.DeleteProcessCommand, 
+                                                              RelativeSource={RelativeSource AncestorType=Page}}"
+                                                    CommandParameter="{Binding}"
+                                                    Style="{StaticResource MaterialDesignFlatButton}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+
+                <!-- 工艺预约区域 -->
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" 
+                              Text="工艺预约" 
+                              Style="{StaticResource MaterialDesignHeadline6TextBlock}" 
+                              Margin="10"/>
+
+                    <DataGrid Grid.Row="1"
+                             ItemsSource="{Binding ProcessReservations}"
+                             SelectedItem="{Binding SelectedReservation}"
+                             AutoGenerateColumns="False"
+                             IsReadOnly="True"
+                             Style="{StaticResource MaterialDesignDataGrid}"
+                             materialDesign:DataGridAssist.CellPadding="13 8 8 8"
+                             materialDesign:DataGridAssist.ColumnHeaderPadding="8"
+                             Margin="10">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="舟号" 
+                                              Binding="{Binding BoatNumber}"/>
+                            <DataGridTextColumn Header="预约工艺" 
+                                              Binding="{Binding ProcessName}"/>
+                            <DataGridTextColumn Header="预约时间" 
+                                              Binding="{Binding ReservationTime}"/>
+                            <DataGridCheckBoxColumn Header="已完成" 
+                                                  Binding="{Binding IsCompleted}"
+                                                  ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"
+                                                  EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page> 

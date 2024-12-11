@@ -1,0 +1,3178 @@
+﻿<Page x:Class="WpfApp4.page.usepage.HomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp4.page.usepage"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="850" d:DesignWidth="1000"
+      Title="Home">
+    <!-- 卡片1 --><!--
+    <materialDesign:Card Margin="8" Padding="16" Background="{DynamicResource PrimaryHueMidBrush}">
+        <Grid>
+            <TextBlock Text="卡片1" FontSize="24" FontWeight="Bold" Foreground="White" Margin="0 0 0 8"/>
+            <ListView Margin="0 40 0 0">
+                <ListViewItem Background="LightBlue">行1</ListViewItem>
+                <ListViewItem Background="LightGreen">行2</ListViewItem>
+                <ListViewItem Background="LightYellow">行3</ListViewItem>
+                <ListViewItem Background="LightCoral">行4</ListViewItem>
+                <ListViewItem Background="LightCyan">行5</ListViewItem>
+            </ListView>
+        </Grid>
+    </materialDesign:Card>-->
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <materialDesign:Card Grid.Row="0">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <materialDesign:Card Background="LightCoral" Grid.Row="0">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card Background="LightBlue" Grid.Row="0">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="1" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card  Grid.Row="1">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card Background="LightBlue" Grid.Row="2">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card Grid.Row="3">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card Background="LightBlue" Grid.Row="4">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card  Grid.Row="5">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+            </Grid>
+        </materialDesign:Card>
+        <!--第2炉管-->
+        <materialDesign:Card Grid.Row="1" Margin="0,15,0,0">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <materialDesign:Card Background="LightCoral" Grid.Row="0">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card Background="LightBlue" Grid.Row="0">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="1" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card  Grid.Row="1">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card Background="LightBlue" Grid.Row="2">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card Grid.Row="3">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card Background="LightBlue" Grid.Row="4">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card  Grid.Row="5">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+            </Grid>
+        </materialDesign:Card>
+        <!--第3炉管-->
+        <materialDesign:Card Grid.Row="2" Margin="0,15,0,0">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <materialDesign:Card Background="LightCoral" Grid.Row="0">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card Background="LightBlue" Grid.Row="0">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="1" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card  Grid.Row="1">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card Background="LightBlue" Grid.Row="2">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card Grid.Row="3">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card Background="LightBlue" Grid.Row="4">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card  Grid.Row="5">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+            </Grid>
+        </materialDesign:Card>
+        <!--第4炉管-->
+        <materialDesign:Card Grid.Row="3" Margin="0,15,0,0">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <materialDesign:Card Background="LightCoral" Grid.Row="0">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card Background="LightBlue" Grid.Row="0">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="1" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card  Grid.Row="1">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card Background="LightBlue" Grid.Row="2">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card Grid.Row="3">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card Background="LightBlue" Grid.Row="4">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card  Grid.Row="5">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+            </Grid>
+        </materialDesign:Card>
+        <!--第5炉管-->
+        <materialDesign:Card Grid.Row="4" Margin="0,15,0,0">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <materialDesign:Card Background="LightCoral" Grid.Row="0">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card Background="LightBlue" Grid.Row="0">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="1" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card  Grid.Row="1">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card Background="LightBlue" Grid.Row="2">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card Grid.Row="3">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card Background="LightBlue" Grid.Row="4">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card  Grid.Row="5">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+            </Grid>
+        </materialDesign:Card>
+        <!--第6炉管-->
+        <materialDesign:Card Grid.Row="5" Margin="0,15,0,0">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <materialDesign:Card Background="LightCoral" Grid.Row="0">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card Background="LightBlue" Grid.Row="0">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="1" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card  Grid.Row="1">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card Background="LightBlue" Grid.Row="2">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card Grid.Row="3">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card Background="LightBlue" Grid.Row="4">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card  Grid.Row="5">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="0.5" Grid.Column="0">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="6">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="7">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="8">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="9">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="10">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="11">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="12">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="13">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="14">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="15">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="16">
+                            <TextBlock Text="1"></TextBlock>
+                        </Border>
+                    </Grid>
+                </materialDesign:Card>
+            </Grid>
+        </materialDesign:Card>
+    </Grid>
+</Page>

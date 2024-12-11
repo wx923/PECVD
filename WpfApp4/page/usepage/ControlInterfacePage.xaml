@@ -1,0 +1,501 @@
+﻿<Page x:Class="WpfApp4.page.usepage.ControlInterfacePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:WpfApp4.page.usepage"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1200"
+      Title="Page3">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="430"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition  Width="670"></ColumnDefinition>
+            <ColumnDefinition  Width="408"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <!--管道图形-->
+        <Canvas Background="LightGray" Grid.Column="0" Grid.Row="0" Margin="10,5,5,5" >
+            <!-- 文本框 -->
+            <!-- 第1条线 -->
+            <TextBlock Text="SiH4" Canvas.Top="25" Canvas.Left="0"/>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" HorizontalAlignment="Left" Canvas.Top="2" VerticalAlignment="Center" Width="72"/>
+            <StackPanel Orientation="Vertical" Canvas.Left="130" Canvas.Top="2"/>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="69.794" Canvas.Top="2" Width="108"/>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Top="34.23" Canvas.Left="56.106" RenderTransformOrigin="0.5,0.5" Width="82">
+                <Line.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Line.RenderTransform>
+            </Line>
+            <TextBlock Text="V1" Canvas.Left="81.217" Canvas.Top="6.063" RenderTransformOrigin="-0.428,0.138" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <ToggleButton Content="关" Height="30" Canvas.Left="69.794" Canvas.Top="23.25" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBox Canvas.Left="178.222" TextWrapping="Wrap" Text="TextBox" Canvas.Top="18.25" Width="61" HorizontalAlignment="Center" VerticalAlignment="Top" Height="25"/>
+            <TextBlock Canvas.Left="180.222" Canvas.Top="3.01" RenderTransformOrigin="-0.428,0.138" HorizontalAlignment="Left" VerticalAlignment="Center" Width="59"><Run Text="MFC"/><Run Language="zh-cn" Text="1"/></TextBlock>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Left="209.722" Canvas.Top="2" Width="108" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <ToggleButton Content="关" Height="30" Canvas.Left="314.683" Canvas.Top="21.12" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <TextBlock Canvas.Left="326.106" Canvas.Top="5.88" RenderTransformOrigin="-0.428,0.138" HorizontalAlignment="Left" VerticalAlignment="Center"><Run Text="V"/><Run Language="zh-cn" Text="2"/></TextBlock>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="56.25" Width="60" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="77.05"/>
+            <ToggleButton Content="关" Height="30" Canvas.Left="69.794" Canvas.Top="76.5" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <TextBlock Canvas.Left="81.217" Canvas.Top="61.26" RenderTransformOrigin="-0.428,0.138" HorizontalAlignment="Center" VerticalAlignment="Top"><Run Text="V"/><Run Language="zh-cn" Text="3"/></TextBlock>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="56.25" Width="60" Canvas.Left="10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="103.565" Canvas.Left="-39.564" RenderTransformOrigin="0.5,0.5" Width="101" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Line.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Line.RenderTransform>
+            </Line>
+            <TextBlock Text="SiH4" Canvas.Top="148.513" Canvas.Left="0" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="0.538,1.578"/>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="125.536" Width="231" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="105.385" Canvas.Left="48.989" RenderTransformOrigin="0.5,0.5" Width="63" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Line.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Line.RenderTransform>
+            </Line>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="95.747" Width="77" Canvas.Left="96.333" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBox Canvas.Left="178.222" TextWrapping="Wrap" Text="TextBox" Canvas.Top="110.987" Width="61" Height="25" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBlock Canvas.Left="180.222" Canvas.Top="95.747" RenderTransformOrigin="-0.428,0.138" Width="59" HorizontalAlignment="Center" VerticalAlignment="Top"><Run Text="MFC"/><Run Language="zh-cn" Text="2"/></TextBlock>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="138.005" Canvas.Left="48.989" RenderTransformOrigin="0.5,0.5" Width="63" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Line.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Line.RenderTransform>
+            </Line>
+            <Line X1="30" Y1="30" X2="250" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="158.036" Width="218" Canvas.Left="95.666" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <ToggleButton Content="关" Height="30" Canvas.Left="313.146" Canvas.Top="177.339" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <TextBlock Canvas.Left="324.568" Canvas.Top="162.099" RenderTransformOrigin="-0.428,0.138" HorizontalAlignment="Left" VerticalAlignment="Top"><Run Text="V"/><Run Language="zh-cn" Text="6"/></TextBlock>
+            <ToggleButton Content="关" Height="30" Canvas.Left="314.684" Canvas.Top="116.79" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <TextBlock Canvas.Left="326.106" Canvas.Top="101.55" RenderTransformOrigin="-0.428,0.138" HorizontalAlignment="Left" VerticalAlignment="Center" Width="24"><Run Language="zh-cn" Text="V5"/></TextBlock>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Left="208.722" Canvas.Top="97.487" Width="107" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Left="333.683" Canvas.Top="2" Width="99" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Left="333.683" Canvas.Top="97.487" Width="61" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Left="332.145" Canvas.Top="158.036" Width="64" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Line X1="30" Y1="30" X2="200" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="104.32" Canvas.Left="282.094" RenderTransformOrigin="0.5,0.5" Width="188" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <Line.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Line.RenderTransform>
+            </Line>
+            <TextBlock Text="SiH4" Canvas.Top="267.465" Canvas.Left="0" RenderTransformOrigin="0.538,1.578" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBlock Text="SiH4" Canvas.Top="367.638" Canvas.Left="0" RenderTransformOrigin="0.538,1.578" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="245.585" Width="73" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="171.23" Canvas.Left="-40.013" RenderTransformOrigin="0.5,0.5" Width="97" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Line.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Line.RenderTransform>
+            </Line>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="190.839" Width="68" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="6.794"/>
+            <ToggleButton Content="关" Height="30" Canvas.Left="69.794" Canvas.Top="210.142" Width="50" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBlock Canvas.Left="81.217" Canvas.Top="194.902" RenderTransformOrigin="-0.428,0.138" HorizontalAlignment="Center" VerticalAlignment="Top"><Run Text="V"/><Run Language="zh-cn" Text="4"/></TextBlock>
+            <ToggleButton Content="关" Height="30" Canvas.Left="69.794" Canvas.Top="264.888" Width="50" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBlock Canvas.Left="81.217" Canvas.Top="249.648" RenderTransformOrigin="-0.428,0.138" HorizontalAlignment="Left" VerticalAlignment="Center" Width="38"><Run Text="V"/><Run Language="zh-cn" Text="7"/></TextBlock>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="246.917" Width="90" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="87.46"/>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="193.003" Width="60" Canvas.Left="89.285" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBox Canvas.Left="178.222" TextWrapping="Wrap" Text="TextBox" Canvas.Top="260.825" Width="61" Height="25" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBlock Canvas.Left="180.222" Canvas.Top="245.585" RenderTransformOrigin="-0.428,0.138" Width="59" HorizontalAlignment="Center" VerticalAlignment="Top"><Run Text="MFC"/><Run Language="zh-cn" Text="3"/></TextBlock>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="226.042" Canvas.Left="70.002" RenderTransformOrigin="0.5,0.5" Width="87" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Line.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Line.RenderTransform>
+            </Line>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="245.585" Width="105" Canvas.Left="209.722" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <ToggleButton Content="关" Height="30" Canvas.Left="313.146" Canvas.Top="263.941" Width="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Canvas.Left="318.684" Canvas.Top="248.638" RenderTransformOrigin="-0.428,0.138" HorizontalAlignment="Left" VerticalAlignment="Center" Width="34">
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleX="-1.477"/>
+                        <RotateTransform/>
+                        <TranslateTransform X="-0.054"/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform><Run Text="V"/><Run Language="zh-cn" Text="10"/></TextBlock>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="245.585" Width="92" Canvas.Left="331.682" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="345.465" Width="73" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <ToggleButton Content="关" Height="30" Canvas.Left="72.462" Canvas.Top="364.768" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBlock Canvas.Left="75" Canvas.Top="349.528" RenderTransformOrigin="-0.428,0.138" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top"><Run Text="V"/><Run Language="zh-cn" Text="11"/></TextBlock>
+            <Line X1="30" Y1="30" X2="200" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="224.146" Canvas.Left="-79.573" RenderTransformOrigin="0.5,0.5" Width="234" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Line.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Line.RenderTransform>
+            </Line>
+            <ToggleButton Content="关" Height="30" Canvas.Left="71.627" Canvas.Top="313.98" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBlock Canvas.Left="76.166" Canvas.Top="300.073" RenderTransformOrigin="-0.428,0.138" Width="38" HorizontalAlignment="Left" VerticalAlignment="Center"><Run Text="V"/><Run Text="1"/><Run Language="zh-cn" Text="2"/></TextBlock>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="295.646" Width="53" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="19.333"/>
+            <TextBox Canvas.Left="178.222" TextWrapping="Wrap" Text="TextBox" Canvas.Top="360.705" Width="61" Height="25" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBlock Canvas.Left="180.222" Canvas.Top="345.465" RenderTransformOrigin="-0.428,0.138" Width="59" HorizontalAlignment="Center" VerticalAlignment="Top"><Run Text="MFC"/><Run Language="zh-cn" Text="4"/></TextBlock>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="347.705" Width="83" Canvas.Left="92.285" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="295.646" Width="62" Canvas.Left="89.285" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="327.432" Canvas.Left="70.668" RenderTransformOrigin="0.5,0.5" Width="85" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <Line.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Line.RenderTransform>
+            </Line>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="345.465" Width="107" Canvas.Left="208.106" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <ToggleButton Content="关" Height="30" Canvas.Left="313.145" Canvas.Top="363.821" Width="50" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBlock Canvas.Left="318.683" Canvas.Top="348.518" RenderTransformOrigin="-0.428,0.138" Width="34" HorizontalAlignment="Center" VerticalAlignment="Top"><Run Text="V"/><Run Language="zh-cn" Text="10"/></TextBlock>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="347.268" Width="91" Canvas.Left="332.683" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Line X1="30" Y1="30" X2="400" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="189.268" Canvas.Left="207.745" RenderTransformOrigin="0.5,0.5" Width="373" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Line.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Line.RenderTransform>
+            </Line>
+            <Rectangle Height="62" Canvas.Left="431.333" Stroke="Black" Canvas.Top="19.79" Width="134" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Left="534.901" Canvas.Top="0.12" Width="98" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Line X1="30" Y1="30" X2="300" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="62.939" Canvas.Left="382.401" RenderTransformOrigin="0.5,0.5" Width="483" HorizontalAlignment="Center" VerticalAlignment="Top" Height="46">
+                <Line.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Line.RenderTransform>
+            </Line>
+            <TextBox Canvas.Left="512.722" TextWrapping="Wrap" Text="TextBox" Canvas.Top="109.29" Width="61" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBlock Canvas.Left="520.222" Canvas.Top="93.93" RenderTransformOrigin="-0.428,0.138" Width="59" HorizontalAlignment="Left" VerticalAlignment="Center"><Run Language="zh-cn" Text="压力计"/></TextBlock>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Left="545.877" Canvas.Top="88.036" Width="85" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Left="538.236" Canvas.Top="132.798" Width="91" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <ToggleButton Content="关" Height="30" Canvas.Left="534.455" Canvas.Top="152.04" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <TextBlock Canvas.Left="545.877" Canvas.Top="136.8" RenderTransformOrigin="-0.428,0.138" HorizontalAlignment="Left" VerticalAlignment="Center" Width="27"><Run Text="V"/><Run Language="zh-cn" Text="8"/></TextBlock>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Left="452.898" Canvas.Top="132.798" Width="82" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBlock Canvas.Left="439.333" Canvas.Top="153.111" RenderTransformOrigin="-0.428,0.138" Width="59" HorizontalAlignment="Left" VerticalAlignment="Top"><Run Language="zh-cn" Text="排气"/></TextBlock>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Left="541.888" Canvas.Top="194.902" Width="91" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <ToggleButton Content="关" Height="30" Canvas.Left="536.456" Canvas.Top="213.195" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBlock Canvas.Left="547.878" Canvas.Top="197.955" RenderTransformOrigin="-0.428,0.138" Width="27" HorizontalAlignment="Left" VerticalAlignment="Center"><Run Text="V"/><Run Language="zh-cn" Text="20"/></TextBlock>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Left="572.958" Canvas.Top="265.273" Width="60" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <ToggleButton Content="关" Height="30" Canvas.Left="565.236" Canvas.Top="284.693" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBlock Canvas.Left="576.236" Canvas.Top="269.336" RenderTransformOrigin="-0.428,0.138" Width="27" HorizontalAlignment="Left" VerticalAlignment="Center"><Run Text="V"/><Run Language="zh-cn" Text="9"/></TextBlock>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Left="522.223" Canvas.Top="265.273" Width="44" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Rectangle Height="14" Canvas.Left="518.455" Stroke="Black" Canvas.Top="289.193" Width="35" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <TextBlock Canvas.Left="524.457" Canvas.Top="274.448" RenderTransformOrigin="-0.428,0.138" Width="34" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleX="-1.477"/>
+                        <RotateTransform/>
+                        <TranslateTransform X="-0.054"/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform><Run Language="zh-cn" Text="蝶阀"/></TextBlock>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Left="458.394" Canvas.Top="265.273" Width="60" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Rectangle Height="14" Canvas.Left="445.342" Stroke="Black" Canvas.Top="289.457" Width="43" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBlock Canvas.Left="442" Canvas.Top="272" RenderTransformOrigin="-0.428,0.138" Width="48" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleX="-1.477"/>
+                        <RotateTransform/>
+                        <TranslateTransform X="-0.054"/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform><Run Language="zh-cn" Text="泵后压力" /></TextBlock>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Left="468.833" Canvas.Top="195.568" Width="68" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="241.986" Canvas.Left="422.36" RenderTransformOrigin="0.5,0.5" Width="100" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Line.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Line.RenderTransform>
+            </Line>
+        </Canvas>
+        <!--温区设定-->
+        <materialDesign:Card Grid.Row="0" Grid.Column="1" Padding="5">
+            <StackPanel>
+                <StackPanel>
+                    <TextBlock Text="设定温度" Margin="5"></TextBlock>
+                    <materialDesign:Card Background="LightSalmon">
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Border BorderBrush="Gray" BorderThickness="1" Grid.Column="0">
+                                <TextBlock Text="温区1"></TextBlock>
+                            </Border>
+                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                                <TextBlock Text="温区2"></TextBlock>
+                            </Border>
+                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                                <TextBlock Text="温区3"></TextBlock>
+                            </Border>
+                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                                <TextBlock Text="温区4"></TextBlock>
+                            </Border>
+                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                                <TextBlock Text="温区5"></TextBlock>
+                            </Border>
+                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                                <TextBlock Text="温区6"></TextBlock>
+                            </Border>
+                        </Grid>
+                    </materialDesign:Card>
+                    <materialDesign:Card Background="LightBlue">
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Border BorderBrush="Gray" BorderThickness="1" Grid.Column="0">
+                                <TextBlock Text="1"></TextBlock>
+                            </Border>
+                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                                <TextBlock Text="1"></TextBlock>
+                            </Border>
+                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                                <TextBlock Text="1"></TextBlock>
+                            </Border>
+                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                                <TextBlock Text="1"></TextBlock>
+                            </Border>
+                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                                <TextBlock Text="1"></TextBlock>
+                            </Border>
+                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                                <TextBlock Text="1"></TextBlock>
+                            </Border>
+                        </Grid>
+                    </materialDesign:Card>
+                    <TextBlock Text="待机温度" Margin="0,10,0,0"></TextBlock>
+                    <materialDesign:Card Background="LightSalmon">
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Border BorderBrush="Gray" BorderThickness="1" Grid.Column="0">
+                                <TextBlock Text="温区1"></TextBlock>
+                            </Border>
+                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                                <TextBlock Text="温区2"></TextBlock>
+                            </Border>
+                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                                <TextBlock Text="温区3"></TextBlock>
+                            </Border>
+                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                                <TextBlock Text="温区4"></TextBlock>
+                            </Border>
+                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                                <TextBlock Text="温区5"></TextBlock>
+                            </Border>
+                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                                <TextBlock Text="温区6"></TextBlock>
+                            </Border>
+                        </Grid>
+                    </materialDesign:Card>
+                    <materialDesign:Card Background="LightBlue">
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Border BorderBrush="Gray" BorderThickness="1" Grid.Column="0">
+                                <TextBlock Text="1"></TextBlock>
+                            </Border>
+                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
+                                <TextBlock Text="1"></TextBlock>
+                            </Border>
+                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
+                                <TextBlock Text="1"></TextBlock>
+                            </Border>
+                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
+                                <TextBlock Text="1"></TextBlock>
+                            </Border>
+                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
+                                <TextBlock Text="1"></TextBlock>
+                            </Border>
+                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
+                                <TextBlock Text="1"></TextBlock>
+                            </Border>
+                        </Grid>
+                    </materialDesign:Card>
+                </StackPanel>
+            </StackPanel>
+        </materialDesign:Card>
+        <materialDesign:Card Grid.RowSpan="2" Grid.Column="2"  Margin="3"  Background="LightSteelBlue">
+            <StackPanel VerticalAlignment="Center" Margin="3">
+                <Button Content="手动/自动" FontSize="10" Margin="4,8,4,8"></Button>
+                <Button Content="设定温度" FontSize="10" Margin="4,8,4,8"></Button>
+                <Button Content="设计待机温度" FontSize="10" Margin="4,8,4,8"></Button>
+                <Button Content="设计MFC1值" FontSize="10" Margin="4,8,4,8"></Button>
+                <Button Content="设计MFC2值" FontSize="10"  Margin="4,8,4,8"></Button>
+                <Button Content="设计MFC3值" FontSize="10" Margin="4,8,4,8"></Button>
+                <Button Content="设计MFC4值" FontSize="10" Margin="4,8,4,8"></Button>
+                <Button Content="设置流量计值" FontSize="10" Margin="4,8,4,8"></Button>
+                <Button Content="设置压力计值" FontSize="10" Margin="4,8,4,8"></Button>
+            </StackPanel>
+        </materialDesign:Card>
+        <!--下方控制-->
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="160"></ColumnDefinition>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+                <ColumnDefinition Width="280"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="180"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <materialDesign:Card Grid.Column="0" Margin="5">
+                <StackPanel >
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="温度控制器："></TextBlock>
+                        <TextBlock Text="关"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="辅热控制器："></TextBlock>
+                        <TextBlock Text="关"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="泵："></TextBlock>
+                        <TextBlock Text="关"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="净化风机："></TextBlock>
+                        <TextBlock Text="关"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="蝶阀："></TextBlock>
+                        <TextBlock Text="关"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="射频："></TextBlock>
+                        <TextBlock Text="关"></TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </materialDesign:Card>
+            <materialDesign:Card Grid.Column="1" Margin="5">
+                <StackPanel>
+                    <TextBlock Text="外设开关" Margin="10,5,5,5"></TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical" Margin="5,5,15,0">
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="温控开关" Background="LightSkyBlue" Margin="2,2,2,2" Padding="5" FontSize="12"></Button>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="辅热开关" Background="LightSkyBlue"  Margin="2,2,2,2"  Padding="5" FontSize="12"></Button>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="泵开关" Background="LightSkyBlue"  Margin="2,2,2,2" Padding="5" FontSize="12"></Button>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Margin="5,5,15,0">
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="净化风机开关" Background="LightSkyBlue"  Margin="0,2,2,2" Padding="5" FontSize="12"></Button>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="蝶阀开关" Background="LightSkyBlue"  Margin="0,2,2,2" Padding="5" FontSize="12"></Button>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="射频开关" Background="LightSkyBlue" Margin="0,2,2,2" Padding="5" FontSize="12"></Button>
+                        </StackPanel>
+
+                    </StackPanel>
+                </StackPanel>
+            </materialDesign:Card>
+            <materialDesign:Card Grid.Column="2" Margin="5">
+                <StackPanel>
+                    <TextBlock Text="Scrubber/leekage清洗控制" Margin="10,5,5,5"></TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical" Margin="5,5,15,0">
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="Scrubber确认恢复" Background="LightSkyBlue" Margin="2,2,2,0" Padding="5" FontSize="12"></Button>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="确认尾排温度恢复" Background="LightSkyBlue"  Margin="2,2,2,0" Padding="5" FontSize="12"></Button>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="手动切尾排硅烷" Background="LightSkyBlue"  Margin="2,2,2,0" Padding="5" FontSize="12"></Button>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Margin="0,5,15,0">
+                            <Button Style="{StaticResource MaterialDesignFlatButton}"  Background="LightSkyBlue"  Margin="0,2,2,2"  FontSize="12" Padding="5" Content="启动Scrubber管道清洗">
+
+                            </Button>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="停止Scrubber管道清洗" Background="LightSkyBlue"  Margin="0,2,2,2" Padding="5" FontSize="12"></Button>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="确认温区电流恢复" Background="LightSkyBlue" Margin="0,2,2,2" Padding="5" FontSize="12"></Button>
+                        </StackPanel>
+
+                    </StackPanel>
+                </StackPanel>
+            </materialDesign:Card >
+            <materialDesign:Card Grid.Column="3" Margin="5">
+                <StackPanel>
+                    <TextBlock Text="Scrubber/leekage清洗控制" Margin="10,5,5,5" TextWrapping="Wrap"></TextBlock>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <StackPanel Orientation="Vertical" Margin="5,5,15,0">
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="清洗流量计" Background="LightSkyBlue" Margin="3"></Button>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="清洗炉管" Background="LightSkyBlue"  Margin="3"></Button>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </materialDesign:Card>
+            <materialDesign:Card Grid.Column="4" Margin="5">
+                <StackPanel>
+                    <TextBlock Text="抽气控制" Margin="10,5,5,5" TextWrapping="Wrap"></TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical" Margin="5,5,15,0">
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="打开预抽阀" Background="LightSkyBlue" Margin="2,2,2,0" Padding="5" FontSize="12"></Button>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="打开主抽阀" Background="LightSkyBlue"  Margin="2,5,2,0" Padding="5" FontSize="12"></Button>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Vertical" Margin="0,5,15,0">
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="关闭预抽阀" Background="LightSkyBlue" Margin="2,2,2,0" Padding="5" FontSize="12"></Button>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="关闭主抽阀" Background="LightSkyBlue" Margin="2,5,2,0" Padding="5" FontSize="12"></Button>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </materialDesign:Card>
+        </Grid>
+    </Grid>
+
+</Page>

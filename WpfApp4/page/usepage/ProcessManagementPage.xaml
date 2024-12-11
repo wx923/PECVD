@@ -1,0 +1,150 @@
+<Page x:Class="WpfApp4.page.usepage.ProcessManagementPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp4.page.usepage"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1200"
+      Title="工艺管理">
+
+    <Page.Resources>
+        <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="10,5"/>
+        </Style>
+        
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </Page.Resources>
+
+    <Grid>
+        <DockPanel Background="{DynamicResource MaterialDesignBackground}">
+            <!-- 顶部工具栏 -->
+            <materialDesign:Card DockPanel.Dock="Top" Margin="10">
+                <ToolBarTray Background="Transparent">
+                    <ToolBar Style="{DynamicResource MaterialDesignToolBar}" ClipToBounds="False">
+                        <Button Content="导入Excel" 
+                                Command="{Binding ImportExcelCommand}"
+                                materialDesign:ButtonAssist.CornerRadius="4">
+                            <Button.ContentTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="FileExcel" Margin="0,0,5,0"/>
+                                        <TextBlock Text="{Binding}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </Button.ContentTemplate>
+                        </Button>
+                        <Button Content="保存更改" 
+                                Command="{Binding SaveChangesCommand}"
+                                materialDesign:ButtonAssist.CornerRadius="4">
+                            <Button.ContentTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="ContentSave" Margin="0,0,5,0"/>
+                                        <TextBlock Text="{Binding}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </Button.ContentTemplate>
+                        </Button>
+                        
+                        <ComboBox ItemsSource="{Binding ProcessFiles}"
+                                  SelectedItem="{Binding SelectedFile}"
+                                  Width="200"
+                                  DisplayMemberPath="FileName"
+                                  materialDesign:HintAssist.Hint="选择工艺文件"/>
+                        
+                        <!-- 简单的信息展示 -->
+                        <TextBlock Margin="10,0,0,0" VerticalAlignment="Center">
+                            <Run Text="创建时间: "/>
+                            <Run Text="{Binding SelectedFile.CreateTime, StringFormat={}{0:yyyy-MM-dd HH:mm:ss}}"/>
+                        </TextBlock>
+                        
+                        <TextBlock Margin="10,0,0,0" VerticalAlignment="Center">
+                            <Run Text="描述: "/>
+                            <Run Text="{Binding SelectedFile.Description}"/>
+                        </TextBlock>
+                        
+                        <TextBlock Margin="10,0,0,0" VerticalAlignment="Center">
+                            <Run Text="集合名称: "/>
+                            <Run Text="{Binding SelectedFile.CollectionName}"/>
+                        </TextBlock>
+                    </ToolBar>
+                </ToolBarTray>
+            </materialDesign:Card>
+
+            <!-- 状态栏 -->
+            <StatusBar DockPanel.Dock="Bottom" 
+                       Height="30" 
+                       Background="{DynamicResource MaterialDesignBackground}">
+                <StatusBarItem>
+                    <TextBlock Text="{Binding OperationStatus}" 
+                             VerticalAlignment="Center"
+                             Margin="10,0"/>
+                </StatusBarItem>
+            </StatusBar>
+
+            <!-- 数据表格 -->
+            <materialDesign:Card Margin="10" VerticalAlignment="Stretch">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" 
+                             HorizontalScrollBarVisibility="Auto">
+                    <DataGrid ItemsSource="{Binding ExcelData}"
+                              AutoGenerateColumns="False"
+                              CanUserAddRows="True"
+                              CanUserDeleteRows="True"
+                              CanUserReorderColumns="True"
+                              CanUserResizeColumns="True"
+                              CanUserSortColumns="True"
+                              GridLinesVisibility="All"
+                              BorderThickness="1"
+                              BorderBrush="{DynamicResource MaterialDesignDivider}"
+                              Background="White"
+                              materialDesign:DataGridAssist.CellPadding="13 8 8 8"
+                              materialDesign:DataGridAssist.ColumnHeaderPadding="8">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="工艺名称" 
+                                                Binding="{Binding ProcessName, UpdateSourceTrigger=PropertyChanged}"
+                                                Width="120"/>
+                            <DataGridTextColumn Header="N2O" Binding="{Binding N2O}" Width="100"/>
+                            <DataGridTextColumn Header="H2" Binding="{Binding H2}" Width="100"/>
+                            <DataGridTextColumn Header="PH3" Binding="{Binding Ph3}" Width="100"/>
+                            <DataGridTextColumn Header="压力" Binding="{Binding Pressure}" Width="100"/>
+                            <DataGridTextColumn Header="功率1" Binding="{Binding Power1}" Width="100"/>
+                            <DataGridTextColumn Header="功率2" Binding="{Binding Power2}" Width="100"/>
+                            <DataGridTextColumn Header="进/出舟" Binding="{Binding BoatInOut}" Width="100"/>
+                            <DataGridTextColumn Header="平移速度" Binding="{Binding MoveSpeed}" Width="100"/>
+                            <DataGridTextColumn Header="上下速度" Binding="{Binding UpDownSpeed}" Width="100"/>
+                            <DataGridTextColumn Header="辅热时间" Binding="{Binding HeatTime}" Width="100"/>
+                            <DataGridTextColumn Header="辅热温度" Binding="{Binding HeatTemp}" Width="100"/>
+                            <DataGridTextColumn Header="脉冲开1" Binding="{Binding PulseOn1}" Width="100"/>
+                            <DataGridTextColumn Header="脉冲关1" Binding="{Binding PulseOff1}" Width="100"/>
+                            <DataGridTextColumn Header="脉冲开2" Binding="{Binding PulseOn2}" Width="100"/>
+                            <DataGridTextColumn Header="脉冲关2" Binding="{Binding PulseOff2}" Width="100"/>
+                            <DataGridTextColumn Header="电流电压" Binding="{Binding CurrentVoltage}" Width="100"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </ScrollViewer>
+            </materialDesign:Card>
+        </DockPanel>
+
+        <!-- 加载指示器 -->
+        <Grid Background="#80000000" 
+              Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <StackPanel HorizontalAlignment="Center" 
+                        VerticalAlignment="Center">
+                <materialDesign:Card Padding="20">
+                    <StackPanel>
+                        <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                    Value="0"
+                                    IsIndeterminate="True"
+                                    HorizontalAlignment="Center"/>
+                        <TextBlock Text="正在处理..." 
+                                 Margin="0,10,0,0"
+                                 HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </materialDesign:Card>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page> 

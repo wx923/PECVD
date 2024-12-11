@@ -1,0 +1,172 @@
+﻿<Page x:Class="WpfApp4.page.usepage.ProcessMonitoringPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp4.page.usepage"
+           xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1000"
+      Title="Page5">
+    <Page.Resources>
+        <Style TargetType="DataGrid">
+            <Setter Property="AlternatingRowBackground" Value="LightGray" />
+            <Setter Property="RowBackground" Value="White" />
+            <Setter Property="GridLinesVisibility" Value="All" />
+            <Setter Property="HorizontalGridLinesBrush" Value="LightGray" />
+            <Setter Property="VerticalGridLinesBrush" Value="LightGray" />
+            <Setter Property="BorderBrush" Value="Gray" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+        <!-- 定义DataGridColumnHeader样式 -->
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="LightBlue" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="BorderBrush" Value="Gray" />
+            <Setter Property="BorderThickness" Value="0,0,1,1" />
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <materialDesign:Card Grid.Row="0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Style="{StaticResource MaterialDesignFlatButton}" Background="LightSkyBlue" Content="导出excel文件" Width="130" Margin="10"></Button>
+                <Button Style="{StaticResource MaterialDesignFlatButton}" Background="LightSkyBlue" Content="打开excel文件" Width="130" Margin="10"></Button>
+                <Button Style="{StaticResource MaterialDesignFlatButton}" Background="LightSkyBlue" Content="回退到当前工艺" Width="130" Margin="10"></Button>
+            </StackPanel>
+        </materialDesign:Card>
+        <DataGrid x:Name="myDataGrid" AutoGenerateColumns="False" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="时间" Binding="{Binding Time}"  Width="80"/>
+                <DataGridTextColumn Header="温度" Binding="{Binding Temperature}" Width="80"/>
+                <DataGridTextColumn Header="湿度" Binding="{Binding Humidity}" Width="80"/>
+                <!-- 添加更多传感器数据列 -->
+
+                        <DataGridTextColumn Header="内温1" Width="80"/>
+                        <DataGridTextColumn Header="内温2" Width="80"/>
+                        <DataGridTextColumn Header="内温3" Width="80"/>
+                        <DataGridTextColumn Header="内温4" Width="80"/>
+                        <DataGridTextColumn Header="内温5" Width="80"/>
+                        <DataGridTextColumn Header="内温6" Width="80"/>
+                        <DataGridTextColumn Header="内温7" Width="80"/>
+                        <DataGridTextColumn Header="内温8" Width="80"/>
+                        <DataGridTextColumn Header="内温9" Width="80"/>
+                        <DataGridTextColumn Header="外温1" Width="80"/>
+                        <DataGridTextColumn Header="外温2" Width="80"/>
+                        <DataGridTextColumn Header="外温3" Width="80"/>
+                        <DataGridTextColumn Header="外温4" Width="80"/>
+                        <DataGridTextColumn Header="外温5" Width="80"/>
+                        <DataGridTextColumn Header="外温6" Width="80"/>
+                        <DataGridTextColumn Header="外温7" Width="80"/>
+                        <DataGridTextColumn Header="外温8" Width="80"/>
+                        <DataGridTextColumn Header="外温9" Width="80"/>
+                        <DataGridTextColumn Header="设定压力" Width="80"/>
+                        <DataGridTextColumn Header="压力" Width="80"/>
+                        <DataGridTextColumn Header="开度" Width="80"/>
+                        <DataGridTextColumn Header="N2设定" Width="80"/>
+                        <DataGridTextColumn Header="N2" Width="80"/>
+                        <DataGridTextColumn Header="NH3设定" Width="80"/>
+                        <DataGridTextColumn Header="NH3" Width="80"/>
+                        <DataGridTextColumn Header="SiH4设定" Width="80"/>
+                        <DataGridTextColumn Header="SiH4" Width="80"/>
+                        <DataGridTextColumn Header="N2O设定" Width="80"/>
+                        <DataGridTextColumn Header="N2O" Width="80"/>
+                        <DataGridTextColumn Header="CH4设定" Width="80"/>
+                        <DataGridTextColumn Header="CH4" Width="80"/>
+                        <DataGridTextColumn Header="功率1" Width="80"/>
+                        <DataGridTextColumn Header="电压1" Width="80"/>
+                        <DataGridTextColumn Header="电流1" Width="80"/>
+                        <DataGridTextColumn Header="功率2" Width="80"/>
+                        <DataGridTextColumn Header="电压2" Width="80"/>
+                        <DataGridTextColumn Header="电流2" Width="80"/>
+                        <DataGridTextColumn Header="当前步" Width="80"/>
+                        <DataGridTextColumn Header="步剩余" Width="80"/>
+                        <DataGridTextColumn Header="TMA设定" Width="80"/>
+                        <DataGridTextColumn Header="TMA" Width="80"/>
+                        <DataGridTextColumn Header="漏率" Width="80"/>
+                        <DataGridTextColumn Header="B2H6设定" Width="80"/>
+                        <DataGridTextColumn Header="B2H6" Width="80"/>
+                        <DataGridTextColumn Header="O2设定" Width="80"/>
+                        <DataGridTextColumn Header="O2" Width="80"/>
+                        <DataGridTextColumn Header="H2设定" Width="80"/>
+                        <DataGridTextColumn Header="H2" Width="80"/>
+                        <DataGridTextColumn Header="PH3设定" Width="80"/>
+                        <DataGridTextColumn Header="PH3" Width="80"/>
+                        <DataGridTextColumn Header="Ar设定" Width="80"/>
+                        <DataGridTextColumn Header="Ar" Width="80"/>
+                        <DataGridTextColumn Header="辅热设定" Width="80"/>
+                        <DataGridTextColumn Header="辅热温度" Width="80"/>
+                        <DataGridTextColumn Header="DEZ设定" Width="80"/>
+                        <DataGridTextColumn Header="DEZ" Width="80"/>
+                        <DataGridTextColumn Header="状态" Width="80"/>
+                        <DataGridTextColumn Header="辅热A" Width="80"/>
+                        <DataGridTextColumn Header="辅热B" Width="80"/>
+                        <DataGridTextColumn Header="辅热C" Width="80"/>
+                        <DataGridTextColumn Header="功率偏差时间1" Width="100"/>
+                        <DataGridTextColumn Header="功率偏差次数1" Width="100"/>
+                        <DataGridTextColumn Header="电压偏差时间1" Width="100"/>
+                        <DataGridTextColumn Header="电压偏差次数1" Width="100"/>
+                        <DataGridTextColumn Header="电流偏差时间1" Width="100"/>
+                        <DataGridTextColumn Header="电流偏差次数1" Width="100"/>
+                        <DataGridTextColumn Header="功率偏差时间2" Width="100"/>
+                        <DataGridTextColumn Header="功率偏差次数2" Width="100"/>
+                        <DataGridTextColumn Header="电压偏差时间2" Width="100"/>
+                        <DataGridTextColumn Header="电压偏差次数2" Width="100"/>
+                        <DataGridTextColumn Header="电流偏差时间2" Width="100"/>
+                        <DataGridTextColumn Header="电流偏差次数2" Width="100"/>
+                        <DataGridTextColumn Header="电源1打弧1" Width="80"/>
+                        <DataGridTextColumn Header="电源1打弧2" Width="80"/>
+                        <DataGridTextColumn Header="电源2打弧1" Width="80"/>
+                        <DataGridTextColumn Header="电源2打弧2" Width="80"/>
+                        <DataGridTextColumn Header="电流1" Width="80"/>
+                        <DataGridTextColumn Header="MV1" Width="80"/>
+                        <DataGridTextColumn Header="电流2" Width="80"/>
+                        <DataGridTextColumn Header="MV2" Width="80"/>
+                        <DataGridTextColumn Header="电流3" Width="80"/>
+                        <DataGridTextColumn Header="MV3" Width="80"/>
+                        <DataGridTextColumn Header="电流4" Width="80"/>
+                        <DataGridTextColumn Header="MV4" Width="80"/>
+                        <DataGridTextColumn Header="电流5" Width="80"/>
+                        <DataGridTextColumn Header="MV5" Width="80"/>
+                        <DataGridTextColumn Header="电流6" Width="80"/>
+                        <DataGridTextColumn Header="MV6" Width="80"/>
+                        <DataGridTextColumn Header="电流7" Width="80"/>
+                        <DataGridTextColumn Header="MV7" Width="80"/>
+                        <DataGridTextColumn Header="电流8" Width="80"/>
+                        <DataGridTextColumn Header="MV8" Width="80"/>
+                        <DataGridTextColumn Header="电流9" Width="80"/>
+                        <DataGridTextColumn Header="MV9" Width="80"/>
+                        <DataGridTextColumn Header="压力规" Width="80"/>
+                        <DataGridTextColumn Header="CO2设定" Width="80"/>
+                        <DataGridTextColumn Header="CO2" Width="80"/>
+                        <DataGridTextColumn Header="dU1" Width="80"/>
+                        <DataGridTextColumn Header="Usag1" Width="80"/>
+                        <DataGridTextColumn Header="dU2" Width="80"/>
+                        <DataGridTextColumn Header="Usag2" Width="80"/>
+                        <DataGridTextColumn Header="平移位置" Width="80"/>
+                        <DataGridTextColumn Header="上下位置" Width="80"/>
+                        <DataGridTextColumn Header="冷却水流量" Width="80"/>
+                        <DataGridTextColumn Header="冷却水温度" Width="80"/>
+                        <DataGridTextColumn Header="辅热1" Width="80"/>
+                        <DataGridTextColumn Header="辅热2" Width="80"/>
+                        <DataGridTextColumn Header="辅热3" Width="80"/>
+                        <DataGridTextColumn Header="辅热4" Width="80"/>
+                        <DataGridTextColumn Header="辅热5" Width="80"/>
+                        <DataGridTextColumn Header="预留" />
+                        <DataGridTextColumn Header="预留" />
+                        <DataGridTextColumn Header="预留" />
+                        <DataGridTextColumn Header="预留" />
+                        <DataGridTextColumn Header="预留" />
+                        <DataGridTextColumn Header="预留" />
+                        <DataGridTextColumn Header="预留" />
+                        <DataGridTextColumn Header="预留" Width="80"/>
+                <DataGridTextColumn Header="预留" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>
