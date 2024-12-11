@@ -2,178 +2,21 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using HslCommunication.ModBus;
-using System.Windows.Input;
+using WpfApp4.Models;
+using WpfApp4.Services;
 
 namespace WpfApp4.ViewModel
 {
-    public partial class MotionPlcData : ObservableObject
-    {
-        // 门锁状态
-        [ObservableProperty]
-        private bool _door1Lock = false;
-
-        [ObservableProperty]
-        private bool _door2Lock = false;
-
-        // 炉门气缸状态
-        [ObservableProperty]
-        private bool _furnaceVerticalCylinder = false;
-
-        [ObservableProperty]
-        private bool _furnaceHorizontalCylinder = false;
-
-        // 区域料位状态
-        [ObservableProperty]
-        private bool _storage1HasMaterial = false;
-
-        [ObservableProperty]
-        private bool _storage2HasMaterial = false;
-
-        [ObservableProperty]
-        private bool _clampHasMaterial = false;
-
-        // 机械手水平一轴位置状态
-        [ObservableProperty]
-        private bool _robotHorizontal1ForwardLimit = false;
-
-        [ObservableProperty]
-        private bool _robotHorizontal1BackwardLimit = false;
-
-        [ObservableProperty]
-        private bool _robotHorizontal1OriginLimit = false;
-
-        [ObservableProperty]
-        private int _robotHorizontal1UpperLimit = 1;
-
-        [ObservableProperty]
-        private int _robotHorizontal1LowerLimit = 1;
-
-        [ObservableProperty]
-        private int _robotHorizontal1OriginPosition = 1;
-
-        [ObservableProperty]
-        private int _robotHorizontal1CurrentPosition = 1;
-
-        [ObservableProperty]
-        private int _robotHorizontal1CurrentSpeed = 1;
-
-        // 机械手水平二轴位置状态
-        [ObservableProperty]
-        private bool _robotHorizontal2ForwardLimit = false;
-
-        [ObservableProperty]
-        private bool _robotHorizontal2BackwardLimit = false;
-
-        [ObservableProperty]
-        private bool _robotHorizontal2OriginLimit = false;
-
-        [ObservableProperty]
-        private int _robotHorizontal2UpperLimit = 1;
-
-        [ObservableProperty]
-        private int _robotHorizontal2LowerLimit = 1;
-
-        [ObservableProperty]
-        private int _robotHorizontal2OriginPosition = 1;
-
-        [ObservableProperty]
-        private int _robotHorizontal2CurrentPosition = 1;
-
-        [ObservableProperty]
-        private int _robotHorizontal2CurrentSpeed = 1;
-
-        // 机械手垂直轴位置状态
-        [ObservableProperty]
-        private bool _robotVerticalUpperLimit = false;
-
-        [ObservableProperty]
-        private bool _robotVerticalLowerLimit = false;
-
-        [ObservableProperty]
-        private bool _robotVerticalOriginLimit = false;
-
-        [ObservableProperty]
-        private int _robotVerticalUpperLimitPosition = 1;
-
-        [ObservableProperty]
-        private int _robotVerticalLowerLimitPosition = 1;
-
-        [ObservableProperty]
-        private int _robotVerticalOriginPosition = 1;
-
-        [ObservableProperty]
-        private int _robotVerticalCurrentPosition = 1;
-
-        [ObservableProperty]
-        private int _robotVerticalCurrentSpeed = 1;
-
-        // 桨水平轴位置状态
-        [ObservableProperty]
-        private bool _clampHorizontalForwardLimit = false;
-
-        [ObservableProperty]
-        private bool _clampHorizontalBackwardLimit = false;
-
-        [ObservableProperty]
-        private bool _clampHorizontalOriginLimit = false;
-
-        [ObservableProperty]
-        private int _clampHorizontalUpperLimit = 1;
-
-        [ObservableProperty]
-        private int _clampHorizontalLowerLimit = 1;
-
-        [ObservableProperty]
-        private int _clampHorizontalOriginPosition = 1;
-
-        [ObservableProperty]
-        private int _clampHorizontalCurrentPosition = 1;
-
-        [ObservableProperty]
-        private int _clampHorizontalCurrentSpeed = 1;
-
-        // 桨垂直轴位置状态
-        [ObservableProperty]
-        private bool _clampVerticalUpperLimit = false;
-
-        [ObservableProperty]
-        private bool _clampVerticalLowerLimit = false;
-
-        [ObservableProperty]
-        private bool _clampVerticalOriginLimit = false;
-
-        [ObservableProperty]
-        private int _clampVerticalUpperLimitPosition = 1;
-
-        [ObservableProperty]
-        private int _clampVerticalLowerLimitPosition = 1;
-
-        [ObservableProperty]
-        private int _clampVerticalOriginPosition = 1;
-
-        [ObservableProperty]
-        private int _clampVerticalCurrentPosition = 1;
-
-        [ObservableProperty]
-        private int _clampVerticalCurrentSpeed = 1;
-
-        // 炉内状态
-        [ObservableProperty]
-        private bool _furnaceStatus = false;
-
-        public MotionPlcData() { }
-    }
-
     public partial class MotionVM : ObservableObject
     {
-        private DispatcherTimer DatabaseSaveTimer;
         private ModbusTcpNet modbusClient;
-        [ObservableProperty]
-        private MotionPlcData _motionPlcData;
+        private PlcDataService _plcDataService;
+        
+        // 获取PLC数据的属性
+        public MotionPlcData MotionPlcData => _plcDataService.MotionPlcData;
 
         // 添加源位置和目标位置的属性
         [ObservableProperty]
@@ -218,18 +61,16 @@ namespace WpfApp4.ViewModel
         // 判断机械手是否在运动
         private bool IsRobotMoving()
         {
-            // 只检查机械手三个轴的速度
-            return _motionPlcData.RobotHorizontal1CurrentSpeed != 0 ||
-                   _motionPlcData.RobotHorizontal2CurrentSpeed != 0 ||
-                   _motionPlcData.RobotVerticalCurrentSpeed != 0;
+            return MotionPlcData.RobotHorizontal1CurrentSpeed != 0 ||
+                   MotionPlcData.RobotHorizontal2CurrentSpeed != 0 ||
+                   MotionPlcData.RobotVerticalCurrentSpeed != 0;
         }
 
         // 添加夹爪运动检查方法
         private bool IsClampMoving()
         {
-            // 检查夹爪两个轴的速度
-            return _motionPlcData.ClampHorizontalCurrentSpeed != 0 ||
-                   _motionPlcData.ClampVerticalCurrentSpeed != 0;
+            return MotionPlcData.ClampHorizontalCurrentSpeed != 0 ||
+                   MotionPlcData.ClampVerticalCurrentSpeed != 0;
         }
 
         private byte GetCommandCode(string source, string target)
@@ -607,7 +448,7 @@ namespace WpfApp4.ViewModel
 
         // 桨输入的数值
         [ObservableProperty]
-        private int _clampInputValue = 0;                // 输入的速度值或位置值
+        private int _clampInputValue = 0;                // 输入的速度值或位置���
 
         /// <summary>
         /// 切换到桨速度模式
@@ -839,102 +680,8 @@ namespace WpfApp4.ViewModel
 
         public MotionVM()
         {
-            // 订阅连接成功事件
-            GlobalVM.SingleObject.OnConnected += OnPlcConnectedAsync;
-
-            // 初始化定时器
-            DatabaseSaveTimer = new DispatcherTimer();
-            DatabaseSaveTimer.Interval = TimeSpan.FromMilliseconds(100);
-            DatabaseSaveTimer.Tick += DatabaseSaveTimer_Tick;
-
-            // 初始化 ModbusTcp 客户端和数据对象
             modbusClient = GlobalVM.plcCommunicationService._modbusTcp;
-            _motionPlcData = new MotionPlcData();
-        }
-
-        private async Task<Task> OnPlcConnectedAsync()
-        {
-            // PLC连接成功后启动定时器
-            DatabaseSaveTimer.Start();
-            return Task.CompletedTask;
-        }
-
-        private void DatabaseSaveTimer_Tick(object sender, EventArgs e)
-        {
-            try
-            {
-                // 读取线圈状态
-                _motionPlcData.Door1Lock = modbusClient.ReadCoil("1").Content;
-                _motionPlcData.Door2Lock = modbusClient.ReadCoil("2").Content;
-                _motionPlcData.FurnaceVerticalCylinder = modbusClient.ReadCoil("3").Content;
-                _motionPlcData.FurnaceHorizontalCylinder = modbusClient.ReadCoil("4").Content;
-                _motionPlcData.Storage1HasMaterial = modbusClient.ReadCoil("5").Content;
-                _motionPlcData.Storage2HasMaterial = modbusClient.ReadCoil("6").Content;
-                _motionPlcData.ClampHasMaterial = modbusClient.ReadCoil("7").Content;
-
-                // 机械手水平一轴
-                _motionPlcData.RobotHorizontal1ForwardLimit = modbusClient.ReadCoil("8").Content;
-                _motionPlcData.RobotHorizontal1BackwardLimit = modbusClient.ReadCoil("9").Content;
-                _motionPlcData.RobotHorizontal1OriginLimit = modbusClient.ReadCoil("10").Content;
-                _motionPlcData.RobotHorizontal1UpperLimit = modbusClient.ReadInt32("11").Content;
-                _motionPlcData.RobotHorizontal1LowerLimit = modbusClient.ReadInt32("12").Content;
-                _motionPlcData.RobotHorizontal1OriginPosition = modbusClient.ReadInt32("13").Content;
-                _motionPlcData.RobotHorizontal1CurrentPosition = modbusClient.ReadInt32("14").Content;
-                _motionPlcData.RobotHorizontal1CurrentSpeed = modbusClient.ReadInt32("15").Content;
-
-                // 机械手水平二轴
-                _motionPlcData.RobotHorizontal2ForwardLimit = modbusClient.ReadCoil("16").Content;
-                _motionPlcData.RobotHorizontal2BackwardLimit = modbusClient.ReadCoil("17").Content;
-                _motionPlcData.RobotHorizontal2OriginLimit = modbusClient.ReadCoil("18").Content;
-                _motionPlcData.RobotHorizontal2UpperLimit = modbusClient.ReadInt32("19").Content;
-                _motionPlcData.RobotHorizontal2LowerLimit = modbusClient.ReadInt32("20").Content;
-                _motionPlcData.RobotHorizontal2OriginPosition = modbusClient.ReadInt32("21").Content;
-                _motionPlcData.RobotHorizontal2CurrentPosition = modbusClient.ReadInt32("22").Content;
-                _motionPlcData.RobotHorizontal2CurrentSpeed = modbusClient.ReadInt32("23").Content;
-
-                // 机械手垂直轴
-                _motionPlcData.RobotVerticalUpperLimit = modbusClient.ReadCoil("24").Content;
-                _motionPlcData.RobotVerticalLowerLimit = modbusClient.ReadCoil("25").Content;
-                _motionPlcData.RobotVerticalOriginLimit = modbusClient.ReadCoil("26").Content;
-                _motionPlcData.RobotVerticalUpperLimitPosition = modbusClient.ReadInt32("27").Content;
-                _motionPlcData.RobotVerticalLowerLimitPosition = modbusClient.ReadInt32("28").Content;
-                _motionPlcData.RobotVerticalOriginPosition = modbusClient.ReadInt32("29").Content;
-                _motionPlcData.RobotVerticalCurrentPosition = modbusClient.ReadInt32("30").Content;
-                _motionPlcData.RobotVerticalCurrentSpeed = modbusClient.ReadInt32("31").Content;
-
-                // 桨水平轴
-                _motionPlcData.ClampHorizontalForwardLimit = modbusClient.ReadCoil("32").Content;
-                _motionPlcData.ClampHorizontalBackwardLimit = modbusClient.ReadCoil("33").Content;
-                _motionPlcData.ClampHorizontalOriginLimit = modbusClient.ReadCoil("34").Content;
-                _motionPlcData.ClampHorizontalUpperLimit = modbusClient.ReadInt32("35").Content;
-                _motionPlcData.ClampHorizontalLowerLimit = modbusClient.ReadInt32("36").Content;
-                _motionPlcData.ClampHorizontalOriginPosition = modbusClient.ReadInt32("37").Content;
-                _motionPlcData.ClampHorizontalCurrentPosition = modbusClient.ReadInt32("38").Content;
-                _motionPlcData.ClampHorizontalCurrentSpeed = modbusClient.ReadInt32("39").Content;
-
-                // 桨垂直轴
-                _motionPlcData.ClampVerticalUpperLimit = modbusClient.ReadCoil("40").Content;
-                _motionPlcData.ClampVerticalLowerLimit = modbusClient.ReadCoil("41").Content;
-                _motionPlcData.ClampVerticalOriginLimit = modbusClient.ReadCoil("42").Content;
-                _motionPlcData.ClampVerticalUpperLimitPosition = modbusClient.ReadInt32("43").Content;
-                _motionPlcData.ClampVerticalLowerLimitPosition = modbusClient.ReadInt32("44").Content;
-                _motionPlcData.ClampVerticalOriginPosition = modbusClient.ReadInt32("45").Content;
-                _motionPlcData.ClampVerticalCurrentPosition = modbusClient.ReadInt32("46").Content;
-                _motionPlcData.ClampVerticalCurrentSpeed = modbusClient.ReadInt32("47").Content;
-
-                // 炉内状态
-                _motionPlcData.FurnaceStatus = modbusClient.ReadCoil("48").Content;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Modbus通讯异常: {ex.Message}");
-            }
-        }
-
-        public void Cleanup()
-        {
-            GlobalVM.SingleObject.OnConnected -= OnPlcConnectedAsync;
-            DatabaseSaveTimer.Stop();
+            _plcDataService = PlcDataService.Instance;
         }
     }
 }

@@ -18,7 +18,6 @@ namespace WpfApp4.page.usepage
         // 页面卸载时清理资源
         private void Page_Unloaded(object sender, RoutedEventArgs e)
         {
-            viewModel.Cleanup();
         }
     }
 }
