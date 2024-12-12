@@ -681,11 +681,7 @@ namespace WpfApp4.ViewModel
 
         public MotionVM()
         {
-            // 删除这些行（如果存在）：
-            // modbusClient = ...
-            // _plcDataService = new MotionPlcDataService();
-            
-            // 其他初始化代码保持不变...
         }
+
     }
 }

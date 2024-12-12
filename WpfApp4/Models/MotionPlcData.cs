@@ -156,5 +156,11 @@ namespace WpfApp4.Models
         // 炉内状态
         [ObservableProperty]
         private bool _furnaceStatus = false;
+
+        [ObservableProperty]
+        private bool _hasCarriage;  // 是否有小车
+
+        [ObservableProperty]
+        private bool _carriageHasMaterial;  // 小车区是否有料
     }
 } 
