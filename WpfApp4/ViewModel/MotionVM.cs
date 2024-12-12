@@ -5,6 +5,7 @@ using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using HslCommunication.ModBus;
+using WpfApp.Services;
 using WpfApp4.Models;
 using WpfApp4.Services;
 
@@ -12,8 +13,8 @@ namespace WpfApp4.ViewModel
 {
     public partial class MotionVM : ObservableObject
     {
-        private ModbusTcpNet modbusClient;
-        private PlcDataService _plcDataService;
+        private ModbusTcpNet _modbusClient => PlcCommunicationService.Instance.ModbusTcpClients[PlcCommunicationService.PlcType.Motion];
+        private MotionPlcDataService _plcDataService => MotionPlcDataService.Instance;
         
         // 获取PLC数据的属性
         public MotionPlcData MotionPlcData => _plcDataService.MotionPlcData;
@@ -49,8 +50,8 @@ namespace WpfApp4.ViewModel
                 byte commandCode = GetCommandCode(SelectedSourcePosition, SelectedTargetPosition);
                 
                 // 写入PLC
-                await modbusClient.WriteAsync("442", true);  // 启动信号
-                await modbusClient.WriteAsync("443", commandCode);  // 写入命令代码
+                await _modbusClient.WriteAsync("442", true);  // 启动信号
+                await _modbusClient.WriteAsync("443", commandCode);  // 写入命令代码
             }
             catch (Exception ex)
             {
@@ -112,7 +113,7 @@ namespace WpfApp4.ViewModel
                 {
                     await StopAllMotion();
                 }
-                await modbusClient.WriteAsync("200", true);
+                await _modbusClient.WriteAsync("200", true);
             }
             catch (Exception ex)
             {
@@ -129,7 +130,7 @@ namespace WpfApp4.ViewModel
                 {
                     await StopAllMotion();
                 }
-                await modbusClient.WriteAsync("201", true);
+                await _modbusClient.WriteAsync("201", true);
             }
             catch (Exception ex)
             {
@@ -146,7 +147,7 @@ namespace WpfApp4.ViewModel
                 {
                     await StopAllMotion();
                 }
-                await modbusClient.WriteAsync("202", true);
+                await _modbusClient.WriteAsync("202", true);
             }
             catch (Exception ex)
             {
@@ -163,7 +164,7 @@ namespace WpfApp4.ViewModel
                 {
                     await StopAllMotion();
                 }
-                await modbusClient.WriteAsync("203", true);
+                await _modbusClient.WriteAsync("203", true);
             }
             catch (Exception ex)
             {
@@ -180,7 +181,7 @@ namespace WpfApp4.ViewModel
                 {
                     await StopAllMotion();
                 }
-                await modbusClient.WriteAsync("204", true);
+                await _modbusClient.WriteAsync("204", true);
             }
             catch (Exception ex)
             {
@@ -197,7 +198,7 @@ namespace WpfApp4.ViewModel
                 {
                     await StopAllMotion();
                 }
-                await modbusClient.WriteAsync("205", true);
+                await _modbusClient.WriteAsync("205", true);
             }
             catch (Exception ex)
             {
@@ -214,7 +215,7 @@ namespace WpfApp4.ViewModel
                 {
                     await StopAllMotion();
                 }
-                await modbusClient.WriteAsync("206", true);
+                await _modbusClient.WriteAsync("206", true);
             }
             catch (Exception ex)
             {
@@ -231,7 +232,7 @@ namespace WpfApp4.ViewModel
                 {
                     await StopAllMotion();
                 }
-                await modbusClient.WriteAsync("207", true);
+                await _modbusClient.WriteAsync("207", true);
             }
             catch (Exception ex)
             {
@@ -248,7 +249,7 @@ namespace WpfApp4.ViewModel
                 {
                     await StopAllMotion();
                 }
-                await modbusClient.WriteAsync("208", true);
+                await _modbusClient.WriteAsync("208", true);
             }
             catch (Exception ex)
             {
@@ -265,7 +266,7 @@ namespace WpfApp4.ViewModel
                 {
                     await StopAllMotion();
                 }
-                await modbusClient.WriteAsync("209", true);
+                await _modbusClient.WriteAsync("209", true);
             }
             catch (Exception ex)
             {
@@ -282,7 +283,7 @@ namespace WpfApp4.ViewModel
                 {
                     await StopAllMotion();
                 }
-                await modbusClient.WriteAsync("210", true);
+                await _modbusClient.WriteAsync("210", true);
             }
             catch (Exception ex)
             {
@@ -299,7 +300,7 @@ namespace WpfApp4.ViewModel
                 {
                     await StopAllMotion();
                 }
-                await modbusClient.WriteAsync("211", true);
+                await _modbusClient.WriteAsync("211", true);
             }
             catch (Exception ex)
             {
@@ -313,7 +314,7 @@ namespace WpfApp4.ViewModel
             try
             {
                 // 写入停止信号到PLC
-                await modbusClient.WriteAsync("459", true);
+                await _modbusClient.WriteAsync("459", true);
                 // 等待一小段时间确保停止命令被执行
                 await Task.Delay(100);
             }
@@ -384,20 +385,20 @@ namespace WpfApp4.ViewModel
                     if (IsHorizontal1Selected)
                     {
                         // 写入水平一轴速度值和启动信号
-                        await modbusClient.WriteAsync("445", InputValue);  // 速度值地址
-                        await modbusClient.WriteAsync("448", true);        // 启动信号地址
+                        await _modbusClient.WriteAsync("445", InputValue);  // 速度值地址
+                        await _modbusClient.WriteAsync("448", true);        // 启动信号地址
                     }
                     if (IsHorizontal2Selected)
                     {
                         // 写入水平二轴速度值和启动信号
-                        await modbusClient.WriteAsync("446", InputValue);
-                        await modbusClient.WriteAsync("448", true);
+                        await _modbusClient.WriteAsync("446", InputValue);
+                        await _modbusClient.WriteAsync("448", true);
                     }
                     if (IsVerticalSelected)
                     {
                         // 写入垂直轴速度值和启动信号
-                        await modbusClient.WriteAsync("447", InputValue);
-                        await modbusClient.WriteAsync("448", true);
+                        await _modbusClient.WriteAsync("447", InputValue);
+                        await _modbusClient.WriteAsync("448", true);
                     }
                 }
                 else
@@ -406,20 +407,20 @@ namespace WpfApp4.ViewModel
                     if (IsHorizontal1Selected)
                     {
                         // 写入水平一轴位置值和启动信号
-                        await modbusClient.WriteAsync("449", InputValue);  // 位置值地址
-                        await modbusClient.WriteAsync("452", true);        // 启动信号地址
+                        await _modbusClient.WriteAsync("449", InputValue);  // 位置值地址
+                        await _modbusClient.WriteAsync("452", true);        // 启动信号地址
                     }
                     if (IsHorizontal2Selected)
                     {
                         // 写入水平二轴位置值和启动信号
-                        await modbusClient.WriteAsync("450", InputValue);
-                        await modbusClient.WriteAsync("452", true);
+                        await _modbusClient.WriteAsync("450", InputValue);
+                        await _modbusClient.WriteAsync("452", true);
                     }
                     if (IsVerticalSelected)
                     {
                         // 写入垂直轴位置值和启动信号
-                        await modbusClient.WriteAsync("451", InputValue);
-                        await modbusClient.WriteAsync("452", true);
+                        await _modbusClient.WriteAsync("451", InputValue);
+                        await _modbusClient.WriteAsync("452", true);
                     }
                 }
             }
@@ -448,7 +449,7 @@ namespace WpfApp4.ViewModel
 
         // 桨输入的数值
         [ObservableProperty]
-        private int _clampInputValue = 0;                // 输入的速度值或位置���
+        private int _clampInputValue = 0;                // 输入的速度值或位置值
 
         /// <summary>
         /// 切换到桨速度模式
@@ -499,14 +500,14 @@ namespace WpfApp4.ViewModel
                     if (IsClampHorizontalSelected)
                     {
                         // 写入桨水平轴速度值和启动信号
-                        await modbusClient.WriteAsync("455", ClampInputValue);  // 速度值地址
-                        await modbusClient.WriteAsync("453", true);             // 启动信号地址
+                        await _modbusClient.WriteAsync("455", ClampInputValue);  // 速度值地址
+                        await _modbusClient.WriteAsync("453", true);             // 启动信号地址
                     }
                     if (IsClampVerticalSelected)
                     {
                         // 写入桨垂直轴速度值和启动信号
-                        await modbusClient.WriteAsync("455", ClampInputValue);  // 速度值地址
-                        await modbusClient.WriteAsync("454", true);             // 启动信号地址
+                        await _modbusClient.WriteAsync("455", ClampInputValue);  // 速度值地址
+                        await _modbusClient.WriteAsync("454", true);             // 启动信号地址
                     }
                 }
                 else
@@ -515,14 +516,14 @@ namespace WpfApp4.ViewModel
                     if (IsClampHorizontalSelected)
                     {
                         // 写入桨水平轴位置值和启动信号
-                        await modbusClient.WriteAsync("456", ClampInputValue);  // 位置值地址
-                        await modbusClient.WriteAsync("458", true);             // 启动信号地址
+                        await _modbusClient.WriteAsync("456", ClampInputValue);  // 位置值地址
+                        await _modbusClient.WriteAsync("458", true);             // 启动信号地址
                     }
                     if (IsClampVerticalSelected)
                     {
                         // 写入桨垂直轴位置值和启动信号
-                        await modbusClient.WriteAsync("457", ClampInputValue);  // 位置值地址
-                        await modbusClient.WriteAsync("458", true);             // 启动信号地址
+                        await _modbusClient.WriteAsync("457", ClampInputValue);  // 位置值地址
+                        await _modbusClient.WriteAsync("458", true);             // 启动信号地址
                     }
                 }
             }
@@ -548,7 +549,7 @@ namespace WpfApp4.ViewModel
                     await Task.Delay(100); // 等待停止完成
                 }
                 // 发送命令到PLC - 桨水平轴到前限位
-                await modbusClient.WriteAsync("424", true);
+                await _modbusClient.WriteAsync("424", true);
             }
             catch (Exception ex)
             {
@@ -568,7 +569,7 @@ namespace WpfApp4.ViewModel
                     await Task.Delay(100);
                 }
                 // 发送命令到PLC - 桨水平轴到后限位
-                await modbusClient.WriteAsync("425", true);
+                await _modbusClient.WriteAsync("425", true);
             }
             catch (Exception ex)
             {
@@ -588,7 +589,7 @@ namespace WpfApp4.ViewModel
                     await Task.Delay(100);
                 }
                 // 发送命令到PLC - 桨垂直轴到上限位
-                await modbusClient.WriteAsync("426", true);
+                await _modbusClient.WriteAsync("426", true);
             }
             catch (Exception ex)
             {
@@ -608,7 +609,7 @@ namespace WpfApp4.ViewModel
                     await Task.Delay(100);
                 }
                 // 发送命令到PLC - 桨垂直轴到下限位
-                await modbusClient.WriteAsync("427", true);
+                await _modbusClient.WriteAsync("427", true);
             }
             catch (Exception ex)
             {
@@ -628,7 +629,7 @@ namespace WpfApp4.ViewModel
                     await Task.Delay(100);
                 }
                 // 发送命令到PLC - 桨垂直轴到原点
-                await modbusClient.WriteAsync("428", true);
+                await _modbusClient.WriteAsync("428", true);
             }
             catch (Exception ex)
             {
@@ -648,7 +649,7 @@ namespace WpfApp4.ViewModel
                     await Task.Delay(100);
                 }
                 // 发送命令到PLC - 桨水平轴到原点
-                await modbusClient.WriteAsync("429", true);
+                await _modbusClient.WriteAsync("429", true);
             }
             catch (Exception ex)
             {
@@ -668,7 +669,7 @@ namespace WpfApp4.ViewModel
                     await Task.Delay(100);
                 }
                 // 发送命令到PLC - 桨整体回原点
-                await modbusClient.WriteAsync("430", true);
+                await _modbusClient.WriteAsync("430", true);
             }
             catch (Exception ex)
             {
@@ -680,8 +681,11 @@ namespace WpfApp4.ViewModel
 
         public MotionVM()
         {
-            modbusClient = GlobalVM.plcCommunicationService._modbusTcp;
-            _plcDataService = PlcDataService.Instance;
+            // 删除这些行（如果存在）：
+            // modbusClient = ...
+            // _plcDataService = new MotionPlcDataService();
+            
+            // 其他初始化代码保持不变...
         }
     }
 }

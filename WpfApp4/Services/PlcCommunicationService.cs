@@ -1,7 +1,8 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using HslCommunication.ModBus;
-
 
 namespace WpfApp.Services;
 
@@ -10,88 +11,181 @@ namespace WpfApp.Services;
 /// </summary>
 public class PlcCommunicationService
 {
-    public readonly ModbusTcpNet _modbusTcp;
-    private bool _isConnected;
+    // 添加单例实例
+    private static readonly Lazy<PlcCommunicationService> _instance = 
+        new Lazy<PlcCommunicationService>(() => new PlcCommunicationService());
+    
+    // 公共访问点
+    public static PlcCommunicationService Instance => _instance.Value;
+
+    // 添加连接状态改变事件
+    public event EventHandler<(PlcType PlcType, bool IsConnected)> ConnectionStateChanged;
+    public event EventHandler<bool> AllPlcsConnectionStateChanged;
+
+    // 定义PLC类型枚举
+    public enum PlcType
+    {
+        Furnace1 = 0,
+        Furnace2 = 1,
+        Furnace3 = 2,
+        Furnace4 = 3,
+        Furnace5 = 4,
+        Furnace6 = 5,
+        Motion = 6
+    }
+
+    // 修改为公共属性
+    public Dictionary<PlcType, ModbusTcpNet> ModbusTcpClients { get; private set; }
+    public Dictionary<PlcType, bool> ConnectionStates { get; private set; }
     private readonly object _lock = new();
 
-
     /// <summary>
-    /// 初始化PLC通信服务
+    /// 私有构造函数，确保单例模式
     /// </summary>
-    /// <param name="ipAddress">PLC的IP地址</param>
-    /// <param name="port">PLC的端口号</param>
-    public PlcCommunicationService(string ipAddress = "127.0.0.1", int port = 502)
+    private PlcCommunicationService()
     {
-        _modbusTcp = new ModbusTcpNet(ipAddress, port)
-        {
-            ReceiveTimeOut = 1000,  // 接收超时时间（毫秒）
-            ConnectTimeOut = 2000   // 连接超时时间（毫秒）
-        };
+        ModbusTcpClients = new Dictionary<PlcType, ModbusTcpNet>();
+        ConnectionStates = new Dictionary<PlcType, bool>();
 
+        // 初始化6个炉管PLC客户端
+        for (int i = 0; i < 6; i++)
+        {
+            var plcType = (PlcType)i;
+            var ipAddress = $"192.168.1.{10 + i}";
+            InitializePlcClient(plcType, ipAddress);
+        }
+
+        // 初始化运动控制PLC客户端
+        InitializePlcClient(PlcType.Motion, "192.168.1.20");
+
+        // 自动连接所有PLC
+        _ = ConnectAllPlcsAsync();
+    }
+
+    private async Task ConnectAllPlcsAsync()
+    {
+        try
+        {
+            bool allConnected = await ConnectAllAsync();
+            AllPlcsConnectionStateChanged?.Invoke(this, allConnected);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"自动连接PLC失败: {ex.Message}");
+            AllPlcsConnectionStateChanged?.Invoke(this, false);
+        }
+    }
+
+    private void InitializePlcClient(PlcType plcType, string ipAddress)
+    {
+        ModbusTcpClients[plcType] = new ModbusTcpNet(ipAddress, 502)
+        {
+            ReceiveTimeOut = 1000,
+            ConnectTimeOut = 2000
+        };
+        ConnectionStates[plcType] = false;
     }
 
     /// <summary>
-    /// 异步连接到PLC
+    /// 获取指定PLC的ModbusTcp客户端
     /// </summary>
-    /// <returns>连接是否成功</returns>
-    public async Task<bool> ConnectAsync()
+    public ModbusTcpNet GetModbusTcpClient(PlcType plcType)
+    {
+        return ModbusTcpClients[plcType];
+    }
+
+    /// <summary>
+    /// 异步连接到指定的PLC
+    /// </summary>
+    public async Task<bool> ConnectAsync(PlcType plcType)
     {
         try
         {
             lock (_lock)
             {
-                if (_isConnected) return true;
+                if (ConnectionStates[plcType]) return true;
             }
 
-            var result = await _modbusTcp.ConnectServerAsync();
-            _isConnected = result.IsSuccess;
-            return _isConnected;
+            var client = ModbusTcpClients[plcType];
+            var result = await client.ConnectServerAsync();
+            
+            bool isConnected = result.IsSuccess;
+            lock (_lock)
+            {
+                ConnectionStates[plcType] = isConnected;
+            }
+            
+            // 触发连接状态改变事件
+            ConnectionStateChanged?.Invoke(this, (plcType, isConnected));
+            
+            return isConnected;
         }
         catch (Exception ex)
         {
+            Console.WriteLine($"PLC {plcType} 连接失败: {ex.Message}");
+            ConnectionStateChanged?.Invoke(this, (plcType, false));
             return false;
         }
     }
 
     /// <summary>
-    /// 断开与PLC的连接
+    /// 连接所有PLC
     /// </summary>
-    public void Disconnect()
+    public async Task<bool> ConnectAllAsync()
+    {
+        var tasks = new List<Task<bool>>();
+        foreach (PlcType plcType in Enum.GetValues(typeof(PlcType)))
+        {
+            tasks.Add(ConnectAsync(plcType));
+        }
+
+        var results = await Task.WhenAll(tasks);
+        return results.All(x => x);
+    }
+
+    /// <summary>
+    /// 断开指定PLC的连接
+    /// </summary>
+    public void Disconnect(PlcType plcType)
     {
         try
         {
             lock (_lock)
             {
-                if (!_isConnected) return;
+                if (!ConnectionStates[plcType]) return;
 
-                _modbusTcp.ConnectClose();
-                _isConnected = false;
+                ModbusTcpClients[plcType].ConnectClose();
+                ConnectionStates[plcType] = false;
+                
+                // 触发连接状态改变事件
+                ConnectionStateChanged?.Invoke(this, (plcType, false));
             }
         }
         catch (Exception ex)
         {
+            Console.WriteLine($"断开PLC {plcType} 连接失败: {ex.Message}");
         }
     }
 
     /// <summary>
-    /// 异步读取16位整数
+    /// 断开所有PLC连接
     /// </summary>
-    /// <param name="address">PLC地址（如"D0"）</param>
-    /// <returns>读取的值，失败返回null</returns>
-    public async Task<short?> ReadInt16Async(string address)
+    public void DisconnectAll()
     {
-        try
+        foreach (PlcType plcType in Enum.GetValues(typeof(PlcType)))
         {
-            var result = await _modbusTcp.ReadInt16Async(address);
-            if (result.IsSuccess)
-            {
-                return result.Content;
-            }
-            return null;
+            Disconnect(plcType);
         }
-        catch (Exception ex)
+    }
+
+    /// <summary>
+    /// 检查指定PLC是否已连接
+    /// </summary>
+    public bool IsConnected(PlcType plcType)
+    {
+        lock (_lock)
         {
-            return null;
+            return ConnectionStates[plcType];
         }
     }
 }

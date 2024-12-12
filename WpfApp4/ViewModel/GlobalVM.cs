@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using WpfApp.Services;
 using System.Collections.ObjectModel;
 using WpfApp4.Models;
 using WpfApp4.Services;
@@ -13,14 +12,10 @@ namespace WpfApp4.ViewModel
     {
         #region 单例和服务
         static public GlobalVM SingleObject { get; private set; }
-        static public PlcCommunicationService plcCommunicationService;
         static public MongoDbService mongoDbService;
         #endregion
 
         #region 事件
-        public event Func<Task> OnConnected;
-        public event EventHandler<bool> ConnectionStatusChanged;
-        public bool IsConnected { get; private set; }
         #endregion
 
         #region 全局数据集合
@@ -59,18 +54,6 @@ namespace WpfApp4.ViewModel
         {
             try
             {
-                // 初始化PLC通信
-                plcCommunicationService = new PlcCommunicationService();
-                bool connected = await plcCommunicationService.ConnectAsync();
-
-                IsConnected = connected;
-                ConnectionStatusChanged?.Invoke(this, connected);
-
-                if (connected && OnConnected != null)
-                {
-                    await OnConnected.Invoke();
-                }
-
                 // 加载数据
                 await LoadAllDataAsync();
             }

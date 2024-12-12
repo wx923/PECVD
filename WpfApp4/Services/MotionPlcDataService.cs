@@ -4,28 +4,38 @@ using System.Threading.Tasks;
 using System.Windows.Threading;
 using WpfApp4.Models;
 using HslCommunication.ModBus;
-using WpfApp4.ViewModel;
+using WpfApp.Services;
 
 namespace WpfApp4.Services
 {
-    public class PlcDataService
+    public class MotionPlcDataService
     {
-        private static readonly Lazy<PlcDataService> _instance = new Lazy<PlcDataService>(() => new PlcDataService());
-        public static PlcDataService Instance => _instance.Value;
+        private static readonly Lazy<MotionPlcDataService> _instance = 
+            new Lazy<MotionPlcDataService>(() => new MotionPlcDataService());
+        public static MotionPlcDataService Instance => _instance.Value;
 
         private CancellationTokenSource _cancellationTokenSource;
         private ModbusTcpNet _modbusClient;
         private Dispatcher _dispatcher;
         public MotionPlcData MotionPlcData { get; private set; }
 
-        private PlcDataService()
+        private MotionPlcDataService()
         {
             MotionPlcData = new MotionPlcData();
-            _modbusClient = GlobalVM.plcCommunicationService._modbusTcp;
+            _modbusClient = PlcCommunicationService.Instance.ModbusTcpClients[PlcCommunicationService.PlcType.Motion];
             _dispatcher = Dispatcher.CurrentDispatcher;
             
-            // 订阅连接成功事件
-            GlobalVM.SingleObject.OnConnected += StartDataUpdate;
+            // 订阅运动控制PLC的连接状态改变事件
+            PlcCommunicationService.Instance.ConnectionStateChanged += OnPlcConnectionStateChanged;
+        }
+
+        private void OnPlcConnectionStateChanged(object sender, (PlcCommunicationService.PlcType PlcType, bool IsConnected) e)
+        {
+            // 只关注运动控制PLC的连接状态
+            if (e.PlcType == PlcCommunicationService.PlcType.Motion && e.IsConnected)
+            {
+                _ = StartDataUpdate();
+            }
         }
 
         private Task StartDataUpdate()
@@ -202,7 +212,8 @@ namespace WpfApp4.Services
         public void Cleanup()
         {
             _cancellationTokenSource?.Cancel();
-            GlobalVM.SingleObject.OnConnected -= StartDataUpdate;
+            // 取消订阅事件
+            PlcCommunicationService.Instance.ConnectionStateChanged -= OnPlcConnectionStateChanged;
         }
     }
 } 
