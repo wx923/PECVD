@@ -30,13 +30,10 @@ namespace WpfApp4.ViewModel
         [ObservableProperty]
         private bool isLoading;
 
-        private readonly MongoDbService _mongoDbService;
-
         private ProcessFileInfo _lastLoadedFile;  // 添加一个字段记录上次加载的文件
 
         public ProcessManagementVM()
         {
-            _mongoDbService = GlobalVM.mongoDbService;
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             _ = InitializeAsync();  // 异步初始化
         }
@@ -50,7 +47,7 @@ namespace WpfApp4.ViewModel
         {
             try 
             {
-                var files = await _mongoDbService.GetAllProcessFilesAsync();
+                var files = await MongoDbService.Instance.GetAllProcessFilesAsync();
                 ProcessFiles = new ObservableCollection<ProcessFileInfo>(files);
                 
                 // 如果有文件，默认选择第一个
@@ -82,7 +79,7 @@ namespace WpfApp4.ViewModel
                     string fileName = Path.GetFileNameWithoutExtension(openFileDialog.FileName);
                     
                     // 检查MongoDB中是否存在同名集合
-                    if (await _mongoDbService.CollectionExistsAsync(fileName))
+                    if (await MongoDbService.Instance.CollectionExistsAsync(fileName))
                     {
                         MessageBox.Show($"已存在名为 '{fileName}' 的工艺文件，请修改Excel文件名后重试。", 
                             "导入失败", 
@@ -151,7 +148,7 @@ namespace WpfApp4.ViewModel
                     ExcelData = models;
                     
                     // 保存到新的集合中
-                    await _mongoDbService.SaveProcessFileAsync(fileName, $"导入自Excel: {fileName}", models.ToList());
+                    await MongoDbService.Instance.SaveProcessFileAsync(fileName, $"导入自Excel: {fileName}", models.ToList());
                     await LoadProcessFiles();
                     
                     // 自动选择新导入的文件
@@ -206,7 +203,7 @@ namespace WpfApp4.ViewModel
 
                 IsLoading = true;
                 OperationStatus = "正在保存更改...";
-                await _mongoDbService.UpdateProcessExcelAsync(SelectedFile.Id, ExcelData.ToList());
+                await MongoDbService.Instance.UpdateProcessExcelAsync(SelectedFile.Id, ExcelData.ToList());
                 OperationStatus = "保存成功";
             }
             catch (Exception ex)
@@ -228,7 +225,7 @@ namespace WpfApp4.ViewModel
             {
                 IsLoading = true;
                 OperationStatus = "正在加载工艺数据...";
-                var data = await _mongoDbService.GetProcessDataByFileIdAsync(fileInfo.Id);
+                var data = await MongoDbService.Instance.GetProcessDataByFileIdAsync(fileInfo.Id);
                 ExcelData = new ObservableCollection<ProcessExcelModel>(data);
                 OperationStatus = $"已加载工艺文件：{fileInfo.FileName}";
                 _lastLoadedFile = fileInfo;  // 更新上次加载的文件记录

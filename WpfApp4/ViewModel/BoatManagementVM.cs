@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System;
 using System.Linq;
 using System.Text;
+using WpfApp4.Services;
 
 namespace WpfApp4.ViewModel
 {
@@ -34,7 +35,6 @@ namespace WpfApp4.ViewModel
         [ObservableProperty]
         private string _lastOperationStatus;
 
-        public ObservableCollection<Process> Processes => GlobalVM.GlobalProcesses;
         #endregion
 
         #region 构造函数
@@ -55,8 +55,7 @@ namespace WpfApp4.ViewModel
             await CheckDatabaseConnection();
             if (IsDatabaseConnected)
             {
-                Boats = GlobalVM.GlobalBoats;
-                BoatMonitors = GlobalVM.GlobalMonitors;
+                BoatMonitors = MongoDbService.Instance.GlobalMonitors;
                 UpdateOperationStatus("数据加载成功", true);
             }
         }
@@ -149,19 +148,19 @@ namespace WpfApp4.ViewModel
                 // 提交新行到数据库
                 foreach (var monitor in newRows)
                 {
-                    await GlobalVM.AddBoatMonitorAsync(monitor);
+                    await MongoDbService.Instance.AddBoatMonitorAsync(monitor);
                     monitor.IsSubmitted = true;  // 更新提交状态
                 }
 
                 // 保存舟对象的修改
                 foreach (var boat in modifiedBoats)
                 {
-                    await GlobalVM.mongoDbService.UpdateBoatAsync(boat);
+                    await MongoDbService.Instance.UpdateBoatAsync(boat);
                     boat.IsModified = false;  // 重置修改标记
                 }
 
                 // 重新加载数据以确保显示最新状态
-                await GlobalVM.LoadAllDataAsync();
+                await MongoDbService.Instance.LoadAllDataAsync();
 
                 // 更新状态消息
                 var successMessage = new StringBuilder();
@@ -202,7 +201,7 @@ namespace WpfApp4.ViewModel
                         if (monitor.IsSubmitted)
                         {
                             // 只删除已经保存到数据库的象
-                            await GlobalVM.DeleteBoatMonitorAsync(monitor._id);
+                            await MongoDbService.Instance.DeleteBoatMonitorAsync(monitor._id);
                         }
                         BoatMonitors.Remove(monitor);
                     }
@@ -221,8 +220,7 @@ namespace WpfApp4.ViewModel
         {
             try
             {
-                // 尝试获取数据作为连接测试
-                await GlobalVM.mongoDbService.GetAllBoatMonitorsAsync();
+                await MongoDbService.Instance.GetAllBoatMonitorsAsync();
                 IsDatabaseConnected = true;
                 DatabaseStatus = "已连接";
                 UpdateOperationStatus("数据库连接成功", true);
@@ -244,19 +242,18 @@ namespace WpfApp4.ViewModel
 
         // 刷新数据
         [RelayCommand]
-        private  async Task RefreshData()
+        private async Task RefreshData()
         {
             try
             {
-                // 重新从数据库加载所有数据
-                await GlobalVM.LoadAllDataAsync();
+                await MongoDbService.Instance.LoadAllDataAsync();
                 UpdateOperationStatus("数据刷新成功", true);
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"刷新数据失败: {ex.Message}");
             }
-}
+        }
         #endregion
 
         [RelayCommand]
@@ -295,11 +292,11 @@ namespace WpfApp4.ViewModel
                 // 保存所有修改
                 foreach (var boat in Boats)
                 {
-                    await GlobalVM.mongoDbService.UpdateBoatAsync(boat);
+                    await MongoDbService.Instance.UpdateBoatAsync(boat);
                 }
 
                 // 重新加载数据以确保显示最新状态
-                await GlobalVM.LoadAllDataAsync();
+                await MongoDbService.Instance.LoadAllDataAsync();
                 UpdateOperationStatus("舟对象修改已保存", true);
             }
             catch (Exception ex)

@@ -11,7 +11,6 @@ namespace WpfApp4.page.usepage
         public ControlInterfacePage(int tubeNumber)
         {
             InitializeComponent();
-            this.DataContext = GlobalVM.SingleObject;
         }
     }
 }

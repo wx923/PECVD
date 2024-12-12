@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Windows;
+using MongoDB.Bson;
 using WpfApp4.Models;
 using WpfApp4.ViewModel;
 
@@ -31,15 +32,13 @@ namespace WpfApp4.Services
         {
             try
             {
-                // 创建新的舟对象
                 var boat = new Boat
                 {
-                    // 设置舟的属性
-                    BoatNumber = GenerateBoatNumber(),
-                    CreateTime = DateTime.Now,
-                    Status = "待处理"
+                    _id = ObjectId.GenerateNewId().ToString(),
+                    CurrentPosition = BoatPosition.CarArea,
+                    MonitorBoatNumber = GenerateBoatNumber(),
                 };
-                await GlobalVM.AddBoatAsync(boat);
+                await MongoDbService.Instance.AddBoatAsync(boat);
             }
             catch (Exception ex)
             {
@@ -76,22 +75,20 @@ namespace WpfApp4.Services
 
         private void UpdateBoatLocation(string location)
         {
-            // 更新舟位置的逻辑
-            var currentBoat = GlobalVM.GlobalBoats.FirstOrDefault(b => b.Status == "待处理");
+            // 修改这里：使用 MongoDbService 的全局集合，并使用正确的属性
+            var currentBoat = MongoDbService.Instance.GlobalBoats.FirstOrDefault(b => b.CurrentPosition == BoatPosition.CarArea);
             if (currentBoat != null)
             {
-                currentBoat.Location = location;
+                // 根据 location 设置对应的 BoatPosition
             }
         }
 
         private void CompleteBoatProcess()
         {
-            // 完成舟处理的逻辑
-            var currentBoat = GlobalVM.GlobalBoats.FirstOrDefault(b => b.Status == "待处理");
+            // 修改这里：使用 MongoDbService 的全局集合，并使用正确的属性
+            var currentBoat = MongoDbService.Instance.GlobalBoats.FirstOrDefault(b => b.CurrentPosition == BoatPosition.CarArea);
             if (currentBoat != null)
             {
-                currentBoat.Status = "已完成";
-                currentBoat.CompleteTime = DateTime.Now;
             }
         }
         #endregion

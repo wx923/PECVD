@@ -6,21 +6,36 @@ using WpfApp4.Models;
 using System.Windows;
 using System;
 using System.Linq;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace WpfApp4.Services
 {
     public class MongoDbService
     {
+        // 添加单例实例
+        private static readonly Lazy<MongoDbService> _instance = 
+            new Lazy<MongoDbService>(() => new MongoDbService());
+        public static MongoDbService Instance => _instance.Value;
+
         private readonly IMongoDatabase _database;
         private readonly IMongoCollection<Boat> _boats;
         private readonly IMongoCollection<BoatMonitor> _monitors;
-        private readonly IMongoCollection<Process> _processes;
-        private readonly IMongoCollection<ProcessReservation> _reservations;
         private readonly IMongoCollection<ProcessExcelModel> _processExcelCollection;
         private readonly IMongoCollection<ProcessFileInfo> _processFileCollection;
 
-        public MongoDbService()
+        // 全局数据集合
+        public ObservableCollection<Boat> GlobalBoats { get; private set; }
+        public ObservableCollection<BoatMonitor> GlobalMonitors { get; private set; }
+        public ObservableCollection<ProcessFileInfo> GlobalProcessFiles { get; private set; }
+
+        private MongoDbService()
         {
+            // 初始化全局集合
+            GlobalBoats = new ObservableCollection<Boat>();
+            GlobalMonitors = new ObservableCollection<BoatMonitor>();
+            GlobalProcessFiles = new ObservableCollection<ProcessFileInfo>();
+
             try
             {
                 var settings = MongoClientSettings.FromConnectionString("mongodb://localhost:27017");
@@ -40,10 +55,6 @@ namespace WpfApp4.Services
                     _database.CreateCollection("Boats");
                 if (!collections.Contains("BoatMonitors"))
                     _database.CreateCollection("BoatMonitors");
-                if (!collections.Contains("Processes"))
-                    _database.CreateCollection("Processes");
-                if (!collections.Contains("ProcessReservations"))
-                    _database.CreateCollection("ProcessReservations");
                 if (!collections.Contains("ProcessExcel"))
                     _database.CreateCollection("ProcessExcel");
                 if (!collections.Contains("ProcessFiles"))
@@ -51,20 +62,11 @@ namespace WpfApp4.Services
 
                 _boats = _database.GetCollection<Boat>("Boats");
                 _monitors = _database.GetCollection<BoatMonitor>("BoatMonitors");
-                _processes = _database.GetCollection<Process>("Processes");
-                _reservations = _database.GetCollection<ProcessReservation>("ProcessReservations");
                 _processExcelCollection = _database.GetCollection<ProcessExcelModel>("ProcessExcel");
                 _processFileCollection = _database.GetCollection<ProcessFileInfo>("ProcessFiles");
-            }
-            catch (MongoConnectionException ex)
-            {
-                MessageBox.Show($"MongoDB连接失败: 请确保MongoDB服务已启动。\n详细信息: {ex.Message}");
-                throw;
-            }
-            catch (TimeoutException ex)
-            {
-                MessageBox.Show($"MongoDB连接超时: 请检查MongoDB服务是否正常运行。\n详细信息: {ex.Message}");
-                throw;
+
+                // 初始化完成后加载数据
+                _ = LoadAllDataAsync();
             }
             catch (Exception ex)
             {
@@ -72,6 +74,93 @@ namespace WpfApp4.Services
                 throw;
             }
         }
+
+        public async Task LoadAllDataAsync()
+        {
+            try
+            {
+                // 清空现有数据
+                GlobalBoats.Clear();
+                GlobalMonitors.Clear();
+                GlobalProcessFiles.Clear();
+
+                // 从数据库加载数据
+                var boats = await _boats.Find(_ => true).ToListAsync();
+                var monitors = await _monitors.Find(_ => true).ToListAsync();
+                var processFiles = await _processFileCollection.Find(_ => true).ToListAsync();
+
+                // 更新集合并添加属性变更事件
+                foreach (var boat in boats)
+                {
+                    boat.PropertyChanged += OnBoatPropertyChanged;
+                    GlobalBoats.Add(boat);
+                }
+
+                foreach (var monitor in monitors)
+                {
+                    monitor.PropertyChanged += OnMonitorPropertyChanged;
+                    GlobalMonitors.Add(monitor);
+                }
+
+                foreach (var processFile in processFiles)
+                {
+                    processFile.PropertyChanged += OnProcessFilePropertyChanged;
+                    GlobalProcessFiles.Add(processFile);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"加载数据失败: {ex.Message}");
+            }
+        }
+
+        #region 属性变更事件处理
+        private async void OnBoatPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (sender is Boat boat)
+            {
+                try
+                {
+                    await UpdateBoatAsync(boat);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"更新舟数据失败: {ex.Message}");
+                }
+            }
+        }
+
+        private async void OnMonitorPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (sender is BoatMonitor monitor)
+            {
+                try
+                {
+                    await UpdateBoatMonitorAsync(monitor);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"更新监控数据失败: {ex.Message}");
+                }
+            }
+        }
+
+        private async void OnProcessFilePropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (sender is ProcessFileInfo processFile)
+            {
+                try
+                {
+                    var filter = Builders<ProcessFileInfo>.Filter.Eq(x => x.Id, processFile.Id);
+                    await _processFileCollection.ReplaceOneAsync(filter, processFile);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"更新工艺文件信息失败: {ex.Message}");
+                }
+            }
+        }
+        #endregion
 
         #region Boat Operations
         // 获取所有舟对象
@@ -94,6 +183,8 @@ namespace WpfApp4.Services
             try
             {
                 await _boats.InsertOneAsync(boat);
+                boat.PropertyChanged += OnBoatPropertyChanged;  // 添加属性变更事件订阅
+                GlobalBoats.Add(boat);
             }
             catch (Exception ex)
             {
@@ -184,6 +275,8 @@ namespace WpfApp4.Services
             try
             {
                 await _monitors.InsertOneAsync(monitor);
+                monitor.PropertyChanged += OnMonitorPropertyChanged;  // 添加属性变更事件订阅
+                GlobalMonitors.Add(monitor);
                 return true;
             }
             catch (Exception ex)
@@ -226,69 +319,6 @@ namespace WpfApp4.Services
         }
         #endregion
 
-        #region Process Operations
-        // 获取所有工艺
-        public async Task<List<Process>> GetAllProcessesAsync()
-        {
-            try
-            {
-                return await _processes.Find(_ => true).ToListAsync();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"获取工艺列表失败: {ex.Message}");
-                return new List<Process>();
-            }
-        }
-
-        // 添加工艺
-        public async Task<bool> AddProcessAsync(Process process)
-        {
-            try
-            {
-                await _processes.InsertOneAsync(process);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"添加工艺失败: {ex.Message}");
-                return false;
-            }
-        }
-
-        // 更新工艺
-        public async Task<bool> UpdateProcessAsync(Process process)
-        {
-            try
-            {
-                var filter = Builders<Process>.Filter.Eq(x => x.ProcessId, process.ProcessId);
-                var result = await _processes.ReplaceOneAsync(filter, process);
-                return result.ModifiedCount > 0;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"更新工艺失败: {ex.Message}");
-                return false;
-            }
-        }
-
-        // 删除工艺
-        public async Task<bool> DeleteProcessAsync(string processId)
-        {
-            try
-            {
-                var filter = Builders<Process>.Filter.Eq(x => x.ProcessId, processId);
-                var result = await _processes.DeleteOneAsync(filter);
-                return result.DeletedCount > 0;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"删除工艺失败: {ex.Message}");
-                return false;
-            }
-        }
-        #endregion
-
         #region Process Excel Operations
         public async Task<List<ProcessExcelModel>> GetAllProcessExcelAsync()
         {
@@ -325,69 +355,6 @@ namespace WpfApp4.Services
             catch (Exception ex)
             {
                 throw new Exception($"更新工艺Excel数据失败: {ex.Message}");
-            }
-        }
-        #endregion
-
-        #region Process Reservation Operations
-        // 获取所有预约
-        public async Task<List<ProcessReservation>> GetAllProcessReservationsAsync()
-        {
-            try
-            {
-                return await _reservations.Find(_ => true).ToListAsync();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"获取预约列表失败: {ex.Message}");
-                return new List<ProcessReservation>();
-            }
-        }
-
-        // 添加预约
-        public async Task<bool> AddProcessReservationAsync(ProcessReservation reservation)
-        {
-            try
-            {
-                await _reservations.InsertOneAsync(reservation);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"添加预约失败: {ex.Message}");
-                return false;
-            }
-        }
-
-        // 更新预约
-        public async Task<bool> UpdateProcessReservationAsync(ProcessReservation reservation)
-        {
-            try
-            {
-                var filter = Builders<ProcessReservation>.Filter.Eq(x => x.Id, reservation.Id);
-                var result = await _reservations.ReplaceOneAsync(filter, reservation);
-                return result.ModifiedCount > 0;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"更新预约失败: {ex.Message}");
-                return false;
-            }
-        }
-
-        // 删除预约
-        public async Task<bool> DeleteProcessReservationAsync(string id)
-        {
-            try
-            {
-                var filter = Builders<ProcessReservation>.Filter.Eq(x => x.Id, id);
-                var result = await _reservations.DeleteOneAsync(filter);
-                return result.DeletedCount > 0;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"删除预约失败: {ex.Message}");
-                return false;
             }
         }
         #endregion
