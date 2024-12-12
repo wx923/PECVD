@@ -358,7 +358,7 @@ namespace WpfApp4.Services
             }
         }
         #endregion
-
+        #region 工艺文件集合更新工艺集合方法
         // 保存新的工艺文件
         public async Task<string> SaveProcessFileAsync(string fileName, string description, List<ProcessExcelModel> data)
         {
@@ -435,6 +435,36 @@ namespace WpfApp4.Services
             catch (Exception ex)
             {
                 throw new Exception($"检查集合是否存在时出错: {ex.Message}");
+            }
+        }
+        #endregion
+
+        /// <summary>
+        /// 重命名集合
+        /// </summary>
+        /// <param name="oldCollectionName">原集合名</param>
+        /// <param name="newCollectionName">新集合名</param>
+        public async Task RenameCollectionAsync(string oldCollectionName, string newCollectionName)
+        {
+            try
+            {
+                // 获取原集合
+                var oldCollection = _database.GetCollection<ProcessExcelModel>(oldCollectionName);
+                var data = await oldCollection.Find(_ => true).ToListAsync();
+
+                // 创建新集合并复制数据
+                var newCollection = _database.GetCollection<ProcessExcelModel>(newCollectionName);
+                if (data.Any())
+                {
+                    await newCollection.InsertManyAsync(data);
+                }
+
+                // 删除旧集合
+                await _database.DropCollectionAsync(oldCollectionName);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"重命名集合失败: {ex.Message}");
             }
         }
     }

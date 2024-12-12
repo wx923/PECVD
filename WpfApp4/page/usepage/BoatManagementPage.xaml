@@ -227,67 +227,144 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <!-- 工艺列表区域 -->
+                <!-- 工艺文件列表区域 -->
                 <Grid Grid.Row="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
 
-                    <Grid Grid.Row="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="工艺列表" 
-                                 Style="{StaticResource MaterialDesignHeadline6TextBlock}"
-                                 Margin="10"/>
-                        <Button Grid.Column="1" 
-                                Content="添加工艺" 
-                                Style="{StaticResource MaterialDesignRaisedButton}"
-                                Margin="10"/>
+                        <!-- 标题和操作按钮 -->
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <TextBlock Grid.Column="0" 
+                                      Text="工艺列表" 
+                                      Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                                      VerticalAlignment="Center"
+                                      FontSize="18"
+                                      FontWeight="Bold"
+                                      Margin="15"/>
+                                      
+                            <Button Grid.Column="2" 
+                                    Command="{Binding SaveProcessFilesCommand}"
+                                    Style="{StaticResource MaterialDesignFlatButton}"
+                                    Background="#2196F3"
+                                    Foreground="White"
+                                    Margin="8">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="ContentSave" 
+                                                           Width="18" 
+                                                           Height="18"
+                                                           VerticalAlignment="Center"/>
+                                    <TextBlock Text="保存修改" 
+                                              Margin="8 0 0 0"
+                                              VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Button>
+                            
+                            <Button Grid.Column="3" 
+                                    Command="{Binding DeleteSelectedProcessFileCommand}"
+                                    Style="{StaticResource MaterialDesignFlatButton}"
+                                    Background="#F44336"
+                                    Foreground="White"
+                                    Margin="8">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Delete" 
+                                                           Width="18" 
+                                                           Height="18"
+                                                           VerticalAlignment="Center"/>
+                                    <TextBlock Text="删除选中" 
+                                              Margin="8 0 0 0"
+                                              VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Button>
+                        </Grid>
+
+                        <!-- DataGrid -->
+                        <DataGrid x:Name="ProcessFilesDataGrid"
+                                 Grid.Row="1"
+                                 ItemsSource="{Binding ProcessFiles}"
+                                 AutoGenerateColumns="False"
+                                 Style="{StaticResource MaterialDesignDataGrid}"
+                                 materialDesign:DataGridAssist.CellPadding="13 8 8 8"
+                                 materialDesign:DataGridAssist.ColumnHeaderPadding="8"
+                                 Background="White"
+                                 BorderBrush="#DDDDDD"
+                                 BorderThickness="1"
+                                 HeadersVisibility="Column"
+                                 GridLinesVisibility="Horizontal"
+                                 HorizontalGridLinesBrush="#EEEEEE"
+                                 CanUserAddRows="False"
+                                 Margin="15"
+                                 ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                 ScrollViewer.VerticalScrollBarVisibility="Auto">
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn Header="选择" Width="60">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}"
+                                                     HorizontalAlignment="Center"
+                                                     VerticalAlignment="Center"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn Header="文件名" 
+                                                  Binding="{Binding FileName, UpdateSourceTrigger=PropertyChanged}" 
+                                                  Width="2*"
+                                                  IsReadOnly="False">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="TextWrapping" Value="Wrap"/>
+                                            <Setter Property="Margin" Value="5"/>
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                    <DataGridTextColumn.EditingElementStyle>
+                                        <Style TargetType="TextBox">
+                                            <Setter Property="TextWrapping" Value="Wrap"/>
+                                            <Setter Property="AcceptsReturn" Value="True"/>
+                                            <Setter Property="Margin" Value="5"/>
+                                        </Style>
+                                    </DataGridTextColumn.EditingElementStyle>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Header="描述" 
+                                                  Binding="{Binding Description, UpdateSourceTrigger=PropertyChanged}" 
+                                                  Width="2*"
+                                                  IsReadOnly="False">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="TextWrapping" Value="Wrap"/>
+                                            <Setter Property="Margin" Value="5"/>
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                    <DataGridTextColumn.EditingElementStyle>
+                                        <Style TargetType="TextBox">
+                                            <Setter Property="TextWrapping" Value="Wrap"/>
+                                            <Setter Property="AcceptsReturn" Value="True"/>
+                                            <Setter Property="Margin" Value="5"/>
+                                        </Style>
+                                    </DataGridTextColumn.EditingElementStyle>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Header="创建时间" 
+                                                  Binding="{Binding CreateTime, StringFormat={}{0:yyyy-MM-dd HH:mm:ss}}" 
+                                                  Width="*"
+                                                  IsReadOnly="True">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="TextWrapping" Value="Wrap"/>
+                                            <Setter Property="Margin" Value="5"/>
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
                     </Grid>
-
-                    <DataGrid Grid.Row="1"
-                             ItemsSource="{Binding Processes}"
-                             SelectedItem="{Binding SelectedProcess}"
-                             AutoGenerateColumns="False"
-                             IsReadOnly="True"
-                             Style="{StaticResource MaterialDesignDataGrid}"
-                             materialDesign:DataGridAssist.CellPadding="13 8 8 8"
-                             materialDesign:DataGridAssist.ColumnHeaderPadding="8"
-                             Margin="10">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="工艺名称" 
-                                              Binding="{Binding ProcessName}"/>
-                            <DataGridTextColumn Header="工艺描述" 
-                                              Binding="{Binding Description}"/>
-                            <DataGridTextColumn Header="标准时长" 
-                                              Binding="{Binding StandardDuration}"/>
-                            <DataGridTextColumn Header="温度" 
-                                              Binding="{Binding Temperature}"/>
-                            <DataGridTextColumn Header="压力" 
-                                              Binding="{Binding Pressure}"/>
-                            <DataGridTemplateColumn Header="操作">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Button Content="编辑"
-                                                    Command="{Binding DataContext.EditProcessCommand, 
-                                                              RelativeSource={RelativeSource AncestorType=Page}}"
-                                                    CommandParameter="{Binding}"
-                                                    Style="{StaticResource MaterialDesignFlatButton}"/>
-                                            <Button Content="删除"
-                                                    Command="{Binding DataContext.DeleteProcessCommand, 
-                                                              RelativeSource={RelativeSource AncestorType=Page}}"
-                                                    CommandParameter="{Binding}"
-                                                    Style="{StaticResource MaterialDesignFlatButton}"/>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                        </DataGrid.Columns>
-                    </DataGrid>
                 </Grid>
 
                 <!-- 工艺预约区域 -->

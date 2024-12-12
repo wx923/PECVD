@@ -190,13 +190,6 @@ namespace WpfApp4
             BtnHome.Style = (Style)FindResource("TopNavigationSelectedButtonStyle");
         }
 
-        private void NavigateToProcessReservationPage(object sender, RoutedEventArgs e)
-        {
-            MainFrame.Navigate(new ProcessReservationPage());
-            LastButtonUI.Style = (Style)FindResource("TopNavigationButtonStyle");
-            LastButtonUI = BtnProcessReservation;
-            BtnProcessReservation.Style = (Style)FindResource("TopNavigationSelectedButtonStyle");
-        }
 
         private void NavigateToBoatManagementPage(object sender, RoutedEventArgs e)
         {

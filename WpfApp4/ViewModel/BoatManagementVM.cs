@@ -35,6 +35,13 @@ namespace WpfApp4.ViewModel
         [ObservableProperty]
         private string _lastOperationStatus;
 
+        // 添加工艺文件相关属性
+        [ObservableProperty]
+        private ObservableCollection<ProcessFileInfo> _processFiles;
+
+        [ObservableProperty]
+        public ObservableCollection<ProcessFileInfo> _selectedProcessFiles = new ObservableCollection<ProcessFileInfo>();
+
         #endregion
 
         #region 构造函数
@@ -48,6 +55,7 @@ namespace WpfApp4.ViewModel
         {
             Boats = new ObservableCollection<Boat>();
             BoatMonitors = new ObservableCollection<BoatMonitor>();
+            ProcessFiles = new ObservableCollection<ProcessFileInfo>();
         }
 
         private async Task InitializeAsync()
@@ -56,7 +64,107 @@ namespace WpfApp4.ViewModel
             if (IsDatabaseConnected)
             {
                 BoatMonitors = MongoDbService.Instance.GlobalMonitors;
+                ProcessFiles = new ObservableCollection<ProcessFileInfo>(await MongoDbService.Instance.GetAllProcessFilesAsync());
                 UpdateOperationStatus("数据加载成功", true);
+            }
+        }
+        #endregion
+
+        #region 工艺文件操作
+        [RelayCommand]
+        private async Task SaveProcessFiles()
+        {
+            try
+            {
+                var selectedFiles = ProcessFiles.Where(f => f.IsSelected).ToList();
+                if (!selectedFiles.Any())
+                {
+                    UpdateOperationStatus("请先选择要修改的工艺文件", false);
+                    return;
+                }
+
+                foreach (var processFile in selectedFiles)
+                {
+                    // 检查新的集合名是否已存在
+                    var newCollectionName = processFile.FileName.Replace(" ", "_")
+                                                              .Replace("-", "_")
+                                                              .Replace(".", "_")
+                                                              .Replace("/", "_")
+                                                              .Replace("\\", "_");
+
+                    // 获取原始工艺文件信息
+                    var processData = await MongoDbService.Instance.GetProcessDataByFileIdAsync(processFile.Id);
+
+                    // 如果文件名发生改变，需要重命名集合
+                    if (processFile.CollectionName != newCollectionName)
+                    {
+                        // 检查新集合名是否已存在
+                        if (await MongoDbService.Instance.CollectionExistsAsync(newCollectionName))
+                        {
+                            UpdateOperationStatus($"已存在名为 {newCollectionName} 的集合", false);
+                            continue;
+                        }
+
+                        // 重命名集合
+                        await MongoDbService.Instance.RenameCollectionAsync(processFile.CollectionName, newCollectionName);
+                    }
+
+                    // 更新工艺文件信息
+                    await MongoDbService.Instance.SaveProcessFileAsync(
+                        processFile.FileName,
+                        processFile.Description,
+                        processData
+                    );
+                    
+                    // 更新本地列表
+                    var index = ProcessFiles.IndexOf(processFile);
+                    if (index != -1)
+                    {
+                        processFile.CollectionName = newCollectionName;
+                        processFile.createTime = DateTime.Now;
+                        ProcessFiles[index] = processFile;
+                    }
+                }
+
+                UpdateOperationStatus($"已成功保存 {selectedFiles.Count} 个工艺文件", true);
+            }
+            catch (Exception ex)
+            {
+                UpdateOperationStatus($"保存工艺文件失败: {ex.Message}", false);
+            }
+        }
+
+        [RelayCommand]
+        private async Task DeleteSelectedProcessFile()
+        {
+            try
+            {
+                var selectedFiles = ProcessFiles.Where(f => f.IsSelected).ToList();
+                if (!selectedFiles.Any())
+                {
+                    UpdateOperationStatus("请先选择要删除的工艺文件", false);
+                    return;
+                }
+
+                var result = MessageBox.Show($"确定要删除选中的 {selectedFiles.Count} 个工艺文件吗？", 
+                    "确认", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                
+                if (result != MessageBoxResult.Yes) return;
+
+                foreach (var processFile in selectedFiles)
+                {
+                    // 删除数据库中的工艺文件
+                    await MongoDbService.Instance.DeleteProcessFileAsync(processFile.Id);
+                    
+                    // 从本地列表中移除
+                    ProcessFiles.Remove(processFile);
+                }
+                
+                UpdateOperationStatus($"已成功删除 {selectedFiles.Count} 个工艺文件", true);
+            }
+            catch (Exception ex)
+            {
+                UpdateOperationStatus($"删除工艺文件失败: {ex.Message}", false);
             }
         }
         #endregion
@@ -145,7 +253,7 @@ namespace WpfApp4.ViewModel
                     return;
                 }
 
-                // 提交新行到数据库
+                // 提交到数据库
                 foreach (var monitor in newRows)
                 {
                     await MongoDbService.Instance.AddBoatMonitorAsync(monitor);
@@ -193,7 +301,7 @@ namespace WpfApp4.ViewModel
 
                 var result = MessageBox.Show($"确定要删除选中的 {selectedMonitors.Count} 个监控对象吗？",
                     "确认删除", MessageBoxButton.YesNo, MessageBoxImage.Question);
-
+                
                 if (result == MessageBoxResult.Yes)
                 {
                     foreach (var monitor in selectedMonitors)
@@ -297,12 +405,12 @@ namespace WpfApp4.ViewModel
 
                 // 重新加载数据以确保显示最新状态
                 await MongoDbService.Instance.LoadAllDataAsync();
-                UpdateOperationStatus("舟对象修改已保存", true);
+                UpdateOperationStatus("舟象修改已保存", true);
             }
             catch (Exception ex)
             {
                 UpdateOperationStatus($"保存舟对象修改失败: {ex.Message}", false);
             }
         }
-    }
+} 
 } 

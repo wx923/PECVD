@@ -124,15 +124,18 @@ namespace WpfApp4.Models
         public string? Id { get; set; }
 
         [ObservableProperty]
-        private string fileName = string.Empty;
+        public string fileName = string.Empty;
 
         [ObservableProperty]
-        private DateTime createTime = DateTime.Now;
+        public DateTime createTime = DateTime.Now;
 
         [ObservableProperty]
-        private string description = string.Empty;
+        public string description = string.Empty;
 
         [ObservableProperty]
-        private string collectionName = string.Empty;
+        public string collectionName = string.Empty;
+
+        [ObservableProperty]
+        public bool isSelected;
     }
 } 

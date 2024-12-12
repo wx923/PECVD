@@ -140,8 +140,7 @@
                 <Button x:Name="BtnControlInterface" Content="控制界面" Style="{StaticResource TopNavigationButtonStyle}" Click="NavigateToControlInterfacePage"/>
                 <Button x:Name="BtnGlobalMonitoring" Content="全局监控" Style="{StaticResource TopNavigationButtonStyle}" Click="NavigateToGlobalMonitoringPage"/>
                 <Button x:Name="BtnProcessMonitoring" Content="工艺监控" Style="{StaticResource TopNavigationButtonStyle}" Click="NavigateToProcessMonitoringPage"/>
-                 <Button x:Name="BtnMonitoringAlarm" Content="监控报警" Style="{StaticResource TopNavigationButtonStyle}" Click="NavigateToMonitoringAlarmPage"/>
-                <Button x:Name="BtnProcessReservation" Content="工艺预约" Style="{StaticResource TopNavigationButtonStyle}" Click="NavigateToProcessReservationPage"/>
+                <Button x:Name="BtnMonitoringAlarm" Content="监控报警" Style="{StaticResource TopNavigationButtonStyle}" Click="NavigateToMonitoringAlarmPage"/>
                 <Button x:Name="BtnProcessManagement" Content="工艺管理" Style="{StaticResource TopNavigationButtonStyle}" Click="NavigateToProcessManagementPage"/>
                 <Button x:Name="BtnBoatManagement" Content="舟管理" Style="{StaticResource TopNavigationButtonStyle}" Click="NavigateToBoatManagementPage"/>
 

@@ -7,98 +7,112 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="1200"
-      Title="Page2">
+      Title="ParameterSettingPage">
 
+    <Page.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Width" Value="45"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Padding" Value="2"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Margin" Value="0,0,2,0"/>
+        </Style>
+    </Page.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10*"></ColumnDefinition>
-            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="9*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="1" ShowGridLines="True" Margin="1.667,0,0.333,-0.333">
-            <StackPanel VerticalAlignment="Center" >
-                <Button Content="设置模式" Height="20" Margin="5 0 5 10" FontSize="10"></Button>
-                <Button Content="设定冷却水报警" Margin="5 0 5 10" Height="20" FontSize="10"></Button>
-                <Button Content="辅热设定" Margin="5 0 5 10" Height="20" FontSize="10"></Button>
-                <Button Content="泵设置" Margin="5 0 5 10" Height="20" FontSize="10"></Button>
-                <Button Content="泵抽气设置" Margin="5 0 5 10" Height="20" FontSize="10"></Button>
-                <Button Content="scrubber管道清洗" Margin="5 0 5 10" Height="20" FontSize="10"></Button>
-                <Button Content="清洗气体设置" Margin="5 0 5 10" Height="20" FontSize="10"></Button>
-                <Button Content="MFC量程设置" Margin="5 0 5 10" Height="20"  FontSize="10"></Button>
-                <Button Content="流量/压力报警设置" Margin="5 0 5 10" Height="20"  FontSize="10"></Button>
-                <Button Content="清洗设置" Margin="5 0 5 10" Height="20"  FontSize="10"></Button>
-                <Button Content="射频参数设置" Margin="5 0 5 10" Height="20"  FontSize="10"></Button>
-                <Button Content="射频报警参数设置" Margin="5 0 5 10" Height="20"  FontSize="10"></Button>
-                <Button Content="蝶阀角度设置" Margin="5 0 5 10" Height="20"   FontSize="10"></Button>
-                <Button Content="功率补偿设置" Margin="5 0 5 10" Height="20"  FontSize="10"></Button>
+        <Grid Grid.Column="1" ShowGridLines="True" Margin="2">
+            <StackPanel VerticalAlignment="Center">
+                <Button Content="设置模式" Height="30" Margin="5" FontSize="12"/>
+                <Button Content="设定冷却水报警" Height="30" Margin="5" FontSize="12"/>
+                <Button Content="辅热设定" Height="30" Margin="5" FontSize="12"/>
+                <Button Content="泵设置" Height="30" Margin="5" FontSize="12"/>
+                <Button Content="泵抽气设置" Height="30" Margin="5" FontSize="12"/>
+                <Button Content="scrubber管道清洗" Height="30" Margin="5" FontSize="12"/>
+                <Button Content="清洗气体设置" Height="30" Margin="5" FontSize="12"/>
+                <Button Content="MFC量程设置" Height="30" Margin="5" FontSize="12"/>
+                <Button Content="流量/压力报警设置" Height="30" Margin="5" FontSize="12"/>
+                <Button Content="清洗设置" Height="30" Margin="5" FontSize="12"/>
+                <Button Content="射频参数设置" Height="30" Margin="5" FontSize="12"/>
+                <Button Content="射频报警参数设置" Height="30" Margin="5" FontSize="12"/>
+                <Button Content="蝶阀角度设置" Height="30" Margin="5" FontSize="12"/>
+                <Button Content="功率补偿设置" Height="30" Margin="5" FontSize="12"/>
             </StackPanel>
         </Grid>
-        <Grid Grid.Column="0" Margin="0,0,0.333,-0.333">
+        <Grid Grid.Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="2*"></RowDefinition>
-                <RowDefinition Height="6*"></RowDefinition>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="7*"/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0" >
+            <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="270"></ColumnDefinition>
-                    <ColumnDefinition Width="300"></ColumnDefinition>
-                    <ColumnDefinition Width="380"></ColumnDefinition>
-                    <ColumnDefinition Width="130"></ColumnDefinition>
+                    <ColumnDefinition Width="2.5*"/>
+                    <ColumnDefinition Width="2.5*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0" Grid.Row="0" Margin="5 0 5 0" >
+                <Grid Grid.Column="0" Margin="5">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="25"></RowDefinition>
-                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0" Content="温控参数设定" FontSize="10"></Label>
-                    <materialDesign:Card Grid.Row="1" Grid.RowSpan="2"  Padding="2">
-                        <Grid Grid.Row=" 1">
+                    <Label Grid.Row="0" Content="温控参数设定" FontSize="12" Margin="0,0,0,5"/>
+                    <materialDesign:Card Grid.Row="1" Padding="8">
+                        <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="110" ></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="120" />
+                                <ColumnDefinition />
                             </Grid.ColumnDefinitions>
-                            <StackPanel Grid.Column=" 0"  >
-                                <Grid Height="20" Margin=" 0  0  0 3">
-                                    <TextBlock Height="15" Text="最大温度" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                    <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                            <StackPanel Grid.Column="0">
+                                <Grid Height="25" Margin="0 0 0 5">
+                                    <TextBlock Height="20" Text="最大温度" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="12"></TextBlock>
+                                    <TextBox></TextBox>
                                 </Grid>
-                                <Grid Height="20" Margin=" 0  0  0 3">
-                                    <TextBlock Height="15" Text="偏差范围低" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                    <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                <Grid Height="25" Margin="0 0 0 5">
+                                    <TextBlock Height="20" Text="偏差范围低" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="12"></TextBlock>
+                                    <TextBox></TextBox>
                                 </Grid>
-                                <Grid Height="20" Margin=" 0  0  0 3">
-                                    <TextBlock Height="15" Text="偏差范围高" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                    <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                <Grid Height="25" Margin="0 0 0 5">
+                                    <TextBlock Height="20" Text="偏差范围高" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="12"></TextBlock>
+                                    <TextBox></TextBox>
                                 </Grid>
-                                <Grid Height="20" Margin=" 0  0  0 3">
-                                    <TextBlock Height="15" Text="温度补偿" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                    <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                <Grid Height="25" Margin="0 0 0 5">
+                                    <TextBlock Height="20" Text="温度补偿" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="12"></TextBlock>
+                                    <TextBox></TextBox>
                                 </Grid>
-                                <Grid Height="20" Margin=" 0  0  0 3">
-                                    <TextBlock Height="15" Text="电流设置" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                    <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                <Grid Height="25" Margin="0 0 0 5">
+                                    <TextBlock Height="20" Text="电流设置" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="12"></TextBlock>
+                                    <TextBox></TextBox>
                                 </Grid>
                             </StackPanel>
-                            <StackPanel Grid.Column=" 1" Margin="5 0 5 0">
-                                <Grid Height="20" Margin=" 0  0  0 3">
-                                    <TextBlock Height="15" Text="温度偏差延时" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                    <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                            <StackPanel Grid.Column="1" Margin="10 0 5 0">
+                                <Grid Height="25" Margin="0 0 0 5">
+                                    <TextBlock Height="20" Text="温度偏差延时" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="12"></TextBlock>
+                                    <TextBox></TextBox>
                                 </Grid>
-                                <Grid Height="20" Margin=" 0  0  0 3">
-                                    <TextBlock Height="15" Text="升温限制" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                    <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                <Grid Height="25" Margin="0 0 0 5">
+                                    <TextBlock Height="20" Text="升温限制" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="12"></TextBlock>
+                                    <TextBox></TextBox>
                                 </Grid>
-                                <Grid Height="20" Margin=" 0  0  0 3">
-                                    <TextBlock Height="15" Text="降温限制" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                    <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                <Grid Height="25" Margin="0 0 0 5">
+                                    <TextBlock Height="20" Text="降温限制" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="12"></TextBlock>
+                                    <TextBox></TextBox>
                                 </Grid>
-                                <Grid Height="20" Margin=" 0  0  0 3">
-                                    <TextBlock Height="15" Text="尾排超温报警范围" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                    <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                <Grid Height="25" Margin="0 0 0 5">
+                                    <TextBlock Height="20" Text="尾排超温报警范围" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="12"></TextBlock>
+                                    <TextBox></TextBox>
                                 </Grid>
-                                <Grid Height="20" Margin=" 0  0  0 3">
-                                    <TextBlock Height="15" Text="尾排超温警告范围" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                    <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                <Grid Height="25" Margin="0 0 0 5">
+                                    <TextBlock Height="20" Text="尾排超温警告范围" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="12"></TextBlock>
+                                    <TextBox></TextBox>
                                 </Grid>
                             </StackPanel>
                         </Grid>
@@ -110,47 +124,47 @@
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
                     <Label Grid.Row="0" Grid.Column="0" Content="冷却水报警参数设置" FontSize="10"></Label>
-                    <materialDesign:Card Grid.RowSpan="2"  Padding="2" Margin="0,25,0,-0.333">
-                        <Grid Grid.Row=" 1">
+                    <materialDesign:Card Grid.RowSpan="2" Padding="2" Margin="0,25,0,-0.333">
+                        <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="140"></ColumnDefinition>
                                 <ColumnDefinition Width="140"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
 
-                            <StackPanel Grid.Column=" 0" >
-                                <Grid Height="20" Margin=" 0  0  0 3">
-                                    <TextBlock Height="15" Text="冷却水黄灯警告时间" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                    <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                            <StackPanel Grid.Column="0">
+                                <Grid Height="20" Margin="0 0 0 3">
+                                    <TextBlock Height="15" Text="冷却水黄灯警告时间" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                    <TextBox></TextBox>
                                 </Grid>
-                                <Grid Height="20" Margin=" 0  0  0 3">
-                                    <TextBlock Height="15" Text="冷却水红灯警告时间" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                    <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                <Grid Height="20" Margin="0 0 0 3">
+                                    <TextBlock Height="15" Text="冷却水红灯警告时间" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                    <TextBox></TextBox>
                                 </Grid>
-                                <Grid Height="20" Margin=" 0  0  0 3">
-                                    <TextBlock Height="15" Text="冷却水流量警告下限" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                    <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                <Grid Height="20" Margin="0 0 0 3">
+                                    <TextBlock Height="15" Text="冷却水流量警告下限" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                    <TextBox></TextBox>
                                 </Grid>
-                                <Grid Height="20" Margin=" 0  0  0 3">
-                                    <TextBlock Height="15" Text="冷却水流量报警下限" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                    <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                <Grid Height="20" Margin="0 0 0 3">
+                                    <TextBlock Height="15" Text="冷却水流量报警下限" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                    <TextBox></TextBox>
                                 </Grid>
-                                <Grid Height="20" Margin=" 0  0  0 3">
-                                    <TextBlock Height="15" Text="冷却水温度警告下限" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                    <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                <Grid Height="20" Margin="0 0 0 3">
+                                    <TextBlock Height="15" Text="冷却水温度警告下限" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                    <TextBox></TextBox>
                                 </Grid>
                             </StackPanel>
-                            <StackPanel Grid.Column=" 1" Margin="5 0 0 0">
-                                <Grid Height="20" Margin=" 0  0  0 3">
-                                    <TextBlock Height="15" Text="冷却水温度报警下限" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                    <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                            <StackPanel Grid.Column="1" Margin="5 0 0 0">
+                                <Grid Height="20" Margin="0 0 0 3">
+                                    <TextBlock Height="15" Text="冷却水温度报警下限" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                    <TextBox></TextBox>
                                 </Grid>
-                                <Grid Height="20" Margin=" 0  0  0 3">
-                                    <TextBlock Height="15" Text="冷却水温度警告上限" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                    <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                <Grid Height="20" Margin="0 0 0 3">
+                                    <TextBlock Height="15" Text="冷却水温度警告上限" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                    <TextBox></TextBox>
                                 </Grid>
-                                <Grid Height="20" Margin=" 0  0  0 3">
-                                    <TextBlock Height="15" Text="冷却水温度报警上限" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                    <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                <Grid Height="20" Margin="0 0 0 3">
+                                    <TextBlock Height="15" Text="冷却水温度报警上限" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                    <TextBox></TextBox>
                                 </Grid>
                             </StackPanel>
                         </Grid>
@@ -162,73 +176,73 @@
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
                     <Label Grid.Row="0" Grid.Column="0" Content="辅热设定" FontSize="10"></Label>
-                    <materialDesign:Card Grid.Row="1" Grid.RowSpan="2"  Padding="2">
-                        <Grid Grid.Row=" 1">
+                    <materialDesign:Card Grid.Row="1" Grid.RowSpan="2" Padding="2">
+                        <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition></ColumnDefinition>
                                 <ColumnDefinition Width="160"></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <StackPanel Grid.Column=" 0"  >
-                                <Grid Height="20" Margin=" 0  0  0 3">
-                                    <TextBlock Height="15" Text="辅热设定时间" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                    <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                            <StackPanel Grid.Column="0">
+                                <Grid Height="20" Margin="0 0 0 3">
+                                    <TextBlock Height="15" Text="辅热设定时间" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                    <TextBox></TextBox>
                                 </Grid>
-                                <Grid Height="20" Margin=" 0  0  0 3">
-                                    <TextBlock Height="15" Text="A相输出MV" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                    <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                <Grid Height="20" Margin="0 0 0 3">
+                                    <TextBlock Height="15" Text="A相输出MV" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                    <TextBox></TextBox>
                                 </Grid>
-                                <Grid Height="20" Margin=" 0  0  0 3">
-                                    <TextBlock Height="15" Text="B相输出MV" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                    <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                <Grid Height="20" Margin="0 0 0 3">
+                                    <TextBlock Height="15" Text="B相输出MV" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                    <TextBox></TextBox>
                                 </Grid>
-                                <Grid Height="20" Margin=" 0  0  0 3">
-                                    <TextBlock Height="15" Text="C相输出MV" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                    <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                <Grid Height="20" Margin="0 0 0 3">
+                                    <TextBlock Height="15" Text="C相输出MV" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                    <TextBox></TextBox>
                                 </Grid>
-                                <Grid Height="20" Margin=" 0  0  0 3">
-                                    <TextBlock Height="15" Text="辅热开启延时" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                    <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
-                                </Grid>
-                            </StackPanel>
-                            <StackPanel Grid.Column=" 1" Margin="5 0 0 0">
-                                <Grid Height="20" Margin=" 0  0  0 3">
-                                    <TextBlock Height="15" Text="辅热检测延时" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                    <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
-                                </Grid>
-                                <Grid Height="20" Margin=" 0  0  0 3">
-                                    <TextBlock Height="15" Text="辅热电流差上限" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                    <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
-                                </Grid>
-                                <Grid Height="20" Margin=" 0  0  0 3">
-                                    <TextBlock Height="15" Text="辅热异常工艺保持时间" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                    <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
-                                </Grid>
-                                <Grid Height="20" Margin=" 0  0  0 3">
-                                    <TextBlock Height="15" Text="A相电流上限" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                    <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
-                                </Grid>
-                                <Grid Height="20" Margin=" 0  0  0 3">
-                                    <TextBlock Height="15" Text="B相电流上限" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                    <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                <Grid Height="20" Margin="0 0 0 3">
+                                    <TextBlock Height="15" Text="辅热开启延时" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                    <TextBox></TextBox>
                                 </Grid>
                             </StackPanel>
-                            <StackPanel Grid.Column=" 2" Margin="5 0 5 0">
-                                <Grid Height="20" Margin=" 0  0  0 3">
-                                    <TextBlock Height="15" Text="C相电流上限" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                    <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                            <StackPanel Grid.Column="1" Margin="5 0 0 0">
+                                <Grid Height="20" Margin="0 0 0 3">
+                                    <TextBlock Height="15" Text="辅热检测延时" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                    <TextBox></TextBox>
                                 </Grid>
-                                <Grid Height="20" Margin=" 0  0  0 3">
-                                    <TextBlock Height="15" Text="A相电流下限" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                    <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                <Grid Height="20" Margin="0 0 0 3">
+                                    <TextBlock Height="15" Text="辅热电流差上限" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                    <TextBox></TextBox>
                                 </Grid>
-                                <Grid Height="20" Margin=" 0  0  0 3">
-                                    <TextBlock Height="15" Text="B相电流下限" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                    <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                <Grid Height="20" Margin="0 0 0 3">
+                                    <TextBlock Height="15" Text="辅热异常工艺保持时间" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                    <TextBox></TextBox>
                                 </Grid>
-                                <Grid Height="20" Margin=" 0  0  0 3">
-                                    <TextBlock Height="15" Text="C相电流下限" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                    <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                <Grid Height="20" Margin="0 0 0 3">
+                                    <TextBlock Height="15" Text="A相电流上限" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                    <TextBox></TextBox>
+                                </Grid>
+                                <Grid Height="20" Margin="0 0 0 3">
+                                    <TextBlock Height="15" Text="B相电流上限" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                    <TextBox></TextBox>
+                                </Grid>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2" Margin="5 0 5 0">
+                                <Grid Height="20" Margin="0 0 0 3">
+                                    <TextBlock Height="15" Text="C相电流上限" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                    <TextBox></TextBox>
+                                </Grid>
+                                <Grid Height="20" Margin="0 0 0 3">
+                                    <TextBlock Height="15" Text="A相电流下限" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                    <TextBox></TextBox>
+                                </Grid>
+                                <Grid Height="20" Margin="0 0 0 3">
+                                    <TextBlock Height="15" Text="B相电流下限" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                    <TextBox></TextBox>
+                                </Grid>
+                                <Grid Height="20" Margin="0 0 0 3">
+                                    <TextBlock Height="15" Text="C相电流下限" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                    <TextBox></TextBox>
                                 </Grid>
                             </StackPanel>
                         </Grid>
@@ -240,19 +254,19 @@
                         <RowDefinition Height="auto"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Label Grid.Row="0" Content="伴热设置" FontSize="10"></Label>
-                    <materialDesign:Card Grid.Row="1" Grid.RowSpan="2"  Padding="2">
+                    <materialDesign:Card Grid.Row="1" Grid.RowSpan="2" Padding="2">
                         <StackPanel Grid.Row="1" VerticalAlignment="Top" Margin="0 0 5 0">
-                            <Grid Height="20" Margin=" 0  0  0 3">
-                                <TextBlock Height="15" Text="目标温度设置" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                            <Grid Height="20" Margin="0 0 0 3">
+                                <TextBlock Height="15" Text="目标温度设置" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                <TextBox></TextBox>
                             </Grid>
-                            <Grid Height="20" Margin=" 0  0  0 3">
-                                <TextBlock Height="15" Text="上限报警设定" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                            <Grid Height="20" Margin="0 0 0 3">
+                                <TextBlock Height="15" Text="上限报警设定" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                <TextBox></TextBox>
                             </Grid>
-                            <Grid Height="20" Margin=" 0  0  0 3">
-                                <TextBlock Height="15" Text="下限报警设定" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                            <Grid Height="20" Margin="0 0 0 3">
+                                <TextBlock Height="15" Text="下限报警设定" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                <TextBox></TextBox>
                             </Grid>
                         </StackPanel>
                     </materialDesign:Card>
@@ -263,12 +277,12 @@
                     <ColumnDefinition Width="780"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0" Margin="0,0,0.333,-0.333" >
+                <Grid Grid.Column="0" Margin="0,0,0.333,-0.333">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"></RowDefinition>
                         <RowDefinition Height="2*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Grid Grid.Row="0" >
+                    <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="300"></ColumnDefinition>
                             <ColumnDefinition Width="139.333"></ColumnDefinition>
@@ -281,46 +295,46 @@
                                 <RowDefinition Height="auto"></RowDefinition>
                             </Grid.RowDefinitions>
                             <Label Grid.Row="0" Grid.Column="0" Content="泵配置" FontSize="10"></Label>
-                            <materialDesign:Card Grid.Row="1" Grid.RowSpan="2"  Padding="2" Height="auto">
-                                <Grid Grid.Row=" 1">
+                            <materialDesign:Card Grid.Row="1" Grid.RowSpan="2" Padding="2" Height="auto">
+                                <Grid Grid.Row="1">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition ></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
                                         <ColumnDefinition></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    <StackPanel Grid.Column=" 0" Height="auto">
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="泵后压力上限警告范围" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                    <StackPanel Grid.Column="0" Height="auto">
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="泵后压力上限警告范围" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="泵后压力上限报警范围" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="泵后压力上限报警范围" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="泵1电路上限（0.1A）" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="泵1电路上限（0.1A）" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="泵2电路上限（0.1A）" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="泵2电路上限（0.1A）" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
                                     </StackPanel>
-                                    <StackPanel Grid.Column=" 1" Margin="5 0 0 0" Height="auto">
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="真空泵频率1设定" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                    <StackPanel Grid.Column="1" Margin="5 0 0 0" Height="auto">
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="真空泵频率1设定" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="真空泵频率2设定" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="真空泵频率2设定" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="真空泵节能频率1设定" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="真空泵节能频率1设定" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="真空泵节能频率2设定" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="真空泵节能频率2设定" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
                                     </StackPanel>
                                 </Grid>
@@ -332,24 +346,24 @@
                                 <RowDefinition Height="auto"></RowDefinition>
                             </Grid.RowDefinitions>
                             <Label Grid.Row="0" Grid.Column="0" Content="泵抽气设置" FontSize="10"></Label>
-                            <materialDesign:Card Grid.Row="1" Grid.RowSpan="2"  Padding="2">
-                                <Grid Grid.Row=" 1" Margin="0 0 3 0">
-                                    <StackPanel Grid.Column=" 0" >
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="主抽预抽转换压力" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                            <materialDesign:Card Grid.Row="1" Grid.RowSpan="2" Padding="2">
+                                <Grid Grid.Row="1" Margin="0 0 3 0">
+                                    <StackPanel Grid.Column="0">
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="主抽预抽转换压力" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="主抽切换压力" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="主抽切换压力" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="充氮回压开启压力" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="充氮回压开启压力" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="待料抽空时间" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="待料抽空时间" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
                                     </StackPanel>
                                 </Grid>
@@ -361,24 +375,24 @@
                                 <RowDefinition Height="auto"></RowDefinition>
                             </Grid.RowDefinitions>
                             <Label Grid.Row="0" Grid.Column="0" Content="Scrubber管道清洗" FontSize="10"></Label>
-                            <materialDesign:Card Grid.Row="1" Grid.RowSpan="2"  Padding="2">
-                                <Grid Grid.Row=" 1">
-                                    <StackPanel Grid.Column=" 0" Margin="0 0 3 0">
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="保持底压时间" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                            <materialDesign:Card Grid.Row="1" Grid.RowSpan="2" Padding="2">
+                                <Grid Grid.Row="1">
+                                    <StackPanel Grid.Column="0" Margin="0 0 3 0">
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="保持底压时间" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="回压氮气流量" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="回压氮气流量" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="循环次数" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="循环次数" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="回压氮气时间" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="回压氮气时间" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
                                     </StackPanel>
                                 </Grid>
@@ -391,25 +405,25 @@
                             </Grid.RowDefinitions>
                             <Label Grid.Row="0" Grid.Column="0" Content="清洗气体设置" FontSize="10"></Label>
                             <materialDesign:Card Grid.Row="1" Grid.RowSpan="2" Background="LightCyan" Padding="2">
-                                <Grid Grid.Row=" 1">
+                                <Grid Grid.Row="1">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="90"></ColumnDefinition>
-                                        <ColumnDefinition ></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    <StackPanel Grid.Column=" 0" >
-                                        <CheckBox Height="20" Content="硅烷循环清洗"  FontSize="10"></CheckBox>
-                                        <CheckBox Height="20" Content="氢气循环清洗"  FontSize="10"></CheckBox>
-                                        <CheckBox Height="20" Content="笑气循环清洗"  FontSize="10"></CheckBox>
-                                        <CheckBox Height="20" Content="甲烷循环清洗"  FontSize="10"></CheckBox>
-                                        <CheckBox Height="20" Content="硼烷循环清洗"  FontSize="10"></CheckBox>
-                                        <CheckBox Height="20" Content="氧气循环清洗"  FontSize="10"></CheckBox>
+                                    <StackPanel Grid.Column="0">
+                                        <CheckBox Height="20" Content="硅烷循环清洗" FontSize="10"></CheckBox>
+                                        <CheckBox Height="20" Content="氢气循环清洗" FontSize="10"></CheckBox>
+                                        <CheckBox Height="20" Content="笑气循环清洗" FontSize="10"></CheckBox>
+                                        <CheckBox Height="20" Content="甲烷循环清洗" FontSize="10"></CheckBox>
+                                        <CheckBox Height="20" Content="硼烷循环清洗" FontSize="10"></CheckBox>
+                                        <CheckBox Height="20" Content="氧气循环清洗" FontSize="10"></CheckBox>
                                     </StackPanel>
-                                    <StackPanel Grid.Column=" 1" Margin="5 0 0 0">
-                                        <CheckBox Height="20" Content="氢气循环清洗"  FontSize="10"></CheckBox>
-                                        <CheckBox Height="20" Content="磷烷循环清洗"  FontSize="10"></CheckBox>
-                                        <CheckBox Height="20" Content="氩气循环清洗"  FontSize="10"></CheckBox>
-                                        <CheckBox Height="20" Content="三氟化铵循环清洗"  FontSize="10"></CheckBox>
-                                        <CheckBox Height="20" Content="二氧化碳循环清洗"  FontSize="10"></CheckBox>
+                                    <StackPanel Grid.Column="1" Margin="5 0 0 0">
+                                        <CheckBox Height="20" Content="氢气循环清洗" FontSize="10"></CheckBox>
+                                        <CheckBox Height="20" Content="磷烷循环清洗" FontSize="10"></CheckBox>
+                                        <CheckBox Height="20" Content="氩气循环清洗" FontSize="10"></CheckBox>
+                                        <CheckBox Height="20" Content="三氟化铵循环清洗" FontSize="10"></CheckBox>
+                                        <CheckBox Height="20" Content="二氧化碳循环清洗" FontSize="10"></CheckBox>
                                     </StackPanel>
                                 </Grid>
                             </materialDesign:Card>
@@ -427,259 +441,330 @@
                                 <RowDefinition Height="auto"></RowDefinition>
                             </Grid.RowDefinitions>
                             <Label Grid.Row="0" Grid.Column="0" Content="MFC量程设置" FontSize="10"></Label>
-                            <materialDesign:Card Grid.Row="1" Grid.RowSpan="2"  Padding="2">
-                                <Grid Grid.Row=" 1">
+                            <materialDesign:Card Grid.Row="1" Grid.RowSpan="2" Padding="2">
+                                <Grid Grid.Row="1">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition></ColumnDefinition>
                                         <ColumnDefinition></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    <StackPanel Grid.Column=" 0" >
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="N2量程" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                    <StackPanel Grid.Column="0">
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="N2量程" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="SiH4量程设置" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="SiH4量程设置" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="NH3量程" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="NH3量程" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="N2O量程" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="N2O量程" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="CH4量程" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="CH4量程" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="B2H6量程" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="B2H6量程" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="O2量程" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="O2量程" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="H2量程" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="H2量程" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="PH3量程" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="PH3量程" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
                                     </StackPanel>
-                                    <StackPanel Grid.Column=" 1" Margin="5 0 5 0">
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="N2(2)量程" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                    <StackPanel Grid.Column="1" Margin="5 0 5 0">
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="N2(2)量程" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="Ar量程" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="Ar量程" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="NF3量程" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="NF3量程" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="CO2量程" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="CO2量程" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="SiH4(2)量程" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="SiH4(2)量程" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="H2(2)量程" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="H2(2)量程" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
                                     </StackPanel>
                                 </Grid>
                             </materialDesign:Card>
                         </Grid>
-                        <Grid Grid.Column="2" Margin="5 0  5  5">
+                        <Grid Grid.Column="2" Margin="5 0 5 5">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="25"></RowDefinition>
                                 <RowDefinition Height="auto"></RowDefinition>
                             </Grid.RowDefinitions>
                             <Label Grid.Row="0" Grid.Column="0" Content="射频报警参数设置" FontSize="10"></Label>
-                            <materialDesign:Card Grid.Row="1"  Padding="2">
-                                <Grid Grid.Row=" 1">
+                            <materialDesign:Card Grid.Row="1" Padding="2">
+                                <Grid Grid.Row="1">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="110"></ColumnDefinition>
                                         <ColumnDefinition></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    <StackPanel Grid.Column=" 0" Margin="5 0 0 0 ">
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="功率/偏差" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                    <StackPanel Grid.Column="0" Margin="5 0 0 0">
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="功率/偏差" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="范围（%）" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="范围（%）" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="电压/偏差" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="电压/偏差" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="范围（V）" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="范围（V）" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="电流/偏差" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="电流/偏差" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="电压下限（A）" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="电压下限（A）" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="电压上限（A）" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="电压上限（A）" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="电流下限（A）" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="电流下限（A）" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="电流上限（A)" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="电流上限（A)" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="辉光延时（s）" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="辉光延时（s）" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
                                     </StackPanel>
-                                    <StackPanel Grid.Column=" 2" Margin="5 0 5 0">
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="报警延时" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                    <StackPanel Grid.Column="2" Margin="5 0 5 0">
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="报警延时" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="打弧1范围（电源1）" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="打弧1范围（电源1）" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="打弧2范围（电源1）" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="打弧2范围（电源1）" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="打弧3范围（电源1）" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="打弧3范围（电源1）" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="打弧1警告范围（电源1）" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="打弧1警告范围（电源1）" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="打弧2警告范围（电源1)" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="打弧2警告范围（电源1)" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="频率（电源1）" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="频率（电源1）" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="Lmax系数（最大负载电流）" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="Lmax系数（最大负载电流）" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="dU系数（占空比）" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="dU系数（占空比）" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
                                     </StackPanel>
                                 </Grid>
                             </materialDesign:Card>
                         </Grid>
 
-                        <Grid Grid.Column="1" Margin=" 5 0 0 5">
+                        <Grid Grid.Column="1" Margin="5 0 0 5">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="25"></RowDefinition>
                                 <RowDefinition Height="auto"></RowDefinition>
                             </Grid.RowDefinitions>
                             <Label Grid.Row="0" Grid.Column="0" Content="流量/压力报警设置" FontSize="10" Margin="0,0,0.333,0.333"></Label>
-                            <materialDesign:Card Grid.RowSpan="3"  Padding="2" Margin="0,25,0.333,0.333">
-                                <Grid Grid.Row=" 1" >
+                            <materialDesign:Card Grid.RowSpan="3" Padding="2" Margin="0,25,0.333,0.333">
+                                <Grid Grid.Row="1">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="110"></ColumnDefinition>
                                         <ColumnDefinition></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    <StackPanel Grid.Column=" 0" >
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="N2偏差(%)" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                    <StackPanel Grid.Column="0">
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="N2偏差(%)" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="SiH4偏差(%)" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="SiH4偏差(%)" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="NHS偏差(%)" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="NHS偏差(%)" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="R2O偏差(%)" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="R2O偏差(%)" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="CH4偏差(%)" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="CH4偏差(%)" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="B2H6偏差(%)" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="B2H6偏差(%)" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="O2偏差(%)" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="O2偏差(%)" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="H2偏差(%)" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="H2偏差(%)" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
-                                        <Grid Height="20" Margin=" 0  0  0 3">
-                                            <TextBlock Height="15" Text="PH3偏差(%)" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <Grid Height="20" Margin="0 0 0 3">
+                                            <TextBlock Height="15" Text="PH3偏差(%)" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                            <TextBox></TextBox>
                                         </Grid>
                                     </StackPanel>
-                                    <StackPanel Grid.Column=" 1" Margin="5 0 5 0">
+                                    <StackPanel Grid.Column="1" Margin="5 0 5 0">
                                         <Grid Height="20" Margin=" 0  0  0 3">
                                             <TextBlock Height="15" Text="AF偏差(%)" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                            <TextBox></TextBox>
                                         </Grid>
                                         <Grid Height="20" Margin=" 0  0  0 3">
                                             <TextBlock Height="15" Text="NF3偏差(%)" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                            <TextBox></TextBox>
                                         </Grid>
                                         <Grid Height="20" Margin=" 0  0  0 3">
                                             <TextBlock Height="15" Text="CO2偏差(%)" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                            <TextBox></TextBox>
                                         </Grid>
                                         <Grid Height="20" Margin=" 0  0  0 3">
                                             <TextBlock Height="15" Text="报警延时" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                            <TextBox></TextBox>
                                         </Grid>
                                         <Grid Height="20" Margin=" 0  0  0 3">
                                             <TextBlock Height="15" Text="压力偏差范围" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                            <TextBox></TextBox>
                                         </Grid>
                                         <Grid Height="20" Margin=" 0  0  0 3">
                                             <TextBlock Height="15" Text="底压设置" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                            <TextBox></TextBox>
                                         </Grid>
                                         <Grid Height="20" Margin=" 0  0  0 3">
                                             <TextBlock Height="15" Text="漏率设定" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                            <TextBox></TextBox>
                                         </Grid>
                                         <Grid Height="20" Margin=" 0  0  0 3">
                                             <TextBlock Height="15" Text="薄膜加低压力值" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                            <TextBox></TextBox>
                                         </Grid>
-
+                                        <StackPanel Grid.Column=" 0" >
+                                            <Grid Height="20" Margin=" 0  0  0 3">
+                                                <TextBlock Height="15" Text="N2偏差(%)" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
+                                                <TextBox></TextBox>
+                                            </Grid>
+                                            <Grid Height="20" Margin=" 0  0  0 3">
+                                                <TextBlock Height="15" Text="SiH4偏差(%)" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
+                                                <TextBox></TextBox>
+                                            </Grid>
+                                            <Grid Height="20" Margin=" 0  0  0 3">
+                                                <TextBlock Height="15" Text="NHS偏差(%)" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
+                                                <TextBox></TextBox>
+                                            </Grid>
+                                            <Grid Height="20" Margin=" 0  0  0 3">
+                                                <TextBlock Height="15" Text="R2O偏差(%)" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
+                                                <TextBox></TextBox>
+                                            </Grid>
+                                            <Grid Height="20" Margin=" 0  0  0 3">
+                                                <TextBlock Height="15" Text="CH4偏差(%)" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
+                                                <TextBox></TextBox>
+                                            </Grid>
+                                            <Grid Height="20" Margin=" 0  0  0 3">
+                                                <TextBlock Height="15" Text="B2H6偏差(%)" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
+                                                <TextBox></TextBox>
+                                            </Grid>
+                                            <Grid Height="20" Margin=" 0  0  0 3">
+                                                <TextBlock Height="15" Text="O2偏差(%)" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
+                                                <TextBox></TextBox>
+                                            </Grid>
+                                            <Grid Height="20" Margin=" 0  0  0 3">
+                                                <TextBlock Height="15" Text="H2偏差(%)" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
+                                                <TextBox></TextBox>
+                                            </Grid>
+                                            <Grid Height="20" Margin=" 0  0  0 3">
+                                                <TextBlock Height="15" Text="PH3偏差(%)" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
+                                                <TextBox></TextBox>
+                                            </Grid>
+                                        </StackPanel>
+                                        <StackPanel Grid.Column=" 1" Margin="5 0 5 0">
+                                            <Grid Height="20" Margin=" 0  0  0 3">
+                                                <TextBlock Height="15" Text="AF偏差(%)" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
+                                                <TextBox></TextBox>
+                                            </Grid>
+                                            <Grid Height="20" Margin=" 0  0  0 3">
+                                                <TextBlock Height="15" Text="NF3偏差(%)" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
+                                                <TextBox></TextBox>
+                                            </Grid>
+                                            <Grid Height="20" Margin=" 0  0  0 3">
+                                                <TextBlock Height="15" Text="CO2偏差(%)" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
+                                                <TextBox></TextBox>
+                                            </Grid>
+                                            <Grid Height="20" Margin=" 0  0  0 3">
+                                                <TextBlock Height="15" Text="报警延时" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
+                                                <TextBox></TextBox>
+                                            </Grid>
+                                            <Grid Height="20" Margin=" 0  0  0 3">
+                                                <TextBlock Height="15" Text="压力偏差范围" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
+                                                <TextBox></TextBox>
+                                            </Grid>
+                                            <Grid Height="20" Margin=" 0  0  0 3">
+                                                <TextBlock Height="15" Text="底压设置" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
+                                                <TextBox></TextBox>
+                                            </Grid>
+                                            <Grid Height="20" Margin=" 0  0  0 3">
+                                                <TextBlock Height="15" Text="漏率设定" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
+                                                <TextBox></TextBox>
+                                            </Grid>
+                                            <Grid Height="20" Margin=" 0  0  0 3">
+                                                <TextBlock Height="15" Text="薄膜加低压力值" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
+                                                <TextBox></TextBox>
+                                            </Grid>
+                                        </StackPanel>
                                     </StackPanel>
                                 </Grid>
                             </materialDesign:Card>
@@ -706,31 +791,31 @@
                                 <StackPanel Grid.Row="1" Margin="5 0 5 0">
                                     <Grid Height="20" Margin=" 0  0  0 3">
                                         <TextBlock Height="15" Text="功率设定" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                        <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <TextBox></TextBox>
                                     </Grid>
                                     <Grid Height="20" Margin=" 0  0  0 3">
                                         <TextBlock Height="15" Text="功率模式切换" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                        <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <TextBox></TextBox>
                                     </Grid>
                                     <Grid Height="20" Margin=" 0  0  0 3">
                                         <TextBlock Height="15" Text="脉冲宽度" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                        <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <TextBox></TextBox>
                                     </Grid>
                                     <Grid Height="20" Margin=" 0  0  0 3">
                                         <TextBlock Height="15" Text="脉冲间隔" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                        <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <TextBox></TextBox>
                                     </Grid>
                                     <Grid Height="20" Margin=" 0  0  0 3">
                                         <TextBlock Height="15" Text="斜变目标" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                        <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <TextBox></TextBox>
                                     </Grid>
                                     <Grid Height="20" Margin=" 0  0  0 3">
                                         <TextBlock Height="15" Text="升温斜率" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                        <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <TextBox></TextBox>
                                     </Grid>
                                     <Grid Height="20" Margin=" 0  0  0 3">
                                         <TextBlock Height="15" Text="降温斜率" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                        <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <TextBox></TextBox>
                                     </Grid>
                                 </StackPanel>
                             </materialDesign:Card>
@@ -751,7 +836,7 @@
                                         <Button Content="蝶阀自学习"  FontSize="10" Margin="0 5,5,5" Height="Auto" Grid.Row="1" />
                                         <Grid Grid.Row="2" Height="20" >
                                             <TextBlock Height="15" Text="蝶阀角度设置" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                            <TextBox></TextBox>
                                         </Grid>
                                     </StackPanel>
                                 </materialDesign:Card>
@@ -766,15 +851,15 @@
                                     <StackPanel Grid.ColumnSpan="2"  Grid.Row="2" Margin="5 0 5 0">
                                         <Grid Height="20" Margin=" 0  0  0 3">
                                             <TextBlock Height="15" Text="补镀辉光延时" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                            <TextBox></TextBox>
                                         </Grid>
                                         <Grid Height="20" Margin=" 0  0  0 3">
                                             <TextBlock Height="15" Text="补镀延时" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                            <TextBox></TextBox>
                                         </Grid>
                                         <Grid Height="20" Margin=" 0  0  0 3">
                                             <TextBlock Height="15" Text="镀膜时间调整" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                            <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                            <TextBox></TextBox>
                                         </Grid>
                                     </StackPanel>
                                 </materialDesign:Card>
@@ -796,58 +881,58 @@
                                 <StackPanel Grid.Column=" 0" >
                                     <Grid Height="20" Margin=" 0  0  0 3">
                                         <TextBlock Height="15" Text="前清洗氮气流量" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                        <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <TextBox></TextBox>
                                     </Grid>
                                     <Grid Height="20" Margin=" 0  0  0 3">
                                         <TextBlock Height="15" Text="后清洗氮气流量" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                        <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <TextBox></TextBox>
                                     </Grid>
                                     <Grid Height="20" Margin=" 0  0  0 3">
                                         <TextBlock Height="15" Text="硼烷/邻烷后清洗次数" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                        <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <TextBox></TextBox>
                                     </Grid>
                                     <Grid Height="20" Margin=" 0  0  0 3">
                                         <TextBlock Height="15" Text="MC清洗炉管压力" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                        <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <TextBox></TextBox>
                                     </Grid>
                                     <Grid Height="20" Margin=" 0  0  0 3">
                                         <TextBlock Height="15" Text="MFC清洗流量" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                        <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <TextBox></TextBox>
                                     </Grid>
                                     <Grid Height="20" Margin=" 0  0  0 3">
                                         <TextBlock Height="15" Text="MFC清洗抽空时间" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                        <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <TextBox></TextBox>
                                     </Grid>
                                     <Grid Height="20" Margin=" 0  0  0 3">
                                         <TextBlock Height="15" Text="MFC清洗充气时间" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                        <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <TextBox></TextBox>
                                     </Grid>
                                     <Grid Height="20" Margin=" 0  0  0 3">
                                         <TextBlock Height="15" Text="MFC清洗循环次数" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                        <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <TextBox></TextBox>
                                     </Grid>
                                     <Grid Height="20" Margin=" 0  0  0 3">
                                         <TextBlock Height="15" Text="炉管清洗炉管压力" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                        <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <TextBox></TextBox>
                                     </Grid>
 
                                 </StackPanel>
                                 <StackPanel Grid.Column=" 1" Margin="5 0 5 0">
                                     <Grid Height="20" Margin=" 0  0  0 3">
                                         <TextBlock Height="15" Text="炉管清洗流量" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                        <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <TextBox></TextBox>
                                     </Grid>
                                     <Grid Height="20" Margin=" 0  0  0 3">
                                         <TextBlock Height="15" Text="炉管清洗抽气时间" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                        <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <TextBox></TextBox>
                                     </Grid>
                                     <Grid Height="20" Margin=" 0  0  0 3">
                                         <TextBlock Height="15" Text="炉管清洗充气时间" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                        <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <TextBox></TextBox>
                                     </Grid>
                                     <Grid Height="20" Margin=" 0  0  0 3">
                                         <TextBlock Height="15" Text="炉管清洗循环次数" Width="auto"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" ></TextBlock>
-                                        <TextBox  Height="16" Width="40" HorizontalAlignment="Right" BorderThickness="0.5" FontSize="7"></TextBox>
+                                        <TextBox></TextBox>
                                     </Grid>
                                 </StackPanel>
                             </Grid>
