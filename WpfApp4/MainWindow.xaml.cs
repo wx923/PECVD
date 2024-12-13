@@ -132,10 +132,13 @@ namespace WpfApp4
 
         private void NavigateToMotionControlPage(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new MotionControlPage());
-            LastButtonUI.Style = (Style)FindResource("TopNavigationButtonStyle");
-            LastButtonUI = BtnMotionControl;
-            BtnMotionControl.Style = (Style)FindResource("TopNavigationSelectedButtonStyle");
+            if (CheckTubeSelected())
+            {
+                MainFrame.Navigate(new MotionControlPage(CurrentTubeNumber));
+                LastButtonUI.Style = (Style)FindResource("TopNavigationButtonStyle");
+                LastButtonUI = BtnMotionControl;
+                BtnMotionControl.Style = (Style)FindResource("TopNavigationSelectedButtonStyle");
+            }
         }
 
         private void NavigateToControlInterfacePage(object sender, RoutedEventArgs e)

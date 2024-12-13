@@ -8,10 +8,10 @@ namespace WpfApp4.page.usepage
     {
         private MotionVM viewModel;
 
-        public MotionControlPage()
+        public MotionControlPage(int tubeNumber)
         {
             InitializeComponent();
-            viewModel = new MotionVM();
+            viewModel = new MotionVM(tubeNumber);
             DataContext = viewModel;
         }
 

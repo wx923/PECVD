@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using System.Windows.Threading;
+using WpfApp4.ViewModel;
 
 namespace WpfApp4.page.usepage
 {
@@ -10,10 +11,10 @@ namespace WpfApp4.page.usepage
     /// </summary>
     public partial class ProcessMonitoringPage : Page
     {
-
         public ProcessMonitoringPage(int tubeNumber)
         {
             InitializeComponent();
+            DataContext = new ProcessMonitoringVM(tubeNumber);
         }
     }
 }
