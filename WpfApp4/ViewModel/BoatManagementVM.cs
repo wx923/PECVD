@@ -8,6 +8,7 @@ using System;
 using System.Linq;
 using System.Text;
 using WpfApp4.Services;
+using System.Collections.Generic;
 
 namespace WpfApp4.ViewModel
 {
@@ -37,10 +38,7 @@ namespace WpfApp4.ViewModel
 
         // 添加工艺文件相关属性
         [ObservableProperty]
-        private ObservableCollection<ProcessFileInfo> _processFiles;
-
-        [ObservableProperty]
-        public ObservableCollection<ProcessFileInfo> _selectedProcessFiles = new ObservableCollection<ProcessFileInfo>();
+        private ObservableCollection<ProcessFileInfo> _processFiles = new ObservableCollection<ProcessFileInfo>();
 
         #endregion
 
@@ -48,6 +46,7 @@ namespace WpfApp4.ViewModel
         public BoatManagementVM()
         {
             InitializeCollections();
+            SaveOriginalCollectionNames();  // 保存初始状态
             _ = InitializeAsync();
         }
 
@@ -55,7 +54,6 @@ namespace WpfApp4.ViewModel
         {
             Boats = new ObservableCollection<Boat>();
             BoatMonitors = new ObservableCollection<BoatMonitor>();
-            ProcessFiles = new ObservableCollection<ProcessFileInfo>();
         }
 
         private async Task InitializeAsync()
@@ -412,5 +410,57 @@ namespace WpfApp4.ViewModel
                 UpdateOperationStatus($"保存舟对象修改失败: {ex.Message}", false);
             }
         }
-} 
+
+        #region 炉管工艺操作
+        public ObservableCollection<FurnaceData> Furnaces => FurnaceService.Instance.Furnaces;
+
+        // 用于存储原始的CollectionName，用于比较是否有修改
+        private string[] _originalCollectionNames = new string[6];
+
+        // 在初始化或加载数据时保存原始的CollectionName
+        private void SaveOriginalCollectionNames()
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                _originalCollectionNames[i] = Furnaces[i].ProcessCollectionName;
+            }
+        }
+
+        [RelayCommand]
+        private void UpdateFurnaceProcess()
+        {
+            try
+            {
+                var modifiedFurnaces = new List<(int Index, FurnaceData Furnace)>();
+                
+                // 检查每个炉管是否有修改
+                for (int i = 0; i < 6; i++)
+                {
+                    if (_originalCollectionNames[i] != Furnaces[i].ProcessCollectionName)
+                    {
+                        modifiedFurnaces.Add((i, Furnaces[i]));
+                    }
+                }
+
+                if (!modifiedFurnaces.Any())
+                {
+                    UpdateOperationStatus("没有炉管工艺被修改", false);
+                    return;
+                }
+
+                foreach (var (index, furnace) in modifiedFurnaces)
+                {
+                    // 更新原始值
+                    _originalCollectionNames[index] = furnace.ProcessCollectionName;
+                }
+
+                UpdateOperationStatus($"已更新 {modifiedFurnaces.Count} 个炉管的工艺文件", true);
+            }
+            catch (Exception ex)
+            {
+                UpdateOperationStatus($"更新炉管工艺失败: {ex.Message}", false);
+            }
+        }
+        #endregion
+    }
 } 

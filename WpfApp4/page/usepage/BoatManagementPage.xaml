@@ -374,31 +374,69 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <TextBlock Grid.Row="0" 
-                              Text="工艺预约" 
-                              Style="{StaticResource MaterialDesignHeadline6TextBlock}" 
-                              Margin="10"/>
+                    <!-- 标题栏 -->
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
 
+                        <TextBlock Grid.Column="0" 
+                                 Text="工艺预约" 
+                                 Style="{StaticResource MaterialDesignHeadline6TextBlock}" 
+                                 Margin="10"
+                                 VerticalAlignment="Center"/>
+
+                        <Button Grid.Column="2"
+                                Command="{Binding UpdateFurnaceProcessCommand}"
+                                Style="{StaticResource MaterialDesignOutlinedButton}"
+                                Margin="10">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="ContentSave" Margin="0,0,5,0"/>
+                                <TextBlock Text="更新修改"/>
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+
+                    <!-- 数据表格 -->
                     <DataGrid Grid.Row="1"
-                             ItemsSource="{Binding ProcessReservations}"
-                             SelectedItem="{Binding SelectedReservation}"
+                             ItemsSource="{Binding Furnaces}"
                              AutoGenerateColumns="False"
-                             IsReadOnly="True"
                              Style="{StaticResource MaterialDesignDataGrid}"
                              materialDesign:DataGridAssist.CellPadding="13 8 8 8"
                              materialDesign:DataGridAssist.ColumnHeaderPadding="8"
+                             CanUserAddRows="False"
+                             Background="White"
+                             BorderBrush="#DDDDDD"
+                             BorderThickness="1"
+                             HeadersVisibility="Column"
+                             GridLinesVisibility="Horizontal"
+                             HorizontalGridLinesBrush="#EEEEEE"
+                             AlternationCount="6"
                              Margin="10">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="舟号" 
-                                              Binding="{Binding BoatNumber}"/>
-                            <DataGridTextColumn Header="预约工艺" 
-                                              Binding="{Binding ProcessName}"/>
-                            <DataGridTextColumn Header="预约时间" 
-                                              Binding="{Binding ReservationTime}"/>
-                            <DataGridCheckBoxColumn Header="已完成" 
-                                                  Binding="{Binding IsCompleted}"
-                                                  ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"
-                                                  EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}"/>
+                            <DataGridTextColumn Header="炉管编号" 
+                                              Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, 
+                                                               AncestorType=DataGridRow}, 
+                                                               Path=(ItemsControl.AlternationIndex), 
+                                                               StringFormat={}{0:D}}"
+                                              Width="100"
+                                              IsReadOnly="True"/>
+                            <DataGridTemplateColumn Header="工艺文件" Width="*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ComboBox ItemsSource="{Binding DataContext.ProcessFiles, 
+                                                          RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                                  DisplayMemberPath="FileName"
+                                                  SelectedValue="{Binding ProcessCollectionName, UpdateSourceTrigger=PropertyChanged}"
+                                                  SelectedValuePath="CollectionName"
+                                                  materialDesign:HintAssist.Hint="选择工艺文件"
+                                                  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                                                  Margin="5"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>

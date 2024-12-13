@@ -23,6 +23,7 @@ namespace WpfApp4.Services
         private readonly IMongoCollection<BoatMonitor> _monitors;
         private readonly IMongoCollection<ProcessExcelModel> _processExcelCollection;
         private readonly IMongoCollection<ProcessFileInfo> _processFileCollection;
+        private readonly IMongoCollection<FurnaceData> _furnaceCollection;
 
         // 全局数据集合
         public ObservableCollection<Boat> GlobalBoats { get; private set; }
@@ -59,11 +60,14 @@ namespace WpfApp4.Services
                     _database.CreateCollection("ProcessExcel");
                 if (!collections.Contains("ProcessFiles"))
                     _database.CreateCollection("ProcessFiles");
+                if (!collections.Contains("FurnaceData"))
+                    _database.CreateCollection("FurnaceData");
 
                 _boats = _database.GetCollection<Boat>("Boats");
                 _monitors = _database.GetCollection<BoatMonitor>("BoatMonitors");
                 _processExcelCollection = _database.GetCollection<ProcessExcelModel>("ProcessExcel");
                 _processFileCollection = _database.GetCollection<ProcessFileInfo>("ProcessFiles");
+                _furnaceCollection = _database.GetCollection<FurnaceData>("FurnaceData");
 
                 // 初始化完成后加载数据
                 _ = LoadAllDataAsync();
@@ -264,7 +268,7 @@ namespace WpfApp4.Services
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"根据舟号获取获取监控对象失败: {ex.Message}");
+                MessageBox.Show($"根据舟号获取监控对象失败: {ex.Message}");
                 return null;
             }
         }
@@ -426,7 +430,7 @@ namespace WpfApp4.Services
                                                     .Replace("-", "_")    // 替换横线为下划线
                                                     .Replace(".", "_")    // 替换点为下划线
                                                     .Replace("/", "_")    // 替换斜杠为下划线
-                                                    .Replace("\\", "_"); // 替换反斜杠为下划线
+                                                    .Replace("\\", "_"); // 替换反斜杠为���划线
 
                 var filter = new BsonDocument("name", processedName);
                 var collections = await _database.ListCollectionsAsync(new ListCollectionsOptions { Filter = filter });

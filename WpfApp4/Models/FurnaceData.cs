@@ -14,6 +14,9 @@ namespace WpfApp4.Models
         private string fileId = string.Empty;
 
         [ObservableProperty]
+        private string processCollectionName = string.Empty;
+
+        [ObservableProperty]
         private float measuredT1;
 
         [ObservableProperty]
