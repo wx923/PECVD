@@ -9,15 +9,64 @@
       d:DesignHeight="800" d:DesignWidth="1200"
       Title="Page3">
 
+    <Page.Resources>
+        <!-- 阀门开关按钮样式 -->
+        <Style x:Key="ValveToggleButtonStyle" TargetType="ToggleButton">
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Background" Value="#FFE6E6E6"/>
+            <Setter Property="BorderBrush" Value="#FF9B9B9B"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Border x:Name="border" 
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1"
+                                CornerRadius="3">
+                            <Grid>
+                                <TextBlock x:Name="offText" 
+                                         Text="关" 
+                                         Foreground="Red"
+                                         HorizontalAlignment="Center" 
+                                         VerticalAlignment="Center"/>
+                                <TextBlock x:Name="onText"
+                                         Text="开" 
+                                         Foreground="Green"
+                                         HorizontalAlignment="Center" 
+                                         VerticalAlignment="Center"
+                                         Visibility="Collapsed"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Background" Value="#FFB5E61D"/>
+                                <Setter Property="BorderBrush" Value="#FF7BAD00"/>
+                                <Setter TargetName="offText" Property="Visibility" Value="Collapsed"/>
+                                <Setter TargetName="onText" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FFE3E3E3"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#FFCCCCCC"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="430"/>
+            <RowDefinition Height="500"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition  Width="670"></ColumnDefinition>
-            <ColumnDefinition  Width="408"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="750"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="130"/>
         </Grid.ColumnDefinitions>
         <!--管道图形-->
         <Canvas Background="LightGray" Grid.Column="0" Grid.Row="0" Margin="10,5,5,5" >
@@ -38,15 +87,18 @@
                 </Line.RenderTransform>
             </Line>
             <TextBlock Text="V1" Canvas.Left="81.217" Canvas.Top="6.063" RenderTransformOrigin="-0.428,0.138" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <ToggleButton Content="关" Height="30" Canvas.Left="69.794" Canvas.Top="23.25" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <ToggleButton Style="{StaticResource ValveToggleButtonStyle}"
+                          Canvas.Left="69.794" Canvas.Top="23.25"/>
             <TextBox Canvas.Left="178.222" TextWrapping="Wrap" Text="TextBox" Canvas.Top="18.25" Width="61" HorizontalAlignment="Center" VerticalAlignment="Top" Height="25"/>
-            <TextBlock Canvas.Left="180.222" Canvas.Top="3.01" RenderTransformOrigin="-0.428,0.138" HorizontalAlignment="Left" VerticalAlignment="Center" Width="59"><Run Text="MFC"/><Run Language="zh-cn" Text="1"/></TextBlock>
+            <TextBlock Canvas.Left="180.222" Canvas.Top="3.01" RenderTransformOrigin="-0.428,0.138" HorizontalAlignment="Left" VerticalAlignment="Center" Width="59"><Run Text="MFC"/><Run Language="zh-cn" Text=""/></TextBlock>
             <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Left="209.722" Canvas.Top="2" Width="108" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <ToggleButton Content="关" Height="30" Canvas.Left="314.683" Canvas.Top="21.12" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <ToggleButton Style="{StaticResource ValveToggleButtonStyle}"
+                          Canvas.Left="314.683" Canvas.Top="21.12"/>
             <TextBlock Canvas.Left="326.106" Canvas.Top="5.88" RenderTransformOrigin="-0.428,0.138" HorizontalAlignment="Left" VerticalAlignment="Center"><Run Text="V"/><Run Language="zh-cn" Text="2"/></TextBlock>
             <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="56.25" Width="60" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="77.05"/>
-            <ToggleButton Content="关" Height="30" Canvas.Left="69.794" Canvas.Top="76.5" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <TextBlock Canvas.Left="81.217" Canvas.Top="61.26" RenderTransformOrigin="-0.428,0.138" HorizontalAlignment="Center" VerticalAlignment="Top"><Run Text="V"/><Run Language="zh-cn" Text="3"/></TextBlock>
+            <ToggleButton Style="{StaticResource ValveToggleButtonStyle}"
+                          Canvas.Left="69.794" Canvas.Top="76.5"/>
+            <TextBlock Text="V3" Canvas.Left="81.217" Canvas.Top="61.26"/>
             <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="56.25" Width="60" Canvas.Left="10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="103.565" Canvas.Left="-39.564" RenderTransformOrigin="0.5,0.5" Width="101" HorizontalAlignment="Center" VerticalAlignment="Top">
                 <Line.RenderTransform>
@@ -84,9 +136,11 @@
                 </Line.RenderTransform>
             </Line>
             <Line X1="30" Y1="30" X2="250" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="158.036" Width="218" Canvas.Left="95.666" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <ToggleButton Content="关" Height="30" Canvas.Left="313.146" Canvas.Top="177.339" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <ToggleButton Style="{StaticResource ValveToggleButtonStyle}"
+                          Canvas.Left="313.146" Canvas.Top="177.339"/>
             <TextBlock Canvas.Left="324.568" Canvas.Top="162.099" RenderTransformOrigin="-0.428,0.138" HorizontalAlignment="Left" VerticalAlignment="Top"><Run Text="V"/><Run Language="zh-cn" Text="6"/></TextBlock>
-            <ToggleButton Content="关" Height="30" Canvas.Left="314.684" Canvas.Top="116.79" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <ToggleButton Style="{StaticResource ValveToggleButtonStyle}"
+                          Canvas.Left="314.684" Canvas.Top="116.79"/>
             <TextBlock Canvas.Left="326.106" Canvas.Top="101.55" RenderTransformOrigin="-0.428,0.138" HorizontalAlignment="Left" VerticalAlignment="Center" Width="24"><Run Language="zh-cn" Text="V5"/></TextBlock>
             <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Left="208.722" Canvas.Top="97.487" Width="107" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Left="333.683" Canvas.Top="2" Width="99" HorizontalAlignment="Left" VerticalAlignment="Center"/>
@@ -116,9 +170,11 @@
                 </Line.RenderTransform>
             </Line>
             <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="190.839" Width="68" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="6.794"/>
-            <ToggleButton Content="关" Height="30" Canvas.Left="69.794" Canvas.Top="210.142" Width="50" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <ToggleButton Style="{StaticResource ValveToggleButtonStyle}"
+                          Canvas.Left="69.794" Canvas.Top="210.142"/>
             <TextBlock Canvas.Left="81.217" Canvas.Top="194.902" RenderTransformOrigin="-0.428,0.138" HorizontalAlignment="Center" VerticalAlignment="Top"><Run Text="V"/><Run Language="zh-cn" Text="4"/></TextBlock>
-            <ToggleButton Content="关" Height="30" Canvas.Left="69.794" Canvas.Top="264.888" Width="50" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <ToggleButton Style="{StaticResource ValveToggleButtonStyle}"
+                          Canvas.Left="69.794" Canvas.Top="264.888"/>
             <TextBlock Canvas.Left="81.217" Canvas.Top="249.648" RenderTransformOrigin="-0.428,0.138" HorizontalAlignment="Left" VerticalAlignment="Center" Width="38"><Run Text="V"/><Run Language="zh-cn" Text="7"/></TextBlock>
             <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="246.917" Width="90" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="87.46"/>
             <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="193.003" Width="60" Canvas.Left="89.285" HorizontalAlignment="Left" VerticalAlignment="Center"/>
@@ -135,7 +191,8 @@
                 </Line.RenderTransform>
             </Line>
             <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="245.585" Width="105" Canvas.Left="209.722" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <ToggleButton Content="关" Height="30" Canvas.Left="313.146" Canvas.Top="263.941" Width="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <ToggleButton Style="{StaticResource ValveToggleButtonStyle}"
+                          Canvas.Left="313.146" Canvas.Top="263.941"/>
             <TextBlock Canvas.Left="318.684" Canvas.Top="248.638" RenderTransformOrigin="-0.428,0.138" HorizontalAlignment="Left" VerticalAlignment="Center" Width="34">
                 <TextBlock.RenderTransform>
                     <TransformGroup>
@@ -147,7 +204,8 @@
                 </TextBlock.RenderTransform><Run Text="V"/><Run Language="zh-cn" Text="10"/></TextBlock>
             <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="245.585" Width="92" Canvas.Left="331.682" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="345.465" Width="73" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <ToggleButton Content="关" Height="30" Canvas.Left="72.462" Canvas.Top="364.768" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <ToggleButton Style="{StaticResource ValveToggleButtonStyle}"
+                          Canvas.Left="72.462" Canvas.Top="364.768"/>
             <TextBlock Canvas.Left="75" Canvas.Top="349.528" RenderTransformOrigin="-0.428,0.138" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top"><Run Text="V"/><Run Language="zh-cn" Text="11"/></TextBlock>
             <Line X1="30" Y1="30" X2="200" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="224.146" Canvas.Left="-79.573" RenderTransformOrigin="0.5,0.5" Width="234" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <Line.RenderTransform>
@@ -159,8 +217,9 @@
                     </TransformGroup>
                 </Line.RenderTransform>
             </Line>
-            <ToggleButton Content="关" Height="30" Canvas.Left="71.627" Canvas.Top="313.98" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <TextBlock Canvas.Left="76.166" Canvas.Top="300.073" RenderTransformOrigin="-0.428,0.138" Width="38" HorizontalAlignment="Left" VerticalAlignment="Center"><Run Text="V"/><Run Text="1"/><Run Language="zh-cn" Text="2"/></TextBlock>
+            <ToggleButton Style="{StaticResource ValveToggleButtonStyle}"
+                          Canvas.Left="71.627" Canvas.Top="313.98"/>
+            <TextBlock Canvas.Left="76.166" Canvas.Top="300.073" RenderTransformOrigin="-0.428,0.138" Width="38" HorizontalAlignment="Left" VerticalAlignment="Center"><Run Text="V"/><Run Text=""/><Run Language="zh-cn" Text="2"/></TextBlock>
             <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="295.646" Width="53" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="19.333"/>
             <TextBox Canvas.Left="178.222" TextWrapping="Wrap" Text="TextBox" Canvas.Top="360.705" Width="61" Height="25" HorizontalAlignment="Center" VerticalAlignment="Top"/>
             <TextBlock Canvas.Left="180.222" Canvas.Top="345.465" RenderTransformOrigin="-0.428,0.138" Width="59" HorizontalAlignment="Center" VerticalAlignment="Top"><Run Text="MFC"/><Run Language="zh-cn" Text="4"/></TextBlock>
@@ -177,7 +236,8 @@
                 </Line.RenderTransform>
             </Line>
             <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="345.465" Width="107" Canvas.Left="208.106" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <ToggleButton Content="关" Height="30" Canvas.Left="313.145" Canvas.Top="363.821" Width="50" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <ToggleButton Style="{StaticResource ValveToggleButtonStyle}"
+                          Canvas.Left="313.145" Canvas.Top="363.821"/>
             <TextBlock Canvas.Left="318.683" Canvas.Top="348.518" RenderTransformOrigin="-0.428,0.138" Width="34" HorizontalAlignment="Center" VerticalAlignment="Top"><Run Text="V"/><Run Language="zh-cn" Text="10"/></TextBlock>
             <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="347.268" Width="91" Canvas.Left="332.683" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Line X1="30" Y1="30" X2="400" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Top="189.268" Canvas.Left="207.745" RenderTransformOrigin="0.5,0.5" Width="373" HorizontalAlignment="Center" VerticalAlignment="Top">
@@ -206,15 +266,18 @@
             <TextBlock Canvas.Left="520.222" Canvas.Top="93.93" RenderTransformOrigin="-0.428,0.138" Width="59" HorizontalAlignment="Left" VerticalAlignment="Center"><Run Language="zh-cn" Text="压力计"/></TextBlock>
             <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Left="545.877" Canvas.Top="88.036" Width="85" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Left="538.236" Canvas.Top="132.798" Width="91" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <ToggleButton Content="关" Height="30" Canvas.Left="534.455" Canvas.Top="152.04" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <ToggleButton Style="{StaticResource ValveToggleButtonStyle}"
+                          Canvas.Left="534.455" Canvas.Top="152.04"/>
             <TextBlock Canvas.Left="545.877" Canvas.Top="136.8" RenderTransformOrigin="-0.428,0.138" HorizontalAlignment="Left" VerticalAlignment="Center" Width="27"><Run Text="V"/><Run Language="zh-cn" Text="8"/></TextBlock>
             <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Left="452.898" Canvas.Top="132.798" Width="82" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <TextBlock Canvas.Left="439.333" Canvas.Top="153.111" RenderTransformOrigin="-0.428,0.138" Width="59" HorizontalAlignment="Left" VerticalAlignment="Top"><Run Language="zh-cn" Text="排气"/></TextBlock>
             <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Left="541.888" Canvas.Top="194.902" Width="91" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <ToggleButton Content="关" Height="30" Canvas.Left="536.456" Canvas.Top="213.195" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <ToggleButton Style="{StaticResource ValveToggleButtonStyle}"
+                          Canvas.Left="536.456" Canvas.Top="213.195"/>
             <TextBlock Canvas.Left="547.878" Canvas.Top="197.955" RenderTransformOrigin="-0.428,0.138" Width="27" HorizontalAlignment="Left" VerticalAlignment="Center"><Run Text="V"/><Run Language="zh-cn" Text="20"/></TextBlock>
             <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Left="572.958" Canvas.Top="265.273" Width="60" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <ToggleButton Content="关" Height="30" Canvas.Left="565.236" Canvas.Top="284.693" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <ToggleButton Style="{StaticResource ValveToggleButtonStyle}"
+                          Canvas.Left="565.236" Canvas.Top="284.693"/>
             <TextBlock Canvas.Left="576.236" Canvas.Top="269.336" RenderTransformOrigin="-0.428,0.138" Width="27" HorizontalAlignment="Left" VerticalAlignment="Center"><Run Text="V"/><Run Language="zh-cn" Text="9"/></TextBlock>
             <Line X1="30" Y1="30" X2="130" Y2="30" Stroke="LightCoral" StrokeThickness="5" Canvas.Left="522.223" Canvas.Top="265.273" Width="44" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <Rectangle Height="14" Canvas.Left="518.455" Stroke="Black" Canvas.Top="289.193" Width="35" HorizontalAlignment="Left" VerticalAlignment="Top"/>
@@ -251,248 +314,321 @@
             </Line>
         </Canvas>
         <!--温区设定-->
-        <materialDesign:Card Grid.Row="0" Grid.Column="1" Padding="5">
+        <materialDesign:Card Grid.Row="0" Grid.Column="1" Margin="5,5,5,5">
             <StackPanel>
-                <StackPanel>
-                    <TextBlock Text="设定温度" Margin="5"></TextBlock>
-                    <materialDesign:Card Background="LightSalmon">
-                        <Grid >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <Border BorderBrush="Gray" BorderThickness="1" Grid.Column="0">
-                                <TextBlock Text="温区1"></TextBlock>
-                            </Border>
-                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
-                                <TextBlock Text="温区2"></TextBlock>
-                            </Border>
-                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
-                                <TextBlock Text="温区3"></TextBlock>
-                            </Border>
-                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
-                                <TextBlock Text="温区4"></TextBlock>
-                            </Border>
-                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
-                                <TextBlock Text="温区5"></TextBlock>
-                            </Border>
-                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
-                                <TextBlock Text="温区6"></TextBlock>
-                            </Border>
-                        </Grid>
-                    </materialDesign:Card>
-                    <materialDesign:Card Background="LightBlue">
-                        <Grid >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <Border BorderBrush="Gray" BorderThickness="1" Grid.Column="0">
-                                <TextBlock Text="1"></TextBlock>
-                            </Border>
-                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
-                                <TextBlock Text="1"></TextBlock>
-                            </Border>
-                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
-                                <TextBlock Text="1"></TextBlock>
-                            </Border>
-                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
-                                <TextBlock Text="1"></TextBlock>
-                            </Border>
-                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
-                                <TextBlock Text="1"></TextBlock>
-                            </Border>
-                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
-                                <TextBlock Text="1"></TextBlock>
-                            </Border>
-                        </Grid>
-                    </materialDesign:Card>
-                    <TextBlock Text="待机温度" Margin="0,10,0,0"></TextBlock>
-                    <materialDesign:Card Background="LightSalmon">
-                        <Grid >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <Border BorderBrush="Gray" BorderThickness="1" Grid.Column="0">
-                                <TextBlock Text="温区1"></TextBlock>
-                            </Border>
-                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
-                                <TextBlock Text="温区2"></TextBlock>
-                            </Border>
-                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
-                                <TextBlock Text="温区3"></TextBlock>
-                            </Border>
-                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
-                                <TextBlock Text="温区4"></TextBlock>
-                            </Border>
-                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
-                                <TextBlock Text="温区5"></TextBlock>
-                            </Border>
-                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
-                                <TextBlock Text="温区6"></TextBlock>
-                            </Border>
-                        </Grid>
-                    </materialDesign:Card>
-                    <materialDesign:Card Background="LightBlue">
-                        <Grid >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <Border BorderBrush="Gray" BorderThickness="1" Grid.Column="0">
-                                <TextBlock Text="1"></TextBlock>
-                            </Border>
-                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="1">
-                                <TextBlock Text="1"></TextBlock>
-                            </Border>
-                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="2">
-                                <TextBlock Text="1"></TextBlock>
-                            </Border>
-                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="3">
-                                <TextBlock Text="1"></TextBlock>
-                            </Border>
-                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="4">
-                                <TextBlock Text="1"></TextBlock>
-                            </Border>
-                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0.5,0.5  " Grid.Column="5">
-                                <TextBlock Text="1"></TextBlock>
-                            </Border>
-                        </Grid>
-                    </materialDesign:Card>
-                </StackPanel>
+                <TextBlock Text="温区设定" Margin="5,10,5,15" FontSize="16" FontWeight="Bold"/>
+                
+                <!-- 设定温度表格 -->
+                <TextBlock Text="设定温度" Margin="5,0,5,5"/>
+                <Grid Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- 表头 -->
+                    <Border Grid.Column="0" Grid.Row="0" BorderBrush="Gray" BorderThickness="1" Background="#FFE5E5E5">
+                        <TextBlock Text="温区1" Padding="5" TextAlignment="Center"/>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="0" BorderBrush="Gray" BorderThickness="0,1,1,1" Background="#FFE5E5E5">
+                        <TextBlock Text="温区2" Padding="5" TextAlignment="Center"/>
+                    </Border>
+                    <Border Grid.Column="2" Grid.Row="0" BorderBrush="Gray" BorderThickness="0,1,1,1" Background="#FFE5E5E5">
+                        <TextBlock Text="温区3" Padding="5" TextAlignment="Center"/>
+                    </Border>
+                    <Border Grid.Column="3" Grid.Row="0" BorderBrush="Gray" BorderThickness="0,1,1,1" Background="#FFE5E5E5">
+                        <TextBlock Text="温区4" Padding="5" TextAlignment="Center"/>
+                    </Border>
+                    <Border Grid.Column="4" Grid.Row="0" BorderBrush="Gray" BorderThickness="0,1,1,1" Background="#FFE5E5E5">
+                        <TextBlock Text="温区5" Padding="5" TextAlignment="Center"/>
+                    </Border>
+                    <Border Grid.Column="5" Grid.Row="0" BorderBrush="Gray" BorderThickness="0,1,1,1" Background="#FFE5E5E5">
+                        <TextBlock Text="温区6" Padding="5" TextAlignment="Center"/>
+                    </Border>
+
+                    <!-- 数值单元格 -->
+                    <Border Grid.Column="0" Grid.Row="1" BorderBrush="Gray" BorderThickness="1,0,1,1">
+                        <TextBox Text="0" Padding="5" TextAlignment="Center" BorderThickness="0"/>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="1" BorderBrush="Gray" BorderThickness="0,0,1,1">
+                        <TextBox Text="0" Padding="5" TextAlignment="Center" BorderThickness="0"/>
+                    </Border>
+                    <Border Grid.Column="2" Grid.Row="1" BorderBrush="Gray" BorderThickness="0,0,1,1">
+                        <TextBox Text="0" Padding="5" TextAlignment="Center" BorderThickness="0"/>
+                    </Border>
+                    <Border Grid.Column="3" Grid.Row="1" BorderBrush="Gray" BorderThickness="0,0,1,1">
+                        <TextBox Text="0" Padding="5" TextAlignment="Center" BorderThickness="0"/>
+                    </Border>
+                    <Border Grid.Column="4" Grid.Row="1" BorderBrush="Gray" BorderThickness="0,0,1,1">
+                        <TextBox Text="0" Padding="5" TextAlignment="Center" BorderThickness="0"/>
+                    </Border>
+                    <Border Grid.Column="5" Grid.Row="1" BorderBrush="Gray" BorderThickness="0,0,1,1">
+                        <TextBox Text="0" Padding="5" TextAlignment="Center" BorderThickness="0"/>
+                    </Border>
+                </Grid>
+
+                <!-- 待机温度表格 -->
+                <TextBlock Text="待机温度" Margin="5,15,5,5"/>
+                <Grid Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- 表头 -->
+                    <Border Grid.Column="0" Grid.Row="0" BorderBrush="Gray" BorderThickness="1" Background="#FFE5E5E5">
+                        <TextBlock Text="温区1" Padding="5" TextAlignment="Center"/>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="0" BorderBrush="Gray" BorderThickness="0,1,1,1" Background="#FFE5E5E5">
+                        <TextBlock Text="温区2" Padding="5" TextAlignment="Center"/>
+                    </Border>
+                    <Border Grid.Column="2" Grid.Row="0" BorderBrush="Gray" BorderThickness="0,1,1,1" Background="#FFE5E5E5">
+                        <TextBlock Text="温区3" Padding="5" TextAlignment="Center"/>
+                    </Border>
+                    <Border Grid.Column="3" Grid.Row="0" BorderBrush="Gray" BorderThickness="0,1,1,1" Background="#FFE5E5E5">
+                        <TextBlock Text="温区4" Padding="5" TextAlignment="Center"/>
+                    </Border>
+                    <Border Grid.Column="4" Grid.Row="0" BorderBrush="Gray" BorderThickness="0,1,1,1" Background="#FFE5E5E5">
+                        <TextBlock Text="温区5" Padding="5" TextAlignment="Center"/>
+                    </Border>
+                    <Border Grid.Column="5" Grid.Row="0" BorderBrush="Gray" BorderThickness="0,1,1,1" Background="#FFE5E5E5">
+                        <TextBlock Text="温区6" Padding="5" TextAlignment="Center"/>
+                    </Border>
+
+                    <!-- 数值单元格 -->
+                    <Border Grid.Column="0" Grid.Row="1" BorderBrush="Gray" BorderThickness="1,0,1,1">
+                        <TextBox Text="0" Padding="5" TextAlignment="Center" BorderThickness="0"/>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="1" BorderBrush="Gray" BorderThickness="0,0,1,1">
+                        <TextBox Text="0" Padding="5" TextAlignment="Center" BorderThickness="0"/>
+                    </Border>
+                    <Border Grid.Column="2" Grid.Row="1" BorderBrush="Gray" BorderThickness="0,0,1,1">
+                        <TextBox Text="0" Padding="5" TextAlignment="Center" BorderThickness="0"/>
+                    </Border>
+                    <Border Grid.Column="3" Grid.Row="1" BorderBrush="Gray" BorderThickness="0,0,1,1">
+                        <TextBox Text="0" Padding="5" TextAlignment="Center" BorderThickness="0"/>
+                    </Border>
+                    <Border Grid.Column="4" Grid.Row="1" BorderBrush="Gray" BorderThickness="0,0,1,1">
+                        <TextBox Text="0" Padding="5" TextAlignment="Center" BorderThickness="0"/>
+                    </Border>
+                    <Border Grid.Column="5" Grid.Row="1" BorderBrush="Gray" BorderThickness="0,0,1,1">
+                        <TextBox Text="0" Padding="5" TextAlignment="Center" BorderThickness="0"/>
+                    </Border>
+                </Grid>
             </StackPanel>
         </materialDesign:Card>
-        <materialDesign:Card Grid.RowSpan="2" Grid.Column="2"  Margin="3"  Background="LightSteelBlue">
-            <StackPanel VerticalAlignment="Center" Margin="3">
-                <Button Content="手动/自动" FontSize="10" Margin="4,8,4,8"></Button>
-                <Button Content="设定温度" FontSize="10" Margin="4,8,4,8"></Button>
-                <Button Content="设计待机温度" FontSize="10" Margin="4,8,4,8"></Button>
-                <Button Content="设计MFC1值" FontSize="10" Margin="4,8,4,8"></Button>
-                <Button Content="设计MFC2值" FontSize="10"  Margin="4,8,4,8"></Button>
-                <Button Content="设计MFC3值" FontSize="10" Margin="4,8,4,8"></Button>
-                <Button Content="设计MFC4值" FontSize="10" Margin="4,8,4,8"></Button>
-                <Button Content="设置流量计值" FontSize="10" Margin="4,8,4,8"></Button>
-                <Button Content="设置压力计值" FontSize="10" Margin="4,8,4,8"></Button>
+        <materialDesign:Card Grid.RowSpan="2" Grid.Column="2" Margin="0,5,5,5" Background="LightSteelBlue">
+            <StackPanel VerticalAlignment="Top" Margin="8,15,8,8">
+                <!-- 自定义按钮样式 -->
+                <StackPanel.Resources>
+                    <Style x:Key="ControlButtonStyle" TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
+                        <Setter Property="Margin" Value="0,8,0,8"/>
+                        <Setter Property="Padding" Value="10,8"/>
+                        <Setter Property="FontSize" Value="11"/>
+                        <Setter Property="Background" Value="White"/>
+                        <Setter Property="Foreground" Value="#FF333333"/>
+                        <Setter Property="BorderBrush" Value="#FFD0D0D0"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="materialDesign:ButtonAssist.CornerRadius" Value="3"/>
+                        <Setter Property="Height" Value="35"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FFE3F2FD"/>
+                                <Setter Property="BorderBrush" Value="#FF64B5F6"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </StackPanel.Resources>
+
+                <Button Content="手动/自动" 
+                        Style="{StaticResource ControlButtonStyle}"/>
+                <Button Content="设定温度" 
+                        Style="{StaticResource ControlButtonStyle}"/>
+                <Button Content="设计待机温度" 
+                        Style="{StaticResource ControlButtonStyle}"/>
+                <Button Content="设计MFC1值" 
+                        Style="{StaticResource ControlButtonStyle}"/>
+                <Button Content="设计MFC2值" 
+                        Style="{StaticResource ControlButtonStyle}"/>
+                <Button Content="设计MFC3值" 
+                        Style="{StaticResource ControlButtonStyle}"/>
+                <Button Content="设计MFC4值" 
+                        Style="{StaticResource ControlButtonStyle}"/>
+                <Button Content="设置流量计值" 
+                        Style="{StaticResource ControlButtonStyle}"/>
+                <Button Content="设置压力计值" 
+                        Style="{StaticResource ControlButtonStyle}"/>
             </StackPanel>
         </materialDesign:Card>
-        <!--下方控制-->
-        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+        <!--下方控制区域 -->
+        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="160"></ColumnDefinition>
-                <ColumnDefinition Width="200"></ColumnDefinition>
-                <ColumnDefinition Width="280"></ColumnDefinition>
-                <ColumnDefinition Width="150"></ColumnDefinition>
-                <ColumnDefinition Width="180"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="180"/>
+                <ColumnDefinition Width="220"/>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="170"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <materialDesign:Card Grid.Column="0" Margin="5">
-                <StackPanel >
-                    <StackPanel Orientation="Horizontal" Margin="5">
-                        <TextBlock Text="温度控制器："></TextBlock>
-                        <TextBlock Text="关"></TextBlock>
+
+            <!-- 状态显示卡片 -->
+            <materialDesign:Card Grid.Column="0" Margin="8,0,4,0" Height="200" VerticalAlignment="Top">
+                <StackPanel Margin="10">
+                    <TextBlock Text="设备状态" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="温度控制器：" Width="80"/>
+                        <TextBlock Text="关" Foreground="Red"/>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="5">
-                        <TextBlock Text="辅热控制器："></TextBlock>
-                        <TextBlock Text="关"></TextBlock>
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="辅热控制器：" Width="80"/>
+                        <TextBlock Text="关" Foreground="Red"/>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="5">
-                        <TextBlock Text="泵："></TextBlock>
-                        <TextBlock Text="关"></TextBlock>
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="泵：" Width="80"/>
+                        <TextBlock Text="关" Foreground="Red"/>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="5">
-                        <TextBlock Text="净化风机："></TextBlock>
-                        <TextBlock Text="关"></TextBlock>
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="净化风机：" Width="80"/>
+                        <TextBlock Text="关" Foreground="Red"/>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="5">
-                        <TextBlock Text="蝶阀："></TextBlock>
-                        <TextBlock Text="关"></TextBlock>
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="蝶阀：" Width="80"/>
+                        <TextBlock Text="关" Foreground="Red"/>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="5">
-                        <TextBlock Text="射频："></TextBlock>
-                        <TextBlock Text="关"></TextBlock>
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="射频：" Width="80"/>
+                        <TextBlock Text="关" Foreground="Red"/>
                     </StackPanel>
                 </StackPanel>
             </materialDesign:Card>
-            <materialDesign:Card Grid.Column="1" Margin="5">
-                <StackPanel>
-                    <TextBlock Text="外设开关" Margin="10,5,5,5"></TextBlock>
-                    <StackPanel Orientation="Horizontal">
-                        <StackPanel Orientation="Vertical" Margin="5,5,15,0">
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="温控开关" Background="LightSkyBlue" Margin="2,2,2,2" Padding="5" FontSize="12"></Button>
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="辅热开关" Background="LightSkyBlue"  Margin="2,2,2,2"  Padding="5" FontSize="12"></Button>
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="泵开关" Background="LightSkyBlue"  Margin="2,2,2,2" Padding="5" FontSize="12"></Button>
-                        </StackPanel>
-                        <StackPanel Orientation="Vertical" Margin="5,5,15,0">
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="净化风机开关" Background="LightSkyBlue"  Margin="0,2,2,2" Padding="5" FontSize="12"></Button>
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="蝶阀开关" Background="LightSkyBlue"  Margin="0,2,2,2" Padding="5" FontSize="12"></Button>
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="射频开关" Background="LightSkyBlue" Margin="0,2,2,2" Padding="5" FontSize="12"></Button>
-                        </StackPanel>
 
+            <!-- 外设开关卡片 -->
+            <materialDesign:Card Grid.Column="1" Margin="4,0,4,0" Height="200" VerticalAlignment="Top">
+                <StackPanel Margin="10">
+                    <TextBlock Text="外设开关" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0" Margin="0,0,5,0">
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" 
+                                    Content="温控开关" Background="LightSkyBlue" 
+                                    Margin="0,2" Height="30" FontSize="12"/>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" 
+                                    Content="辅热开关" Background="LightSkyBlue" 
+                                    Margin="0,2" Height="30" FontSize="12"/>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" 
+                                    Content="泵开关" Background="LightSkyBlue" 
+                                    Margin="0,2" Height="30" FontSize="12"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Margin="5,0,0,0">
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" 
+                                    Content="净化风机开关" Background="LightSkyBlue" 
+                                    Margin="0,2" Height="30" FontSize="12"/>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" 
+                                    Content="蝶阀开关" Background="LightSkyBlue" 
+                                    Margin="0,2" Height="30" FontSize="12"/>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" 
+                                    Content="射频开关" Background="LightSkyBlue" 
+                                    Margin="0,2" Height="30" FontSize="12"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </materialDesign:Card>
+
+            <!-- Scrubber清洗控制卡片 -->
+            <materialDesign:Card Grid.Column="2" Margin="4,0,4,0" Height="200" VerticalAlignment="Top">
+                <StackPanel Margin="10">
+                    <TextBlock Text="Scrubber/leekage清洗控制" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0" Margin="0,0,5,0">
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" 
+                                    Content="Scrubber确认恢复" Background="LightSkyBlue" 
+                                    Margin="0,2" Height="30" FontSize="12"/>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" 
+                                    Content="确认尾排温度恢复" Background="LightSkyBlue" 
+                                    Margin="0,2" Height="30" FontSize="12"/>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" 
+                                    Content="手动切尾排硅烷" Background="LightSkyBlue" 
+                                    Margin="0,2" Height="30" FontSize="12"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Margin="5,0,0,0">
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" 
+                                    Content="启动Scrubber管道清洗" Background="LightSkyBlue" 
+                                    Margin="0,2" Height="30" FontSize="12"/>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" 
+                                    Content="停止Scrubber管道清洗" Background="LightSkyBlue" 
+                                    Margin="0,2" Height="30" FontSize="12"/>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" 
+                                    Content="确认温区电流恢复" Background="LightSkyBlue" 
+                                    Margin="0,2" Height="30" FontSize="12"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </materialDesign:Card>
+
+            <!-- 清洗控制卡片 -->
+            <materialDesign:Card Grid.Column="3" Margin="4,0,4,0" Height="200" VerticalAlignment="Top">
+                <StackPanel Margin="10">
+                    <TextBlock Text="清洗控制" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <StackPanel HorizontalAlignment="Center">
+                        <Button Style="{StaticResource MaterialDesignFlatButton}" 
+                                Content="清洗流量计" Background="LightSkyBlue" 
+                                Margin="0,5" Height="30" Width="120" FontSize="12"/>
+                        <Button Style="{StaticResource MaterialDesignFlatButton}" 
+                                Content="清洗炉管" Background="LightSkyBlue" 
+                                Margin="0,5" Height="30" Width="120" FontSize="12"/>
                     </StackPanel>
                 </StackPanel>
             </materialDesign:Card>
-            <materialDesign:Card Grid.Column="2" Margin="5">
-                <StackPanel>
-                    <TextBlock Text="Scrubber/leekage清洗控制" Margin="10,5,5,5"></TextBlock>
-                    <StackPanel Orientation="Horizontal">
-                        <StackPanel Orientation="Vertical" Margin="5,5,15,0">
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="Scrubber确认恢复" Background="LightSkyBlue" Margin="2,2,2,0" Padding="5" FontSize="12"></Button>
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="确认尾排温度恢复" Background="LightSkyBlue"  Margin="2,2,2,0" Padding="5" FontSize="12"></Button>
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="手动切尾排硅烷" Background="LightSkyBlue"  Margin="2,2,2,0" Padding="5" FontSize="12"></Button>
-                        </StackPanel>
-                        <StackPanel Orientation="Vertical" Margin="0,5,15,0">
-                            <Button Style="{StaticResource MaterialDesignFlatButton}"  Background="LightSkyBlue"  Margin="0,2,2,2"  FontSize="12" Padding="5" Content="启动Scrubber管道清洗">
 
-                            </Button>
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="停止Scrubber管道清洗" Background="LightSkyBlue"  Margin="0,2,2,2" Padding="5" FontSize="12"></Button>
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="确认温区电流恢复" Background="LightSkyBlue" Margin="0,2,2,2" Padding="5" FontSize="12"></Button>
+            <!-- 抽气控制卡片 -->
+            <materialDesign:Card Grid.Column="4" Margin="4,0,8,0" Height="200" VerticalAlignment="Top">
+                <StackPanel Margin="10">
+                    <TextBlock Text="抽气控制" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0" Margin="0,0,5,0">
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" 
+                                    Content="打开预抽阀" Background="LightSkyBlue" 
+                                    Margin="0,5" Height="30" FontSize="12"/>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" 
+                                    Content="打开主抽阀" Background="LightSkyBlue" 
+                                    Margin="0,5" Height="30" FontSize="12"/>
                         </StackPanel>
-
-                    </StackPanel>
-                </StackPanel>
-            </materialDesign:Card >
-            <materialDesign:Card Grid.Column="3" Margin="5">
-                <StackPanel>
-                    <TextBlock Text="Scrubber/leekage清洗控制" Margin="10,5,5,5" TextWrapping="Wrap"></TextBlock>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <StackPanel Orientation="Vertical" Margin="5,5,15,0">
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="清洗流量计" Background="LightSkyBlue" Margin="3"></Button>
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="清洗炉管" Background="LightSkyBlue"  Margin="3"></Button>
+                        <StackPanel Grid.Column="1" Margin="5,0,0,0">
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" 
+                                    Content="关闭预抽阀" Background="LightSkyBlue" 
+                                    Margin="0,5" Height="30" FontSize="12"/>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" 
+                                    Content="关闭主抽阀" Background="LightSkyBlue" 
+                                    Margin="0,5" Height="30" FontSize="12"/>
                         </StackPanel>
-                    </StackPanel>
-                </StackPanel>
-            </materialDesign:Card>
-            <materialDesign:Card Grid.Column="4" Margin="5">
-                <StackPanel>
-                    <TextBlock Text="抽气控制" Margin="10,5,5,5" TextWrapping="Wrap"></TextBlock>
-                    <StackPanel Orientation="Horizontal">
-                        <StackPanel Orientation="Vertical" Margin="5,5,15,0">
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="打开预抽阀" Background="LightSkyBlue" Margin="2,2,2,0" Padding="5" FontSize="12"></Button>
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="打开主抽阀" Background="LightSkyBlue"  Margin="2,5,2,0" Padding="5" FontSize="12"></Button>
-                        </StackPanel>
-
-                        <StackPanel Orientation="Vertical" Margin="0,5,15,0">
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="关闭预抽阀" Background="LightSkyBlue" Margin="2,2,2,0" Padding="5" FontSize="12"></Button>
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="关闭主抽阀" Background="LightSkyBlue" Margin="2,5,2,0" Padding="5" FontSize="12"></Button>
-                        </StackPanel>
-                    </StackPanel>
+                    </Grid>
                 </StackPanel>
             </materialDesign:Card>
         </Grid>

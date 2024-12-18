@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using WpfApp4.Services;
 using System.Collections.Generic;
+using WpfApp.Services;
 
 namespace WpfApp4.ViewModel
 {
@@ -427,7 +428,7 @@ namespace WpfApp4.ViewModel
         }
 
         [RelayCommand]
-        private void UpdateFurnaceProcess()
+        private async Task UpdateFurnaceProcess()
         {
             try
             {
@@ -450,11 +451,32 @@ namespace WpfApp4.ViewModel
 
                 foreach (var (index, furnace) in modifiedFurnaces)
                 {
-                    // 更新原始值
-                    _originalCollectionNames[index] = furnace.ProcessCollectionName;
-                }
+                    try
+                    {
+                        // 获取对应炉管的ModbusTcp客户端
+                        var modbusClient = PlcCommunicationService.Instance.ModbusTcpClients[(PlcCommunicationService.PlcType)index];
+                        
+                        // 检查炉管是否在工艺中
+                        var isInProcess = await modbusClient.ReadBoolAsync("1000");  // 假设1000地址存储工艺运行状态
+                        if (isInProcess.Content)
+                        {
+                            MessageBox.Show($"炉管{index + 1}正在运行工艺，无法更新工艺文件！");
+                            continue;
+                        }
 
-                UpdateOperationStatus($"已更新 {modifiedFurnaces.Count} 个炉管的工艺文件", true);
+                        // 下发工艺文件到PLC
+                        await FurnaceService.Instance.SendProcessDataToPLC(furnace.ProcessCollectionName, index + 1);
+
+                        // 更新原始值
+                        _originalCollectionNames[index] = furnace.ProcessCollectionName;
+                        
+                        UpdateOperationStatus($"炉管{index + 1}工艺更新成功", false);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"炉管{index + 1}工艺更新失败: {ex.Message}");
+                    }
+                }
             }
             catch (Exception ex)
             {

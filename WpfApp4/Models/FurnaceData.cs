@@ -20,5 +20,7 @@ namespace WpfApp4.Models
         /// </summary>
         [ObservableProperty]
         private float pulseVoltage;
+
+        public bool IsProcessRunning { get; set; }
     }
 }

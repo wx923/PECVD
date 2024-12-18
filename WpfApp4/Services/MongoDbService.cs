@@ -430,7 +430,7 @@ namespace WpfApp4.Services
                                                     .Replace("-", "_")    // 替换横线为下划线
                                                     .Replace(".", "_")    // 替换点为下划线
                                                     .Replace("/", "_")    // 替换斜杠为下划线
-                                                    .Replace("\\", "_"); // 替换反斜杠为���划线
+                                                    .Replace("\\", "_"); // 替换反斜杠为下划线
 
                 var filter = new BsonDocument("name", processedName);
                 var collections = await _database.ListCollectionsAsync(new ListCollectionsOptions { Filter = filter });
@@ -469,6 +469,35 @@ namespace WpfApp4.Services
             catch (Exception ex)
             {
                 throw new Exception($"重命名集合失败: {ex.Message}");
+            }
+        }
+
+        // 获取MongoDB集合
+        public IMongoCollection<ProcessExcelModel> GetCollection(string collectionName)
+        {
+            return _database.GetCollection<ProcessExcelModel>(collectionName);
+        }
+
+        /// <summary>
+        /// 从指定集合中获取所有工艺数据
+        /// </summary>
+        /// <param name="collectionName">集合名称</param>
+        /// <returns>工艺数据列表</returns>
+        public async Task<List<ProcessExcelModel>> GetProcessDataFromCollectionAsync(string collectionName)
+        {
+            try
+            {
+                // 获取指定名称的集合
+                var collection = _database.GetCollection<ProcessExcelModel>(collectionName);
+                
+                // 获取集合中的所有数据
+                var data = await collection.Find(_ => true).ToListAsync();
+                
+                return data ?? new List<ProcessExcelModel>();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"从集合 {collectionName} 获取工艺数据失败: {ex.Message}");
             }
         }
     }

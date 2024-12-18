@@ -7,7 +7,7 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:converters="clr-namespace:WpfApp4.Converters"
       mc:Ignorable="d" 
-      d:DesignHeight="850" d:DesignWidth="1000"
+      d:DesignHeight="1080" d:DesignWidth="1920"
       Unloaded="Page_Unloaded"
       Title="Page1">
     
@@ -121,23 +121,23 @@
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="180" ></RowDefinition>
+            <RowDefinition Height="300" ></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <!--上半部分-->
-        <Grid Grid.Row="0"  Margin="10,5,10,0">
+        <Grid Grid.Row="0"  Margin="20,10,20,0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="110" ></ColumnDefinition>
-                <ColumnDefinition Width="110"></ColumnDefinition>
-                <ColumnDefinition Width="230"></ColumnDefinition>
-                <ColumnDefinition Width="500"></ColumnDefinition>
+                <ColumnDefinition Width="200" ></ColumnDefinition>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+                <ColumnDefinition Width="400"></ColumnDefinition>
+                <ColumnDefinition Width="800"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <materialDesign:Card Grid.Column="0" Margin="1,1,1,1">
-                <StackPanel Orientation="Vertical"  VerticalAlignment="Center">
-                    <StackPanel Orientation="Horizontal" Margin="3">
-                        <TextBlock Text="门锁1:" FontSize="12" FontWeight="Bold" Margin="0 0 0 1"/>
-                        <TextBlock Text="{Binding MotionPlcData.Door1Lock, Converter={StaticResource BoolToOpenCloseConverter}}" FontSize="12" FontWeight="Bold" Margin="0 0 0 1"/>
+            <materialDesign:Card Grid.Column="0" Margin="5,5,5,5">
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="门锁1:" FontSize="14" FontWeight="Bold" Margin="0 0 0 2"/>
+                        <TextBlock Text="{Binding MotionPlcData.Door1Lock, Converter={StaticResource BoolToOpenCloseConverter}}" FontSize="14" FontWeight="Bold" Margin="0 0 0 2"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="3">
                         <TextBlock Text="门锁2:" FontSize="12" FontWeight="Bold" Margin="0 0 0 1"/>
@@ -153,9 +153,9 @@
                     </StackPanel>
                 </StackPanel>
             </materialDesign:Card>
-            <materialDesign:Card Grid.Column="1"  Padding="2" Margin="4,0,4,0">
-                <StackPanel Orientation="Vertical" Margin="0,10,0,0">
-                    <materialDesign:Card Background="Green" Width="80" Height="35" Margin="0,0,0,5" >
+            <materialDesign:Card Grid.Column="1" Padding="5" Margin="8,0,8,0">
+                <StackPanel Orientation="Vertical" Margin="0,15,0,0">
+                    <materialDesign:Card Background="Green" Width="120" Height="45" Margin="0,0,0,10" >
                         <StackPanel Orientation="Vertical">
                             <TextBlock Text="小车区" VerticalAlignment="Center" HorizontalAlignment="Center" Height="25" ></TextBlock>
                             <Border Height="10" BorderBrush="Gray" BorderThickness="0,1,0,0" >
@@ -163,7 +163,7 @@
                             </Border>
                         </StackPanel>
                     </materialDesign:Card>
-                    <materialDesign:Card Background="Green" Width="80" Height="35" Margin="0,0,0,5">
+                    <materialDesign:Card Background="Green" Width="120" Height="45" Margin="0,0,0,10">
                         <StackPanel Orientation="Vertical">
                             <TextBlock Text="暂存区1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="25"></TextBlock>
                             <Border Height="10" BorderBrush="Gray" BorderThickness="0,1,0,0" >
@@ -171,7 +171,7 @@
                             </Border>
                         </StackPanel>
                     </materialDesign:Card>
-                    <materialDesign:Card Background="Green" Width="80" Height="35" Margin="0,0,0,5">
+                    <materialDesign:Card Background="Green" Width="120" Height="45" Margin="0,0,0,10">
                         <StackPanel Orientation="Vertical">
                             <TextBlock Text="暂存区2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="25"></TextBlock>
                             <Border Height="10" BorderBrush="Gray" BorderThickness="0,1,0,0" >
@@ -179,7 +179,7 @@
                             </Border>
                         </StackPanel>
                     </materialDesign:Card>
-                    <materialDesign:Card Background="Green" Width="80" Height="35" Margin="0,0,0,5">
+                    <materialDesign:Card Background="Green" Width="120" Height="45" Margin="0,0,0,10">
                         <StackPanel Orientation="Vertical">
                             <TextBlock Text="桨区" VerticalAlignment="Center" HorizontalAlignment="Center" Height="25"></TextBlock>
                             <Border Height="10" BorderBrush="Gray" BorderThickness="0,1,0,0" >
@@ -192,8 +192,8 @@
 
                 </StackPanel>
             </materialDesign:Card>
-            <materialDesign:Card Grid.Column="2" Margin="1,1,8,1" >
-                <StackPanel Orientation="Horizontal" Margin="5">
+            <materialDesign:Card Grid.Column="2" Margin="5,5,10,5" >
+                <StackPanel Orientation="Horizontal" Margin="10">
                     <!-- 源位选择 -->
                     <StackPanel Orientation="Vertical" Margin="5">
                         <RadioButton Content="小车区" 
@@ -242,7 +242,7 @@
                     </StackPanel>
                 </StackPanel>
             </materialDesign:Card>
-            <materialDesign:Card Grid.Column="3" Margin="4,1,8,1" Background="{DynamicResource PrimaryHueLightBrush}">
+            <materialDesign:Card Grid.Column="3" Margin="8,5,10,5" Background="{DynamicResource PrimaryHueLightBrush}">
                 <StackPanel  Orientation="Vertical" >
                     <TextBlock Text="机械手移动"></TextBlock>
                     <StackPanel Orientation="Horizontal">
@@ -276,7 +276,7 @@
                 </StackPanel>
             </materialDesign:Card>
             <!--舟号设置区-->
-            <materialDesign:Card Grid.Column="4">
+            <materialDesign:Card Grid.Column="4" Margin="5">
                 <StackPanel VerticalAlignment="Center">
                     <TextBlock Text="舟号设置区" Margin="5"> </TextBlock>
                     <StackPanel Orientation="Horizontal">
@@ -303,11 +303,11 @@
         </Grid>
         
         <!--下半部分-->
-        <Grid  Grid.Row="1"  Margin="10,5,10,0" >
+        <Grid Grid.Row="1" Margin="20,10,20,0">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="600"></ColumnDefinition>
+                <ColumnDefinition Width="500"></ColumnDefinition>
                 <ColumnDefinition Width="400"></ColumnDefinition>
-                <ColumnDefinition Width="340"></ColumnDefinition>
-                <ColumnDefinition Width="250"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <StackPanel Orientation="Vertical"  Grid.Column="0" Margin="5,10,10,10" >
@@ -326,7 +326,7 @@
                                         <TextBlock Text="水平一轴当前位置数值:" Margin="2,5,2,5"/>
                                         <TextBlock Text="水平二轴前限位到位:" Margin="2,5,2,5"/>
                                         <TextBlock Text="水平二轴后限位到位:" Margin="2,5,2,5"/>
-                                        <TextBlock Text="水平二轴原点到位:" Margin="2,5,2,5"/>
+                                        <TextBlock Text="水平二轴原点到到位:" Margin="2,5,2,5"/>
                                     </StackPanel>
                                     <StackPanel>
                                         <TextBlock Text="{Binding MotionPlcData.RobotHorizontal1ForwardLimit, Converter={StaticResource BoolToYesNoConverter}}" Margin="0,5,15,5"/>
