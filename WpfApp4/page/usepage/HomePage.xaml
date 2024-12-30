@@ -5,25 +5,90 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfApp4.page.usepage"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:converters="clr-namespace:WpfApp4.Converters"
       mc:Ignorable="d" 
       d:DesignHeight="850" d:DesignWidth="1000"
       Title="Home">
-    
+
+    <Page.Resources>
+        <!-- 转换器资源 -->
+        <converters:BoolToColorConverter x:Key="BoolToColorConverter"/>
+        <converters:BoolToStringConverter x:Key="ConnectedTextConverter"/>
+
+        <!-- PLC连接按钮样式 -->
+        <Style x:Key="PlcConnectButtonStyle" TargetType="Button">
+            <Setter Property="Padding" Value="8,2"/>
+            <Setter Property="MinWidth" Value="60"/>
+            <Setter Property="Background" Value="#2196F3"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="3">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
     <Grid Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>  <!-- PLC状态显示 -->
+            <RowDefinition Height="Auto"/>  <!-- 标题 -->
+            <RowDefinition Height="*"/>     <!-- 主要内容 -->
+            <RowDefinition Height="Auto"/>  <!-- 状态栏 -->
         </Grid.RowDefinitions>
 
+        <!-- PLC状态显示区域 -->
+        <Border Grid.Row="0"
+                Background="White" 
+                BorderBrush="LightGray" 
+                BorderThickness="1" 
+                CornerRadius="4"
+                Margin="0,5,0,10">
+            <StackPanel Orientation="Horizontal" Margin="10,5">
+                <ItemsControl ItemsSource="{Binding PlcStatuses}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Margin="5,0" BorderThickness="1" BorderBrush="#DDDDDD" CornerRadius="4" Padding="8,4">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
+                                    <Ellipse Width="12" Height="12" 
+                                             Margin="5,0"
+                                             Fill="{Binding IsConnected, Converter={StaticResource BoolToColorConverter}}"/>
+                                    <Button Content="{Binding IsConnected, Converter={StaticResource ConnectedTextConverter}}"
+                                            Command="{Binding ConnectCommand}"
+                                            Style="{StaticResource PlcConnectButtonStyle}"
+                                            Margin="5,0,0,0"/>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </Border>
+
         <!-- 标题区域 -->
-        <TextBlock Text="PECVD炉管监控" 
+        <TextBlock Grid.Row="1" 
+                   Text="PECVD炉管监控" 
                    FontSize="24" 
                    HorizontalAlignment="Center" 
                    Margin="0,0,0,10"/>
 
         <!-- 主要监控区域 -->
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -125,7 +190,7 @@
                                     </Grid>
                                 </Border>
 
-                                <!-- He流��� -->
+                                <!-- He流量 -->
                                 <Border Grid.Row="3" Grid.ColumnSpan="2" BorderBrush="LightGray" BorderThickness="0,0,0,1">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
@@ -1042,7 +1107,6 @@
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
@@ -1188,7 +1252,7 @@
         </Grid>
 
         <!-- 底部状态栏 -->
-        <StatusBar Grid.Row="2">
+        <StatusBar Grid.Row="3">
             <TextBlock Text="系统状态: 正常运行" Margin="5"/>
             <Separator/>
             <TextBlock Text="最后更新时间: " Margin="5"/>

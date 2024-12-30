@@ -47,16 +47,25 @@ public class PlcCommunicationService
         ModbusTcpClients = new Dictionary<PlcType, ModbusTcpNet>();
         ConnectionStates = new Dictionary<PlcType, bool>();
 
+        // 初始化运动控制PLC客户端
+        InitializePlcClient(PlcType.Motion, "192.168.1.88");
+
         // 初始化6个炉管PLC客户端
+        var plcIpAddresses = new[]
+        {
+            "192.168.1.89",  // PLC1
+            "192.168.1.90",  // PLC2
+            "192.168.1.91",  // PLC3
+            "192.168.1.92",  // PLC4
+            "192.168.1.93",  // PLC5
+            "192.168.1.94"   // PLC6
+        };
+
         for (int i = 0; i < 6; i++)
         {
             var plcType = (PlcType)i;
-            var ipAddress = $"192.168.1.{10 + i}";
-            InitializePlcClient(plcType, ipAddress);
+            InitializePlcClient(plcType, plcIpAddresses[i]);
         }
-
-        // 初始化运动控制PLC客户端
-        InitializePlcClient(PlcType.Motion, "192.168.1.20");
 
         // 自动连接所有PLC
         _ = ConnectAllPlcsAsync();

@@ -148,37 +148,37 @@
         </Border>
         <!--顶部导航栏-->
         <Border Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TopNavBarStyle}">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <RadioButton x:Name="BtnFurnaceTube1" 
-                             Content="炉管1" 
-                             Margin="5,0"
-                             GroupName="FurnaceTubes"/>
-                             
-                <RadioButton x:Name="BtnFurnaceTube2" 
-                             Content="炉管2" 
-                             Margin="5,0"
-                             GroupName="FurnaceTubes"/>
-                             
-                <RadioButton x:Name="BtnFurnaceTube3" 
-                             Content="炉管3" 
-                             Margin="5,0"
-                             GroupName="FurnaceTubes"/>
-                             
-                <RadioButton x:Name="BtnFurnaceTube4" 
-                             Content="炉管4" 
-                             Margin="5,0"
-                             GroupName="FurnaceTubes"/>
-                             
-                <RadioButton x:Name="BtnFurnaceTube5" 
-                             Content="炉管5" 
-                             Margin="5,0"
-                             GroupName="FurnaceTubes"/>
-                             
-                <RadioButton x:Name="BtnFurnaceTube6" 
-                             Content="炉管6" 
-                             Margin="5,0"
-                             GroupName="FurnaceTubes"/>
-            </StackPanel>
+            <Grid>
+                <!-- 炉管选择按钮 -->
+                <StackPanel Orientation="Horizontal" 
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                    <RadioButton x:Name="BtnFurnaceTube1" 
+                                Content="炉管1" 
+                                Margin="5,0"
+                                GroupName="FurnaceTubes"/>
+                    <RadioButton x:Name="BtnFurnaceTube2" 
+                                Content="炉管2" 
+                                Margin="5,0"
+                                GroupName="FurnaceTubes"/>
+                    <RadioButton x:Name="BtnFurnaceTube3" 
+                                Content="炉管3" 
+                                Margin="5,0"
+                                GroupName="FurnaceTubes"/>
+                    <RadioButton x:Name="BtnFurnaceTube4" 
+                                Content="炉管4" 
+                                Margin="5,0"
+                                GroupName="FurnaceTubes"/>
+                    <RadioButton x:Name="BtnFurnaceTube5" 
+                                Content="炉管5" 
+                                Margin="5,0"
+                                GroupName="FurnaceTubes"/>
+                    <RadioButton x:Name="BtnFurnaceTube6" 
+                                Content="炉管6" 
+                                Margin="5,0"
+                                GroupName="FurnaceTubes"/>
+                </StackPanel>
+            </Grid>
         </Border>
 
         <!-- 内容区域 -->
@@ -371,7 +371,7 @@
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal">
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                                    <TextBlock Text="1)水平一轴当前位置数��:" Style="{StaticResource TextMargin}"></TextBlock>
+                                    <TextBlock Text="1)水平一轴当前位置数值:" Style="{StaticResource TextMargin}"></TextBlock>
                                     <TextBlock Text="1)水平一轴当前位置数值:"  Style="{StaticResource TextMargin}"></TextBlock>
                                     <TextBlock Text="1)水平一轴当前位置数值:" Style="{StaticResource TextMargin}"></TextBlock>
                                 </StackPanel>

@@ -21,6 +21,7 @@ namespace WpfApp4
         public MainWindow()
         {
             InitializeComponent();
+            
             // 默认导航到 HomePage
             MainFrame.Navigate(new HomePage());
             LastButtonUI = BtnHome;
