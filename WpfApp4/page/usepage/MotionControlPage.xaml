@@ -227,7 +227,7 @@
                                         <TextBlock Text="{Binding MotionPlcData.Paddle6Time}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
                                         <TextBlock Text="{Binding MotionPlcData.Paddle6Status}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
                                     </StackPanel>
-                            </Border>
+                                </Border>
                             </UniformGrid>
                         </StackPanel>
                     </materialDesign:Card>
@@ -270,23 +270,23 @@
                                         <TextBlock Text="{Binding MotionPlcData.Storage4Time}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
                                         <TextBlock Text="{Binding MotionPlcData.Storage4Status}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
                                     </StackPanel>
-                            </Border>
+                                </Border>
                                 <Border BorderBrush="Gray" BorderThickness="1" Margin="2" CornerRadius="3" MinWidth="60">
                                     <StackPanel Margin="3">
                                         <TextBlock Text="暂存区5" FontWeight="Bold" TextAlignment="Center" Margin="0,0,0,2" FontSize="12"/>
                                         <TextBlock Text="{Binding MotionPlcData.Storage5BoatNumber}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
                                         <TextBlock Text="{Binding MotionPlcData.Storage5Time}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
                                         <TextBlock Text="{Binding MotionPlcData.Storage5Status}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
-                        </StackPanel>
-                            </Border>
+                                    </StackPanel>
+                                </Border>
                                 <Border BorderBrush="Gray" BorderThickness="1" Margin="2" CornerRadius="3" MinWidth="60">
                                     <StackPanel Margin="3">
                                         <TextBlock Text="暂存区6" FontWeight="Bold" TextAlignment="Center" Margin="0,0,0,2" FontSize="12"/>
                                         <TextBlock Text="{Binding MotionPlcData.Storage6BoatNumber}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
                                         <TextBlock Text="{Binding MotionPlcData.Storage6Time}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
                                         <TextBlock Text="{Binding MotionPlcData.Storage6Status}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
-                        </StackPanel>
-                            </Border>
+                                    </StackPanel>
+                                </Border>
                             </UniformGrid>
                         </StackPanel>
                     </materialDesign:Card>
@@ -305,26 +305,32 @@
                             <RadioButton Content="暂存区1" 
                                          Margin="0,2,0,5" 
                                          GroupName="SourcePosition"
+                                         IsEnabled="{Binding MotionPlcData.Storage1BoatSensor}"
                                          IsChecked="{Binding SelectedSourcePosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=暂存区1}"/>
                             <RadioButton Content="暂存区2" 
                                          Margin="0,2,0,5" 
                                          GroupName="SourcePosition"
+                                         IsEnabled="{Binding MotionPlcData.Storage2BoatSensor}"
                                          IsChecked="{Binding SelectedSourcePosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=暂存区2}"/>
                             <RadioButton Content="暂存区3" 
                                          Margin="0,2,0,5" 
                                          GroupName="SourcePosition"
+                                         IsEnabled="{Binding MotionPlcData.Storage3BoatSensor}"
                                          IsChecked="{Binding SelectedSourcePosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=暂存区3}"/>
                             <RadioButton Content="暂存区4" 
                                          Margin="0,2,0,5" 
                                          GroupName="SourcePosition"
+                                         IsEnabled="{Binding MotionPlcData.Storage4BoatSensor}"
                                          IsChecked="{Binding SelectedSourcePosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=暂存区4}"/>
                             <RadioButton Content="暂存区5" 
                                          Margin="0,2,0,5" 
                                          GroupName="SourcePosition"
+                                         IsEnabled="{Binding MotionPlcData.Storage5BoatSensor}"
                                          IsChecked="{Binding SelectedSourcePosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=暂存区5}"/>
                             <RadioButton Content="暂存区6" 
                                          Margin="0,2,0,5" 
                                          GroupName="SourcePosition"
+                                         IsEnabled="{Binding MotionPlcData.Storage6BoatSensor}"
                                          IsChecked="{Binding SelectedSourcePosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=暂存区6}"/>
                             <RadioButton Content="桨区1" 
                                          Margin="0,2,0,5" 

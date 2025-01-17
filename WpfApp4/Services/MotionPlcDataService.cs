@@ -121,150 +121,73 @@ namespace WpfApp4.Services
                 var data = new MotionPlcData();
                 int addr = BaseAddress;  // 从基础地址开始
 
-                // 读取线圈状态
+                // 读取门锁状态
                 data.InOutDoor1Lock = _modbusClient.ReadCoil($"{addr++}").Content;              // 地址 base + 0
                 data.InOutDoor2Lock = _modbusClient.ReadCoil($"{addr++}").Content;              // 地址 base + 1
                 data.MaintenanceDoor1Lock = _modbusClient.ReadCoil($"{addr++}").Content;        // 地址 base + 2
                 data.MaintenanceDoor2Lock = _modbusClient.ReadCoil($"{addr++}").Content;        // 地址 base + 3
                 data.BuzzerStatus = _modbusClient.ReadCoil($"{addr++}").Content;                // 地址 base + 4
-                data.FurnaceVerticalCylinder = _modbusClient.ReadCoil($"{addr++}").Content;    // 地址 base + 5
-                data.FurnaceHorizontalCylinder = _modbusClient.ReadCoil($"{addr++}").Content;  // 地址 base + 6
-                data.Storage1HasMaterial = _modbusClient.ReadCoil($"{addr++}").Content;        // 地址 base + 7
-                data.Storage2HasMaterial = _modbusClient.ReadCoil($"{addr++}").Content;        // 地址 base + 8
-                data.ClampHasMaterial = _modbusClient.ReadCoil($"{addr++}").Content;           // 地址 base + 9
-                data.HasCarriage = _modbusClient.ReadCoil($"{addr++}").Content;                // 地址 base + 10
-                data.CarriageHasMaterial = _modbusClient.ReadCoil($"{addr++}").Content;        // 地址 base + 11
 
-                // 机械手水平一轴
-                data.RobotHorizontal1ForwardLimit = _modbusClient.ReadCoil($"{addr++}").Content;   // 地址 base + 11
-                data.RobotHorizontal1BackwardLimit = _modbusClient.ReadCoil($"{addr++}").Content;  // 地址 base + 12
-                data.RobotHorizontal1OriginLimit = _modbusClient.ReadCoil($"{addr++}").Content;    // 地址 base + 13
-                data.RobotHorizontal1UpperLimit = _modbusClient.ReadInt32($"{addr++}").Content;    // 地址 base + 14
-                data.RobotHorizontal1LowerLimit = _modbusClient.ReadInt32($"{addr++}").Content;    // 地址 base + 15
-                data.RobotHorizontal1OriginPosition = _modbusClient.ReadInt32($"{addr++}").Content;    // 地址 base + 16
-                data.RobotHorizontal1CurrentPosition = _modbusClient.ReadInt32($"{addr++}").Content;   // 地址 base + 17
-                data.RobotHorizontal1CurrentSpeed = _modbusClient.ReadInt32($"{addr++}").Content;      // 地址 base + 18
+                // 读取小车状态
+                data.HasCarriage = _modbusClient.ReadCoil($"{addr++}").Content;                // 地址 base + 5
+                data.CarriageHasMaterial = _modbusClient.ReadCoil($"{addr++}").Content;        // 地址 base + 6
 
-                // 机械手水平二轴
-                data.RobotHorizontal2ForwardLimit = _modbusClient.ReadCoil($"{addr++}").Content;   // 地址 base + 19
-                data.RobotHorizontal2BackwardLimit = _modbusClient.ReadCoil($"{addr++}").Content;  // 地址 base + 20
-                data.RobotHorizontal2OriginLimit = _modbusClient.ReadCoil($"{addr++}").Content;    // 地址 base + 21
-                data.RobotHorizontal2UpperLimit = _modbusClient.ReadInt32($"{addr++}").Content;    // 地址 base + 22
-                data.RobotHorizontal2LowerLimit = _modbusClient.ReadInt32($"{addr++}").Content;    // 地址 base + 23
-                data.RobotHorizontal2OriginPosition = _modbusClient.ReadInt32($"{addr++}").Content;    // 地址 base + 24
-                data.RobotHorizontal2CurrentPosition = _modbusClient.ReadInt32($"{addr++}").Content;   // 地址 base + 25
-                data.RobotHorizontal2CurrentSpeed = _modbusClient.ReadInt32($"{addr++}").Content;      // 地址 base + 26
-
-                // 机械手垂直轴
-                data.RobotVerticalUpperLimit = _modbusClient.ReadCoil($"{addr++}").Content;
-                data.RobotVerticalLowerLimit = _modbusClient.ReadCoil($"{addr++}").Content;
-                data.RobotVerticalOriginLimit = _modbusClient.ReadCoil($"{addr++}").Content;
-                data.RobotVerticalUpperLimitPosition = _modbusClient.ReadInt32($"{addr++}").Content;
-                data.RobotVerticalLowerLimitPosition = _modbusClient.ReadInt32($"{addr++}").Content;
-                data.RobotVerticalOriginPosition = _modbusClient.ReadInt32($"{addr++}").Content;
-                data.RobotVerticalCurrentPosition = _modbusClient.ReadInt32($"{addr++}").Content;
-                data.RobotVerticalCurrentSpeed = _modbusClient.ReadInt32($"{addr++}").Content;
-
-                // 桨水平轴
-                data.ClampHorizontalForwardLimit = _modbusClient.ReadCoil($"{addr++}").Content;
-                data.ClampHorizontalBackwardLimit = _modbusClient.ReadCoil($"{addr++}").Content;
-                data.ClampHorizontalOriginLimit = _modbusClient.ReadCoil($"{addr++}").Content;
-                data.ClampHorizontalUpperLimit = _modbusClient.ReadInt32($"{addr++}").Content;
-                data.ClampHorizontalLowerLimit = _modbusClient.ReadInt32($"{addr++}").Content;
-                data.ClampHorizontalOriginPosition = _modbusClient.ReadInt32($"{addr++}").Content;
-                data.ClampHorizontalCurrentPosition = _modbusClient.ReadInt32($"{addr++}").Content;
-                data.ClampHorizontalCurrentSpeed = _modbusClient.ReadInt32($"{addr++}").Content;
-
-                // 桨垂直轴
-                data.ClampVerticalUpperLimit = _modbusClient.ReadCoil($"{addr++}").Content;
-                data.ClampVerticalLowerLimit = _modbusClient.ReadCoil($"{addr++}").Content;
-                data.ClampVerticalOriginLimit = _modbusClient.ReadCoil($"{addr++}").Content;
-                data.ClampVerticalUpperLimitPosition = _modbusClient.ReadInt32($"{addr++}").Content;
-                data.ClampVerticalLowerLimitPosition = _modbusClient.ReadInt32($"{addr++}").Content;
-                data.ClampVerticalOriginPosition = _modbusClient.ReadInt32($"{addr++}").Content;
-                data.ClampVerticalCurrentPosition = _modbusClient.ReadInt32($"{addr++}").Content;
-                data.ClampVerticalCurrentSpeed = _modbusClient.ReadInt32($"{addr++}").Content;
-
-                // 炉内状态
-                data.FurnaceStatus = _modbusClient.ReadCoil($"{addr++}").Content;          // 最后一个地址
+                // 读取机械手位置和速度
+                data.RobotHorizontal1CurrentPosition = _modbusClient.ReadInt32($"{addr++}").Content;   // 地址 base + 7
+                data.RobotHorizontal1CurrentSpeed = _modbusClient.ReadInt32($"{addr++}").Content;      // 地址 base + 8
+                data.RobotHorizontal2CurrentPosition = _modbusClient.ReadInt32($"{addr++}").Content;   // 地址 base + 9
+                data.RobotHorizontal2CurrentSpeed = _modbusClient.ReadInt32($"{addr++}").Content;      // 地址 base + 10
+                data.RobotVerticalCurrentPosition = _modbusClient.ReadInt32($"{addr++}").Content;      // 地址 base + 11
+                data.RobotVerticalCurrentSpeed = _modbusClient.ReadInt32($"{addr++}").Content;         // 地址 base + 12
 
                 // 读取轴运动状态
-                data.Horizontal1Moving = _modbusClient.ReadCoil($"{addr++}").Content;
-                data.Horizontal2Moving = _modbusClient.ReadCoil($"{addr++}").Content;
-                data.VerticalMoving = _modbusClient.ReadCoil($"{addr++}").Content;
+                data.Horizontal1Moving = _modbusClient.ReadCoil($"{addr++}").Content;          // 地址 base + 13
+                data.Horizontal2Moving = _modbusClient.ReadCoil($"{addr++}").Content;          // 地址 base + 14
+                data.VerticalMoving = _modbusClient.ReadCoil($"{addr++}").Content;             // 地址 base + 15
+
+                // 读取暂存区舟检测传感器状态
+                data.Storage1BoatSensor = _modbusClient.ReadCoil($"{addr++}").Content;         // 地址 base + 16
+                data.Storage2BoatSensor = _modbusClient.ReadCoil($"{addr++}").Content;         // 地址 base + 17
+                data.Storage3BoatSensor = _modbusClient.ReadCoil($"{addr++}").Content;         // 地址 base + 18
+                data.Storage4BoatSensor = _modbusClient.ReadCoil($"{addr++}").Content;         // 地址 base + 19
+                data.Storage5BoatSensor = _modbusClient.ReadCoil($"{addr++}").Content;         // 地址 base + 20
+                data.Storage6BoatSensor = _modbusClient.ReadCoil($"{addr++}").Content;         // 地址 base + 21
 
                 // 在UI线程更新数据
                 await _dispatcher.InvokeAsync(() =>
                 {
-                    // 更新所有属性
+                    // 更新门锁状态
                     MotionPlcData.InOutDoor1Lock = data.InOutDoor1Lock;
                     MotionPlcData.InOutDoor2Lock = data.InOutDoor2Lock;
                     MotionPlcData.MaintenanceDoor1Lock = data.MaintenanceDoor1Lock;
                     MotionPlcData.MaintenanceDoor2Lock = data.MaintenanceDoor2Lock;
                     MotionPlcData.BuzzerStatus = data.BuzzerStatus;
-                    MotionPlcData.FurnaceVerticalCylinder = data.FurnaceVerticalCylinder;
-                    MotionPlcData.FurnaceHorizontalCylinder = data.FurnaceHorizontalCylinder;
-                    MotionPlcData.Storage1HasMaterial = data.Storage1HasMaterial;
-                    MotionPlcData.Storage2HasMaterial = data.Storage2HasMaterial;
-                    MotionPlcData.ClampHasMaterial = data.ClampHasMaterial;
 
-                    // 机械手水平一轴
-                    MotionPlcData.RobotHorizontal1ForwardLimit = data.RobotHorizontal1ForwardLimit;
-                    MotionPlcData.RobotHorizontal1BackwardLimit = data.RobotHorizontal1BackwardLimit;
-                    MotionPlcData.RobotHorizontal1OriginLimit = data.RobotHorizontal1OriginLimit;
-                    MotionPlcData.RobotHorizontal1UpperLimit = data.RobotHorizontal1UpperLimit;
-                    MotionPlcData.RobotHorizontal1LowerLimit = data.RobotHorizontal1LowerLimit;
-                    MotionPlcData.RobotHorizontal1OriginPosition = data.RobotHorizontal1OriginPosition;
+                    // 更新小车状态
+                    MotionPlcData.HasCarriage = data.HasCarriage;
+                    MotionPlcData.CarriageHasMaterial = data.CarriageHasMaterial;
+
+                    // 更新机械手位置和速度
                     MotionPlcData.RobotHorizontal1CurrentPosition = data.RobotHorizontal1CurrentPosition;
                     MotionPlcData.RobotHorizontal1CurrentSpeed = data.RobotHorizontal1CurrentSpeed;
-
-                    // 机械手水平二轴
-                    MotionPlcData.RobotHorizontal2ForwardLimit = data.RobotHorizontal2ForwardLimit;
-                    MotionPlcData.RobotHorizontal2BackwardLimit = data.RobotHorizontal2BackwardLimit;
-                    MotionPlcData.RobotHorizontal2OriginLimit = data.RobotHorizontal2OriginLimit;
-                    MotionPlcData.RobotHorizontal2UpperLimit = data.RobotHorizontal2UpperLimit;
-                    MotionPlcData.RobotHorizontal2LowerLimit = data.RobotHorizontal2LowerLimit;
-                    MotionPlcData.RobotHorizontal2OriginPosition = data.RobotHorizontal2OriginPosition;
                     MotionPlcData.RobotHorizontal2CurrentPosition = data.RobotHorizontal2CurrentPosition;
                     MotionPlcData.RobotHorizontal2CurrentSpeed = data.RobotHorizontal2CurrentSpeed;
-
-                    // 机械手垂直轴
-                    MotionPlcData.RobotVerticalUpperLimit = data.RobotVerticalUpperLimit;
-                    MotionPlcData.RobotVerticalLowerLimit = data.RobotVerticalLowerLimit;
-                    MotionPlcData.RobotVerticalOriginLimit = data.RobotVerticalOriginLimit;
-                    MotionPlcData.RobotVerticalUpperLimitPosition = data.RobotVerticalUpperLimitPosition;
-                    MotionPlcData.RobotVerticalLowerLimitPosition = data.RobotVerticalLowerLimitPosition;
-                    MotionPlcData.RobotVerticalOriginPosition = data.RobotVerticalOriginPosition;
                     MotionPlcData.RobotVerticalCurrentPosition = data.RobotVerticalCurrentPosition;
                     MotionPlcData.RobotVerticalCurrentSpeed = data.RobotVerticalCurrentSpeed;
 
-                    // 桨水平轴
-                    MotionPlcData.ClampHorizontalForwardLimit = data.ClampHorizontalForwardLimit;
-                    MotionPlcData.ClampHorizontalBackwardLimit = data.ClampHorizontalBackwardLimit;
-                    MotionPlcData.ClampHorizontalOriginLimit = data.ClampHorizontalOriginLimit;
-                    MotionPlcData.ClampHorizontalUpperLimit = data.ClampHorizontalUpperLimit;
-                    MotionPlcData.ClampHorizontalLowerLimit = data.ClampHorizontalLowerLimit;
-                    MotionPlcData.ClampHorizontalOriginPosition = data.ClampHorizontalOriginPosition;
-                    MotionPlcData.ClampHorizontalCurrentPosition = data.ClampHorizontalCurrentPosition;
-                    MotionPlcData.ClampHorizontalCurrentSpeed = data.ClampHorizontalCurrentSpeed;
+                    // 更新轴运动状态
+                    MotionPlcData.Horizontal1Moving = data.Horizontal1Moving;
+                    MotionPlcData.Horizontal2Moving = data.Horizontal2Moving;
+                    MotionPlcData.VerticalMoving = data.VerticalMoving;
 
-                    // 桨垂直轴
-                    MotionPlcData.ClampVerticalUpperLimit = data.ClampVerticalUpperLimit;
-                    MotionPlcData.ClampVerticalLowerLimit = data.ClampVerticalLowerLimit;
-                    MotionPlcData.ClampVerticalOriginLimit = data.ClampVerticalOriginLimit;
-                    MotionPlcData.ClampVerticalUpperLimitPosition = data.ClampVerticalUpperLimitPosition;
-                    MotionPlcData.ClampVerticalLowerLimitPosition = data.ClampVerticalLowerLimitPosition;
-                    MotionPlcData.ClampVerticalOriginPosition = data.ClampVerticalOriginPosition;
-                    MotionPlcData.ClampVerticalCurrentPosition = data.ClampVerticalCurrentPosition;
-                    MotionPlcData.ClampVerticalCurrentSpeed = data.ClampVerticalCurrentSpeed;
+                    // 更新暂存区舟检测传感器状态
+                    MotionPlcData.Storage1BoatSensor = data.Storage1BoatSensor;
+                    MotionPlcData.Storage2BoatSensor = data.Storage2BoatSensor;
+                    MotionPlcData.Storage3BoatSensor = data.Storage3BoatSensor;
+                    MotionPlcData.Storage4BoatSensor = data.Storage4BoatSensor;
+                    MotionPlcData.Storage5BoatSensor = data.Storage5BoatSensor;
+                    MotionPlcData.Storage6BoatSensor = data.Storage6BoatSensor;
 
-                    // 炉内状态
-                    MotionPlcData.FurnaceStatus = data.FurnaceStatus;
-
-                    // 更新新属性并检查状态变化
-                    MotionPlcData.HasCarriage = data.HasCarriage;
-                    MotionPlcData.CarriageHasMaterial = data.CarriageHasMaterial;
-                    
                     // 检查状态变化
                     CheckCarriageStateChange(data.HasCarriage, data.CarriageHasMaterial);
                 });

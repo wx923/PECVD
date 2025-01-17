@@ -45,42 +45,14 @@ namespace WpfApp4.Models
         [ObservableProperty]
         private bool _buzzerStatus = false;
 
-        // 炉门气缸状态
-        [ObservableProperty]
-        private bool _furnaceVerticalCylinder = false;
-
-        [ObservableProperty]
-        private bool _furnaceHorizontalCylinder = false;
-
         // 区域料位状态
         [ObservableProperty]
-        private bool _storage1HasMaterial = false;
+        private bool _hasCarriage;  // 是否有小车
 
         [ObservableProperty]
-        private bool _storage2HasMaterial = false;
-
-        [ObservableProperty]
-        private bool _clampHasMaterial = false;
+        private bool _carriageHasMaterial;  // 小车区是否有料
 
         // 机械手水平一轴位置状态
-        [ObservableProperty]
-        private bool _robotHorizontal1ForwardLimit = false;
-
-        [ObservableProperty]
-        private bool _robotHorizontal1BackwardLimit = false;
-
-        [ObservableProperty]
-        private bool _robotHorizontal1OriginLimit = false;
-
-        [ObservableProperty]
-        private int _robotHorizontal1UpperLimit = 1;
-
-        [ObservableProperty]
-        private int _robotHorizontal1LowerLimit = 1;
-
-        [ObservableProperty]
-        private int _robotHorizontal1OriginPosition = 1;
-
         [ObservableProperty]
         private int _robotHorizontal1CurrentPosition = 1;
 
@@ -89,24 +61,6 @@ namespace WpfApp4.Models
 
         // 机械手水平二轴位置状态
         [ObservableProperty]
-        private bool _robotHorizontal2ForwardLimit = false;
-
-        [ObservableProperty]
-        private bool _robotHorizontal2BackwardLimit = false;
-
-        [ObservableProperty]
-        private bool _robotHorizontal2OriginLimit = false;
-
-        [ObservableProperty]
-        private int _robotHorizontal2UpperLimit = 1;
-
-        [ObservableProperty]
-        private int _robotHorizontal2LowerLimit = 1;
-
-        [ObservableProperty]
-        private int _robotHorizontal2OriginPosition = 1;
-
-        [ObservableProperty]
         private int _robotHorizontal2CurrentPosition = 1;
 
         [ObservableProperty]
@@ -114,172 +68,10 @@ namespace WpfApp4.Models
 
         // 机械手垂直轴位置状态
         [ObservableProperty]
-        private bool _robotVerticalUpperLimit = false;
-
-        [ObservableProperty]
-        private bool _robotVerticalLowerLimit = false;
-
-        [ObservableProperty]
-        private bool _robotVerticalOriginLimit = false;
-
-        [ObservableProperty]
-        private int _robotVerticalUpperLimitPosition = 1;
-
-        [ObservableProperty]
-        private int _robotVerticalLowerLimitPosition = 1;
-
-        [ObservableProperty]
-        private int _robotVerticalOriginPosition = 1;
-
-        [ObservableProperty]
         private int _robotVerticalCurrentPosition = 1;
 
         [ObservableProperty]
         private int _robotVerticalCurrentSpeed = 1;
-
-        // 桨水平轴位置状态
-        [ObservableProperty]
-        private bool _clampHorizontalForwardLimit = false;
-
-        [ObservableProperty]
-        private bool _clampHorizontalBackwardLimit = false;
-
-        [ObservableProperty]
-        private bool _clampHorizontalOriginLimit = false;
-
-        [ObservableProperty]
-        private int _clampHorizontalUpperLimit = 1;
-
-        [ObservableProperty]
-        private int _clampHorizontalLowerLimit = 1;
-
-        [ObservableProperty]
-        private int _clampHorizontalOriginPosition = 1;
-
-        [ObservableProperty]
-        private int _clampHorizontalCurrentPosition = 1;
-
-        [ObservableProperty]
-        private int _clampHorizontalCurrentSpeed = 1;
-
-        // 桨垂直轴位置状态
-        [ObservableProperty]
-        private bool _clampVerticalUpperLimit = false;
-
-        [ObservableProperty]
-        private bool _clampVerticalLowerLimit = false;
-
-        [ObservableProperty]
-        private bool _clampVerticalOriginLimit = false;
-
-        [ObservableProperty]
-        private int _clampVerticalUpperLimitPosition = 1;
-
-        [ObservableProperty]
-        private int _clampVerticalLowerLimitPosition = 1;
-
-        [ObservableProperty]
-        private int _clampVerticalOriginPosition = 1;
-
-        [ObservableProperty]
-        private int _clampVerticalCurrentPosition = 1;
-
-        [ObservableProperty]
-        private int _clampVerticalCurrentSpeed = 1;
-
-        // 炉内状态
-        [ObservableProperty]
-        private bool _furnaceStatus = false;
-
-        [ObservableProperty]
-        private bool _hasCarriage;  // 是否有小车
-
-        [ObservableProperty]
-        private bool _carriageHasMaterial;  // 小车区是否有料
-
-        [ObservableProperty]
-        private string _paddle1BoatNumber = "";
-        [ObservableProperty]
-        private string _paddle1Time = "";
-        [ObservableProperty]
-        private string _paddle1Status = "";
-
-        [ObservableProperty]
-        private string _paddle2BoatNumber = "";
-        [ObservableProperty]
-        private string _paddle2Time = "";
-        [ObservableProperty]
-        private string _paddle2Status = "";
-
-        [ObservableProperty]
-        private string _paddle3BoatNumber = "";
-        [ObservableProperty]
-        private string _paddle3Time = "";
-        [ObservableProperty]
-        private string _paddle3Status = "";
-
-        [ObservableProperty]
-        private string _paddle4BoatNumber = "";
-        [ObservableProperty]
-        private string _paddle4Time = "";
-        [ObservableProperty]
-        private string _paddle4Status = "";
-
-        [ObservableProperty]
-        private string _paddle5BoatNumber = "";
-        [ObservableProperty]
-        private string _paddle5Time = "";
-        [ObservableProperty]
-        private string _paddle5Status = "";
-
-        [ObservableProperty]
-        private string _paddle6BoatNumber = "";
-        [ObservableProperty]
-        private string _paddle6Time = "";
-        [ObservableProperty]
-        private string _paddle6Status = "";
-
-        [ObservableProperty]
-        private string _storage1BoatNumber = "";
-        [ObservableProperty]
-        private string _storage1Time = "";
-        [ObservableProperty]
-        private string _storage1Status = "";
-
-        [ObservableProperty]
-        private string _storage2BoatNumber = "";
-        [ObservableProperty]
-        private string _storage2Time = "";
-        [ObservableProperty]
-        private string _storage2Status = "";
-
-        [ObservableProperty]
-        private string _storage3BoatNumber = "";
-        [ObservableProperty]
-        private string _storage3Time = "";
-        [ObservableProperty]
-        private string _storage3Status = "";
-
-        [ObservableProperty]
-        private string _storage4BoatNumber = "";
-        [ObservableProperty]
-        private string _storage4Time = "";
-        [ObservableProperty]
-        private string _storage4Status = "";
-
-        [ObservableProperty]
-        private string _storage5BoatNumber = "";
-        [ObservableProperty]
-        private string _storage5Time = "";
-        [ObservableProperty]
-        private string _storage5Status = "";
-
-        [ObservableProperty]
-        private string _storage6BoatNumber = "";
-        [ObservableProperty]
-        private string _storage6Time = "";
-        [ObservableProperty]
-        private string _storage6Status = "";
 
         /// <summary>
         /// 水平上轴是否在运动
@@ -304,5 +96,54 @@ namespace WpfApp4.Models
         /// </summary>
         [ObservableProperty]
         private bool _verticalMoving;
+
+        // 暂存区舟检测传感器状态
+        /// <summary>
+        /// 暂存区1舟检测传感器状态
+        /// true: 有舟
+        /// false: 无舟
+        /// </summary>
+        [ObservableProperty]
+        private bool _storage1BoatSensor = false;
+
+        /// <summary>
+        /// 暂存区2舟检测传感器状态
+        /// true: 有舟
+        /// false: 无舟
+        /// </summary>
+        [ObservableProperty]
+        private bool _storage2BoatSensor = false;
+
+        /// <summary>
+        /// 暂存区3舟检测传感器状态
+        /// true: 有舟
+        /// false: 无舟
+        /// </summary>
+        [ObservableProperty]
+        private bool _storage3BoatSensor = false;
+
+        /// <summary>
+        /// 暂存区4舟检测传感器状态
+        /// true: 有舟
+        /// false: 无舟
+        /// </summary>
+        [ObservableProperty]
+        private bool _storage4BoatSensor = false;
+
+        /// <summary>
+        /// 暂存区5舟检测传感器状态
+        /// true: 有舟
+        /// false: 无舟
+        /// </summary>
+        [ObservableProperty]
+        private bool _storage5BoatSensor = false;
+
+        /// <summary>
+        /// 暂存区6舟检测传感器状态
+        /// true: 有舟
+        /// false: 无舟
+        /// </summary>
+        [ObservableProperty]
+        private bool _storage6BoatSensor = false;
     }
 } 

@@ -265,22 +265,42 @@ namespace WpfApp4.ViewModel
 
         // 步进命令
         [RelayCommand]
-        private async Task Step()
+        private async Task NextStep()
         {
             try
             {
-                await _robotPlc.WriteAsync("461", true);  // 写入步进信号
+                await _robotPlc.WriteAsync("461", true);  // 写入下一步信号
                 
                 // 更新按钮状态
                 IsPauseEnabled = true;   // 启用暂停按钮
                 IsResumeEnabled = false; // 禁用恢复按钮
                 IsStepEnabled = false;   // 禁用步进按钮
                 
-                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = "执行单步运动" });
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = "执行下一步" });
             }
             catch (Exception ex)
             {
-                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = $"步进失败: {ex.Message}" });
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = $"下一步失败: {ex.Message}" });
+            }
+        }
+
+        [RelayCommand]
+        private async Task PreviousStep()
+        {
+            try
+            {
+                await _robotPlc.WriteAsync("462", true);  // 写入上一步信号
+                
+                // 更新按钮状态
+                IsPauseEnabled = true;   // 启用暂停按钮
+                IsResumeEnabled = false; // 禁用恢复按钮
+                IsStepEnabled = false;   // 禁用步进按钮
+                
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = "执行上一步" });
+            }
+            catch (Exception ex)
+            {
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = $"上一步失败: {ex.Message}" });
             }
         }
 

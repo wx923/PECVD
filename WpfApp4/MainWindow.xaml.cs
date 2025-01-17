@@ -93,6 +93,11 @@ namespace WpfApp4
                     MainFrame.Navigate(new MonitoringAlarmPage(CurrentTubeNumber));
                     LastButtonUI = BtnMonitoringAlarm;
                 }
+                else if (currentPage is MotionControlPage)
+                {
+                    MainFrame.Navigate(new MotionControlPage(CurrentTubeNumber));
+                    LastButtonUI = BtnMotionControl;
+                }
 
                 // 更新按钮样式
                 if (LastButtonUI != null)
