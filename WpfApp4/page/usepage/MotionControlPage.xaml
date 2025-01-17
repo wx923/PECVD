@@ -270,7 +270,7 @@
                                         <TextBlock Text="{Binding MotionPlcData.Storage4Time}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
                                         <TextBlock Text="{Binding MotionPlcData.Storage4Status}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
                                     </StackPanel>
-                                </Border>
+                            </Border>
                                 <Border BorderBrush="Gray" BorderThickness="1" Margin="2" CornerRadius="3" MinWidth="60">
                                     <StackPanel Margin="3">
                                         <TextBlock Text="暂存区5" FontWeight="Bold" TextAlignment="Center" Margin="0,0,0,2" FontSize="12"/>
@@ -360,7 +360,7 @@
                                 Width="80"
                                 FontSize="14"
                                 Margin="0,2,0,5"
-                                Command="{Binding StartCommand}"
+                                Command="{Binding AutoModeStartCommand}"
                                 IsEnabled="{Binding IsAutoModeSelected}"/>
                         <Button Content="暂停" 
                                 Style="{StaticResource MaterialDesignFlatDarkBgButton}"
@@ -369,7 +369,7 @@
                                 FontSize="14"
                                 Margin="0,2,0,5"
                                 Command="{Binding PauseCommand}"
-                                IsEnabled="{Binding IsAutoModeSelected}"/>
+                                IsEnabled="{Binding IsPauseEnabled}"/>
                         <Button Content="恢复" 
                                 Style="{StaticResource MaterialDesignFlatDarkBgButton}"
                                 Height="30"
@@ -377,7 +377,7 @@
                                 FontSize="14"
                                 Margin="0,2,0,5"
                                 Command="{Binding ResumeCommand}"
-                                IsEnabled="{Binding IsAutoModeSelected}"/>
+                                IsEnabled="{Binding IsResumeEnabled}"/>
                         <Button Content="上一步" 
                                 Style="{StaticResource MaterialDesignFlatDarkBgButton}"
                                 Height="30"
@@ -385,7 +385,7 @@
                                 FontSize="14"
                                 Margin="0,2,0,5"
                                 Command="{Binding PreviousStepCommand}"
-                                IsEnabled="{Binding IsAutoModeSelected}"/>
+                                IsEnabled="{Binding IsStepEnabled}"/>
                         <Button Content="下一步" 
                                 Style="{StaticResource MaterialDesignFlatDarkBgButton}"
                                 Height="30"
@@ -393,7 +393,7 @@
                                 FontSize="14"
                                 Margin="0,2,0,5"
                                 Command="{Binding NextStepCommand}"
-                                IsEnabled="{Binding IsAutoModeSelected}"/>
+                                IsEnabled="{Binding IsStepEnabled}"/>
                     </StackPanel>
                     
                     <!-- 目标位置选择 -->
@@ -784,10 +784,10 @@
                             <TextBlock Text="位置值：" VerticalAlignment="Center"/>
                             <TextBox Width="60" Height="25" Text="{Binding InputValue}" Margin="5,0,0,0" IsEnabled="{Binding IsValueModeSelected}"/>
                             <TextBlock Text="mm" VerticalAlignment="Center" Margin="5,0,0,0"/>
-                        </StackPanel>
-                        <Button Style="{StaticResource MaterialDesignFlatMidBgButton}" 
-                                Content="启动" 
-                                Command="{Binding StartMotionCommand}"
+                            </StackPanel>
+                            <Button Style="{StaticResource MaterialDesignFlatMidBgButton}" 
+                                    Content="启动" 
+                                    Command="{Binding StartMotionCommand}"
                                 Height="30"
                                 Width="80"
                                 IsEnabled="{Binding IsValueModeSelected}"/>
@@ -796,7 +796,7 @@
 
                 <!-- 桨精确控制 -->
                 <TextBlock Text="桨精确控制" FontSize="14" FontWeight="Bold" Margin="5"></TextBlock>
-                <materialDesign:Card>
+                    <materialDesign:Card>
                     <StackPanel Orientation="Vertical" Margin="10">
                         <StackPanel Orientation="Vertical" Margin="0,0,0,5">
                             <TextBlock Text="轴选择" FontSize="12" Margin="0,0,0,5"></TextBlock>
@@ -816,14 +816,14 @@
                             <TextBlock Text="位置值：" VerticalAlignment="Center"/>
                             <TextBox Width="60" Height="25" Text="{Binding ClampInputValue}" Margin="5,0,0,0" IsEnabled="{Binding IsValueModeSelected}"/>
                             <TextBlock Text="mm" VerticalAlignment="Center" Margin="5,0,0,0"/>
-                        </StackPanel>
-                        <Button Style="{StaticResource MaterialDesignFlatMidBgButton}" 
-                                Content="启动" 
-                                Command="{Binding StartClampMotionCommand}"
+                            </StackPanel>
+                            <Button Style="{StaticResource MaterialDesignFlatMidBgButton}" 
+                                    Content="启动" 
+                                    Command="{Binding StartClampMotionCommand}"
                                 Height="30"
                                 Width="80"
                                 IsEnabled="{Binding IsValueModeSelected}"/>
-                    </StackPanel>
+                </StackPanel>
                 </materialDesign:Card>
             </StackPanel>
             <StackPanel Grid.Column="3" Margin="3,3,3,3">

@@ -280,5 +280,29 @@ namespace WpfApp4.Models
         private string _storage6Time = "";
         [ObservableProperty]
         private string _storage6Status = "";
+
+        /// <summary>
+        /// 水平上轴是否在运动
+        /// true: 运动中
+        /// false: 停止
+        /// </summary>
+        [ObservableProperty]
+        private bool _horizontal1Moving;
+
+        /// <summary>
+        /// 水平下轴是否在运动
+        /// true: 运动中
+        /// false: 停止
+        /// </summary>
+        [ObservableProperty]
+        private bool _horizontal2Moving;
+
+        /// <summary>
+        /// 垂直轴是否在运动
+        /// true: 运动中
+        /// false: 停止
+        /// </summary>
+        [ObservableProperty]
+        private bool _verticalMoving;
     }
 } 

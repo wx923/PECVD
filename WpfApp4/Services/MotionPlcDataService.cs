@@ -188,6 +188,11 @@ namespace WpfApp4.Services
                 // 炉内状态
                 data.FurnaceStatus = _modbusClient.ReadCoil($"{addr++}").Content;          // 最后一个地址
 
+                // 读取轴运动状态
+                data.Horizontal1Moving = _modbusClient.ReadCoil($"{addr++}").Content;
+                data.Horizontal2Moving = _modbusClient.ReadCoil($"{addr++}").Content;
+                data.VerticalMoving = _modbusClient.ReadCoil($"{addr++}").Content;
+
                 // 在UI线程更新数据
                 await _dispatcher.InvokeAsync(() =>
                 {
