@@ -98,7 +98,7 @@ namespace WpfApp4.ViewModel
                 { ("存储区1", "存储区2"), 5 },
                 { ("存储区1", "桨区"), 6 },
                 { ("存储区2", "小车区"), 7 },
-                { ("存储��2", "存储区1"), 8 },
+                { ("存储区2", "存储区1"), 8 },
                 { ("存储区2", "桨区"), 9 },
                 { ("桨区", "小车区"), 10 },
                 { ("桨区", "存储区1"), 11 },
@@ -417,7 +417,7 @@ namespace WpfApp4.ViewModel
                     // 位置模式下发命令
                     if (IsHorizontal1Selected)
                     {
-                        // 写入水平一��位置值和启动信号
+                        // 写入水平一轴位置值和启动信号
                         await _modbusClient.WriteAsync("449", InputValue);  // 位置值地址
                         await _modbusClient.WriteAsync("452", true);        // 启动信号地址
                     }
@@ -510,7 +510,7 @@ namespace WpfApp4.ViewModel
                     // 速度模式下发命令
                     if (IsClampHorizontalSelected)
                     {
-                        // 写入桨���平轴速度值和启动信号
+                        // 写入桨水平轴速度值和启动信号
                         await _modbusClient.WriteAsync("455", ClampInputValue);  // 速度值地址
                         await _modbusClient.WriteAsync("453", true);             // 启动信号地址
                     }
@@ -579,7 +579,7 @@ namespace WpfApp4.ViewModel
                     await StopAllMotion();
                     await Task.Delay(100);
                 }
-                // 发送命令到PLC - 桨水��轴到后限位
+                // 发送命令到PLC - 桨水平轴到后限位
                 await _modbusClient.WriteAsync("425", true);
             }
             catch (Exception ex)
@@ -690,5 +690,56 @@ namespace WpfApp4.ViewModel
 
         #endregion
 
+        [RelayCommand]
+        private async Task ToggleBuzzer()
+        {
+            try
+            {
+                // 只有在蜂鸣器为开启状态时才发送关闭命令
+                if (MotionPlcData.BuzzerStatus)
+                {
+                    var modbusClient = PlcCommunicationService.Instance.ModbusTcpClients[PlcCommunicationService.PlcType.Motion];
+                    await modbusClient.WriteAsync("4", false);  // 发送关闭命令
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"蜂鸣器控制失败: {ex.Message}");
+            }
+        }
+
+        // 添加模式选择状态
+        [ObservableProperty]
+        private bool _isAutoModeSelected = false;
+
+        [ObservableProperty]
+        private bool _isJogModeSelected = false;
+
+        [ObservableProperty]
+        private bool _isValueModeSelected = false;
+
+        [RelayCommand]
+        private void AutoMode()
+        {
+            IsAutoModeSelected = true;
+            IsJogModeSelected = false;
+            IsValueModeSelected = false;
+        }
+
+        [RelayCommand]
+        private void JogMode()
+        {
+            IsAutoModeSelected = false;
+            IsJogModeSelected = true;
+            IsValueModeSelected = false;
+        }
+
+        [RelayCommand]
+        private void ValueMode()
+        {
+            IsAutoModeSelected = false;
+            IsJogModeSelected = false;
+            IsValueModeSelected = true;
+        }
     }
 }

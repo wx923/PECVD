@@ -122,35 +122,38 @@ namespace WpfApp4.Services
                 int addr = BaseAddress;  // 从基础地址开始
 
                 // 读取线圈状态
-                data.Door1Lock = _modbusClient.ReadCoil($"{addr++}").Content;              // 地址 base + 0
-                data.Door2Lock = _modbusClient.ReadCoil($"{addr++}").Content;              // 地址 base + 1
-                data.FurnaceVerticalCylinder = _modbusClient.ReadCoil($"{addr++}").Content;    // 地址 base + 2
-                data.FurnaceHorizontalCylinder = _modbusClient.ReadCoil($"{addr++}").Content;  // 地址 base + 3
-                data.Storage1HasMaterial = _modbusClient.ReadCoil($"{addr++}").Content;        // 地址 base + 4
-                data.Storage2HasMaterial = _modbusClient.ReadCoil($"{addr++}").Content;        // 地址 base + 5
-                data.ClampHasMaterial = _modbusClient.ReadCoil($"{addr++}").Content;           // 地址 base + 6
-                data.HasCarriage = _modbusClient.ReadCoil($"{addr++}").Content;                // 地址 base + 7
-                data.CarriageHasMaterial = _modbusClient.ReadCoil($"{addr++}").Content;        // 地址 base + 8
+                data.InOutDoor1Lock = _modbusClient.ReadCoil($"{addr++}").Content;              // 地址 base + 0
+                data.InOutDoor2Lock = _modbusClient.ReadCoil($"{addr++}").Content;              // 地址 base + 1
+                data.MaintenanceDoor1Lock = _modbusClient.ReadCoil($"{addr++}").Content;        // 地址 base + 2
+                data.MaintenanceDoor2Lock = _modbusClient.ReadCoil($"{addr++}").Content;        // 地址 base + 3
+                data.BuzzerStatus = _modbusClient.ReadCoil($"{addr++}").Content;                // 地址 base + 4
+                data.FurnaceVerticalCylinder = _modbusClient.ReadCoil($"{addr++}").Content;    // 地址 base + 5
+                data.FurnaceHorizontalCylinder = _modbusClient.ReadCoil($"{addr++}").Content;  // 地址 base + 6
+                data.Storage1HasMaterial = _modbusClient.ReadCoil($"{addr++}").Content;        // 地址 base + 7
+                data.Storage2HasMaterial = _modbusClient.ReadCoil($"{addr++}").Content;        // 地址 base + 8
+                data.ClampHasMaterial = _modbusClient.ReadCoil($"{addr++}").Content;           // 地址 base + 9
+                data.HasCarriage = _modbusClient.ReadCoil($"{addr++}").Content;                // 地址 base + 10
+                data.CarriageHasMaterial = _modbusClient.ReadCoil($"{addr++}").Content;        // 地址 base + 11
 
                 // 机械手水平一轴
-                data.RobotHorizontal1ForwardLimit = _modbusClient.ReadCoil($"{addr++}").Content;   // 地址 base + 9
-                data.RobotHorizontal1BackwardLimit = _modbusClient.ReadCoil($"{addr++}").Content;  // 地址 base + 10
-                data.RobotHorizontal1OriginLimit = _modbusClient.ReadCoil($"{addr++}").Content;    // 地址 base + 11
-                data.RobotHorizontal1UpperLimit = _modbusClient.ReadInt32($"{addr++}").Content;    // 地址 base + 12
-                data.RobotHorizontal1LowerLimit = _modbusClient.ReadInt32($"{addr++}").Content;    // 地址 base + 13
-                data.RobotHorizontal1OriginPosition = _modbusClient.ReadInt32($"{addr++}").Content;    // 地址 base + 14
-                data.RobotHorizontal1CurrentPosition = _modbusClient.ReadInt32($"{addr++}").Content;   // 地址 base + 15
-                data.RobotHorizontal1CurrentSpeed = _modbusClient.ReadInt32($"{addr++}").Content;      // 地址 base + 16
+                data.RobotHorizontal1ForwardLimit = _modbusClient.ReadCoil($"{addr++}").Content;   // 地址 base + 11
+                data.RobotHorizontal1BackwardLimit = _modbusClient.ReadCoil($"{addr++}").Content;  // 地址 base + 12
+                data.RobotHorizontal1OriginLimit = _modbusClient.ReadCoil($"{addr++}").Content;    // 地址 base + 13
+                data.RobotHorizontal1UpperLimit = _modbusClient.ReadInt32($"{addr++}").Content;    // 地址 base + 14
+                data.RobotHorizontal1LowerLimit = _modbusClient.ReadInt32($"{addr++}").Content;    // 地址 base + 15
+                data.RobotHorizontal1OriginPosition = _modbusClient.ReadInt32($"{addr++}").Content;    // 地址 base + 16
+                data.RobotHorizontal1CurrentPosition = _modbusClient.ReadInt32($"{addr++}").Content;   // 地址 base + 17
+                data.RobotHorizontal1CurrentSpeed = _modbusClient.ReadInt32($"{addr++}").Content;      // 地址 base + 18
 
                 // 机械手水平二轴
-                data.RobotHorizontal2ForwardLimit = _modbusClient.ReadCoil($"{addr++}").Content;   // 地址 base + 17
-                data.RobotHorizontal2BackwardLimit = _modbusClient.ReadCoil($"{addr++}").Content;  // 地址 base + 18
-                data.RobotHorizontal2OriginLimit = _modbusClient.ReadCoil($"{addr++}").Content;    // 地址 base + 19
-                data.RobotHorizontal2UpperLimit = _modbusClient.ReadInt32($"{addr++}").Content;    // 地址 base + 20
-                data.RobotHorizontal2LowerLimit = _modbusClient.ReadInt32($"{addr++}").Content;    // 地址 base + 21
-                data.RobotHorizontal2OriginPosition = _modbusClient.ReadInt32($"{addr++}").Content;    // 地址 base + 22
-                data.RobotHorizontal2CurrentPosition = _modbusClient.ReadInt32($"{addr++}").Content;   // 地址 base + 23
-                data.RobotHorizontal2CurrentSpeed = _modbusClient.ReadInt32($"{addr++}").Content;      // 地址 base + 24
+                data.RobotHorizontal2ForwardLimit = _modbusClient.ReadCoil($"{addr++}").Content;   // 地址 base + 19
+                data.RobotHorizontal2BackwardLimit = _modbusClient.ReadCoil($"{addr++}").Content;  // 地址 base + 20
+                data.RobotHorizontal2OriginLimit = _modbusClient.ReadCoil($"{addr++}").Content;    // 地址 base + 21
+                data.RobotHorizontal2UpperLimit = _modbusClient.ReadInt32($"{addr++}").Content;    // 地址 base + 22
+                data.RobotHorizontal2LowerLimit = _modbusClient.ReadInt32($"{addr++}").Content;    // 地址 base + 23
+                data.RobotHorizontal2OriginPosition = _modbusClient.ReadInt32($"{addr++}").Content;    // 地址 base + 24
+                data.RobotHorizontal2CurrentPosition = _modbusClient.ReadInt32($"{addr++}").Content;   // 地址 base + 25
+                data.RobotHorizontal2CurrentSpeed = _modbusClient.ReadInt32($"{addr++}").Content;      // 地址 base + 26
 
                 // 机械手垂直轴
                 data.RobotVerticalUpperLimit = _modbusClient.ReadCoil($"{addr++}").Content;
@@ -189,8 +192,11 @@ namespace WpfApp4.Services
                 await _dispatcher.InvokeAsync(() =>
                 {
                     // 更新所有属性
-                    MotionPlcData.Door1Lock = data.Door1Lock;
-                    MotionPlcData.Door2Lock = data.Door2Lock;
+                    MotionPlcData.InOutDoor1Lock = data.InOutDoor1Lock;
+                    MotionPlcData.InOutDoor2Lock = data.InOutDoor2Lock;
+                    MotionPlcData.MaintenanceDoor1Lock = data.MaintenanceDoor1Lock;
+                    MotionPlcData.MaintenanceDoor2Lock = data.MaintenanceDoor2Lock;
+                    MotionPlcData.BuzzerStatus = data.BuzzerStatus;
                     MotionPlcData.FurnaceVerticalCylinder = data.FurnaceVerticalCylinder;
                     MotionPlcData.FurnaceHorizontalCylinder = data.FurnaceHorizontalCylinder;
                     MotionPlcData.Storage1HasMaterial = data.Storage1HasMaterial;
