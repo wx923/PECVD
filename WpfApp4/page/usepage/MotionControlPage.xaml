@@ -270,7 +270,7 @@
                                         <TextBlock Text="{Binding MotionPlcData.Storage4Time}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
                                         <TextBlock Text="{Binding MotionPlcData.Storage4Status}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
                                     </StackPanel>
-                            </Border>
+                                </Border>
                                 <Border BorderBrush="Gray" BorderThickness="1" Margin="2" CornerRadius="3" MinWidth="60">
                                     <StackPanel Margin="3">
                                         <TextBlock Text="暂存区5" FontWeight="Bold" TextAlignment="Center" Margin="0,0,0,2" FontSize="12"/>
@@ -765,63 +765,65 @@
                             <TextBlock Text="轴选择" FontSize="12" Margin="0,0,0,5"></TextBlock>
                             <StackPanel Orientation="Vertical" Margin="10,0,0,0">
                                 <StackPanel Orientation="Horizontal">
-                                    <RadioButton GroupName="AxisSelect" Content="水平一轴" IsChecked="{Binding IsHorizontal1Selected}" Margin="0,0,15,0"/>
-                                    <RadioButton GroupName="AxisSelect" Content="水平二轴" IsChecked="{Binding IsHorizontal2Selected}" Margin="0"/>
+                                    <RadioButton GroupName="AxisSelect" Content="水平一轴" IsChecked="{Binding IsHorizontal1Selected}" Margin="0,0,15,0" IsEnabled="{Binding IsValueModeSelected}"/>
+                                    <RadioButton GroupName="AxisSelect" Content="水平二轴" IsChecked="{Binding IsHorizontal2Selected}" Margin="0" IsEnabled="{Binding IsValueModeSelected}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                                    <RadioButton GroupName="AxisSelect" Content="垂直轴" IsChecked="{Binding IsVerticalSelected}" Margin="0"/>
+                                    <RadioButton GroupName="AxisSelect" Content="垂直轴" IsChecked="{Binding IsVerticalSelected}" Margin="0" IsEnabled="{Binding IsValueModeSelected}"/>
                                 </StackPanel>
                             </StackPanel>
                         </StackPanel>
                         <StackPanel Orientation="Vertical" Margin="0,0,0,5">
                             <TextBlock Text="速度选择" FontSize="12" Margin="0,0,0,5"></TextBlock>
                             <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
-                                <RadioButton GroupName="SpeedSelect" Content="快速" IsChecked="{Binding IsHighSpeedSelected}" Margin="0,0,15,0"/>
-                                <RadioButton GroupName="SpeedSelect" Content="慢速" IsChecked="{Binding IsLowSpeedSelected}" Margin="0"/>
+                                <RadioButton GroupName="SpeedSelect" Content="快速" IsChecked="{Binding IsHighSpeedSelected}" Margin="0,0,15,0" IsEnabled="{Binding IsValueModeSelected}"/>
+                                <RadioButton GroupName="SpeedSelect" Content="慢速" IsChecked="{Binding IsLowSpeedSelected}" Margin="0" IsEnabled="{Binding IsValueModeSelected}"/>
                             </StackPanel>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="0,5,0,10">
                             <TextBlock Text="位置值：" VerticalAlignment="Center"/>
-                            <TextBox Width="60" Height="25" Text="{Binding InputValue}" Margin="5,0,0,0"/>
+                            <TextBox Width="60" Height="25" Text="{Binding InputValue}" Margin="5,0,0,0" IsEnabled="{Binding IsValueModeSelected}"/>
                             <TextBlock Text="mm" VerticalAlignment="Center" Margin="5,0,0,0"/>
-                            </StackPanel>
-                            <Button Style="{StaticResource MaterialDesignFlatMidBgButton}" 
-                                    Content="启动" 
-                                    Command="{Binding StartMotionCommand}"
+                        </StackPanel>
+                        <Button Style="{StaticResource MaterialDesignFlatMidBgButton}" 
+                                Content="启动" 
+                                Command="{Binding StartMotionCommand}"
                                 Height="30"
-                                Width="80"/>
+                                Width="80"
+                                IsEnabled="{Binding IsValueModeSelected}"/>
                     </StackPanel>
                 </materialDesign:Card>
 
                 <!-- 桨精确控制 -->
                 <TextBlock Text="桨精确控制" FontSize="14" FontWeight="Bold" Margin="5"></TextBlock>
-                    <materialDesign:Card>
+                <materialDesign:Card>
                     <StackPanel Orientation="Vertical" Margin="10">
                         <StackPanel Orientation="Vertical" Margin="0,0,0,5">
                             <TextBlock Text="轴选择" FontSize="12" Margin="0,0,0,5"></TextBlock>
                             <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
-                                <RadioButton GroupName="ClampAxisSelect" Content="水平轴" IsChecked="{Binding IsClampHorizontalSelected}" Margin="0,0,15,0"/>
-                                <RadioButton GroupName="ClampAxisSelect" Content="垂直轴" IsChecked="{Binding IsClampVerticalSelected}" Margin="0"/>
+                                <RadioButton GroupName="ClampAxisSelect" Content="水平轴" IsChecked="{Binding IsClampHorizontalSelected}" Margin="0,0,15,0" IsEnabled="{Binding IsValueModeSelected}"/>
+                                <RadioButton GroupName="ClampAxisSelect" Content="垂直轴" IsChecked="{Binding IsClampVerticalSelected}" Margin="0" IsEnabled="{Binding IsValueModeSelected}"/>
                             </StackPanel>
                         </StackPanel>
                         <StackPanel Orientation="Vertical" Margin="0,0,0,5">
                             <TextBlock Text="速度选择" FontSize="12" Margin="0,0,0,5"></TextBlock>
                             <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
-                                <RadioButton GroupName="ClampSpeedSelect" Content="快速" IsChecked="{Binding IsClampHighSpeedSelected}" Margin="0,0,15,0"/>
-                                <RadioButton GroupName="ClampSpeedSelect" Content="慢速" IsChecked="{Binding IsClampLowSpeedSelected}" Margin="0"/>
+                                <RadioButton GroupName="ClampSpeedSelect" Content="快速" IsChecked="{Binding IsClampHighSpeedSelected}" Margin="0,0,15,0" IsEnabled="{Binding IsValueModeSelected}"/>
+                                <RadioButton GroupName="ClampSpeedSelect" Content="慢速" IsChecked="{Binding IsClampLowSpeedSelected}" Margin="0" IsEnabled="{Binding IsValueModeSelected}"/>
                             </StackPanel>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="0,5,0,10">
                             <TextBlock Text="位置值：" VerticalAlignment="Center"/>
-                            <TextBox Width="60" Height="25" Text="{Binding ClampInputValue}" Margin="5,0,0,0"/>
+                            <TextBox Width="60" Height="25" Text="{Binding ClampInputValue}" Margin="5,0,0,0" IsEnabled="{Binding IsValueModeSelected}"/>
                             <TextBlock Text="mm" VerticalAlignment="Center" Margin="5,0,0,0"/>
-                            </StackPanel>
-                            <Button Style="{StaticResource MaterialDesignFlatMidBgButton}" 
-                                    Content="启动" 
-                                    Command="{Binding StartClampMotionCommand}"
+                        </StackPanel>
+                        <Button Style="{StaticResource MaterialDesignFlatMidBgButton}" 
+                                Content="启动" 
+                                Command="{Binding StartClampMotionCommand}"
                                 Height="30"
-                                Width="80"/>
-                </StackPanel>
+                                Width="80"
+                                IsEnabled="{Binding IsValueModeSelected}"/>
+                    </StackPanel>
                 </materialDesign:Card>
             </StackPanel>
             <StackPanel Grid.Column="3" Margin="3,3,3,3">
