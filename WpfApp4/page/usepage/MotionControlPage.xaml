@@ -120,6 +120,7 @@
         <converters:BoolToYesNoConverter x:Key="BoolToYesNoConverter"/>
         <converters:BoolToOnOffConverter x:Key="BoolToOnOffConverter"/>
         <converters:BooleanToBackgroundConverter x:Key="BooleanToBackgroundConverter"/>
+        <converters:BooleanToInverseBooleanConverter x:Key="BooleanToInverseBooleanConverter"/>
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -301,6 +302,7 @@
                         <RadioButton Content="小车区" 
                                          Margin="0,2,0,5" 
                                      GroupName="SourcePosition"
+                                     IsEnabled="{Binding MotionPlcData.CarriageHasMaterial}"
                                      IsChecked="{Binding SelectedSourcePosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=小车区}"/>
                             <RadioButton Content="暂存区1" 
                                          Margin="0,2,0,5" 
@@ -335,26 +337,32 @@
                             <RadioButton Content="桨区1" 
                                          Margin="0,2,0,5" 
                                          GroupName="SourcePosition"
+                                         IsEnabled="{Binding FurnacePlcDataDict[0].PaddleBoatSensor}"
                                          IsChecked="{Binding SelectedSourcePosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=桨区1}"/>
                             <RadioButton Content="桨区2" 
                                          Margin="0,2,0,5" 
                                          GroupName="SourcePosition"
+                                         IsEnabled="{Binding FurnacePlcDataDict[1].PaddleBoatSensor}"
                                          IsChecked="{Binding SelectedSourcePosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=桨区2}"/>
                             <RadioButton Content="桨区3" 
                                          Margin="0,2,0,5" 
                                          GroupName="SourcePosition"
+                                         IsEnabled="{Binding FurnacePlcDataDict[2].PaddleBoatSensor}"
                                          IsChecked="{Binding SelectedSourcePosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=桨区3}"/>
                             <RadioButton Content="桨区4" 
                                          Margin="0,2,0,5" 
-                                     GroupName="SourcePosition"
+                                         GroupName="SourcePosition"
+                                         IsEnabled="{Binding FurnacePlcDataDict[3].PaddleBoatSensor}"
                                          IsChecked="{Binding SelectedSourcePosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=桨区4}"/>
                             <RadioButton Content="桨区5" 
                                          Margin="0,2,0,5" 
-                                     GroupName="SourcePosition"
+                                         GroupName="SourcePosition"
+                                         IsEnabled="{Binding FurnacePlcDataDict[4].PaddleBoatSensor}"
                                          IsChecked="{Binding SelectedSourcePosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=桨区5}"/>
                             <RadioButton Content="桨区6" 
                                          Margin="0,2,0,5" 
-                                     GroupName="SourcePosition"
+                                         GroupName="SourcePosition"
+                                         IsEnabled="{Binding FurnacePlcDataDict[5].PaddleBoatSensor}"
                                          IsChecked="{Binding SelectedSourcePosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=桨区6}"/>
                     </StackPanel>
                     </ScrollViewer>
@@ -409,54 +417,67 @@
                         <RadioButton Content="小车区" 
                                          Margin="0,2,0,5" 
                                      GroupName="TargetPosition"
+                                     IsEnabled="{Binding MotionPlcData.CarriageHasMaterial, Converter={StaticResource BooleanToInverseBooleanConverter}}"
                                      IsChecked="{Binding SelectedTargetPosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=小车区}"/>
                             <RadioButton Content="暂存区1" 
                                          Margin="0,2,0,5" 
                                          GroupName="TargetPosition"
+                                         IsEnabled="{Binding MotionPlcData.Storage1BoatSensor, Converter={StaticResource BooleanToInverseBooleanConverter}}"
                                          IsChecked="{Binding SelectedTargetPosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=暂存区1}"/>
                             <RadioButton Content="暂存区2" 
                                          Margin="0,2,0,5" 
                                          GroupName="TargetPosition"
+                                         IsEnabled="{Binding MotionPlcData.Storage2BoatSensor, Converter={StaticResource BooleanToInverseBooleanConverter}}"
                                          IsChecked="{Binding SelectedTargetPosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=暂存区2}"/>
                             <RadioButton Content="暂存区3" 
                                          Margin="0,2,0,5" 
                                          GroupName="TargetPosition"
+                                         IsEnabled="{Binding MotionPlcData.Storage3BoatSensor, Converter={StaticResource BooleanToInverseBooleanConverter}}"
                                          IsChecked="{Binding SelectedTargetPosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=暂存区3}"/>
                             <RadioButton Content="暂存区4" 
                                          Margin="0,2,0,5" 
                                          GroupName="TargetPosition"
+                                         IsEnabled="{Binding MotionPlcData.Storage4BoatSensor, Converter={StaticResource BooleanToInverseBooleanConverter}}"
                                          IsChecked="{Binding SelectedTargetPosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=暂存区4}"/>
                             <RadioButton Content="暂存区5" 
                                          Margin="0,2,0,5" 
                                          GroupName="TargetPosition"
+                                         IsEnabled="{Binding MotionPlcData.Storage5BoatSensor, Converter={StaticResource BooleanToInverseBooleanConverter}}"
                                          IsChecked="{Binding SelectedTargetPosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=暂存区5}"/>
                             <RadioButton Content="暂存区6" 
                                          Margin="0,2,0,5" 
                                          GroupName="TargetPosition"
+                                         IsEnabled="{Binding MotionPlcData.Storage6BoatSensor, Converter={StaticResource BooleanToInverseBooleanConverter}}"
                                          IsChecked="{Binding SelectedTargetPosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=暂存区6}"/>
                             <RadioButton Content="桨区1" 
                                          Margin="0,2,0,5" 
                                          GroupName="TargetPosition"
+                                         IsEnabled="{Binding FurnacePlcDataDict[0].PaddleBoatSensor, Converter={StaticResource BooleanToInverseBooleanConverter}}"
                                          IsChecked="{Binding SelectedTargetPosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=桨区1}"/>
                             <RadioButton Content="桨区2" 
                                          Margin="0,2,0,5" 
                                          GroupName="TargetPosition"
+                                         IsEnabled="{Binding FurnacePlcDataDict[1].PaddleBoatSensor, Converter={StaticResource BooleanToInverseBooleanConverter}}"
                                          IsChecked="{Binding SelectedTargetPosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=桨区2}"/>
                             <RadioButton Content="桨区3" 
                                          Margin="0,2,0,5" 
                                          GroupName="TargetPosition"
+                                         IsEnabled="{Binding FurnacePlcDataDict[2].PaddleBoatSensor, Converter={StaticResource BooleanToInverseBooleanConverter}}"
                                          IsChecked="{Binding SelectedTargetPosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=桨区3}"/>
                             <RadioButton Content="桨区4" 
                                          Margin="0,2,0,5" 
-                                     GroupName="TargetPosition"
+                                         GroupName="TargetPosition"
+                                         IsEnabled="{Binding FurnacePlcDataDict[3].PaddleBoatSensor, Converter={StaticResource BooleanToInverseBooleanConverter}}"
                                          IsChecked="{Binding SelectedTargetPosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=桨区4}"/>
                             <RadioButton Content="桨区5" 
                                          Margin="0,2,0,5" 
-                                     GroupName="TargetPosition"
+                                         GroupName="TargetPosition"
+                                         IsEnabled="{Binding FurnacePlcDataDict[4].PaddleBoatSensor, Converter={StaticResource BooleanToInverseBooleanConverter}}"
                                          IsChecked="{Binding SelectedTargetPosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=桨区5}"/>
                             <RadioButton Content="桨区6" 
                                          Margin="0,2,0,5" 
-                                     GroupName="TargetPosition"
+                                         GroupName="TargetPosition"
+                                         IsEnabled="{Binding FurnacePlcDataDict[5].PaddleBoatSensor, Converter={StaticResource BooleanToInverseBooleanConverter}}"
                                          IsChecked="{Binding SelectedTargetPosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=桨区6}"/>
                     </StackPanel>
                     </ScrollViewer>

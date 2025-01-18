@@ -20,9 +20,11 @@ namespace WpfApp4.ViewModel
         private ModbusTcpNet _robotPlc => PlcCommunicationService.Instance.ModbusTcpClients[PlcCommunicationService.PlcType.Motion];  // 机械手PLC
         private ModbusTcpNet _tubePlc => PlcCommunicationService.Instance.ModbusTcpClients[_tubePlcType];  // 炉管PLC
         private MotionPlcDataService _plcDataService => MotionPlcDataService.Instance;
+        private FurnacePlcDataService _furnacePlcDataService => FurnacePlcDataService.Instance;
         
         // 获取PLC数据的属性
         public MotionPlcData MotionPlcData => _plcDataService.MotionPlcData;
+        public Dictionary<int, FurnacePlcData> FurnacePlcDataDict => _furnacePlcDataService.FurnacePlcDataDict;
 
         [ObservableProperty]
         private int tubeNumber;
