@@ -45,13 +45,6 @@ namespace WpfApp4.Models
         [ObservableProperty]
         private bool _buzzerStatus = false;
 
-        // 区域料位状态
-        [ObservableProperty]
-        private bool _hasCarriage;  // 是否有小车
-
-        [ObservableProperty]
-        private bool _carriageHasMaterial;  // 小车区是否有料
-
         // 机械手水平一轴位置状态
         [ObservableProperty]
         private int _robotHorizontal1CurrentPosition = 1;

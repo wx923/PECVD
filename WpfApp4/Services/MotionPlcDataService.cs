@@ -127,11 +127,6 @@ namespace WpfApp4.Services
                 data.MaintenanceDoor1Lock = _modbusClient.ReadCoil($"{addr++}").Content;        // 地址 base + 2
                 data.MaintenanceDoor2Lock = _modbusClient.ReadCoil($"{addr++}").Content;        // 地址 base + 3
                 data.BuzzerStatus = _modbusClient.ReadCoil($"{addr++}").Content;                // 地址 base + 4
-
-                // 读取小车状态
-                data.HasCarriage = _modbusClient.ReadCoil($"{addr++}").Content;                // 地址 base + 5
-                data.CarriageHasMaterial = _modbusClient.ReadCoil($"{addr++}").Content;        // 地址 base + 6
-
                 // 读取机械手位置和速度
                 data.RobotHorizontal1CurrentPosition = _modbusClient.ReadInt32($"{addr++}").Content;   // 地址 base + 7
                 data.RobotHorizontal1CurrentSpeed = _modbusClient.ReadInt32($"{addr++}").Content;      // 地址 base + 8
@@ -163,10 +158,6 @@ namespace WpfApp4.Services
                     MotionPlcData.MaintenanceDoor2Lock = data.MaintenanceDoor2Lock;
                     MotionPlcData.BuzzerStatus = data.BuzzerStatus;
 
-                    // 更新小车状态
-                    MotionPlcData.HasCarriage = data.HasCarriage;
-                    MotionPlcData.CarriageHasMaterial = data.CarriageHasMaterial;
-
                     // 更新机械手位置和速度
                     MotionPlcData.RobotHorizontal1CurrentPosition = data.RobotHorizontal1CurrentPosition;
                     MotionPlcData.RobotHorizontal1CurrentSpeed = data.RobotHorizontal1CurrentSpeed;
@@ -187,9 +178,6 @@ namespace WpfApp4.Services
                     MotionPlcData.Storage4BoatSensor = data.Storage4BoatSensor;
                     MotionPlcData.Storage5BoatSensor = data.Storage5BoatSensor;
                     MotionPlcData.Storage6BoatSensor = data.Storage6BoatSensor;
-
-                    // 检查状态变化
-                    CheckCarriageStateChange(data.HasCarriage, data.CarriageHasMaterial);
                 });
             }
             catch (Exception ex)

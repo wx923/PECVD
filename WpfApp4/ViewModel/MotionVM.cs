@@ -21,10 +21,18 @@ namespace WpfApp4.ViewModel
         private ModbusTcpNet _tubePlc => PlcCommunicationService.Instance.ModbusTcpClients[_tubePlcType];  // 炉管PLC
         private MotionPlcDataService _plcDataService => MotionPlcDataService.Instance;
         private FurnacePlcDataService _furnacePlcDataService => FurnacePlcDataService.Instance;
+        private MotionBoatService _boatService => MotionBoatService.Instance;
         
         // 获取PLC数据的属性
         public MotionPlcData MotionPlcData => _plcDataService.MotionPlcData;
         public Dictionary<int, FurnacePlcData> FurnacePlcDataDict => _furnacePlcDataService.FurnacePlcDataDict;
+
+        // 区域舟信息
+        [ObservableProperty]
+        private ObservableCollection<AreaBoatInfo> _storageAreas;
+
+        [ObservableProperty]
+        private ObservableCollection<AreaBoatInfo> _paddleAreas;
 
         [ObservableProperty]
         private int tubeNumber;
@@ -67,9 +75,84 @@ namespace WpfApp4.ViewModel
                 6 => PlcCommunicationService.PlcType.Furnace6,
                 _ => throw new ArgumentException($"无效的炉管号: {tubeNumber}")
             };
+
+            // 初始化区域舟信息集合
+            StorageAreas = new ObservableCollection<AreaBoatInfo>();
+            PaddleAreas = new ObservableCollection<AreaBoatInfo>();
+
+            // 初始化6个暂存区和6个桨区
+            for (int i = 0; i < 6; i++)
+            {
+                StorageAreas.Add(new AreaBoatInfo());
+                PaddleAreas.Add(new AreaBoatInfo());
+            }
+
+            // 启动区域舟信息更新
+            StartAreaBoatInfoUpdate();
             
             EventLogs = new ObservableCollection<EventLog>();
             EventLogs.Add(new EventLog { Time = DateTime.Now, Message = $"初始化炉管 {tubeNumber} 的运动控制" });
+        }
+
+        private void StartAreaBoatInfoUpdate()
+        {
+            Task.Run(async () =>
+            {
+                while (true)
+                {
+                    try
+                    {
+                        var boats = _boatService.Boats;
+                        Application.Current.Dispatcher.Invoke(() =>
+                        {
+                            // 清空所有区域的舟信息
+                            foreach (var area in StorageAreas)
+                            {
+                                area.BoatNumber = 0;
+                                area.CurrentCoolingTime = 0;
+                                area.TotalCoolingTime = 0;
+                                area.Status = 2;
+                            }
+                            foreach (var area in PaddleAreas)
+                            {
+                                area.BoatNumber = 0;
+                                area.CurrentCoolingTime = 0;
+                                area.TotalCoolingTime = 0;
+                                area.Status = 4;
+                            }
+
+                            // 更新区域舟信息
+                            foreach (var boat in boats)
+                            {
+                                if (boat.Location >= 1 && boat.Location <= 6)  // 暂存区
+                                {
+                                    var area = StorageAreas[boat.Location - 1];
+                                    UpdateAreaInfo(area, boat);
+                                }
+                                else if (boat.Location >= 7 && boat.Location <= 12)  // 桨区
+                                {
+                                    var area = PaddleAreas[boat.Location - 7];
+                                    UpdateAreaInfo(area, boat);
+                                }
+                            }
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+                        EventLogs.Add(new EventLog { Time = DateTime.Now, Message = $"更新区域舟信息失败: {ex.Message}" });
+                    }
+
+                    await Task.Delay(1000); // 每秒更新一次
+                }
+            });
+        }
+
+        private void UpdateAreaInfo(AreaBoatInfo area, MotionBoatModel boat)
+        {
+            area.BoatNumber = boat.BoatNumber;
+            area.CurrentCoolingTime = boat.CurrentCoolingTime;
+            area.TotalCoolingTime = boat.TotalCoolingTime;
+            area.Status = boat.Status;
         }
 
         // 源位置和目标位置
@@ -137,19 +220,18 @@ namespace WpfApp4.ViewModel
         {
             return position switch
             {
-                "小车区" => 1,
-                "暂存区1" => 2,
-                "暂存区2" => 3,
-                "暂存区3" => 4,
-                "暂存区4" => 5,
-                "暂存区5" => 6,
-                "暂存区6" => 7,
-                "桨区1" => 8,
-                "桨区2" => 9,
-                "桨区3" => 10,
-                "桨区4" => 11,
-                "桨区5" => 12,
-                "桨区6" => 13,
+                "暂存区1" => 1,
+                "暂存区2" => 2,
+                "暂存区3" => 3,
+                "暂存区4" => 4,
+                "暂存区5" => 5,
+                "暂存区6" => 6,
+                "桨区1" => 7,
+                "桨区2" => 8,
+                "桨区3" => 9,
+                "桨区4" => 10,
+                "桨区5" => 11,
+                "桨区6" => 12,
                 _ => throw new ArgumentException($"未知的位置: {position}")
             };
         }

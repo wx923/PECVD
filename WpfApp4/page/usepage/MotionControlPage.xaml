@@ -121,6 +121,7 @@
         <converters:BoolToOnOffConverter x:Key="BoolToOnOffConverter"/>
         <converters:BooleanToBackgroundConverter x:Key="BooleanToBackgroundConverter"/>
         <converters:BooleanToInverseBooleanConverter x:Key="BooleanToInverseBooleanConverter"/>
+        <converters:BoatStatusToColorConverter x:Key="BoatStatusToColorConverter"/>
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -183,50 +184,84 @@
                                 <Border BorderBrush="Gray" BorderThickness="1" Margin="2" CornerRadius="3" MinWidth="60">
                                     <StackPanel Margin="3">
                                         <TextBlock Text="桨区1" FontWeight="Bold" TextAlignment="Center" Margin="0,0,0,2" FontSize="12"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Paddle1BoatNumber}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Paddle1Time}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Paddle1Status}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding PaddleAreas[0].BoatNumber}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding PaddleAreas[0].CurrentCoolingTime}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding PaddleAreas[0].TotalCoolingTime}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding PaddleAreas[0].Status, Converter={StaticResource BoatStatusToColorConverter}}" 
+                                                   TextAlignment="Center" 
+                                                   Margin="0,1" 
+                                                   FontSize="11"
+                                                   Background="{Binding PaddleAreas[0].Status, Converter={StaticResource BoatStatusToColorConverter}}"/>
                                     </StackPanel>
                                 </Border>
-                                <!-- 其他桨区使用相同的样式 -->
+                                <!-- 桨区2 -->
                                 <Border BorderBrush="Gray" BorderThickness="1" Margin="2" CornerRadius="3" MinWidth="60">
                                     <StackPanel Margin="3">
                                         <TextBlock Text="桨区2" FontWeight="Bold" TextAlignment="Center" Margin="0,0,0,2" FontSize="12"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Paddle2BoatNumber}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Paddle2Time}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Paddle2Status}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding PaddleAreas[1].BoatNumber}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding PaddleAreas[1].CurrentCoolingTime}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding PaddleAreas[1].TotalCoolingTime}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding PaddleAreas[1].Status, Converter={StaticResource BoatStatusToColorConverter}}" 
+                                                   TextAlignment="Center" 
+                                                   Margin="0,1" 
+                                                   FontSize="11"
+                                                   Background="{Binding PaddleAreas[1].Status, Converter={StaticResource BoatStatusToColorConverter}}"/>
                                     </StackPanel>
                                 </Border>
+                                <!-- 桨区3 -->
                                 <Border BorderBrush="Gray" BorderThickness="1" Margin="2" CornerRadius="3" MinWidth="60">
                                     <StackPanel Margin="3">
                                         <TextBlock Text="桨区3" FontWeight="Bold" TextAlignment="Center" Margin="0,0,0,2" FontSize="12"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Paddle3BoatNumber}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Paddle3Time}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Paddle3Status}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding PaddleAreas[2].BoatNumber}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding PaddleAreas[2].CurrentCoolingTime}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding PaddleAreas[2].TotalCoolingTime}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding PaddleAreas[2].Status, Converter={StaticResource BoatStatusToColorConverter}}" 
+                                                   TextAlignment="Center" 
+                                                   Margin="0,1" 
+                                                   FontSize="11"
+                                                   Background="{Binding PaddleAreas[2].Status, Converter={StaticResource BoatStatusToColorConverter}}"/>
                                     </StackPanel>
                                 </Border>
+                                <!-- 桨区4 -->
                                 <Border BorderBrush="Gray" BorderThickness="1" Margin="2" CornerRadius="3" MinWidth="60">
                                     <StackPanel Margin="3">
                                         <TextBlock Text="桨区4" FontWeight="Bold" TextAlignment="Center" Margin="0,0,0,2" FontSize="12"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Paddle4BoatNumber}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Paddle4Time}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Paddle4Status}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding PaddleAreas[3].BoatNumber}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding PaddleAreas[3].CurrentCoolingTime}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding PaddleAreas[3].TotalCoolingTime}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding PaddleAreas[3].Status, Converter={StaticResource BoatStatusToColorConverter}}" 
+                                                   TextAlignment="Center" 
+                                                   Margin="0,1" 
+                                                   FontSize="11"
+                                                   Background="{Binding PaddleAreas[3].Status, Converter={StaticResource BoatStatusToColorConverter}}"/>
                                     </StackPanel>
                                 </Border>
+                                <!-- 桨区5 -->
                                 <Border BorderBrush="Gray" BorderThickness="1" Margin="2" CornerRadius="3" MinWidth="60">
                                     <StackPanel Margin="3">
                                         <TextBlock Text="桨区5" FontWeight="Bold" TextAlignment="Center" Margin="0,0,0,2" FontSize="12"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Paddle5BoatNumber}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Paddle5Time}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Paddle5Status}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding PaddleAreas[4].BoatNumber}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding PaddleAreas[4].CurrentCoolingTime}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding PaddleAreas[4].TotalCoolingTime}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding PaddleAreas[4].Status, Converter={StaticResource BoatStatusToColorConverter}}" 
+                                                   TextAlignment="Center" 
+                                                   Margin="0,1" 
+                                                   FontSize="11"
+                                                   Background="{Binding PaddleAreas[4].Status, Converter={StaticResource BoatStatusToColorConverter}}"/>
                                     </StackPanel>
                                 </Border>
+                                <!-- 桨区6 -->
                                 <Border BorderBrush="Gray" BorderThickness="1" Margin="2" CornerRadius="3" MinWidth="60">
                                     <StackPanel Margin="3">
                                         <TextBlock Text="桨区6" FontWeight="Bold" TextAlignment="Center" Margin="0,0,0,2" FontSize="12"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Paddle6BoatNumber}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Paddle6Time}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Paddle6Status}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding PaddleAreas[5].BoatNumber}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding PaddleAreas[5].CurrentCoolingTime}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding PaddleAreas[5].TotalCoolingTime}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding PaddleAreas[5].Status, Converter={StaticResource BoatStatusToColorConverter}}" 
+                                                   TextAlignment="Center" 
+                                                   Margin="0,1" 
+                                                   FontSize="11"
+                                                   Background="{Binding PaddleAreas[5].Status, Converter={StaticResource BoatStatusToColorConverter}}"/>
                                     </StackPanel>
                                 </Border>
                             </UniformGrid>
@@ -238,54 +273,88 @@
                         <StackPanel>
                             <TextBlock Text="暂存区" FontSize="14" FontWeight="Bold" Margin="5" HorizontalAlignment="Center"/>
                             <UniformGrid Columns="3" Margin="5">
-                                <!-- 暂存区1 -->
+                                <!-- 暂存区1 (原小车区) -->
                                 <Border BorderBrush="Gray" BorderThickness="1" Margin="2" CornerRadius="3" MinWidth="60">
                                     <StackPanel Margin="3">
                                         <TextBlock Text="暂存区1" FontWeight="Bold" TextAlignment="Center" Margin="0,0,0,2" FontSize="12"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Storage1BoatNumber}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Storage1Time}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Storage1Status}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding StorageAreas[0].BoatNumber}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding StorageAreas[0].CurrentCoolingTime}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding StorageAreas[0].TotalCoolingTime}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding StorageAreas[0].Status, Converter={StaticResource BoatStatusToColorConverter}}" 
+                                                   TextAlignment="Center" 
+                                                   Margin="0,1" 
+                                                   FontSize="11"
+                                                   Background="{Binding StorageAreas[0].Status, Converter={StaticResource BoatStatusToColorConverter}}"/>
                                     </StackPanel>
                                 </Border>
-                                <!-- 其他暂存区使用相同的样式 -->
+                                <!-- 暂存区2 -->
                                 <Border BorderBrush="Gray" BorderThickness="1" Margin="2" CornerRadius="3" MinWidth="60">
                                     <StackPanel Margin="3">
                                         <TextBlock Text="暂存区2" FontWeight="Bold" TextAlignment="Center" Margin="0,0,0,2" FontSize="12"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Storage2BoatNumber}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Storage2Time}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Storage2Status}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding StorageAreas[1].BoatNumber}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding StorageAreas[1].CurrentCoolingTime}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding StorageAreas[1].TotalCoolingTime}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding StorageAreas[1].Status, Converter={StaticResource BoatStatusToColorConverter}}" 
+                                                   TextAlignment="Center" 
+                                                   Margin="0,1" 
+                                                   FontSize="11"
+                                                   Background="{Binding StorageAreas[1].Status, Converter={StaticResource BoatStatusToColorConverter}}"/>
                                     </StackPanel>
                                 </Border>
+                                <!-- 暂存区3 -->
                                 <Border BorderBrush="Gray" BorderThickness="1" Margin="2" CornerRadius="3" MinWidth="60">
                                     <StackPanel Margin="3">
                                         <TextBlock Text="暂存区3" FontWeight="Bold" TextAlignment="Center" Margin="0,0,0,2" FontSize="12"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Storage3BoatNumber}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Storage3Time}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Storage3Status}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding StorageAreas[2].BoatNumber}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding StorageAreas[2].CurrentCoolingTime}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding StorageAreas[2].TotalCoolingTime}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding StorageAreas[2].Status, Converter={StaticResource BoatStatusToColorConverter}}" 
+                                                   TextAlignment="Center" 
+                                                   Margin="0,1" 
+                                                   FontSize="11"
+                                                   Background="{Binding StorageAreas[2].Status, Converter={StaticResource BoatStatusToColorConverter}}"/>
                                     </StackPanel>
                                 </Border>
+                                <!-- 暂存区4 -->
                                 <Border BorderBrush="Gray" BorderThickness="1" Margin="2" CornerRadius="3" MinWidth="60">
                                     <StackPanel Margin="3">
                                         <TextBlock Text="暂存区4" FontWeight="Bold" TextAlignment="Center" Margin="0,0,0,2" FontSize="12"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Storage4BoatNumber}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Storage4Time}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Storage4Status}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding StorageAreas[3].BoatNumber}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding StorageAreas[3].CurrentCoolingTime}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding StorageAreas[3].TotalCoolingTime}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding StorageAreas[3].Status, Converter={StaticResource BoatStatusToColorConverter}}" 
+                                                   TextAlignment="Center" 
+                                                   Margin="0,1" 
+                                                   FontSize="11"
+                                                   Background="{Binding StorageAreas[3].Status, Converter={StaticResource BoatStatusToColorConverter}}"/>
                                     </StackPanel>
                                 </Border>
+                                <!-- 暂存区5 -->
                                 <Border BorderBrush="Gray" BorderThickness="1" Margin="2" CornerRadius="3" MinWidth="60">
                                     <StackPanel Margin="3">
                                         <TextBlock Text="暂存区5" FontWeight="Bold" TextAlignment="Center" Margin="0,0,0,2" FontSize="12"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Storage5BoatNumber}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Storage5Time}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Storage5Status}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding StorageAreas[4].BoatNumber}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding StorageAreas[4].CurrentCoolingTime}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding StorageAreas[4].TotalCoolingTime}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding StorageAreas[4].Status, Converter={StaticResource BoatStatusToColorConverter}}" 
+                                                   TextAlignment="Center" 
+                                                   Margin="0,1" 
+                                                   FontSize="11"
+                                                   Background="{Binding StorageAreas[4].Status, Converter={StaticResource BoatStatusToColorConverter}}"/>
                                     </StackPanel>
                                 </Border>
+                                <!-- 暂存区6 -->
                                 <Border BorderBrush="Gray" BorderThickness="1" Margin="2" CornerRadius="3" MinWidth="60">
                                     <StackPanel Margin="3">
                                         <TextBlock Text="暂存区6" FontWeight="Bold" TextAlignment="Center" Margin="0,0,0,2" FontSize="12"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Storage6BoatNumber}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Storage6Time}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
-                                        <TextBlock Text="{Binding MotionPlcData.Storage6Status}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding StorageAreas[5].BoatNumber}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding StorageAreas[5].CurrentCoolingTime}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding StorageAreas[5].TotalCoolingTime}" TextAlignment="Center" Margin="0,1" FontSize="11"/>
+                                        <TextBlock Text="{Binding StorageAreas[5].Status, Converter={StaticResource BoatStatusToColorConverter}}" 
+                                                   TextAlignment="Center" 
+                                                   Margin="0,1" 
+                                                   FontSize="11"
+                                                   Background="{Binding StorageAreas[5].Status, Converter={StaticResource BoatStatusToColorConverter}}"/>
                                     </StackPanel>
                                 </Border>
                             </UniformGrid>
@@ -299,11 +368,6 @@
                     <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="250">
                     <StackPanel Orientation="Vertical" Margin="5">
                             <TextBlock Text="源位选择" FontWeight="Bold" Margin="0,0,0,5"/>
-                        <RadioButton Content="小车区" 
-                                         Margin="0,2,0,5" 
-                                     GroupName="SourcePosition"
-                                     IsEnabled="{Binding MotionPlcData.CarriageHasMaterial}"
-                                     IsChecked="{Binding SelectedSourcePosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=小车区}"/>
                             <RadioButton Content="暂存区1" 
                                          Margin="0,2,0,5" 
                                          GroupName="SourcePosition"
@@ -414,11 +478,6 @@
                     <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="250">
                     <StackPanel Margin="5">
                             <TextBlock Text="目标位置" FontWeight="Bold" Margin="0,0,0,5"/>
-                        <RadioButton Content="小车区" 
-                                         Margin="0,2,0,5" 
-                                     GroupName="TargetPosition"
-                                     IsEnabled="{Binding MotionPlcData.CarriageHasMaterial, Converter={StaticResource BooleanToInverseBooleanConverter}}"
-                                     IsChecked="{Binding SelectedTargetPosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=小车区}"/>
                             <RadioButton Content="暂存区1" 
                                          Margin="0,2,0,5" 
                                          GroupName="TargetPosition"
