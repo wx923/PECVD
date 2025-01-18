@@ -134,7 +134,7 @@
                 <ColumnDefinition Width="150" ></ColumnDefinition>
                 <ColumnDefinition Width="450"></ColumnDefinition>
                 <ColumnDefinition Width="360"></ColumnDefinition>
-                <ColumnDefinition Width="360"></ColumnDefinition>
+                <ColumnDefinition Width="400"></ColumnDefinition>
                 <ColumnDefinition Width="150"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <materialDesign:Card Grid.Column="0" Margin="5,5,5,5">
@@ -560,11 +560,120 @@
                     <StackPanel Orientation="Vertical" Margin="20,0,0,0">
                         <TextBlock Text="桨移动"></TextBlock>
                         <StackPanel Orientation="Vertical">
-                            <Button Content="桨垂直轴回原点" Command="{Binding ClampVerticalToOriginCommand}" Style="{StaticResource MaterialDesignFlatDarkBgButton}" Width="150" Margin="0,0,6,3" FontSize="11" IsEnabled="{Binding IsJogModeSelected}"/>
-                            <Button Content="桨垂直轴移动到下限位" Command="{Binding ClampVerticalToLowerLimitCommand}" Style="{StaticResource MaterialDesignFlatDarkBgButton}" Width="150" Margin="0,1,6,3" FontSize="11" IsEnabled="{Binding IsJogModeSelected}"/>
-                            <Button Content="桨水平轴回原点" Command="{Binding ClampHorizontalToOriginCommand}" Style="{StaticResource MaterialDesignFlatDarkBgButton}" Width="150" Margin="0,1,6,3" FontSize="11" IsEnabled="{Binding IsJogModeSelected}"/>
-                            <Button Content="桨水平轴移动到前限位" Command="{Binding ClampHorizontalToFrontLimitCommand}" Style="{StaticResource MaterialDesignFlatDarkBgButton}" Width="150" Margin="0,1,6,3" FontSize="11" IsEnabled="{Binding IsJogModeSelected}"/>
-                            <Button Content="桨整体回原点" Command="{Binding ClampAllToOriginCommand}" Style="{StaticResource MaterialDesignFlatDarkBgButton}" Width="150" Margin="0,1,6,3" FontSize="11" IsEnabled="{Binding IsJogModeSelected}"/>
+                            <!-- 桨1操作 -->
+                            <StackPanel Orientation="Horizontal" Margin="0,2,0,5">
+                                <TextBlock Text="桨1:" Width="40" VerticalAlignment="Center"/>
+                                <Button Content="上桨" 
+                                        Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                                        Width="70" Height="25"
+                                        Margin="0,0,5,0"
+                                        FontSize="11"
+                                        Command="{Binding ClampVerticalToLowerLimitCommand}"
+                                        CommandParameter="1"
+                                        IsEnabled="{Binding IsJogModeSelected}"/>
+                                <Button Content="出桨" 
+                                        Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                                        Width="70" Height="25"
+                                        FontSize="11"
+                                        Command="{Binding ClampVerticalToOriginCommand}"
+                                        CommandParameter="1"
+                                        IsEnabled="{Binding IsJogModeSelected}"/>
+                            </StackPanel>
+                            <!-- 桨2操作 -->
+                            <StackPanel Orientation="Horizontal" Margin="0,2,0,5">
+                                <TextBlock Text="桨2:" Width="40" VerticalAlignment="Center"/>
+                                <Button Content="上桨" 
+                                        Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                                        Width="70" Height="25"
+                                        Margin="0,0,5,0"
+                                        FontSize="11"
+                                        Command="{Binding ClampVerticalToLowerLimitCommand}"
+                                        CommandParameter="2"
+                                        IsEnabled="{Binding IsJogModeSelected}"/>
+                                <Button Content="出桨" 
+                                        Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                                        Width="70" Height="25"
+                                        FontSize="11"
+                                        Command="{Binding ClampVerticalToOriginCommand}"
+                                        CommandParameter="2"
+                                        IsEnabled="{Binding IsJogModeSelected}"/>
+                            </StackPanel>
+                            <!-- 桨3操作 -->
+                            <StackPanel Orientation="Horizontal" Margin="0,2,0,5">
+                                <TextBlock Text="桨3:" Width="40" VerticalAlignment="Center"/>
+                                <Button Content="上桨" 
+                                        Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                                        Width="70" Height="25"
+                                        Margin="0,0,5,0"
+                                        FontSize="11"
+                                        Command="{Binding ClampVerticalToLowerLimitCommand}"
+                                        CommandParameter="3"
+                                        IsEnabled="{Binding IsJogModeSelected}"/>
+                                <Button Content="出桨" 
+                                        Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                                        Width="70" Height="25"
+                                        FontSize="11"
+                                        Command="{Binding ClampVerticalToOriginCommand}"
+                                        CommandParameter="3"
+                                        IsEnabled="{Binding IsJogModeSelected}"/>
+                            </StackPanel>
+                            <!-- 桨4操作 -->
+                            <StackPanel Orientation="Horizontal" Margin="0,2,0,5">
+                                <TextBlock Text="桨4:" Width="40" VerticalAlignment="Center"/>
+                                <Button Content="上桨" 
+                                        Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                                        Width="70" Height="25"
+                                        Margin="0,0,5,0"
+                                        FontSize="11"
+                                        Command="{Binding ClampVerticalToLowerLimitCommand}"
+                                        CommandParameter="4"
+                                        IsEnabled="{Binding IsJogModeSelected}"/>
+                                <Button Content="出桨" 
+                                        Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                                        Width="70" Height="25"
+                                        FontSize="11"
+                                        Command="{Binding ClampVerticalToOriginCommand}"
+                                        CommandParameter="4"
+                                        IsEnabled="{Binding IsJogModeSelected}"/>
+                            </StackPanel>
+                            <!-- 桨5操作 -->
+                            <StackPanel Orientation="Horizontal" Margin="0,2,0,5">
+                                <TextBlock Text="桨5:" Width="40" VerticalAlignment="Center"/>
+                                <Button Content="上桨" 
+                                        Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                                        Width="70" Height="25"
+                                        Margin="0,0,5,0"
+                                        FontSize="11"
+                                        Command="{Binding ClampVerticalToLowerLimitCommand}"
+                                        CommandParameter="5"
+                                        IsEnabled="{Binding IsJogModeSelected}"/>
+                                <Button Content="出桨" 
+                                        Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                                        Width="70" Height="25"
+                                        FontSize="11"
+                                        Command="{Binding ClampVerticalToOriginCommand}"
+                                        CommandParameter="5"
+                                        IsEnabled="{Binding IsJogModeSelected}"/>
+                            </StackPanel>
+                            <!-- 桨6操作 -->
+                            <StackPanel Orientation="Horizontal" Margin="0,2,0,5">
+                                <TextBlock Text="桨6:" Width="40" VerticalAlignment="Center"/>
+                                <Button Content="上桨" 
+                                        Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                                        Width="70" Height="25"
+                                        Margin="0,0,5,0"
+                                        FontSize="11"
+                                        Command="{Binding ClampVerticalToLowerLimitCommand}"
+                                        CommandParameter="6"
+                                        IsEnabled="{Binding IsJogModeSelected}"/>
+                                <Button Content="出桨" 
+                                        Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                                        Width="70" Height="25"
+                                        FontSize="11"
+                                        Command="{Binding ClampVerticalToOriginCommand}"
+                                        CommandParameter="6"
+                                        IsEnabled="{Binding IsJogModeSelected}"/>
+                            </StackPanel>
                     </StackPanel>
                     </StackPanel>
                 </StackPanel>
@@ -725,116 +834,6 @@
                                     <TextBlock Text="mm" VerticalAlignment="Center" Margin="0,0,10,0"/>
                                     <TextBlock Text="~" VerticalAlignment="Center" Margin="0,0,10,0"/>
                                     <TextBlock Text="{Binding MotionPlcData.RobotVerticalSafePosition6_2}" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                                    <TextBlock Text="mm" VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </StackPanel>
-                        </StackPanel>
-                    </materialDesign:Card>
-                </StackPanel>
-            </StackPanel>
-            <StackPanel  Grid.Column="1" Margin="5,5,5,5">
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Text="桨传感器检测区" FontSize="14" FontWeight="Bold" Margin="5,5,5,5"></TextBlock>
-                    <materialDesign:Card Margin="0,0,0,10">
-                        <StackPanel Orientation="Horizontal" Margin="5">
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock Text="水平轴前限位:" Margin="2,5,2,5"/>
-                                <TextBlock Text="水平轴后限位:" Margin="2,5,2,5"/>
-                                <TextBlock Text="水平轴前极限:" Margin="2,5,2,5"/>
-                                <TextBlock Text="水平轴后极限:" Margin="2,5,2,5"/>
-                                <TextBlock Text="水平轴原点:" Margin="2,5,2,5"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock Text="{Binding MotionPlcData.ClampHorizontalForwardLimit, Converter={StaticResource BoolToYesNoConverter}}" Margin="0,5,15,5"/>
-                                <TextBlock Text="{Binding MotionPlcData.ClampHorizontalBackwardLimit, Converter={StaticResource BoolToYesNoConverter}}" Margin="0,5,15,5"/>
-                                <TextBlock Text="{Binding MotionPlcData.ClampHorizontalForwardExtreme, Converter={StaticResource BoolToYesNoConverter}}" Margin="0,5,15,5"/>
-                                <TextBlock Text="{Binding MotionPlcData.ClampHorizontalBackwardExtreme, Converter={StaticResource BoolToYesNoConverter}}" Margin="0,5,15,5"/>
-                                <TextBlock Text="{Binding MotionPlcData.ClampHorizontalOriginLimit, Converter={StaticResource BoolToYesNoConverter}}" Margin="0,5,15,5"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock Text="垂直轴上限位:" Margin="2,5,2,5"/>
-                                <TextBlock Text="垂直轴下限位:" Margin="2,5,2,5"/>
-                                <TextBlock Text="垂直轴上极限:" Margin="2,5,2,5"/>
-                                <TextBlock Text="垂直轴下极限:" Margin="2,5,2,5"/>
-                                <TextBlock Text="垂直轴原点:" Margin="2,5,2,5"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock Text="{Binding MotionPlcData.ClampVerticalUpperLimit, Converter={StaticResource BoolToYesNoConverter}}" Margin="0,5,15,5"/>
-                                <TextBlock Text="{Binding MotionPlcData.ClampVerticalLowerLimit, Converter={StaticResource BoolToYesNoConverter}}" Margin="0,5,15,5"/>
-                                <TextBlock Text="{Binding MotionPlcData.ClampVerticalUpperExtreme, Converter={StaticResource BoolToYesNoConverter}}" Margin="0,5,15,5"/>
-                                <TextBlock Text="{Binding MotionPlcData.ClampVerticalLowerExtreme, Converter={StaticResource BoolToYesNoConverter}}" Margin="0,5,15,5"/>
-                                <TextBlock Text="{Binding MotionPlcData.ClampVerticalOriginLimit, Converter={StaticResource BoolToYesNoConverter}}" Margin="0,5,15,5"/>
-                            </StackPanel>
-                        </StackPanel>
-                    </materialDesign:Card>
-
-                    <TextBlock Text="桨数值显示区" FontSize="14" FontWeight="Bold" Margin="5,5,5,5"></TextBlock>
-                    <materialDesign:Card>
-                        <StackPanel Orientation="Horizontal" Margin="10">
-                            <!-- 轴位置值显示 -->
-                            <StackPanel Orientation="Vertical" Margin="0,0,20,0">
-                                <TextBlock Text="当前位置" FontSize="12" FontWeight="Bold" Margin="0,0,0,5"/>
-                                <StackPanel Orientation="Horizontal" Margin="0,2">
-                                    <TextBlock Text="水平轴：" VerticalAlignment="Center" Width="60"/>
-                                    <TextBlock Text="{Binding MotionPlcData.ClampHorizontalPosition}" VerticalAlignment="Center" Margin="5,0"/>
-                                    <TextBlock Text="mm" VerticalAlignment="Center"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0,2">
-                                    <TextBlock Text="垂直轴：" VerticalAlignment="Center" Width="60"/>
-                                    <TextBlock Text="{Binding MotionPlcData.ClampVerticalPosition}" VerticalAlignment="Center" Margin="5,0"/>
-                                    <TextBlock Text="mm" VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </StackPanel>
-
-                            <!-- 安全距离值显示 -->
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock Text="垂直轴安全距离" FontSize="12" FontWeight="Bold" Margin="0,0,0,5"/>
-                                <StackPanel Orientation="Horizontal" Margin="0,2">
-                                    <TextBlock Text="位置1：" VerticalAlignment="Center" Width="45"/>
-                                    <TextBlock Text="{Binding MotionPlcData.ClampVerticalSafePosition1_1}" VerticalAlignment="Center" Margin="5,0"/>
-                                    <TextBlock Text="mm" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                                    <TextBlock Text="~" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                                    <TextBlock Text="{Binding MotionPlcData.ClampVerticalSafePosition1_2}" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                                    <TextBlock Text="mm" VerticalAlignment="Center"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0,2">
-                                    <TextBlock Text="位置2：" VerticalAlignment="Center" Width="45"/>
-                                    <TextBlock Text="{Binding MotionPlcData.ClampVerticalSafePosition2_1}" VerticalAlignment="Center" Margin="5,0"/>
-                                    <TextBlock Text="mm" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                                    <TextBlock Text="~" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                                    <TextBlock Text="{Binding MotionPlcData.ClampVerticalSafePosition2_2}" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                                    <TextBlock Text="mm" VerticalAlignment="Center"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0,2">
-                                    <TextBlock Text="位置3：" VerticalAlignment="Center" Width="45"/>
-                                    <TextBlock Text="{Binding MotionPlcData.ClampVerticalSafePosition3_1}" VerticalAlignment="Center" Margin="5,0"/>
-                                    <TextBlock Text="mm" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                                    <TextBlock Text="~" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                                    <TextBlock Text="{Binding MotionPlcData.ClampVerticalSafePosition3_2}" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                                    <TextBlock Text="mm" VerticalAlignment="Center"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0,2">
-                                    <TextBlock Text="位置4：" VerticalAlignment="Center" Width="45"/>
-                                    <TextBlock Text="{Binding MotionPlcData.ClampVerticalSafePosition4_1}" VerticalAlignment="Center" Margin="5,0"/>
-                                    <TextBlock Text="mm" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                                    <TextBlock Text="~" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                                    <TextBlock Text="{Binding MotionPlcData.ClampVerticalSafePosition4_2}" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                                    <TextBlock Text="mm" VerticalAlignment="Center"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0,2">
-                                    <TextBlock Text="位置5：" VerticalAlignment="Center" Width="45"/>
-                                    <TextBlock Text="{Binding MotionPlcData.ClampVerticalSafePosition5_1}" VerticalAlignment="Center" Margin="5,0"/>
-                                    <TextBlock Text="mm" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                                    <TextBlock Text="~" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                                    <TextBlock Text="{Binding MotionPlcData.ClampVerticalSafePosition5_2}" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                                    <TextBlock Text="mm" VerticalAlignment="Center"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0,2">
-                                    <TextBlock Text="位置6：" VerticalAlignment="Center" Width="45"/>
-                                    <TextBlock Text="{Binding MotionPlcData.ClampVerticalSafePosition6_1}" VerticalAlignment="Center" Margin="5,0"/>
-                                    <TextBlock Text="mm" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                                    <TextBlock Text="~" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                                    <TextBlock Text="{Binding MotionPlcData.ClampVerticalSafePosition6_2}" VerticalAlignment="Center" Margin="0,0,5,0"/>
                                     <TextBlock Text="mm" VerticalAlignment="Center"/>
                                 </StackPanel>
                             </StackPanel>
