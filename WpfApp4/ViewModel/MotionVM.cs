@@ -14,11 +14,8 @@ namespace WpfApp4.ViewModel
 {
     public partial class MotionVM : ObservableObject
     {
-        private readonly PlcCommunicationService.PlcType _tubePlcType;  // 炉管PLC类型
-
         // PLC客户端
         private ModbusTcpNet _robotPlc => PlcCommunicationService.Instance.ModbusTcpClients[PlcCommunicationService.PlcType.Motion];  // 机械手PLC
-        private ModbusTcpNet _tubePlc => PlcCommunicationService.Instance.ModbusTcpClients[_tubePlcType];  // 炉管PLC
         private MotionPlcDataService _plcDataService => MotionPlcDataService.Instance;
         private FurnacePlcDataService _furnacePlcDataService => FurnacePlcDataService.Instance;
         private MotionBoatService _boatService => MotionBoatService.Instance;
@@ -33,9 +30,6 @@ namespace WpfApp4.ViewModel
 
         [ObservableProperty]
         private ObservableCollection<AreaBoatInfo> _paddleAreas;
-
-        [ObservableProperty]
-        private int tubeNumber;
 
         // 事件日志相关
         public class EventLog
@@ -60,22 +54,8 @@ namespace WpfApp4.ViewModel
         [ObservableProperty]
         private bool _isStartEnabled = true;  // 启动按钮状态
 
-        public MotionVM(int tubeNumber)
+        public MotionVM()
         {
-            TubeNumber = tubeNumber;
-            
-            // 根据炉管号选择对应的PLC类型
-            _tubePlcType = tubeNumber switch
-            {
-                1 => PlcCommunicationService.PlcType.Furnace1,
-                2 => PlcCommunicationService.PlcType.Furnace2,
-                3 => PlcCommunicationService.PlcType.Furnace3,
-                4 => PlcCommunicationService.PlcType.Furnace4,
-                5 => PlcCommunicationService.PlcType.Furnace5,
-                6 => PlcCommunicationService.PlcType.Furnace6,
-                _ => throw new ArgumentException($"无效的炉管号: {tubeNumber}")
-            };
-
             // 初始化区域舟信息集合
             StorageAreas = new ObservableCollection<AreaBoatInfo>();
             PaddleAreas = new ObservableCollection<AreaBoatInfo>();
@@ -91,7 +71,7 @@ namespace WpfApp4.ViewModel
             StartAreaBoatInfoUpdate();
             
             EventLogs = new ObservableCollection<EventLog>();
-            EventLogs.Add(new EventLog { Time = DateTime.Now, Message = $"初始化炉管 {tubeNumber} 的运动控制" });
+            EventLogs.Add(new EventLog { Time = DateTime.Now, Message = "初始化运动控制" });
         }
 
         private void StartAreaBoatInfoUpdate()

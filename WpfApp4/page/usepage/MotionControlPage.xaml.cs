@@ -8,10 +8,10 @@ namespace WpfApp4.page.usepage
     {
         private MotionVM viewModel;
 
-        public MotionControlPage(int tubeNumber)
+        public MotionControlPage()
         {
             InitializeComponent();
-            viewModel = new MotionVM(tubeNumber);
+            viewModel = new MotionVM();
             DataContext = viewModel;
 
             // 注册页面加载事件
@@ -24,7 +24,7 @@ namespace WpfApp4.page.usepage
             viewModel?.EventLogs.Add(new MotionVM.EventLog 
             { 
                 Time = System.DateTime.Now, 
-                Message = $"页面已加载，当前炉管: {viewModel.TubeNumber}" 
+                Message = "页面已加载" 
             });
         }
 
