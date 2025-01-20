@@ -125,7 +125,7 @@
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="250" ></RowDefinition>
+            <RowDefinition Height="300" ></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <!--上半部分-->
@@ -134,7 +134,7 @@
                 <ColumnDefinition Width="150" ></ColumnDefinition>
                 <ColumnDefinition Width="450"></ColumnDefinition>
                 <ColumnDefinition Width="360"></ColumnDefinition>
-                <ColumnDefinition Width="400"></ColumnDefinition>
+                <ColumnDefinition Width="380"></ColumnDefinition>
                 <ColumnDefinition Width="150"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <materialDesign:Card Grid.Column="0" Margin="5,5,5,5">
@@ -543,138 +543,186 @@
                 </StackPanel>
             </materialDesign:Card>
             <materialDesign:Card Grid.Column="3" Margin="8,5,10,5" Background="{DynamicResource PrimaryHueLightBrush}">
-                <StackPanel  Orientation="Horizontal" >
+                <StackPanel  Orientation="Horizontal" Margin="10,10,10,10">
                     <StackPanel Orientation="Vertical">
-                    <TextBlock Text="机械手移动"></TextBlock>
+                        <TextBlock Text="机械手移动" Margin="0,0,0,8"></TextBlock>
                         <StackPanel Orientation="Vertical">
-                            <Button Content="水平上轴回原点" Command="{Binding MoveRobotHorizontal1ToOriginCommand}" Style="{StaticResource MaterialDesignFlatDarkBgButton}" Width="150" Margin="0,0,6,3" FontSize="11" IsEnabled="{Binding IsJogModeSelected}"/>
-                            <Button Content="水平上轴移动到左限位" Command="{Binding MoveRobotHorizontal1ToForwardLimitCommand}" Style="{StaticResource MaterialDesignFlatDarkBgButton}" Width="150" Margin="0,1,6,3" FontSize="11" IsEnabled="{Binding IsJogModeSelected}"/>
-                            <Button Content="水平下轴回原点" Command="{Binding MoveRobotHorizontal2ToOriginCommand}" Style="{StaticResource MaterialDesignFlatDarkBgButton}" Width="150" Margin="0,1,6,3" FontSize="11" IsEnabled="{Binding IsJogModeSelected}"/>
-                            <Button Content="水平下轴移动到右限位" Command="{Binding MoveRobotHorizontal2ToBackwardLimitCommand}" Style="{StaticResource MaterialDesignFlatDarkBgButton}" Width="150" Margin="0,1,6,3"  FontSize="11" IsEnabled="{Binding IsJogModeSelected}"/>
-                            <Button Content="垂直轴回原点" Command="{Binding MoveRobotVerticalToOriginCommand}" Style="{StaticResource MaterialDesignFlatDarkBgButton}" Width="150" Margin="0,1,6,3" FontSize="11" IsEnabled="{Binding IsJogModeSelected}"/>
-                            <Button Content="垂直轴移动到上限位" Command="{Binding MoveRobotVerticalToUpperLimitCommand}" Style="{StaticResource MaterialDesignFlatDarkBgButton}" Width="150" Margin="0,1,6,3"  FontSize="11" IsEnabled="{Binding IsJogModeSelected}"/>
-                            <Button Content="垂直轴移动到下限位" Command="{Binding MoveRobotVerticalToLowerLimitCommand}" Style="{StaticResource MaterialDesignFlatDarkBgButton}" Width="150" Margin="0,1,6,3"  FontSize="11" IsEnabled="{Binding IsJogModeSelected}"/>
-                            <Button Content="整体回原点" Command="{Binding MoveAllToOriginCommand}" Style="{StaticResource MaterialDesignFlatDarkBgButton}" Width="150" Margin="0,1,6,3"  FontSize="11" IsEnabled="{Binding IsJogModeSelected}"/>
+                            <Button Content="水平上轴回原点" 
+                                   Command="{Binding MoveRobotHorizontal1ToOriginCommand}" 
+                                   Style="{StaticResource MaterialDesignFlatDarkBgButton}" 
+                                   Width="150" Height="24" 
+                                   Margin="0,0,0,4" 
+                                   FontSize="11" 
+                                   IsEnabled="{Binding IsJogModeSelected}"/>
+                            <Button Content="水平上轴移动到左限位" 
+                                   Command="{Binding MoveRobotHorizontal1ToForwardLimitCommand}" 
+                                   Style="{StaticResource MaterialDesignFlatDarkBgButton}" 
+                                   Width="150" Height="24" 
+                                   Margin="0,0,0,4" 
+                                   FontSize="11" 
+                                   IsEnabled="{Binding IsJogModeSelected}"/>
+                            <Button Content="水平下轴回原点" 
+                                   Command="{Binding MoveRobotHorizontal2ToOriginCommand}" 
+                                   Style="{StaticResource MaterialDesignFlatDarkBgButton}" 
+                                   Width="150" Height="24" 
+                                   Margin="0,0,0,4" 
+                                   FontSize="11" 
+                                   IsEnabled="{Binding IsJogModeSelected}"/>
+                            <Button Content="水平下轴移动到右限位" 
+                                   Command="{Binding MoveRobotHorizontal2ToBackwardLimitCommand}" 
+                                   Style="{StaticResource MaterialDesignFlatDarkBgButton}" 
+                                   Width="150" Height="24" 
+                                   Margin="0,0,0,4" 
+                                   FontSize="11" 
+                                   IsEnabled="{Binding IsJogModeSelected}"/>
+                            <Button Content="垂直轴回原点" 
+                                   Command="{Binding MoveRobotVerticalToOriginCommand}" 
+                                   Style="{StaticResource MaterialDesignFlatDarkBgButton}" 
+                                   Width="150" Height="24" 
+                                   Margin="0,0,0,4" 
+                                   FontSize="11" 
+                                   IsEnabled="{Binding IsJogModeSelected}"/>
+                            <Button Content="垂直轴移动到上限位" 
+                                   Command="{Binding MoveRobotVerticalToUpperLimitCommand}" 
+                                   Style="{StaticResource MaterialDesignFlatDarkBgButton}" 
+                                   Width="150" Height="24" 
+                                   Margin="0,0,0,4" 
+                                   FontSize="11" 
+                                   IsEnabled="{Binding IsJogModeSelected}"/>
+                            <Button Content="垂直轴移动到下限位" 
+                                   Command="{Binding MoveRobotVerticalToLowerLimitCommand}" 
+                                   Style="{StaticResource MaterialDesignFlatDarkBgButton}" 
+                                   Width="150" Height="24" 
+                                   Margin="0,0,0,4" 
+                                   FontSize="11" 
+                                   IsEnabled="{Binding IsJogModeSelected}"/>
+                            <Button Content="整体回原点" 
+                                   Command="{Binding MoveAllToOriginCommand}" 
+                                   Style="{StaticResource MaterialDesignFlatDarkBgButton}" 
+                                   Width="150" Height="24" 
+                                   Margin="0,0,0,4" 
+                                   FontSize="11" 
+                                   IsEnabled="{Binding IsJogModeSelected}"/>
                         </StackPanel>
                     </StackPanel>
-                    <StackPanel Orientation="Vertical" Margin="20,0,0,0">
-                        <TextBlock Text="桨移动"></TextBlock>
+                    <StackPanel Orientation="Vertical" Margin="15,0,0,0">
+                        <TextBlock Text="桨移动" Margin="0,0,0,8"></TextBlock>
                         <StackPanel Orientation="Vertical">
                             <!-- 桨1操作 -->
-                            <StackPanel Orientation="Horizontal" Margin="0,2,0,5">
-                                <TextBlock Text="桨1:" Width="40" VerticalAlignment="Center"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
+                                <TextBlock Text="桨1:" Width="25" VerticalAlignment="Center"/>
                                 <Button Content="进入炉内" 
                                         Style="{StaticResource MaterialDesignFlatDarkBgButton}"
-                                        Width="70" Height="25"
-                                        Margin="0,0,5,0"
+                                        Width="75" Height="24"
+                                        Margin="0,4,4,0"
                                         FontSize="11"
                                         Command="{Binding MoveIntoFurnaceCommand}"
                                         CommandParameter="1"
                                         IsEnabled="{Binding IsJogModeSelected}"/>
                                 <Button Content="移动出炉" 
                                         Style="{StaticResource MaterialDesignFlatDarkBgButton}"
-                                        Width="70" Height="25"
+                                        Width="75" Height="24"
                                         FontSize="11"
                                         Command="{Binding MoveOutFurnaceCommand}"
                                         CommandParameter="1"
                                         IsEnabled="{Binding IsJogModeSelected}"/>
                             </StackPanel>
                             <!-- 桨2操作 -->
-                            <StackPanel Orientation="Horizontal" Margin="0,2,0,5">
-                                <TextBlock Text="桨2:" Width="40" VerticalAlignment="Center"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
+                                <TextBlock Text="桨2:" Width="25" VerticalAlignment="Center"/>
                                 <Button Content="进入炉内" 
                                         Style="{StaticResource MaterialDesignFlatDarkBgButton}"
-                                        Width="70" Height="25"
-                                        Margin="0,0,5,0"
+                                        Width="75" Height="24"
+                                        Margin="0,4,4,0"
                                         FontSize="11"
                                         Command="{Binding MoveIntoFurnaceCommand}"
                                         CommandParameter="2"
                                         IsEnabled="{Binding IsJogModeSelected}"/>
                                 <Button Content="移动出炉" 
                                         Style="{StaticResource MaterialDesignFlatDarkBgButton}"
-                                        Width="70" Height="25"
+                                        Width="75" Height="24"
                                         FontSize="11"
                                         Command="{Binding MoveOutFurnaceCommand}"
                                         CommandParameter="2"
                                         IsEnabled="{Binding IsJogModeSelected}"/>
                             </StackPanel>
                             <!-- 桨3操作 -->
-                            <StackPanel Orientation="Horizontal" Margin="0,2,0,5">
-                                <TextBlock Text="桨3:" Width="40" VerticalAlignment="Center"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
+                                <TextBlock Text="桨3:" Width="25" VerticalAlignment="Center"/>
                                 <Button Content="进入炉内" 
                                         Style="{StaticResource MaterialDesignFlatDarkBgButton}"
-                                        Width="70" Height="25"
-                                        Margin="0,0,5,0"
+                                        Width="75" Height="24"
+                                        Margin="0,4,4,0"
                                         FontSize="11"
                                         Command="{Binding MoveIntoFurnaceCommand}"
                                         CommandParameter="3"
                                         IsEnabled="{Binding IsJogModeSelected}"/>
                                 <Button Content="移动出炉" 
                                         Style="{StaticResource MaterialDesignFlatDarkBgButton}"
-                                        Width="70" Height="25"
+                                        Width="75" Height="24"
                                         FontSize="11"
                                         Command="{Binding MoveOutFurnaceCommand}"
                                         CommandParameter="3"
                                         IsEnabled="{Binding IsJogModeSelected}"/>
                             </StackPanel>
                             <!-- 桨4操作 -->
-                            <StackPanel Orientation="Horizontal" Margin="0,2,0,5">
-                                <TextBlock Text="桨4:" Width="40" VerticalAlignment="Center"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
+                                <TextBlock Text="桨4:" Width="25" VerticalAlignment="Center"/>
                                 <Button Content="进入炉内" 
                                         Style="{StaticResource MaterialDesignFlatDarkBgButton}"
-                                        Width="70" Height="25"
-                                        Margin="0,0,5,0"
+                                        Width="75" Height="24"
+                                        Margin="0,4,4,0"
                                         FontSize="11"
                                         Command="{Binding MoveIntoFurnaceCommand}"
                                         CommandParameter="4"
                                         IsEnabled="{Binding IsJogModeSelected}"/>
                                 <Button Content="移动出炉" 
                                         Style="{StaticResource MaterialDesignFlatDarkBgButton}"
-                                        Width="70" Height="25"
+                                        Width="75" Height="24"
                                         FontSize="11"
                                         Command="{Binding MoveOutFurnaceCommand}"
                                         CommandParameter="4"
                                         IsEnabled="{Binding IsJogModeSelected}"/>
                             </StackPanel>
                             <!-- 桨5操作 -->
-                            <StackPanel Orientation="Horizontal" Margin="0,2,0,5">
-                                <TextBlock Text="桨5:" Width="40" VerticalAlignment="Center"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
+                                <TextBlock Text="桨5:" Width="25" VerticalAlignment="Center"/>
                                 <Button Content="进入炉内" 
                                         Style="{StaticResource MaterialDesignFlatDarkBgButton}"
-                                        Width="70" Height="25"
-                                        Margin="0,0,5,0"
+                                        Width="75" Height="24"
+                                        Margin="0,4,4,0"
                                         FontSize="11"
                                         Command="{Binding MoveIntoFurnaceCommand}"
                                         CommandParameter="5"
                                         IsEnabled="{Binding IsJogModeSelected}"/>
                                 <Button Content="移动出炉" 
                                         Style="{StaticResource MaterialDesignFlatDarkBgButton}"
-                                        Width="70" Height="25"
+                                        Width="75" Height="24"
                                         FontSize="11"
                                         Command="{Binding MoveOutFurnaceCommand}"
                                         CommandParameter="5"
                                         IsEnabled="{Binding IsJogModeSelected}"/>
                             </StackPanel>
                             <!-- 桨6操作 -->
-                            <StackPanel Orientation="Horizontal" Margin="0,2,0,5">
-                                <TextBlock Text="桨6:" Width="40" VerticalAlignment="Center"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
+                                <TextBlock Text="桨6:" Width="25" VerticalAlignment="Center"/>
                                 <Button Content="进入炉内" 
                                         Style="{StaticResource MaterialDesignFlatDarkBgButton}"
-                                        Width="70" Height="25"
-                                        Margin="0,0,5,0"
+                                        Width="75" Height="24"
+                                        Margin="0,4,4,0"
                                         FontSize="11"
                                         Command="{Binding MoveIntoFurnaceCommand}"
                                         CommandParameter="6"
                                         IsEnabled="{Binding IsJogModeSelected}"/>
                                 <Button Content="移动出炉" 
                                         Style="{StaticResource MaterialDesignFlatDarkBgButton}"
-                                        Width="70" Height="25"
+                                        Width="75" Height="24"
                                         FontSize="11"
                                         Command="{Binding MoveOutFurnaceCommand}"
                                         CommandParameter="6"
                                         IsEnabled="{Binding IsJogModeSelected}"/>
+                            </StackPanel>
                         </StackPanel>
-                    </StackPanel>
                     </StackPanel>
                 </StackPanel>
             </materialDesign:Card>

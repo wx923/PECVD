@@ -9,19 +9,20 @@ using WpfApp.Services;
 using WpfApp4.Models;
 using WpfApp4.Services;
 using System.Collections.ObjectModel;
+using Microsoft.Extensions.Logging;
 
 namespace WpfApp4.ViewModel
 {
     public partial class MotionVM : ObservableObject
     {
-        // PLC客户端
-        private ModbusTcpNet _robotPlc => PlcCommunicationService.Instance.ModbusTcpClients[PlcCommunicationService.PlcType.Motion];  // 机械手PLC
-        private MotionPlcDataService _plcDataService => MotionPlcDataService.Instance;
-        private FurnacePlcDataService _furnacePlcDataService => FurnacePlcDataService.Instance;
-        private MotionBoatService _boatService => MotionBoatService.Instance;
+        private readonly ILogger<MotionVM> _logger;
+        private readonly ModbusTcpNet _robotPlc;
+        private readonly MotionPlcDataService _motionPlcDataService;
+        private readonly FurnacePlcDataService _furnacePlcDataService = FurnacePlcDataService.Instance;
+        private readonly MotionBoatService _boatService = MotionBoatService.Instance;
         
         // 获取PLC数据的属性
-        public MotionPlcData MotionPlcData => _plcDataService.MotionPlcData;
+        public MotionPlcData MotionPlcData => _motionPlcDataService.MotionPlcData;
         public Dictionary<int, FurnacePlcData> FurnacePlcDataDict => _furnacePlcDataService.FurnacePlcDataDict;
 
         // 区域舟信息
@@ -56,6 +57,9 @@ namespace WpfApp4.ViewModel
 
         public MotionVM()
         {
+            _robotPlc = PlcCommunicationService.Instance.ModbusTcpClients[PlcCommunicationService.PlcType.Motion];
+            _motionPlcDataService = MotionPlcDataService.Instance;
+
             // 初始化区域舟信息集合
             StorageAreas = new ObservableCollection<AreaBoatInfo>();
             PaddleAreas = new ObservableCollection<AreaBoatInfo>();
@@ -152,7 +156,10 @@ namespace WpfApp4.ViewModel
         [ObservableProperty]
         private bool _isValueModeSelected = false;
 
-        // 模式切换命令
+        /// <summary>
+        /// 自动模式命令
+        /// 切换到自动模式，重置所有按钮状态
+        /// </summary>
         [RelayCommand]
         private void AutoMode()
         {
@@ -167,6 +174,10 @@ namespace WpfApp4.ViewModel
             IsStepEnabled = false;
         }
 
+        /// <summary>
+        /// 点动模式命令
+        /// 切换到点动模式，重置所有按钮状态
+        /// </summary>
         [RelayCommand]
         private void JogMode()
         {
@@ -181,6 +192,10 @@ namespace WpfApp4.ViewModel
             IsStepEnabled = false;
         }
 
+        /// <summary>
+        /// 数值模式命令
+        /// 切换到数值模式，重置所有按钮状态
+        /// </summary>
         [RelayCommand]
         private void ValueMode()
         {
@@ -216,7 +231,10 @@ namespace WpfApp4.ViewModel
             };
         }
 
-        // 自动模式启动命令
+        /// <summary>
+        /// 自动模式启动命令
+        /// 检查源位置和目标位置，检查轴运动状态，向PLC发送启动命令
+        /// </summary>
         [RelayCommand]
         private async Task AutoModeStart()
         {
@@ -285,7 +303,10 @@ namespace WpfApp4.ViewModel
             }
         }
 
-        // 暂停命令
+        /// <summary>
+        /// 暂停命令
+        /// 暂停当前自动运动，更新按钮状态
+        /// </summary>
         [RelayCommand]
         private async Task Pause()
         {
@@ -306,7 +327,10 @@ namespace WpfApp4.ViewModel
             }
         }
 
-        // 恢复命令
+        /// <summary>
+        /// 恢复命令
+        /// 恢复暂停的自动运动，更新按钮状态
+        /// </summary>
         [RelayCommand]
         private async Task Resume()
         {
@@ -327,7 +351,10 @@ namespace WpfApp4.ViewModel
             }
         }
 
-        // 步进命令
+        /// <summary>
+        /// 下一步命令
+        /// 执行自动运动的下一步，更新按钮状态
+        /// </summary>
         [RelayCommand]
         private async Task NextStep()
         {
@@ -348,6 +375,10 @@ namespace WpfApp4.ViewModel
             }
         }
 
+        /// <summary>
+        /// 上一步命令
+        /// 执行自动运动的上一步，更新按钮状态
+        /// </summary>
         [RelayCommand]
         private async Task PreviousStep()
         {
@@ -368,7 +399,10 @@ namespace WpfApp4.ViewModel
             }
         }
 
-        // 蜂鸣器控制命令
+        /// <summary>
+        /// 蜂鸣器控制命令
+        /// 关闭蜂鸣器
+        /// </summary>
         [RelayCommand]
         private async Task ToggleBuzzer()
         {
@@ -385,7 +419,11 @@ namespace WpfApp4.ViewModel
             }
         }
 
-        // 进入炉内命令
+        /// <summary>
+        /// 进入炉内命令
+        /// 检查对应炉管的轴运动状态，向对应炉管PLC发送进入炉内命令
+        /// </summary>
+        /// <param name="furnaceNumber">炉管编号（1-6）</param>
         [RelayCommand]
         private async Task MoveIntoFurnace(string furnaceNumber)
         {
@@ -423,7 +461,11 @@ namespace WpfApp4.ViewModel
             }
         }
 
-        // 移动出炉命令
+        /// <summary>
+        /// 移动出炉命令
+        /// 检查对应炉管的轴运动状态，向对应炉管PLC发送移动出炉命令
+        /// </summary>
+        /// <param name="furnaceNumber">炉管编号（1-6）</param>
         [RelayCommand]
         private async Task MoveOutFurnace(string furnaceNumber)
         {
@@ -458,6 +500,197 @@ namespace WpfApp4.ViewModel
             catch (Exception ex)
             {
                 EventLogs.Add(new EventLog { Time = DateTime.Now, Message = $"炉管{furnaceNumber}移动出炉失败: {ex.Message}" });
+            }
+        }
+
+        /// <summary>
+        /// 检查三个轴是否都处于静止状态
+        /// </summary>
+        private bool CheckAxesNotMoving()
+        {
+            if (MotionPlcData.Horizontal1Moving)
+            {
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = "水平上轴正在运动中，请等待运动完成" });
+                return false;
+            }
+            if (MotionPlcData.Horizontal2Moving)
+            {
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = "水平下轴正在运动中，请等待运动完成" });
+                return false;
+            }
+            if (MotionPlcData.VerticalMoving)
+            {
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = "垂直轴正在运动中，请等待运动完成" });
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// 水平上轴回原点命令
+        /// 检查三轴运动状态，向机械手PLC发送水平上轴回原点命令
+        /// </summary>
+        [RelayCommand]
+        private async Task MoveRobotHorizontal1ToOrigin()
+        {
+            try
+            {
+                if (!CheckAxesNotMoving()) return;
+
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = "开始执行水平上轴回原点" });
+                await _robotPlc.WriteAsync("100", true);
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = "已发送水平上轴回原点命令" });
+            }
+            catch (Exception ex)
+            {
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = $"水平上轴回原点操作失败: {ex.Message}" });
+            }
+        }
+
+        /// <summary>
+        /// 水平上轴移动到左限位命令
+        /// 检查三轴运动状态，向机械手PLC发送水平上轴移动到左限位命令
+        /// </summary>
+        [RelayCommand]
+        private async Task MoveRobotHorizontal1ToForwardLimit()
+        {
+            try
+            {
+                if (!CheckAxesNotMoving()) return;
+
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = "开始执行水平上轴移动到左限位" });
+                await _robotPlc.WriteAsync("101", true);
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = "已发送水平上轴移动到左限位命令" });
+            }
+            catch (Exception ex)
+            {
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = $"水平上轴移动到左限位操作失败: {ex.Message}" });
+            }
+        }
+
+        /// <summary>
+        /// 水平下轴回原点命令
+        /// 检查三轴运动状态，向机械手PLC发送水平下轴回原点命令
+        /// </summary>
+        [RelayCommand]
+        private async Task MoveRobotHorizontal2ToOrigin()
+        {
+            try
+            {
+                if (!CheckAxesNotMoving()) return;
+
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = "开始执行水平下轴回原点" });
+                await _robotPlc.WriteAsync("102", true);
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = "已发送水平下轴回原点命令" });
+            }
+            catch (Exception ex)
+            {
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = $"水平下轴回原点操作失败: {ex.Message}" });
+            }
+        }
+
+        /// <summary>
+        /// 水平下轴移动到右限位命令
+        /// 检查三轴运动状态，向机械手PLC发送水平下轴移动到右限位命令
+        /// </summary>
+        [RelayCommand]
+        private async Task MoveRobotHorizontal2ToBackwardLimit()
+        {
+            try
+            {
+                if (!CheckAxesNotMoving()) return;
+
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = "开始执行水平下轴移动到右限位" });
+                await _robotPlc.WriteAsync("103", true);
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = "已发送水平下轴移动到右限位命令" });
+            }
+            catch (Exception ex)
+            {
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = $"水平下轴移动到右限位操作失败: {ex.Message}" });
+            }
+        }
+
+        /// <summary>
+        /// 垂直轴回原点命令
+        /// 检查三轴运动状态，向机械手PLC发送垂直轴回原点命令
+        /// </summary>
+        [RelayCommand]
+        private async Task MoveRobotVerticalToOrigin()
+        {
+            try
+            {
+                if (!CheckAxesNotMoving()) return;
+
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = "开始执行垂直轴回原点" });
+                await _robotPlc.WriteAsync("104", true);
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = "已发送垂直轴回原点命令" });
+            }
+            catch (Exception ex)
+            {
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = $"垂直轴回原点操作失败: {ex.Message}" });
+            }
+        }
+
+        /// <summary>
+        /// 垂直轴移动到上限位命令
+        /// 检查三轴运动状态，向机械手PLC发送垂直轴移动到上限位命令
+        /// </summary>
+        [RelayCommand]
+        private async Task MoveRobotVerticalToUpperLimit()
+        {
+            try
+            {
+                if (!CheckAxesNotMoving()) return;
+
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = "开始执行垂直轴移动到上限位" });
+                await _robotPlc.WriteAsync("105", true);
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = "已发送垂直轴移动到上限位命令" });
+            }
+            catch (Exception ex)
+            {
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = $"垂直轴移动到上限位操作失败: {ex.Message}" });
+            }
+        }
+
+        /// <summary>
+        /// 垂直轴移动到下限位命令
+        /// 检查三轴运动状态，向机械手PLC发送垂直轴移动到下限位命令
+        /// </summary>
+        [RelayCommand]
+        private async Task MoveRobotVerticalToLowerLimit()
+        {
+            try
+            {
+                if (!CheckAxesNotMoving()) return;
+
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = "开始执行垂直轴移动到下限位" });
+                await _robotPlc.WriteAsync("106", true);
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = "已发送垂直轴移动到下限位命令" });
+            }
+            catch (Exception ex)
+            {
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = $"垂直轴移动到下限位操作失败: {ex.Message}" });
+            }
+        }
+
+        /// <summary>
+        /// 整体回原点命令
+        /// 检查三轴运动状态，向机械手PLC发送整体回原点命令
+        /// </summary>
+        [RelayCommand]
+        private async Task MoveAllToOrigin()
+        {
+            try
+            {
+                if (!CheckAxesNotMoving()) return;
+
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = "开始执行整体回原点" });
+                await _robotPlc.WriteAsync("107", true);
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = "已发送整体回原点命令" });
+            }
+            catch (Exception ex)
+            {
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = $"整体回原点操作失败: {ex.Message}" });
             }
         }
     }

@@ -45,26 +45,6 @@ namespace WpfApp4.Models
         [ObservableProperty]
         private bool _buzzerStatus = false;
 
-        // 机械手水平一轴位置状态
-        [ObservableProperty]
-        private int _robotHorizontal1CurrentPosition = 1;
-
-        [ObservableProperty]
-        private int _robotHorizontal1CurrentSpeed = 1;
-
-        // 机械手水平二轴位置状态
-        [ObservableProperty]
-        private int _robotHorizontal2CurrentPosition = 1;
-
-        [ObservableProperty]
-        private int _robotHorizontal2CurrentSpeed = 1;
-
-        // 机械手垂直轴位置状态
-        [ObservableProperty]
-        private int _robotVerticalCurrentPosition = 1;
-
-        [ObservableProperty]
-        private int _robotVerticalCurrentSpeed = 1;
 
         /// <summary>
         /// 水平上轴是否在运动
@@ -89,6 +69,78 @@ namespace WpfApp4.Models
         /// </summary>
         [ObservableProperty]
         private bool _verticalMoving;
+
+        /// <summary>
+        /// 水平上轴前限位
+        /// true: 触发
+        /// false: 未触发
+        /// </summary>
+        [ObservableProperty]
+        private bool _robotHorizontal1ForwardLimit;
+
+        /// <summary>
+        /// 水平上轴后限位
+        /// true: 触发
+        /// false: 未触发
+        /// </summary>
+        [ObservableProperty]
+        private bool _robotHorizontal1BackwardLimit;
+
+        /// <summary>
+        /// 水平上轴原点
+        /// true: 触发
+        /// false: 未触发
+        /// </summary>
+        [ObservableProperty]
+        private bool _robotHorizontal1OriginLimit;
+
+        /// <summary>
+        /// 水平下轴前限位
+        /// true: 触发
+        /// false: 未触发
+        /// </summary>
+        [ObservableProperty]
+        private bool _robotHorizontal2ForwardLimit;
+
+        /// <summary>
+        /// 水平下轴后限位
+        /// true: 触发
+        /// false: 未触发
+        /// </summary>
+        [ObservableProperty]
+        private bool _robotHorizontal2BackwardLimit;
+
+        /// <summary>
+        /// 水平下轴原点
+        /// true: 触发
+        /// false: 未触发
+        /// </summary>
+        [ObservableProperty]
+        private bool _robotHorizontal2OriginLimit;
+
+        /// <summary>
+        /// 垂直轴上限位
+        /// true: 触发
+        /// false: 未触发
+        /// </summary>
+        [ObservableProperty]
+        private bool _robotVerticalUpperLimit;
+
+        /// <summary>
+        /// 垂直轴下限位
+        /// true: 触发
+        /// false: 未触发
+        /// </summary>
+        [ObservableProperty]
+        private bool _robotVerticalLowerLimit;
+
+        /// <summary>
+        /// 垂直轴原点
+        /// true: 触发
+        /// false: 未触发
+        /// </summary>
+        [ObservableProperty]
+        private bool _robotVerticalOriginLimit;
 
         // 暂存区舟检测传感器状态
         /// <summary>
