@@ -29,5 +29,21 @@ namespace WpfApp4.Models
         /// </summary>
         [ObservableProperty]
         private bool _horizontalFurnaceDoorCylinder = false;
+
+        /// <summary>
+        /// 水平轴运动状态
+        /// true: 正在运动
+        /// false: 静止状态
+        /// </summary>
+        [ObservableProperty]
+        private bool _horizontalAxisMoving = false;
+
+        /// <summary>
+        /// 垂直轴运动状态
+        /// true: 正在运动
+        /// false: 静止状态
+        /// </summary>
+        [ObservableProperty]
+        private bool _verticalAxisMoving = false;
     }
 } 

@@ -404,5 +404,81 @@ namespace WpfApp4.ViewModel
                 MessageBox.Show($"蜂鸣器控制失败: {ex.Message}");
             }
         }
+
+        // 进入炉内命令
+        [RelayCommand]
+        private async Task MoveIntoFurnace(string furnaceNumber)
+        {
+            try
+            {
+                // 将炉管编号转换为索引（0-5）
+                int furnaceIndex = int.Parse(furnaceNumber) - 1;
+                
+                // 获取对应炉管的PLC数据
+                var furnacePlcData = _furnacePlcDataService.FurnacePlcDataDict[furnaceIndex];
+
+                // 检查水平轴和垂直轴是否在运动
+                if (furnacePlcData.HorizontalAxisMoving)
+                {
+                    EventLogs.Add(new EventLog { Time = DateTime.Now, Message = $"炉管{furnaceNumber}水平轴正在运动中，无法进入炉内" });
+                    return;
+                }
+
+                if (furnacePlcData.VerticalAxisMoving)
+                {
+                    EventLogs.Add(new EventLog { Time = DateTime.Now, Message = $"炉管{furnaceNumber}垂直轴正在运动中，无法进入炉内" });
+                    return;
+                }
+
+                // 获取对应炉管的PLC客户端
+                var tubePlc = PlcCommunicationService.Instance.ModbusTcpClients[(PlcCommunicationService.PlcType)furnaceIndex];
+
+                // 发送进入炉内命令到PLC
+                await tubePlc.WriteAsync("100", true);  // 假设地址100为进入炉内命令
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = $"炉管{furnaceNumber}开始进入炉内" });
+            }
+            catch (Exception ex)
+            {
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = $"炉管{furnaceNumber}进入炉内失败: {ex.Message}" });
+            }
+        }
+
+        // 移动出炉命令
+        [RelayCommand]
+        private async Task MoveOutFurnace(string furnaceNumber)
+        {
+            try
+            {
+                // 将炉管编号转换为索引（0-5）
+                int furnaceIndex = int.Parse(furnaceNumber) - 1;
+                
+                // 获取对应炉管的PLC数据
+                var furnacePlcData = _furnacePlcDataService.FurnacePlcDataDict[furnaceIndex];
+
+                // 检查水平轴和垂直轴是否在运动
+                if (furnacePlcData.HorizontalAxisMoving)
+                {
+                    EventLogs.Add(new EventLog { Time = DateTime.Now, Message = $"炉管{furnaceNumber}水平轴正在运动中，无法移动出炉" });
+                    return;
+                }
+
+                if (furnacePlcData.VerticalAxisMoving)
+                {
+                    EventLogs.Add(new EventLog { Time = DateTime.Now, Message = $"炉管{furnaceNumber}垂直轴正在运动中，无法移动出炉" });
+                    return;
+                }
+
+                // 获取对应炉管的PLC客户端
+                var tubePlc = PlcCommunicationService.Instance.ModbusTcpClients[(PlcCommunicationService.PlcType)furnaceIndex];
+
+                // 发送移动出炉命令到PLC
+                await tubePlc.WriteAsync("101", true);  // 假设地址101为移动出炉命令
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = $"炉管{furnaceNumber}开始移动出炉" });
+            }
+            catch (Exception ex)
+            {
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = $"炉管{furnaceNumber}移动出炉失败: {ex.Message}" });
+            }
+        }
     }
 }

@@ -263,7 +263,7 @@
                                                    FontSize="11"
                                                    Background="{Binding PaddleAreas[5].Status, Converter={StaticResource BoatStatusToColorConverter}}"/>
                                     </StackPanel>
-                                </Border>
+                            </Border>
                             </UniformGrid>
                         </StackPanel>
                     </materialDesign:Card>
@@ -328,7 +328,7 @@
                                                    FontSize="11"
                                                    Background="{Binding StorageAreas[3].Status, Converter={StaticResource BoatStatusToColorConverter}}"/>
                                     </StackPanel>
-                                </Border>
+                            </Border>
                                 <!-- 暂存区5 -->
                                 <Border BorderBrush="Gray" BorderThickness="1" Margin="2" CornerRadius="3" MinWidth="60">
                                     <StackPanel Margin="3">
@@ -341,8 +341,8 @@
                                                    Margin="0,1" 
                                                    FontSize="11"
                                                    Background="{Binding StorageAreas[4].Status, Converter={StaticResource BoatStatusToColorConverter}}"/>
-                                    </StackPanel>
-                                </Border>
+                        </StackPanel>
+                            </Border>
                                 <!-- 暂存区6 -->
                                 <Border BorderBrush="Gray" BorderThickness="1" Margin="2" CornerRadius="3" MinWidth="60">
                                     <StackPanel Margin="3">
@@ -355,8 +355,8 @@
                                                    Margin="0,1" 
                                                    FontSize="11"
                                                    Background="{Binding StorageAreas[5].Status, Converter={StaticResource BoatStatusToColorConverter}}"/>
-                                    </StackPanel>
-                                </Border>
+                        </StackPanel>
+                            </Border>
                             </UniformGrid>
                         </StackPanel>
                     </materialDesign:Card>
@@ -410,22 +410,22 @@
                                          IsChecked="{Binding SelectedSourcePosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=桨区2}"/>
                             <RadioButton Content="桨区3" 
                                          Margin="0,2,0,5" 
-                                         GroupName="SourcePosition"
+                                     GroupName="SourcePosition"
                                          IsEnabled="{Binding FurnacePlcDataDict[2].PaddleBoatSensor}"
                                          IsChecked="{Binding SelectedSourcePosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=桨区3}"/>
                             <RadioButton Content="桨区4" 
                                          Margin="0,2,0,5" 
-                                         GroupName="SourcePosition"
+                                     GroupName="SourcePosition"
                                          IsEnabled="{Binding FurnacePlcDataDict[3].PaddleBoatSensor}"
                                          IsChecked="{Binding SelectedSourcePosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=桨区4}"/>
                             <RadioButton Content="桨区5" 
                                          Margin="0,2,0,5" 
-                                         GroupName="SourcePosition"
+                                     GroupName="SourcePosition"
                                          IsEnabled="{Binding FurnacePlcDataDict[4].PaddleBoatSensor}"
                                          IsChecked="{Binding SelectedSourcePosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=桨区5}"/>
                             <RadioButton Content="桨区6" 
                                          Margin="0,2,0,5" 
-                                         GroupName="SourcePosition"
+                                     GroupName="SourcePosition"
                                          IsEnabled="{Binding FurnacePlcDataDict[5].PaddleBoatSensor}"
                                          IsChecked="{Binding SelectedSourcePosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=桨区6}"/>
                     </StackPanel>
@@ -520,22 +520,22 @@
                                          IsChecked="{Binding SelectedTargetPosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=桨区2}"/>
                             <RadioButton Content="桨区3" 
                                          Margin="0,2,0,5" 
-                                         GroupName="TargetPosition"
+                                     GroupName="TargetPosition"
                                          IsEnabled="{Binding FurnacePlcDataDict[2].PaddleBoatSensor, Converter={StaticResource BooleanToInverseBooleanConverter}}"
                                          IsChecked="{Binding SelectedTargetPosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=桨区3}"/>
                             <RadioButton Content="桨区4" 
                                          Margin="0,2,0,5" 
-                                         GroupName="TargetPosition"
+                                     GroupName="TargetPosition"
                                          IsEnabled="{Binding FurnacePlcDataDict[3].PaddleBoatSensor, Converter={StaticResource BooleanToInverseBooleanConverter}}"
                                          IsChecked="{Binding SelectedTargetPosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=桨区4}"/>
                             <RadioButton Content="桨区5" 
                                          Margin="0,2,0,5" 
-                                         GroupName="TargetPosition"
+                                     GroupName="TargetPosition"
                                          IsEnabled="{Binding FurnacePlcDataDict[4].PaddleBoatSensor, Converter={StaticResource BooleanToInverseBooleanConverter}}"
                                          IsChecked="{Binding SelectedTargetPosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=桨区5}"/>
                             <RadioButton Content="桨区6" 
                                          Margin="0,2,0,5" 
-                                         GroupName="TargetPosition"
+                                     GroupName="TargetPosition"
                                          IsEnabled="{Binding FurnacePlcDataDict[5].PaddleBoatSensor, Converter={StaticResource BooleanToInverseBooleanConverter}}"
                                          IsChecked="{Binding SelectedTargetPosition, Converter={StaticResource RadioButtonConverter}, ConverterParameter=桨区6}"/>
                     </StackPanel>
@@ -563,117 +563,117 @@
                             <!-- 桨1操作 -->
                             <StackPanel Orientation="Horizontal" Margin="0,2,0,5">
                                 <TextBlock Text="桨1:" Width="40" VerticalAlignment="Center"/>
-                                <Button Content="上桨" 
+                                <Button Content="进入炉内" 
                                         Style="{StaticResource MaterialDesignFlatDarkBgButton}"
                                         Width="70" Height="25"
                                         Margin="0,0,5,0"
                                         FontSize="11"
-                                        Command="{Binding ClampVerticalToLowerLimitCommand}"
+                                        Command="{Binding MoveIntoFurnaceCommand}"
                                         CommandParameter="1"
                                         IsEnabled="{Binding IsJogModeSelected}"/>
-                                <Button Content="出桨" 
+                                <Button Content="移动出炉" 
                                         Style="{StaticResource MaterialDesignFlatDarkBgButton}"
                                         Width="70" Height="25"
                                         FontSize="11"
-                                        Command="{Binding ClampVerticalToOriginCommand}"
+                                        Command="{Binding MoveOutFurnaceCommand}"
                                         CommandParameter="1"
                                         IsEnabled="{Binding IsJogModeSelected}"/>
                             </StackPanel>
                             <!-- 桨2操作 -->
                             <StackPanel Orientation="Horizontal" Margin="0,2,0,5">
                                 <TextBlock Text="桨2:" Width="40" VerticalAlignment="Center"/>
-                                <Button Content="上桨" 
+                                <Button Content="进入炉内" 
                                         Style="{StaticResource MaterialDesignFlatDarkBgButton}"
                                         Width="70" Height="25"
                                         Margin="0,0,5,0"
                                         FontSize="11"
-                                        Command="{Binding ClampVerticalToLowerLimitCommand}"
+                                        Command="{Binding MoveIntoFurnaceCommand}"
                                         CommandParameter="2"
                                         IsEnabled="{Binding IsJogModeSelected}"/>
-                                <Button Content="出桨" 
+                                <Button Content="移动出炉" 
                                         Style="{StaticResource MaterialDesignFlatDarkBgButton}"
                                         Width="70" Height="25"
                                         FontSize="11"
-                                        Command="{Binding ClampVerticalToOriginCommand}"
+                                        Command="{Binding MoveOutFurnaceCommand}"
                                         CommandParameter="2"
                                         IsEnabled="{Binding IsJogModeSelected}"/>
                             </StackPanel>
                             <!-- 桨3操作 -->
                             <StackPanel Orientation="Horizontal" Margin="0,2,0,5">
                                 <TextBlock Text="桨3:" Width="40" VerticalAlignment="Center"/>
-                                <Button Content="上桨" 
+                                <Button Content="进入炉内" 
                                         Style="{StaticResource MaterialDesignFlatDarkBgButton}"
                                         Width="70" Height="25"
                                         Margin="0,0,5,0"
                                         FontSize="11"
-                                        Command="{Binding ClampVerticalToLowerLimitCommand}"
+                                        Command="{Binding MoveIntoFurnaceCommand}"
                                         CommandParameter="3"
                                         IsEnabled="{Binding IsJogModeSelected}"/>
-                                <Button Content="出桨" 
+                                <Button Content="移动出炉" 
                                         Style="{StaticResource MaterialDesignFlatDarkBgButton}"
                                         Width="70" Height="25"
                                         FontSize="11"
-                                        Command="{Binding ClampVerticalToOriginCommand}"
+                                        Command="{Binding MoveOutFurnaceCommand}"
                                         CommandParameter="3"
                                         IsEnabled="{Binding IsJogModeSelected}"/>
                             </StackPanel>
                             <!-- 桨4操作 -->
                             <StackPanel Orientation="Horizontal" Margin="0,2,0,5">
                                 <TextBlock Text="桨4:" Width="40" VerticalAlignment="Center"/>
-                                <Button Content="上桨" 
+                                <Button Content="进入炉内" 
                                         Style="{StaticResource MaterialDesignFlatDarkBgButton}"
                                         Width="70" Height="25"
                                         Margin="0,0,5,0"
                                         FontSize="11"
-                                        Command="{Binding ClampVerticalToLowerLimitCommand}"
+                                        Command="{Binding MoveIntoFurnaceCommand}"
                                         CommandParameter="4"
                                         IsEnabled="{Binding IsJogModeSelected}"/>
-                                <Button Content="出桨" 
+                                <Button Content="移动出炉" 
                                         Style="{StaticResource MaterialDesignFlatDarkBgButton}"
                                         Width="70" Height="25"
                                         FontSize="11"
-                                        Command="{Binding ClampVerticalToOriginCommand}"
+                                        Command="{Binding MoveOutFurnaceCommand}"
                                         CommandParameter="4"
                                         IsEnabled="{Binding IsJogModeSelected}"/>
                             </StackPanel>
                             <!-- 桨5操作 -->
                             <StackPanel Orientation="Horizontal" Margin="0,2,0,5">
                                 <TextBlock Text="桨5:" Width="40" VerticalAlignment="Center"/>
-                                <Button Content="上桨" 
+                                <Button Content="进入炉内" 
                                         Style="{StaticResource MaterialDesignFlatDarkBgButton}"
                                         Width="70" Height="25"
                                         Margin="0,0,5,0"
                                         FontSize="11"
-                                        Command="{Binding ClampVerticalToLowerLimitCommand}"
+                                        Command="{Binding MoveIntoFurnaceCommand}"
                                         CommandParameter="5"
                                         IsEnabled="{Binding IsJogModeSelected}"/>
-                                <Button Content="出桨" 
+                                <Button Content="移动出炉" 
                                         Style="{StaticResource MaterialDesignFlatDarkBgButton}"
                                         Width="70" Height="25"
                                         FontSize="11"
-                                        Command="{Binding ClampVerticalToOriginCommand}"
+                                        Command="{Binding MoveOutFurnaceCommand}"
                                         CommandParameter="5"
                                         IsEnabled="{Binding IsJogModeSelected}"/>
                             </StackPanel>
                             <!-- 桨6操作 -->
                             <StackPanel Orientation="Horizontal" Margin="0,2,0,5">
                                 <TextBlock Text="桨6:" Width="40" VerticalAlignment="Center"/>
-                                <Button Content="上桨" 
+                                <Button Content="进入炉内" 
                                         Style="{StaticResource MaterialDesignFlatDarkBgButton}"
                                         Width="70" Height="25"
                                         Margin="0,0,5,0"
                                         FontSize="11"
-                                        Command="{Binding ClampVerticalToLowerLimitCommand}"
+                                        Command="{Binding MoveIntoFurnaceCommand}"
                                         CommandParameter="6"
                                         IsEnabled="{Binding IsJogModeSelected}"/>
-                                <Button Content="出桨" 
+                                <Button Content="移动出炉" 
                                         Style="{StaticResource MaterialDesignFlatDarkBgButton}"
                                         Width="70" Height="25"
                                         FontSize="11"
-                                        Command="{Binding ClampVerticalToOriginCommand}"
+                                        Command="{Binding MoveOutFurnaceCommand}"
                                         CommandParameter="6"
                                         IsEnabled="{Binding IsJogModeSelected}"/>
-                            </StackPanel>
+                        </StackPanel>
                     </StackPanel>
                     </StackPanel>
                 </StackPanel>

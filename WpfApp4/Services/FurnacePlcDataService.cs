@@ -95,6 +95,10 @@ namespace WpfApp4.Services
                 data.VerticalFurnaceDoorCylinder = _modbusClients[furnaceIndex].ReadCoil($"{addr++}").Content;      // 地址 1
                 data.HorizontalFurnaceDoorCylinder = _modbusClients[furnaceIndex].ReadCoil($"{addr++}").Content;    // 地址 2
 
+                // 读取轴运动状态
+                data.HorizontalAxisMoving = _modbusClients[furnaceIndex].ReadCoil($"{addr++}").Content;    // 地址 3
+                data.VerticalAxisMoving = _modbusClients[furnaceIndex].ReadCoil($"{addr++}").Content;      // 地址 4
+
                 // 在UI线程更新数据
                 await _dispatcher.InvokeAsync(() =>
                 {
@@ -104,6 +108,10 @@ namespace WpfApp4.Services
                     // 更新炉门气缸状态
                     FurnacePlcDataDict[furnaceIndex].VerticalFurnaceDoorCylinder = data.VerticalFurnaceDoorCylinder;
                     FurnacePlcDataDict[furnaceIndex].HorizontalFurnaceDoorCylinder = data.HorizontalFurnaceDoorCylinder;
+
+                    // 更新轴运动状态
+                    FurnacePlcDataDict[furnaceIndex].HorizontalAxisMoving = data.HorizontalAxisMoving;
+                    FurnacePlcDataDict[furnaceIndex].VerticalAxisMoving = data.VerticalAxisMoving;
                 });
             }
             catch (Exception ex)
