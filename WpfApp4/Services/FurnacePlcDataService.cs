@@ -99,6 +99,16 @@ namespace WpfApp4.Services
                 data.HorizontalAxisMoving = _modbusClients[furnaceIndex].ReadCoil($"{addr++}").Content;    // 地址 3
                 data.VerticalAxisMoving = _modbusClients[furnaceIndex].ReadCoil($"{addr++}").Content;      // 地址 4
 
+                // 读取水平轴限位传感器状态
+                data.HorizontalUpperLimit = _modbusClients[furnaceIndex].ReadCoil($"{addr++}").Content;    // 地址 5
+                data.HorizontalOriginLimit = _modbusClients[furnaceIndex].ReadCoil($"{addr++}").Content;   // 地址 6
+                data.HorizontalLowerLimit = _modbusClients[furnaceIndex].ReadCoil($"{addr++}").Content;    // 地址 7
+
+                // 读取垂直轴限位传感器状态
+                data.VerticalUpperLimit = _modbusClients[furnaceIndex].ReadCoil($"{addr++}").Content;      // 地址 8
+                data.VerticalOriginLimit = _modbusClients[furnaceIndex].ReadCoil($"{addr++}").Content;     // 地址 9
+                data.VerticalLowerLimit = _modbusClients[furnaceIndex].ReadCoil($"{addr++}").Content;      // 地址 10
+
                 // 在UI线程更新数据
                 await _dispatcher.InvokeAsync(() =>
                 {
@@ -112,6 +122,16 @@ namespace WpfApp4.Services
                     // 更新轴运动状态
                     FurnacePlcDataDict[furnaceIndex].HorizontalAxisMoving = data.HorizontalAxisMoving;
                     FurnacePlcDataDict[furnaceIndex].VerticalAxisMoving = data.VerticalAxisMoving;
+
+                    // 更新水平轴限位传感器状态
+                    FurnacePlcDataDict[furnaceIndex].HorizontalUpperLimit = data.HorizontalUpperLimit;
+                    FurnacePlcDataDict[furnaceIndex].HorizontalOriginLimit = data.HorizontalOriginLimit;
+                    FurnacePlcDataDict[furnaceIndex].HorizontalLowerLimit = data.HorizontalLowerLimit;
+
+                    // 更新垂直轴限位传感器状态
+                    FurnacePlcDataDict[furnaceIndex].VerticalUpperLimit = data.VerticalUpperLimit;
+                    FurnacePlcDataDict[furnaceIndex].VerticalOriginLimit = data.VerticalOriginLimit;
+                    FurnacePlcDataDict[furnaceIndex].VerticalLowerLimit = data.VerticalLowerLimit;
                 });
             }
             catch (Exception ex)

@@ -55,6 +55,44 @@ namespace WpfApp4.ViewModel
         [ObservableProperty]
         private bool _isStartEnabled = true;  // 启动按钮状态
 
+        // 机械手精确控制属性
+        [ObservableProperty]
+        private bool _isHorizontal1Selected;
+
+        [ObservableProperty]
+        private bool _isHorizontal2Selected;
+
+        [ObservableProperty]
+        private bool _isVerticalSelected;
+
+        [ObservableProperty]
+        private bool _isHighSpeedSelected;
+
+        [ObservableProperty]
+        private bool _isLowSpeedSelected;
+
+        [ObservableProperty]
+        private double _inputValue;
+
+        // 桨精确控制属性
+        [ObservableProperty]
+        private int _selectedPaddleIndex;
+
+        [ObservableProperty]
+        private bool _isClampHorizontalSelected;
+
+        [ObservableProperty]
+        private bool _isClampVerticalSelected;
+
+        [ObservableProperty]
+        private bool _isClampHighSpeedSelected;
+
+        [ObservableProperty]
+        private bool _isClampLowSpeedSelected;
+
+        [ObservableProperty]
+        private double _clampInputValue;
+
         public MotionVM()
         {
             _robotPlc = PlcCommunicationService.Instance.ModbusTcpClients[PlcCommunicationService.PlcType.Motion];
@@ -692,6 +730,201 @@ namespace WpfApp4.ViewModel
             {
                 EventLogs.Add(new EventLog { Time = DateTime.Now, Message = $"整体回原点操作失败: {ex.Message}" });
             }
+        }
+
+        /// <summary>
+        /// 机械手精确控制启动命令
+        /// 检查轴运动状态和输入值，向PLC发送启动命令
+        /// </summary>
+        [RelayCommand]
+        private async Task StartMotion()
+        {
+            try
+            {
+                // 检查三轴运动状态
+                if (!CheckAxesNotMoving()) return;
+
+                // 检查是否选择了轴
+                if (!IsHorizontal1Selected && !IsHorizontal2Selected && !IsVerticalSelected)
+                {
+                    EventLogs.Add(new EventLog { Time = DateTime.Now, Message = "请选择要控制的轴" });
+                    return;
+                }
+
+                // 检查是否选择了速度
+                if (!IsHighSpeedSelected && !IsLowSpeedSelected)
+                {
+                    EventLogs.Add(new EventLog { Time = DateTime.Now, Message = "请选择运动速度" });
+                    return;
+                }
+
+                // 检查是否输入了位置值
+                if (InputValue == 0)
+                {
+                    EventLogs.Add(new EventLog { Time = DateTime.Now, Message = "请输入目标位置值" });
+                    return;
+                }
+
+                // 如果是水平轴运动，检查垂直轴是否在安全距离内
+                if (IsHorizontal1Selected || IsHorizontal2Selected)
+                {
+                    double verticalPosition = MotionPlcData.RobotVerticalPosition;
+                    bool isInSafeRange = false;
+                    string safeRangeMessage = "";
+
+                    // 检查是否在任一安全距离范围内
+                    if (verticalPosition >= -400 && verticalPosition <= -200)
+                    {
+                        isInSafeRange = true;
+                        safeRangeMessage = "位置1: -400mm ~ -200mm";
+                    }
+                    else if (verticalPosition >= 0 && verticalPosition <= 200)
+                    {
+                        isInSafeRange = true;
+                        safeRangeMessage = "位置2: 0mm ~ 200mm";
+                    }
+                    else if (verticalPosition >= 400 && verticalPosition <= 600)
+                    {
+                        isInSafeRange = true;
+                        safeRangeMessage = "位置3: 400mm ~ 600mm";
+                    }
+                    else if (verticalPosition >= 800 && verticalPosition <= 1000)
+                    {
+                        isInSafeRange = true;
+                        safeRangeMessage = "位置4: 800mm ~ 1000mm";
+                    }
+                    else if (verticalPosition >= 1200 && verticalPosition <= 1400)
+                    {
+                        isInSafeRange = true;
+                        safeRangeMessage = "位置5: 1200mm ~ 1400mm";
+                    }
+                    else if (verticalPosition >= 1600 && verticalPosition <= 1800)
+                    {
+                        isInSafeRange = true;
+                        safeRangeMessage = "位置6: 1600mm ~ 1800mm";
+                    }
+
+                    if (!isInSafeRange)
+                    {
+                        EventLogs.Add(new EventLog { Time = DateTime.Now, Message = $"垂直轴当前位置（{verticalPosition}mm）不在任何安全距离范围内，无法进行水平运动。安全距离范围：\n" +
+                            "位置1: -400mm ~ -200mm\n" +
+                            "位置2: 0mm ~ 200mm\n" +
+                            "位置3: 400mm ~ 600mm\n" +
+                            "位置4: 800mm ~ 1000mm\n" +
+                            "位置5: 1200mm ~ 1400mm\n" +
+                            "位置6: 1600mm ~ 1800mm" });
+                        return;
+                    }
+                    else
+                    {
+                        EventLogs.Add(new EventLog { Time = DateTime.Now, Message = $"垂直轴当前位置（{verticalPosition}mm）在{safeRangeMessage}范围内，可以进行水平运动" });
+                    }
+                }
+
+                // 确定选择的轴
+                byte axisCode = 0;
+                if (IsHorizontal1Selected) axisCode = 1;
+                else if (IsHorizontal2Selected) axisCode = 2;
+                else if (IsVerticalSelected) axisCode = 3;
+
+                // 确定速度模式
+                bool isHighSpeed = IsHighSpeedSelected;
+
+                // 写入PLC
+                await _robotPlc.WriteAsync("450", axisCode);  // 写入轴选择
+                await _robotPlc.WriteAsync("451", isHighSpeed);  // 写入速度选择
+                await _robotPlc.WriteAsync("452", InputValue);  // 写入目标位置
+                await _robotPlc.WriteAsync("453", true);  // 写入启动信号
+
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = $"已发送运动命令：轴={axisCode}，速度={isHighSpeed}，位置={InputValue}" });
+            }
+            catch (Exception ex)
+            {
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = $"启动运动失败: {ex.Message}" });
+            }
+        }
+
+        /// <summary>
+        /// 桨精确控制启动命令
+        /// 检查轴运动状态和输入值，向PLC发送启动命令
+        /// </summary>
+        [RelayCommand]
+        private async Task StartClampMotion()
+        {
+            try
+            {
+                // 检查是否选择了桨台
+                if (SelectedPaddleIndex < 0)
+                {
+                    EventLogs.Add(new EventLog { Time = DateTime.Now, Message = "请选择要控制的桨台" });
+                    return;
+                }
+
+                // 检查是否选择了轴
+                if (!IsClampHorizontalSelected && !IsClampVerticalSelected)
+                {
+                    EventLogs.Add(new EventLog { Time = DateTime.Now, Message = "请选择要控制的轴" });
+                    return;
+                }
+
+                // 检查是否选择了速度
+                if (!IsClampHighSpeedSelected && !IsClampLowSpeedSelected)
+                {
+                    EventLogs.Add(new EventLog { Time = DateTime.Now, Message = "请选择运动速度" });
+                    return;
+                }
+
+                // 检查是否输入了位置值
+                if (ClampInputValue == 0)
+                {
+                    EventLogs.Add(new EventLog { Time = DateTime.Now, Message = "请输入目标位置值" });
+                    return;
+                }
+
+                // 获取对应桨台的PLC数据
+                var furnacePlcData = _furnacePlcDataService.FurnacePlcDataDict[SelectedPaddleIndex];
+
+                // 检查对应轴是否在运动
+                if (IsClampHorizontalSelected && furnacePlcData.HorizontalAxisMoving)
+                {
+                    EventLogs.Add(new EventLog { Time = DateTime.Now, Message = $"桨台{SelectedPaddleIndex + 1}水平轴正在运动中，无法启动" });
+                    return;
+                }
+                if (IsClampVerticalSelected && furnacePlcData.VerticalAxisMoving)
+                {
+                    EventLogs.Add(new EventLog { Time = DateTime.Now, Message = $"桨台{SelectedPaddleIndex + 1}垂直轴正在运动中，无法启动" });
+                    return;
+                }
+
+                // 获取对应桨台的PLC客户端
+                var tubePlc = PlcCommunicationService.Instance.ModbusTcpClients[(PlcCommunicationService.PlcType)SelectedPaddleIndex];
+
+                // 确定选择的轴和速度
+                byte axisCode = IsClampHorizontalSelected ? (byte)1 : (byte)2;
+                bool isHighSpeed = IsClampHighSpeedSelected;
+
+                // 写入PLC
+                await tubePlc.WriteAsync("450", axisCode);  // 写入轴选择
+                await tubePlc.WriteAsync("451", isHighSpeed);  // 写入速度选择
+                await tubePlc.WriteAsync("452", ClampInputValue);  // 写入目标位置
+                await tubePlc.WriteAsync("453", true);  // 写入启动信号
+
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = $"已发送桨台{SelectedPaddleIndex + 1}运动命令：轴={axisCode}，速度={isHighSpeed}，位置={ClampInputValue}" });
+            }
+            catch (Exception ex)
+            {
+                EventLogs.Add(new EventLog { Time = DateTime.Now, Message = $"启动运动失败: {ex.Message}" });
+            }
+        }
+
+        /// <summary>
+        /// 清空事件记录命令
+        /// </summary>
+        [RelayCommand]
+        private void ClearEventLogs()
+        {
+            EventLogs.Clear();
+            EventLogs.Add(new EventLog { Time = DateTime.Now, Message = "事件记录已清空" });
         }
     }
 }

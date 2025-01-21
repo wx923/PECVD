@@ -142,6 +142,24 @@ namespace WpfApp4.Models
         [ObservableProperty]
         private bool _robotVerticalOriginLimit;
 
+        /// <summary>
+        /// 水平上轴当前位置（单位：mm）
+        /// </summary>
+        [ObservableProperty]
+        private double _robotHorizontal1Position;
+
+        /// <summary>
+        /// 水平下轴当前位置（单位：mm）
+        /// </summary>
+        [ObservableProperty]
+        private double _robotHorizontal2Position;
+
+        /// <summary>
+        /// 垂直轴当前位置（单位：mm）
+        /// </summary>
+        [ObservableProperty]
+        private double _robotVerticalPosition;
+
         // 暂存区舟检测传感器状态
         /// <summary>
         /// 暂存区1舟检测传感器状态

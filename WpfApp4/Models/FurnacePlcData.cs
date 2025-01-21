@@ -45,5 +45,85 @@ namespace WpfApp4.Models
         /// </summary>
         [ObservableProperty]
         private bool _verticalAxisMoving = false;
+
+        // 水平轴限位传感器
+        /// <summary>
+        /// 水平轴上限位传感器
+        /// true: 触发
+        /// false: 未触发
+        /// </summary>
+        [ObservableProperty]
+        private bool _horizontalUpperLimit = false;
+
+        /// <summary>
+        /// 水平轴原点传感器
+        /// true: 触发
+        /// false: 未触发
+        /// </summary>
+        [ObservableProperty]
+        private bool _horizontalOriginLimit = false;
+
+        /// <summary>
+        /// 水平轴下限位传感器
+        /// true: 触发
+        /// false: 未触发
+        /// </summary>
+        [ObservableProperty]
+        private bool _horizontalLowerLimit = false;
+
+        // 垂直轴限位传感器
+        /// <summary>
+        /// 垂直轴上限位传感器
+        /// true: 触发
+        /// false: 未触发
+        /// </summary>
+        [ObservableProperty]
+        private bool _verticalUpperLimit = false;
+
+        /// <summary>
+        /// 垂直轴原点传感器
+        /// true: 触发
+        /// false: 未触发
+        /// </summary>
+        [ObservableProperty]
+        private bool _verticalOriginLimit = false;
+
+        /// <summary>
+        /// 垂直轴下限位传感器
+        /// true: 触发
+        /// false: 未触发
+        /// </summary>
+        [ObservableProperty]
+        private bool _verticalLowerLimit = false;
+
+        /// <summary>
+        /// 水平轴当前位置（单位：mm）
+        /// </summary>
+        [ObservableProperty]
+        private double _horizontalPosition = 0;
+
+        /// <summary>
+        /// 垂直轴当前位置（单位：mm）
+        /// </summary>
+        [ObservableProperty]
+        private double _verticalPosition = 0;
+
+        public FurnacePlcData()
+        {
+            // 初始化所有属性为默认值
+            PaddleBoatSensor = false;
+            VerticalFurnaceDoorCylinder = false;
+            HorizontalFurnaceDoorCylinder = false;
+            HorizontalAxisMoving = false;
+            VerticalAxisMoving = false;
+            HorizontalUpperLimit = false;
+            HorizontalLowerLimit = false;
+            HorizontalOriginLimit = false;
+            VerticalUpperLimit = false;
+            VerticalLowerLimit = false;
+            VerticalOriginLimit = false;
+            HorizontalPosition = 0;
+            VerticalPosition = 0;
+        }
     }
 } 

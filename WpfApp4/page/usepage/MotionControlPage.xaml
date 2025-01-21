@@ -122,6 +122,7 @@
         <converters:BooleanToBackgroundConverter x:Key="BooleanToBackgroundConverter"/>
         <converters:BooleanToInverseBooleanConverter x:Key="BooleanToInverseBooleanConverter"/>
         <converters:BoatStatusToColorConverter x:Key="BoatStatusToColorConverter"/>
+        <converters:BoolToIntConverter x:Key="BoolToIntConverter"/>
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -328,7 +329,7 @@
                                                    FontSize="11"
                                                    Background="{Binding StorageAreas[3].Status, Converter={StaticResource BoatStatusToColorConverter}}"/>
                                     </StackPanel>
-                            </Border>
+                                </Border>
                                 <!-- 暂存区5 -->
                                 <Border BorderBrush="Gray" BorderThickness="1" Margin="2" CornerRadius="3" MinWidth="60">
                                     <StackPanel Margin="3">
@@ -767,6 +768,7 @@
         <!--下半部分-->
         <Grid Grid.Row="1" Margin="20,10,20,0">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="350"></ColumnDefinition>
                 <ColumnDefinition Width="300"></ColumnDefinition>
                 <ColumnDefinition Width="300"></ColumnDefinition>
                 <ColumnDefinition Width="200"></ColumnDefinition>
@@ -800,21 +802,29 @@
                                     <TextBlock Text="垂直轴上限位:" Margin="2,5,2,5"/>
                                     <TextBlock Text="垂直轴下限位:" Margin="2,5,2,5"/>
                                     <TextBlock Text="垂直轴原点:" Margin="2,5,2,5"/>
+                                    <TextBlock Text="水平上轴运动:" Margin="2,5,2,5"/>
+                                    <TextBlock Text="水平下轴运动:" Margin="2,5,2,5"/>
+                                    <TextBlock Text="垂直轴运动:" Margin="2,5,2,5"/>
                                 </StackPanel>
                                 <StackPanel>
                                     <TextBlock Text="{Binding MotionPlcData.RobotVerticalUpperLimit, Converter={StaticResource BoolToYesNoConverter}}" Margin="0,5,15,5"/>
                                     <TextBlock Text="{Binding MotionPlcData.RobotVerticalLowerLimit, Converter={StaticResource BoolToYesNoConverter}}" Margin="0,5,15,5"/>
                                     <TextBlock Text="{Binding MotionPlcData.RobotVerticalOriginLimit, Converter={StaticResource BoolToYesNoConverter}}" Margin="0,5,15,5"/>
+                                    <TextBlock Text="{Binding MotionPlcData.Horizontal1Moving, Converter={StaticResource BoolToYesNoConverter}}" Margin="0,5,15,5"/>
+                                    <TextBlock Text="{Binding MotionPlcData.Horizontal2Moving, Converter={StaticResource BoolToYesNoConverter}}" Margin="0,5,15,5"/>
+                                    <TextBlock Text="{Binding MotionPlcData.VerticalMoving, Converter={StaticResource BoolToYesNoConverter}}" Margin="0,5,15,5"/>
                                 </StackPanel>
                             </StackPanel>
                         </StackPanel>
                     </materialDesign:Card>
 
+                    <!-- 机械手数值显示区 -->
                     <TextBlock Text="机械手数值显示区" FontSize="14" FontWeight="Bold" Margin="5,5,5,5"></TextBlock>
                     <materialDesign:Card>
-                        <StackPanel Orientation="Horizontal" Margin="10">
+                        <StackPanel Orientation="Horizontal" Margin="5">
                             <!-- 轴位置值显示 -->
-                            <StackPanel Orientation="Vertical" Margin="0,0,20,0">
+                            <StackPanel Orientation="Vertical" Margin="0,0,10,0">
+                            <StackPanel Orientation="Vertical">
                                 <TextBlock Text="当前位置" FontSize="12" FontWeight="Bold" Margin="0,0,0,5"/>
                                 <StackPanel Orientation="Horizontal" Margin="0,2">
                                     <TextBlock Text="水平上轴：" VerticalAlignment="Center"/>
@@ -832,56 +842,113 @@
                                     <TextBlock Text="mm" VerticalAlignment="Center"/>
                                 </StackPanel>
                             </StackPanel>
-
                             <!-- 安全距离值显示 -->
-                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Vertical" Margin="0,0,10,0">
                                 <TextBlock Text="垂直轴安全距离" FontSize="12" FontWeight="Bold" Margin="0,0,0,5"/>
                                 <StackPanel Orientation="Horizontal" Margin="0,2">
                                     <TextBlock Text="位置1：" VerticalAlignment="Center" Width="45"/>
-                                    <TextBlock Text="{Binding MotionPlcData.RobotVerticalSafePosition1_1}" VerticalAlignment="Center" Margin="5,0"/>
+                                    <TextBlock Text="-400" VerticalAlignment="Center" Margin="5,0"/>
                                     <TextBlock Text="mm" VerticalAlignment="Center" Margin="0,0,10,0"/>
                                     <TextBlock Text="~" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                                    <TextBlock Text="{Binding MotionPlcData.RobotVerticalSafePosition1_2}" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                    <TextBlock Text="-200" VerticalAlignment="Center" Margin="0,0,5,0"/>
                                     <TextBlock Text="mm" VerticalAlignment="Center"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Margin="0,2">
                                     <TextBlock Text="位置2：" VerticalAlignment="Center" Width="45"/>
-                                    <TextBlock Text="{Binding MotionPlcData.RobotVerticalSafePosition2_1}" VerticalAlignment="Center" Margin="5,0"/>
+                                    <TextBlock Text="0" VerticalAlignment="Center" Margin="5,0"/>
                                     <TextBlock Text="mm" VerticalAlignment="Center" Margin="0,0,10,0"/>
                                     <TextBlock Text="~" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                                    <TextBlock Text="{Binding MotionPlcData.RobotVerticalSafePosition2_2}" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                    <TextBlock Text="200" VerticalAlignment="Center" Margin="0,0,5,0"/>
                                     <TextBlock Text="mm" VerticalAlignment="Center"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Margin="0,2">
                                     <TextBlock Text="位置3：" VerticalAlignment="Center" Width="45"/>
-                                    <TextBlock Text="{Binding MotionPlcData.RobotVerticalSafePosition3_1}" VerticalAlignment="Center" Margin="5,0"/>
+                                    <TextBlock Text="400" VerticalAlignment="Center" Margin="5,0"/>
                                     <TextBlock Text="mm" VerticalAlignment="Center" Margin="0,0,10,0"/>
                                     <TextBlock Text="~" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                                    <TextBlock Text="{Binding MotionPlcData.RobotVerticalSafePosition3_2}" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                    <TextBlock Text="600" VerticalAlignment="Center" Margin="0,0,5,0"/>
                                     <TextBlock Text="mm" VerticalAlignment="Center"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Margin="0,2">
                                     <TextBlock Text="位置4：" VerticalAlignment="Center" Width="45"/>
-                                    <TextBlock Text="{Binding MotionPlcData.RobotVerticalSafePosition4_1}" VerticalAlignment="Center" Margin="5,0"/>
+                                    <TextBlock Text="800" VerticalAlignment="Center" Margin="5,0"/>
                                     <TextBlock Text="mm" VerticalAlignment="Center" Margin="0,0,10,0"/>
                                     <TextBlock Text="~" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                                    <TextBlock Text="{Binding MotionPlcData.RobotVerticalSafePosition4_2}" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                    <TextBlock Text="1000" VerticalAlignment="Center" Margin="0,0,5,0"/>
                                     <TextBlock Text="mm" VerticalAlignment="Center"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Margin="0,2">
                                     <TextBlock Text="位置5：" VerticalAlignment="Center" Width="45"/>
-                                    <TextBlock Text="{Binding MotionPlcData.RobotVerticalSafePosition5_1}" VerticalAlignment="Center" Margin="5,0"/>
+                                    <TextBlock Text="1200" VerticalAlignment="Center" Margin="5,0"/>
                                     <TextBlock Text="mm" VerticalAlignment="Center" Margin="0,0,10,0"/>
                                     <TextBlock Text="~" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                                    <TextBlock Text="{Binding MotionPlcData.RobotVerticalSafePosition5_2}" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                    <TextBlock Text="1400" VerticalAlignment="Center" Margin="0,0,5,0"/>
                                     <TextBlock Text="mm" VerticalAlignment="Center"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Margin="0,2">
                                     <TextBlock Text="位置6：" VerticalAlignment="Center" Width="45"/>
-                                    <TextBlock Text="{Binding MotionPlcData.RobotVerticalSafePosition6_1}" VerticalAlignment="Center" Margin="5,0"/>
+                                    <TextBlock Text="1600" VerticalAlignment="Center" Margin="5,0"/>
                                     <TextBlock Text="mm" VerticalAlignment="Center" Margin="0,0,10,0"/>
                                     <TextBlock Text="~" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                                    <TextBlock Text="{Binding MotionPlcData.RobotVerticalSafePosition6_2}" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                    <TextBlock Text="1800" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                    <TextBlock Text="mm" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </StackPanel>
+                            </StackPanel>
+                            <!-- 限位和原点数值显示 -->
+                            <StackPanel Orientation="Vertical" Margin="0,0,20,0">
+                                <TextBlock Text="限位和原点数值" FontSize="12" FontWeight="Bold" Margin="0,0,0,5"/>
+                                <!-- 水平上轴 -->
+                                <TextBlock Text="水平上轴" FontWeight="Bold" Margin="0,5,0,2"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,2">
+                                    <TextBlock Text="前限位：" VerticalAlignment="Center" Width="60"/>
+                                    <TextBlock Text="0" VerticalAlignment="Center" Margin="5,0"/>
+                                    <TextBlock Text="mm" VerticalAlignment="Center"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,2">
+                                    <TextBlock Text="后限位：" VerticalAlignment="Center" Width="60"/>
+                                    <TextBlock Text="0" VerticalAlignment="Center" Margin="5,0"/>
+                                    <TextBlock Text="mm" VerticalAlignment="Center"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,2">
+                                    <TextBlock Text="原点：" VerticalAlignment="Center" Width="60"/>
+                                    <TextBlock Text="0" VerticalAlignment="Center" Margin="5,0"/>
+                                    <TextBlock Text="mm" VerticalAlignment="Center"/>
+                                </StackPanel>
+
+                                <!-- 水平下轴 -->
+                                <TextBlock Text="水平下轴" FontWeight="Bold" Margin="0,5,0,2"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,2">
+                                    <TextBlock Text="前限位：" VerticalAlignment="Center" Width="60"/>
+                                    <TextBlock Text="0" VerticalAlignment="Center" Margin="5,0"/>
+                                    <TextBlock Text="mm" VerticalAlignment="Center"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,2">
+                                    <TextBlock Text="后限位：" VerticalAlignment="Center" Width="60"/>
+                                    <TextBlock Text="0" VerticalAlignment="Center" Margin="5,0"/>
+                                    <TextBlock Text="mm" VerticalAlignment="Center"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,2">
+                                    <TextBlock Text="原点：" VerticalAlignment="Center" Width="60"/>
+                                    <TextBlock Text="0" VerticalAlignment="Center" Margin="5,0"/>
+                                    <TextBlock Text="mm" VerticalAlignment="Center"/>
+                                </StackPanel>
+
+                                <!-- 垂直轴 -->
+                                <TextBlock Text="垂直轴" FontWeight="Bold" Margin="0,5,0,2"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,2">
+                                    <TextBlock Text="上限位：" VerticalAlignment="Center" Width="60"/>
+                                    <TextBlock Text="0" VerticalAlignment="Center" Margin="5,0"/>
+                                    <TextBlock Text="mm" VerticalAlignment="Center"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,2">
+                                    <TextBlock Text="下限位：" VerticalAlignment="Center" Width="60"/>
+                                    <TextBlock Text="0" VerticalAlignment="Center" Margin="5,0"/>
+                                    <TextBlock Text="mm" VerticalAlignment="Center"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,2">
+                                    <TextBlock Text="原点：" VerticalAlignment="Center" Width="60"/>
+                                    <TextBlock Text="0" VerticalAlignment="Center" Margin="5,0"/>
                                     <TextBlock Text="mm" VerticalAlignment="Center"/>
                                 </StackPanel>
                             </StackPanel>
@@ -889,7 +956,273 @@
                     </materialDesign:Card>
                 </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Vertical" Grid.Column="2" Margin="3,3,10,3">
+            <!-- 桨台数值显示区 -->
+            <StackPanel Orientation="Vertical" Grid.Column="1">
+                        <TextBlock Text="桨台数值显示区" FontSize="14" FontWeight="Bold" Margin="5,5,5,5"/>
+                        <materialDesign:Card Margin="5,0,5,5">
+                                <StackPanel Orientation="Vertical" Margin="10">
+                                <!-- 桨台1 -->
+                                <StackPanel Orientation="Vertical" Margin="0,5">
+                                        <TextBlock Text="桨台1" FontSize="12" FontWeight="Bold" Margin="0,0,0,5"/>
+                                        <StackPanel Orientation="Horizontal" Margin="0,2">
+                                            <TextBlock Text="水平轴：" Width="50"/>
+                                            <TextBlock Text="{Binding FurnacePlcDataDict[0].HorizontalPosition}" Margin="5,0"/>
+                                            <TextBlock Text="mm" Margin="0,0,10,0"/>
+                                            <TextBlock Text="限位：" Width="40"/>
+                                            <TextBlock Text="上：" Width="20"/>
+                                            <TextBlock Text="{Binding FurnacePlcDataDict[0].HorizontalUpperLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                            <TextBlock Text="下：" Width="20"/>
+                                            <TextBlock Text="{Binding FurnacePlcDataDict[0].HorizontalLowerLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                            <TextBlock Text="原：" Width="20"/>
+                                            <TextBlock Text="{Binding FurnacePlcDataDict[0].HorizontalOriginLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="0,2">
+                                            <TextBlock Text="垂直轴：" Width="50"/>
+                                            <TextBlock Text="{Binding FurnacePlcDataDict[0].VerticalPosition}" Margin="5,0"/>
+                                            <TextBlock Text="mm" Margin="0,0,10,0"/>
+                                            <TextBlock Text="限位：" Width="40"/>
+                                            <TextBlock Text="上：" Width="20"/>
+                                            <TextBlock Text="{Binding FurnacePlcDataDict[0].VerticalUpperLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                            <TextBlock Text="下：" Width="20"/>
+                                            <TextBlock Text="{Binding FurnacePlcDataDict[0].VerticalLowerLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                            <TextBlock Text="原：" Width="20"/>
+                                            <TextBlock Text="{Binding FurnacePlcDataDict[0].VerticalOriginLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                        </StackPanel>
+                                </StackPanel>
+
+                                <!-- 桨台2 -->
+                                <StackPanel Orientation="Vertical" Margin="0,5">
+                                    <TextBlock Text="桨台2" FontSize="12" FontWeight="Bold" Margin="0,0,0,5"/>
+                                    <StackPanel Orientation="Horizontal" Margin="0,2">
+                                        <TextBlock Text="水平轴：" Width="50"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[1].HorizontalPosition}" Margin="5,0"/>
+                                        <TextBlock Text="mm" Margin="0,0,10,0"/>
+                                        <TextBlock Text="限位：" Width="40"/>
+                                        <TextBlock Text="上：" Width="20"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[1].HorizontalUpperLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                        <TextBlock Text="下：" Width="20"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[1].HorizontalLowerLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                        <TextBlock Text="原：" Width="20"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[1].HorizontalOriginLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="0,2">
+                                        <TextBlock Text="垂直轴：" Width="50"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[1].VerticalPosition}" Margin="5,0"/>
+                                        <TextBlock Text="mm" Margin="0,0,10,0"/>
+                                        <TextBlock Text="限位：" Width="40"/>
+                                        <TextBlock Text="上：" Width="20"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[1].VerticalUpperLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                        <TextBlock Text="下：" Width="20"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[1].VerticalLowerLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                        <TextBlock Text="原：" Width="20"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[1].VerticalOriginLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <!-- 桨台3 -->
+                                <StackPanel Orientation="Vertical" Margin="0,5">
+                                    <TextBlock Text="桨台3" FontSize="12" FontWeight="Bold" Margin="0,0,0,5"/>
+                                    <StackPanel Orientation="Horizontal" Margin="0,2">
+                                        <TextBlock Text="水平轴：" Width="50"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[2].HorizontalPosition}" Margin="5,0"/>
+                                        <TextBlock Text="mm" Margin="0,0,10,0"/>
+                                        <TextBlock Text="限位：" Width="40"/>
+                                        <TextBlock Text="上：" Width="20"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[2].HorizontalUpperLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                        <TextBlock Text="下：" Width="20"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[2].HorizontalLowerLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                        <TextBlock Text="原：" Width="20"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[2].HorizontalOriginLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="0,2">
+                                        <TextBlock Text="垂直轴：" Width="50"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[2].VerticalPosition}" Margin="5,0"/>
+                                        <TextBlock Text="mm" Margin="0,0,10,0"/>
+                                        <TextBlock Text="限位：" Width="40"/>
+                                        <TextBlock Text="上：" Width="20"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[2].VerticalUpperLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                        <TextBlock Text="下：" Width="20"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[2].VerticalLowerLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                        <TextBlock Text="原：" Width="20"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[2].VerticalOriginLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <!-- 桨台4 -->
+                                <StackPanel Orientation="Vertical" Margin="0,5">
+                                    <TextBlock Text="桨台4" FontSize="12" FontWeight="Bold" Margin="0,0,0,5"/>
+                                    <StackPanel Orientation="Horizontal" Margin="0,2">
+                                        <TextBlock Text="水平轴：" Width="50"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[3].HorizontalPosition}" Margin="5,0"/>
+                                        <TextBlock Text="mm" Margin="0,0,10,0"/>
+                                        <TextBlock Text="限位：" Width="40"/>
+                                        <TextBlock Text="上：" Width="20"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[3].HorizontalUpperLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                        <TextBlock Text="下：" Width="20"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[3].HorizontalLowerLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                        <TextBlock Text="原：" Width="20"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[3].HorizontalOriginLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="0,2">
+                                        <TextBlock Text="垂直轴：" Width="50"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[3].VerticalPosition}" Margin="5,0"/>
+                                        <TextBlock Text="mm" Margin="0,0,10,0"/>
+                                        <TextBlock Text="限位：" Width="40"/>
+                                        <TextBlock Text="上：" Width="20"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[3].VerticalUpperLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                        <TextBlock Text="下：" Width="20"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[3].VerticalLowerLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                        <TextBlock Text="原：" Width="20"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[3].VerticalOriginLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <!-- 桨台5 -->
+                                <StackPanel Orientation="Vertical" Margin="0,5">
+                                    <TextBlock Text="桨台5" FontSize="12" FontWeight="Bold" Margin="0,0,0,5"/>
+                                    <StackPanel Orientation="Horizontal" Margin="0,2">
+                                        <TextBlock Text="水平轴：" Width="50"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[4].HorizontalPosition}" Margin="5,0"/>
+                                        <TextBlock Text="mm" Margin="0,0,10,0"/>
+                                        <TextBlock Text="限位：" Width="40"/>
+                                        <TextBlock Text="上：" Width="20"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[4].HorizontalUpperLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                        <TextBlock Text="下：" Width="20"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[4].HorizontalLowerLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                        <TextBlock Text="原：" Width="20"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[4].HorizontalOriginLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="0,2">
+                                        <TextBlock Text="垂直轴：" Width="50"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[4].VerticalPosition}" Margin="5,0"/>
+                                        <TextBlock Text="mm" Margin="0,0,10,0"/>
+                                        <TextBlock Text="限位：" Width="40"/>
+                                        <TextBlock Text="上：" Width="20"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[4].VerticalUpperLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                        <TextBlock Text="下：" Width="20"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[4].VerticalLowerLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                        <TextBlock Text="原：" Width="20"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[4].VerticalOriginLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <!-- 桨台6 -->
+                                <StackPanel Orientation="Vertical" Margin="0,5">
+                                    <TextBlock Text="桨台6" FontSize="12" FontWeight="Bold" Margin="0,0,0,5"/>
+                                    <StackPanel Orientation="Horizontal" Margin="0,2">
+                                        <TextBlock Text="水平轴：" Width="50"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[5].HorizontalPosition}" Margin="5,0"/>
+                                        <TextBlock Text="mm" Margin="0,0,10,0"/>
+                                        <TextBlock Text="限位：" Width="40"/>
+                                        <TextBlock Text="上：" Width="20"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[5].HorizontalUpperLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                        <TextBlock Text="下：" Width="20"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[5].HorizontalLowerLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                        <TextBlock Text="原：" Width="20"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[5].HorizontalOriginLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="0,2">
+                                        <TextBlock Text="垂直轴：" Width="50"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[5].VerticalPosition}" Margin="5,0"/>
+                                        <TextBlock Text="mm" Margin="0,0,10,0"/>
+                                        <TextBlock Text="限位：" Width="40"/>
+                                        <TextBlock Text="上：" Width="20"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[5].VerticalUpperLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                        <TextBlock Text="下：" Width="20"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[5].VerticalLowerLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                        <TextBlock Text="原：" Width="20"/>
+                                        <TextBlock Text="{Binding FurnacePlcDataDict[5].VerticalOriginLimit, Converter={StaticResource BoolToYesNoConverter}}" Width="15"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                    </materialDesign:Card>
+            </StackPanel>
+            <StackPanel Grid.Column="2" Margin="3,3,10,3">
+                <!-- 桨台垂直轴安全距离显示区 -->
+                <TextBlock Text="桨台垂直轴安全距离" FontSize="14" FontWeight="Bold" Margin="5,5,5,5"/>
+                <materialDesign:Card>
+                    <StackPanel Orientation="Vertical" Margin="10">
+                        <!-- 桨台1 -->
+                        <StackPanel Orientation="Vertical" Margin="0,5">
+                            <TextBlock Text="桨台1" FontSize="12" FontWeight="Bold" Margin="0,0,0,5"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,2">
+                                <TextBlock Text="垂直轴安全距离：" Width="100"/>
+                                <TextBlock Text="-400" Margin="5,0"/>
+                                <TextBlock Text="mm" Margin="0,0,10,0"/>
+                                <TextBlock Text="~" Margin="0,0,10,0"/>
+                                <TextBlock Text="-200" Margin="0,0,5,0"/>
+                                <TextBlock Text="mm"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <!-- 桨台2 -->
+                        <StackPanel Orientation="Vertical" Margin="0,5">
+                            <TextBlock Text="桨台2" FontSize="12" FontWeight="Bold" Margin="0,0,0,5"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,2">
+                                <TextBlock Text="垂直轴安全距离：" Width="100"/>
+                                <TextBlock Text="0" Margin="5,0"/>
+                                <TextBlock Text="mm" Margin="0,0,10,0"/>
+                                <TextBlock Text="~" Margin="0,0,10,0"/>
+                                <TextBlock Text="200" Margin="0,0,5,0"/>
+                                <TextBlock Text="mm"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <!-- 桨台3 -->
+                        <StackPanel Orientation="Vertical" Margin="0,5">
+                            <TextBlock Text="桨台3" FontSize="12" FontWeight="Bold" Margin="0,0,0,5"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,2">
+                                <TextBlock Text="垂直轴安全距离：" Width="100"/>
+                                <TextBlock Text="400" Margin="5,0"/>
+                                <TextBlock Text="mm" Margin="0,0,10,0"/>
+                                <TextBlock Text="~" Margin="0,0,10,0"/>
+                                <TextBlock Text="600" Margin="0,0,5,0"/>
+                                <TextBlock Text="mm"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <!-- 桨台4 -->
+                        <StackPanel Orientation="Vertical" Margin="0,5">
+                            <TextBlock Text="桨台4" FontSize="12" FontWeight="Bold" Margin="0,0,0,5"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,2">
+                                <TextBlock Text="垂直轴安全距离：" Width="100"/>
+                                <TextBlock Text="800" Margin="5,0"/>
+                                <TextBlock Text="mm" Margin="0,0,10,0"/>
+                                <TextBlock Text="~" Margin="0,0,10,0"/>
+                                <TextBlock Text="1000" Margin="0,0,5,0"/>
+                                <TextBlock Text="mm"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <!-- 桨台5 -->
+                        <StackPanel Orientation="Vertical" Margin="0,5">
+                            <TextBlock Text="桨台5" FontSize="12" FontWeight="Bold" Margin="0,0,0,5"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,2">
+                                <TextBlock Text="垂直轴安全距离：" Width="100"/>
+                                <TextBlock Text="1200" Margin="5,0"/>
+                                <TextBlock Text="mm" Margin="0,0,10,0"/>
+                                <TextBlock Text="~" Margin="0,0,10,0"/>
+                                <TextBlock Text="1400" Margin="0,0,5,0"/>
+                                <TextBlock Text="mm"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <!-- 桨台6 -->
+                        <StackPanel Orientation="Vertical" Margin="0,5">
+                            <TextBlock Text="桨台6" FontSize="12" FontWeight="Bold" Margin="0,0,0,5"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,2">
+                                <TextBlock Text="垂直轴安全距离：" Width="100"/>
+                                <TextBlock Text="1600" Margin="5,0"/>
+                                <TextBlock Text="mm" Margin="0,0,10,0"/>
+                                <TextBlock Text="~" Margin="0,0,10,0"/>
+                                <TextBlock Text="1800" Margin="0,0,5,0"/>
+                                <TextBlock Text="mm"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </materialDesign:Card>
+            </StackPanel>
+            <StackPanel Grid.Column="3" Margin="3,3,10,3">
                 <!-- 机械手精确控制 -->
                 <TextBlock Text="机械手精确控制" FontSize="14" FontWeight="Bold" Margin="5"></TextBlock>
                 <materialDesign:Card Margin="0,0,0,10">
@@ -917,10 +1250,10 @@
                             <TextBlock Text="位置值：" VerticalAlignment="Center"/>
                             <TextBox Width="60" Height="25" Text="{Binding InputValue}" Margin="5,0,0,0" IsEnabled="{Binding IsValueModeSelected}"/>
                             <TextBlock Text="mm" VerticalAlignment="Center" Margin="5,0,0,0"/>
-                            </StackPanel>
-                            <Button Style="{StaticResource MaterialDesignFlatMidBgButton}" 
-                                    Content="启动" 
-                                    Command="{Binding StartMotionCommand}"
+                        </StackPanel>
+                        <Button Style="{StaticResource MaterialDesignFlatMidBgButton}" 
+                                Content="启动" 
+                                Command="{Binding StartMotionCommand}"
                                 Height="30"
                                 Width="80"
                                 IsEnabled="{Binding IsValueModeSelected}"/>
@@ -929,17 +1262,33 @@
 
                 <!-- 桨精确控制 -->
                 <TextBlock Text="桨精确控制" FontSize="14" FontWeight="Bold" Margin="5"></TextBlock>
-                    <materialDesign:Card>
+                <materialDesign:Card>
                     <StackPanel Orientation="Vertical" Margin="10">
+                        <!-- 桨台选择 -->
                         <StackPanel Orientation="Vertical" Margin="0,0,0,5">
-                            <TextBlock Text="轴选择" FontSize="12" Margin="0,0,0,5"></TextBlock>
+                            <TextBlock Text="桨台选择" FontSize="12" Margin="0,0,0,5"/>
+                            <ComboBox Width="120" 
+                                     Margin="10,0,0,0" 
+                                     SelectedIndex="{Binding SelectedPaddleIndex}"
+                                     IsEnabled="{Binding IsValueModeSelected}">
+                                <ComboBoxItem Content="桨台1"/>
+                                <ComboBoxItem Content="桨台2"/>
+                                <ComboBoxItem Content="桨台3"/>
+                                <ComboBoxItem Content="桨台4"/>
+                                <ComboBoxItem Content="桨台5"/>
+                                <ComboBoxItem Content="桨台6"/>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Vertical" Margin="0,0,0,5">
+                            <TextBlock Text="轴选择" FontSize="12" Margin="0,0,0,5"/>
                             <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
                                 <RadioButton GroupName="ClampAxisSelect" Content="水平轴" IsChecked="{Binding IsClampHorizontalSelected}" Margin="0,0,15,0" IsEnabled="{Binding IsValueModeSelected}"/>
                                 <RadioButton GroupName="ClampAxisSelect" Content="垂直轴" IsChecked="{Binding IsClampVerticalSelected}" Margin="0" IsEnabled="{Binding IsValueModeSelected}"/>
                             </StackPanel>
                         </StackPanel>
                         <StackPanel Orientation="Vertical" Margin="0,0,0,5">
-                            <TextBlock Text="速度选择" FontSize="12" Margin="0,0,0,5"></TextBlock>
+                            <TextBlock Text="速度选择" FontSize="12" Margin="0,0,0,5"/>
                             <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
                                 <RadioButton GroupName="ClampSpeedSelect" Content="快速" IsChecked="{Binding IsClampHighSpeedSelected}" Margin="0,0,15,0" IsEnabled="{Binding IsValueModeSelected}"/>
                                 <RadioButton GroupName="ClampSpeedSelect" Content="慢速" IsChecked="{Binding IsClampLowSpeedSelected}" Margin="0" IsEnabled="{Binding IsValueModeSelected}"/>
@@ -949,18 +1298,28 @@
                             <TextBlock Text="位置值：" VerticalAlignment="Center"/>
                             <TextBox Width="60" Height="25" Text="{Binding ClampInputValue}" Margin="5,0,0,0" IsEnabled="{Binding IsValueModeSelected}"/>
                             <TextBlock Text="mm" VerticalAlignment="Center" Margin="5,0,0,0"/>
-                            </StackPanel>
-                            <Button Style="{StaticResource MaterialDesignFlatMidBgButton}" 
-                                    Content="启动" 
-                                    Command="{Binding StartClampMotionCommand}"
+                        </StackPanel>
+                        <Button Style="{StaticResource MaterialDesignFlatMidBgButton}" 
+                                Content="启动" 
+                                Command="{Binding StartClampMotionCommand}"
                                 Height="30"
                                 Width="80"
                                 IsEnabled="{Binding IsValueModeSelected}"/>
-                </StackPanel>
+                    </StackPanel>
                 </materialDesign:Card>
             </StackPanel>
-            <StackPanel Grid.Column="3" Margin="3,3,3,3">
-                <TextBlock Text="事件记录" FontSize="14" FontWeight="Bold" Margin="5,5,5,5"/>
+
+            <StackPanel Grid.Column="4" Margin="3,3,3,3">
+                <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
+                    <TextBlock Text="事件记录" FontSize="14" FontWeight="Bold"/>
+                    <Button Content="清空" 
+                            Command="{Binding ClearEventLogsCommand}"
+                            Style="{StaticResource MaterialDesignFlatButton}"
+                            Margin="20,0,0,0"
+                            Height="25"
+                            Width="60"
+                            FontSize="12"/>
+                </StackPanel>
                 <Border BorderBrush="#FFD0D0D0" 
                         BorderThickness="1" 
                         CornerRadius="3"

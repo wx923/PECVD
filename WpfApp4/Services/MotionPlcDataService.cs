@@ -144,13 +144,18 @@ namespace WpfApp4.Services
                 data.RobotVerticalLowerLimit = _modbusClient.ReadCoil($"{addr++}").Content;         // 地址 base + 15
                 data.RobotVerticalOriginLimit = _modbusClient.ReadCoil($"{addr++}").Content;        // 地址 base + 16
 
+                // 读取轴位置
+                data.RobotHorizontal1Position = _modbusClient.ReadFloat($"{addr++}").Content;      // 地址 base + 17
+                data.RobotHorizontal2Position = _modbusClient.ReadFloat($"{addr++}").Content;      // 地址 base + 18
+                data.RobotVerticalPosition = _modbusClient.ReadFloat($"{addr++}").Content;         // 地址 base + 19
+
                 // 读取暂存区舟检测传感器状态
-                data.Storage1BoatSensor = _modbusClient.ReadCoil($"{addr++}").Content;         // 地址 base + 17
-                data.Storage2BoatSensor = _modbusClient.ReadCoil($"{addr++}").Content;         // 地址 base + 18
-                data.Storage3BoatSensor = _modbusClient.ReadCoil($"{addr++}").Content;         // 地址 base + 19
-                data.Storage4BoatSensor = _modbusClient.ReadCoil($"{addr++}").Content;         // 地址 base + 20
-                data.Storage5BoatSensor = _modbusClient.ReadCoil($"{addr++}").Content;         // 地址 base + 21
-                data.Storage6BoatSensor = _modbusClient.ReadCoil($"{addr++}").Content;         // 地址 base + 22
+                data.Storage1BoatSensor = _modbusClient.ReadCoil($"{addr++}").Content;         // 地址 base + 20
+                data.Storage2BoatSensor = _modbusClient.ReadCoil($"{addr++}").Content;         // 地址 base + 21
+                data.Storage3BoatSensor = _modbusClient.ReadCoil($"{addr++}").Content;         // 地址 base + 22
+                data.Storage4BoatSensor = _modbusClient.ReadCoil($"{addr++}").Content;         // 地址 base + 23
+                data.Storage5BoatSensor = _modbusClient.ReadCoil($"{addr++}").Content;         // 地址 base + 24
+                data.Storage6BoatSensor = _modbusClient.ReadCoil($"{addr++}").Content;         // 地址 base + 25
 
                 // 在UI线程更新数据
                 await _dispatcher.InvokeAsync(() =>
@@ -177,6 +182,11 @@ namespace WpfApp4.Services
                     MotionPlcData.RobotVerticalUpperLimit = data.RobotVerticalUpperLimit;
                     MotionPlcData.RobotVerticalLowerLimit = data.RobotVerticalLowerLimit;
                     MotionPlcData.RobotVerticalOriginLimit = data.RobotVerticalOriginLimit;
+
+                    // 更新轴位置
+                    MotionPlcData.RobotHorizontal1Position = data.RobotHorizontal1Position;
+                    MotionPlcData.RobotHorizontal2Position = data.RobotHorizontal2Position;
+                    MotionPlcData.RobotVerticalPosition = data.RobotVerticalPosition;
 
                     // 更新暂存区舟检测传感器状态
                     MotionPlcData.Storage1BoatSensor = data.Storage1BoatSensor;
